@@ -1,0 +1,463 @@
+/*** VEC Styles ***/
+
+// Some overrides to look into more later
+ul li:before {
+  content:none;  
+}
+
+#content ul.breadcrumbs li.active {
+  margin: 0em;
+}
+
+
+// Search
+
+.overlay {
+  z-index: 10000;
+}
+
+.reveal-modal #search_form {
+  margin-bottom: 1em;
+}
+#search_form input[type="text"] {
+  max-height: 2.6em;
+}
+
+.reveal-modal .close-reveal-modal {
+  font-size: 1em;
+  clear: both;
+  text-decoration: none;
+  color: $color-gray-dark;
+  text-align: center;
+  margin: 1em 0;
+  position: relative;
+  top: auto;
+  display: block;
+  padding: 1em 0;
+  right: auto;
+  width: 100%;
+  bottom: auto;
+}
+
+
+// /*** VEC Styles ***/
+#vec-user-nav.top-bar {
+  background-color: $color-primary-darkest;
+  border-bottom: $color-primary-alt-darkest solid 1px;
+  opacity: 0.8;
+  @include media($medium-screen) {
+    height: auto;
+  }
+  ul .divider {
+    border-right: $color-primary-darker solid 1px;
+  }
+  .top-bar-section ul {
+    background-color: color-primary-alt-darkest;
+  }
+  ul li {
+    list-style: none;
+    a {
+      background-color: $color-primary-darkest;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: initial;
+      text-decoration: none;
+      &:hover {
+        background-color: $color-primary-darker;
+      }
+    }
+  } 
+}
+
+.row.full {
+  width: 100%;
+  max-width: 100%;
+}
+
+#search_form input[type="text"] {
+  font-size: 1rem;
+}
+
+// short term less-ugly for alerts
+.alert-box.notice {
+  margin-bottom: 0px;
+  font-weight: 400;
+}
+
+.row.job-row {
+  margin-bottom: 2rem;
+  .result {
+    border-bottom: solid $color-gray-light 1px;
+  }
+  .feature-badge {
+    margin: 1rem 0; 
+    width: 55px;
+  }
+  img {
+    vertical-align: baseline;
+  }
+}
+
+.row.pagination {
+  margin-bottom: 2rem;  
+}
+
+.panel.plain {
+  border: none;
+  margin-top: 1rem 0;
+}
+
+.no-margin {
+  margin: 0px;
+}
+
+.card {
+  &.job-card {
+    margin-top: 1.25rem;
+    padding: 1rem;
+    background-color: $olso-gray;
+    color: #fff;
+    h4 {
+      color: #fff;
+    }
+    img, p {
+      float: left;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    .description {
+      font-weight: 500;
+      font-size: 1rem;
+      font-height: 1px;
+      line-height: 1.6;
+      text-transform: none;
+    }
+  }
+}
+
+#content .cards a.long {
+  height: 11em;
+}
+
+// Utilities
+.align-right {
+  float: right;
+  text-align: right;
+}
+.borderless {
+  border: none
+}
+
+pre {
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+// /***
+// #translation_results {
+//   -webkit-box-shadow: 0 5px 7px rgba(0,0,0,.15) inset;
+//   padding: 1em;
+//   border-bottom: 1px solid #ddd;
+//   width: 96.5%;
+//   margin: 0 auto 1em auto;
+//   background: #F2FAFF;
+//   -webkit-border-bottom-right-radius: .35em;
+//   -webkit-border-bottom-left-radius: .35em;
+
+
+//   &:after {
+//     visibility: hidden;
+//     display: block;
+//     font-size: 0;
+//     content: " ";
+//     clear: both;
+//     height: 0;
+//   }
+// }
+
+//   font-weight: 700;
+//   color: $primary;
+//   display: block;
+//   line-height: 1em;
+//   padding: 0; margin: 0 0 .2em 0;
+//   span.example {font-weight: normal; font-size: .8em; display: block; color: #333; padding: 0;}
+
+// ***/
+
+
+
+// .onet img {
+//   padding: 0 4px;
+// }
+
+// .result {
+//   border-bottom: 1px solid rgba(0,0,0,.2);
+// }
+
+// .result.key {
+// }
+
+// .filter-tab {
+//   display: inline-block;
+//   padding: 0 16px;
+// }
+
+// .translate-box {
+//   padding: 16px 0 0 0;
+// }
+
+// #confirm_moc ul {
+//   margin: 0 0 15px 0;
+// }
+
+// .error-message {
+//   padding: 0 0 0 10px;
+// }
+
+// p.hint {
+//   margin: 0;
+//   padding: 0;
+//   font-size: .8em;
+// }
+
+// #confirm_moc li {
+//   margin: 0;
+//   list-style-type: none;
+
+//   a {
+//     color: #008cba;
+//     text-decoration: none;
+//     &:hover {
+//       text-decoration: underline;
+//     }
+//   }
+// }
+
+// .job-name {
+//   color: #032b55;
+//   font-weight: 600;
+//   padding-left: 1em;
+// }
+
+// .job {
+//   padding: 6px 0;
+// }
+
+// .heading {
+//   text-decoration: underline;
+//   font-weight: 600;
+// }
+
+// /*** add javascript to make it go into the selected state onclick ***/
+// .filter-tab.selected {
+//   background: #008cba;
+
+// }
+
+// .skill_checkbox {
+//   text-align: center;
+// }
+
+// label.read-less {
+//   padding: 0 0 20px 0;
+// }
+
+
+// .feature {
+//   background: #fff;
+//   background: rgba(255,255,255,.85);
+// }
+
+// #jobTitles, #civilianSkills {
+//   width: 96.5%;
+//   margin: 0 auto 1em auto;
+// }
+
+// .filters.row {
+//   margin-left: 0 !important;
+//   margin-right: 0 !important;
+// }
+
+// .filters {
+//   padding-bottom: 1em;
+// }
+
+// .instructions {
+//   padding: 12px 0;
+// }
+
+// input[type="search"] {
+//   padding-right: 0;
+//   padding-left: 0;
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   -moz-box-sizing: border-box;
+//   -moz-border-radius: none;
+// }
+
+// /*** Form list ***/
+
+// ol.form-list {
+//   margin: 0 0 0 0em;
+//   list-style-position: inside;
+//   font-size: 1.2em;
+//   line-height: 1em;
+//   color: #555;
+//   h3.no-margin {font-size: 1.1em; font-weight: bold; display: inline-block;}
+//   li {
+//     padding: 0 0 1em 0;
+//     margin: 0;
+//   }
+// }
+
+// .blank-underline {
+//   display: block;
+//   border-bottom: 1px solid #999;
+//   height: 1em;
+//   text-decoration: underline;
+// }
+
+// .row.resume {
+//   padding-top: .75em;
+//   padding-bottom: .75em;
+// }
+
+// h4.print-doc {
+//   margin: 1em 0 0 0;
+// }
+
+// table.print-table {
+//   td {
+//     border-bottom: 2px solid #000;
+//     width: 100%;
+//   }
+// }
+
+// #error_explanation {
+//   /* background: #eee; */
+//   margin: 0 0 2.5em 0;
+//   padding: .25em 1em;
+// }
+
+// #error_explanation li {
+//   padding: 0;
+//   margin-top: 6px;
+// }
+
+// .resume_error {
+//   color: white;
+//   background-color: #f04124;
+//   padding: 2px 8px 2px 8px;
+// }
+
+// li.error_list {
+//   list-style: none;
+// }
+
+// .interest_profiler {
+//   @media only screen and (max-width:768px)
+//   {
+//     -ms-zoom: 0.7;
+//     -moz-transform: scale(0.7);
+//     -moz-transform-origin: 0 0;
+//     -o-transform: scale(0.7);
+//     -o-transform-origin: 0 0;
+//     -webkit-transform: scale(0.7);
+//     -webkit-transform-origin: 0 0;
+//   }
+// }
+
+// .row.onet_icons {
+// margin-top: -1em;
+// margin-bottom: .5em;
+// }
+
+// .row.heading {
+// margin-bottom: -1em;
+// }
+
+
+.form-section {
+  padding: 2rem;
+  margin: 0 0 2rem;
+  border: 1px solid #eee;
+
+  h3 {
+    &.no-margin {margin: 0; padding: 0 0 1rem;}
+  }
+  .required {
+    margin: 0;
+    &.field {font-size: 1em;}
+    &.federal {
+      margin-top:1em;
+      color: $color-primary-darker;
+      font-size: .75em;
+      text-align: right;
+      padding: .2em;
+      display: inline-block;
+      float:right;
+    }
+    &.message {
+      font-size: .75em;
+      padding: .5em;
+      float: right;
+    }
+
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0 0;
+  }
+  legend {
+    margin-bottom: 1.25rem;
+  }
+  label {}
+}
+
+.button.primary {
+  padding: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+// Action banner
+
+.action-bar {
+  text-align: left;
+  padding: 1rem;
+  background: #f1f1f1;
+  a.button {
+    margin: 0 0 0 20px; padding: 0;
+    background: #2e8540 !important;
+    border-bottom: none !important;
+  }
+}
+
+// Veteran Search Results
+.search-results {
+  ol {
+    list-style: none;
+    margin: 0;
+  }
+  .veteran_location {
+    margin-top: 1em;
+  }
+  
+  h6 {
+    font-weight: 700;
+    font-size: 1em;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  }
+  .result {
+    border-bottom: 1px solid $olso-gray;
+    margin-bottom: 1em;
+  }
+  .result:last-child {
+    border-bottom: none;
+  }
+}

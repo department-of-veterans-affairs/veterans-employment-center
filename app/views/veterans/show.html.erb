@@ -1,0 +1,345 @@
+<% provide(:title, "View Profile") %>
+<div id="content" class="interior">
+  <a href="#content" class="sr-only">Content starts here.</a>
+    <div class="splash">
+      <div class="row">
+        <div class="small-12 columns">
+          <ul class="breadcrumbs" role="menubar" aria-label="Primary">
+            <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
+			<li class="parent"><%= link_to "For Job Seekers", for_job_seekers_path %></li>
+            <li class="active">Profile</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="section one">
+      <div class="row">
+        <div class="small-12 columns">
+          <div id="veteran-favorites">
+            <% if user_signed_in? && current_user.is_veteran? %>
+              <% if @veteran.visible? %>
+                <div data-alert class="alert-box">
+                  <div id="flash_alert">Your profile is currently public. Employers can find you in search results. Please edit your profile and select "save as draft" if you no longer wish to appear in the Veteran profile bank.</div>
+                </div>
+              <% else %>
+                <div data-alert class="alert-box">
+                  <div id="flash_alert">Your profile has been saved as a draft and cannot be seen by employers. </div>
+                </div>
+              <% end %>
+            <% elsif !current_user.nil? && !current_user.is_employer? %>
+              <div data-alert class="alert-box">
+                <div id="flash_alert">Your profile has been created but has not been saved. Sign in using your DS-LOGON to save your profile to your account.</div>
+              </div>
+            <% end %>
+
+            <% if user_signed_in? && current_user.is_employer? %>
+              <div class="right">
+                <% if current_user.employer.favorited?(@veteran) %>
+                  <%= link_to favorite_veteran_path(@veteran, type: "unfavorite"), :title => "Remove Favorite", method: :put do %><%= image_tag "star.png", :align => 'center' %>Remove from favorites<% end %>
+                <% else %>
+                  <%= link_to favorite_veteran_path(@veteran, type: "favorite"), :title => "Favorite", method: :put do %><%= image_tag "empty_star.png" %>Add to favorites<% end %>
+                <% end %>
+              </div>
+            <% end %>
+
+<div id="resume">
+              <div id="your_resume">
+                <div class="panel">
+                  <div class="row">
+                    <div class="small-12 medium-9 columns">
+                      <% if user_signed_in? %>
+                        <% if current_user.is_employer? %>
+                          <% if current_user.employer.approved? %>
+                            <h2 class="strong"><%= @veteran.name %></h2>
+                            <h4><%= @veteran.email %></h4>
+                          <% else %>
+                            <h2>Candidate Name/Email Hidden Until You Are Approved</h2>
+                          <% end %>
+                        <% end %>
+                      <% else %>
+                        <h3><strong><%= @veteran.name %></strong></h3>
+                      <% end %>
+                    </div>
+
+                    <div class="small-12 medium-3 align-right columns">
+                      <% if user_signed_in? %>
+                        <% if current_user.is_veteran? %>
+                          <%= link_to t('.destroy', :default => "Delete"),
+                                      veteran_path(@veteran),
+                                      :method => 'delete',
+                                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure? This will delete your profile entirely from the site.')) },
+                                      :class => 'button tertiary' %>
+                        <% end %>
+                      <% end %>
+
+                      <% if user_signed_in? %>
+                        <% unless current_user.is_employer? %>
+                          <%= link_to("Edit Profile".html_safe, edit_veteran_path(@veteran), class: 'button right alternate') %>
+                          <% end %>
+                      <% else %>
+                        <!-- This seems wrong. They should only see edit if it is their profile. -->
+                        <%= link_to("Edit Profile".html_safe, edit_veteran_path(@veteran), class: 'button right alternate') %>
+                      <% end %>
+                    </div>
+                  </div>
+
+                  <% if @veteran.objective.present? %>
+                    <div class="row">
+                      <div class="small-12 columns">
+                        <hr />
+                        <h5>Objective</h5>
+                        <p><%= @veteran.objective %></p>
+                      </div>
+                    </div><!-- end row -->
+                  <% end %>
+
+                  <% if @veteran.status_categories.size > 0 %>
+                    <div class="row">
+                      <div class="small-12  columns">
+                        <hr />
+                        <h5>Special Status</h5>
+                        <ul>
+                          <% @veteran.status_categories.each do |status| %>
+                            <li><%= status %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div>
+                  <% end %>
+
+                  <% if @veteran.skills.size > 0 %>
+                    <div class="row">
+                      <div class="small-12 columns">
+                        <hr />
+                        <h5>Skills</h5>
+                        <ul>
+                          <% @veteran.skills.each do |skill| %>
+                            <li><%= skill.name %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div><!-- end row -->
+                  <% end %>
+
+                  <% if @veteran.work_experiences.any? %>
+                    <div class="row">
+                      <div class="small-12 columns">
+                        <hr />
+                        <h5>Work Experience</h5>
+                        <% @veteran.work_experiences.each do |experience| %>
+                          <% if experience.organization.present? %>
+                            <p><span id="organization"><%= experience.organization %></span></p>
+                            <% if experience.job_title %><%= experience.job_title %><% end %>
+                            <% if experience.start_date %>
+                              <p><%= l(experience.start_date, :format => "%B %d, %Y") %>
+                              <% if experience.end_date %>
+                               to <%= l(experience.end_date, :format => "%B %d, %Y") %>
+                              <% end %>
+                            <% end %>
+                            <% if experience.hours.present? %>
+                              <%= experience.hours %> hours/week
+                            <% end %>
+                            </p>
+                            <% if experience.description.present? %>
+                              <ul>
+                                <li><%= experience.description %></li>
+                              </ul>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div><!-- end row -->
+                  <% end %>
+
+                  <% if @veteran.educational_experiences.any? %>
+                    <div class="row">
+                      <div class="small-12 columns">
+                        <hr />
+                        <h5>Educational Experience</h5>
+                        <% @veteran.educational_experiences.each do |experience| %>
+                          <% if experience.educational_organization.present? %>
+                            <p><span id="organization"><%= experience.educational_organization %></span></p>
+                            <% if experience.credential_type %><%= experience.credential_type %><% end %> <% if experience.credential_topic %> in <%= experience.credential_topic %><% end %>
+                            <% if experience.start_date %>
+                              <p><%= l(experience.start_date, :format => "%B %d, %Y") %><% if experience.end_date %> to <%= l(experience.end_date, :format => "%B %d, %Y") %><% end %></p>
+                            <% end %>
+                            <% if experience.description.present? %>
+                              <ul>
+                                <li><%= experience.description %></li>
+                              </ul>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div><!-- end row -->
+                  <% end %>
+
+                   <% if @veteran.military_experiences.any? %>
+                    <div class="row">
+                      <div class="small-12 columns">
+                        <hr />
+                        <h5>Military Service</h5>
+                        <% @veteran.military_experiences.each do |experience| %>
+                          <% if experience.organization.present? %>
+                            <p><span id="organization"><%= experience.organization %></span></p>
+                            <% if experience.moc %><p>MOC: <%= experience.moc %></p><% end %>
+                            <% if experience.duty_station %><p>Duty Station: <%= experience.duty_station %></p><% end %>
+                            <% if experience.rank.present? %><p>Rank: <%= experience.rank %></p><% end %>
+                            <% if experience.job_title %><%= experience.job_title %><% end %>
+                            <% if experience.start_date %>
+                              <p><%= l(experience.start_date, :format => "%B %d, %Y") %><% if experience.end_date %> to <%= l(experience.end_date, :format => "%B %d, %Y") %><% end %></p>
+                            <% end %>
+                            <% if experience.description.present? %>
+                              <ul>
+                                <li><%= experience.description %></li>
+                              </ul>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div><!-- end row -->
+                  <% end %>
+
+                  <% if @veteran.volunteer_experiences.any? %>
+                    <div class="row">
+                      <div class="small-12 columns">
+                        <hr />
+                        <h5>Volunteer Experience</h5>
+                        <% @veteran.volunteer_experiences.each do |experience| %>
+                          <% if experience.organization.present? %>
+                            <p><span id="organization"><%= experience.organization %></span></p>
+                          <% end %>
+                            <% if experience.job_title %><%= experience.job_title %><% end %>
+                            <% if experience.start_date %>
+                              <p><%= l(experience.start_date, :format => "%B %d, %Y") %><% if experience.end_date %> to <%= l(experience.end_date, :format => "%B %d, %Y") %><% end %></p>
+                            <% if experience.description.present? %>
+                              <ul>
+                                <li><%= experience.description %></li>
+                              </ul>
+                          <% end %>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div><!-- end row -->
+                  <% end %>
+
+                  <% if @veteran.desired_locations.any? %>
+                    <div class="row">
+                      <div class="small-12 columns">
+                        <hr />
+                        <h5>Desired Location(s)</h5>
+                        <% @veteran.desired_locations.each do |location| %>
+                            <p><span id="organization"><%= location.full_name %></span></p>
+                          <% end %>
+                      </div>
+                    </div><!-- end row -->
+                  <% end %>
+
+                  <% if @veteran.awards.any? %>
+                    <div class="row">
+                      <div class="small-12 columns">
+                        <hr />
+                        <h5>Awards</h5>
+                        <ul id="awards">
+                          <% @veteran.awards.each do |aw| %>
+                            <li><% if aw.title %><%= aw.title %><% end %> <% if aw.organization %>from <%= aw.organization %><% end %><% if aw.date %> on <%= aw.date.month %><% end %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div><!-- end row -->
+                  <% end %>
+
+                  <% if @veteran.affiliations.any? %>
+                    <div class="row">
+                      <div class="small-12 columns">
+                        <hr />
+                        <h5>Professional Affiliations</h5>
+                        <ul>
+                          <% @veteran.affiliations.each do |aw| %>
+                            <li><% if aw.job_title %><%= aw.job_title %><% end %><% if aw.organization %> at <%= aw.organization %><% end %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div><!-- end row -->
+                  <% end %>
+
+                  <% if @veteran.references.any?  %>
+                    <div class="row">
+                      <div class="small-12 columns">
+                        <hr />
+                        <h5>References</h5>
+                        <ul>
+                          <% @veteran.references.each do |aw| %>
+                            <li><% if aw.job_title %><%= aw.name %><% end %> <% if aw.job_title %>(<%= aw.job_title %>)<% end %> <% if aw.email %><%= aw.email %><% end %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div><!-- end row -->
+                  <% end %>
+
+                  <hr />  
+                  <% if @veteran.availability_date %>
+                    <div class="row">
+                      <div class="small-12 columns">
+                        <div class="resume_section" id="availability_date">
+                          <p><b>Candidate&rsquo;s Estimated Availability Date:</b> <%= l(@veteran.availability_date, :format => "%B %d, %Y") %></p>
+                        </div>
+                      </div>
+                    </div><!-- end row -->
+                  <% end %>
+                  <div class="row">
+                    <div class="small-12 columns">
+                      <div class="resume_section" id="last_modified">
+                        <p><b>Profile Last Updated:</b> <%= l(@veteran.updated_at, :format => "%B %d, %Y") %></p>
+                      </div>
+                    </div>
+                  </div><!-- end row -->
+                </div>
+              </div>
+              <div class="row" id="download_buttons">
+                <div class="small-6 medium-4 columns">
+                  <%= link_to "Download as résumé".html_safe, word_veteran_path(fed: false), class: "button tertiary expand", id: "download_resume" %>
+                </div>
+                <div class="small-6 medium-4 columns">
+                  <%= link_to "Download as résumé for federal employment".html_safe, word_veteran_path(fed: true), class: "button tertiary expand", id: "download_fed_resume" %>
+
+                  <div>
+                    <p>This download contains placeholders for Federal-specific data you can fill or remove as needed.</p>
+                  </div>
+
+                </div>
+                <% if user_signed_in? && current_user.is_veteran? %>
+                  <div class="small-6 medium-4 columns">
+                    <p>Download the content from your profile via the link above. This will provide you with an editable version that you can customize in a résumé for each job opportunity. For more information on how to best customize your résumé, <a href="http://www.careeronestop.org/">visit CareerOneStop</a> or find your local AJC.</p>
+                  </div>
+                <% end %>
+
+                <% if user_signed_in? %>
+                  <% unless current_user.is_employer? %>
+                    <% if current_user.is_veteran? %>
+                      <% if @veteran.visible? %>
+                        <div class="small-12 medium-4 columns">
+                          <p><b>Your profile is public.</b> Employers committed to hiring Veterans can see you in search results.</p>
+                        </div>
+                      <% else %>
+                        <div class="small-12 columns">
+                          <p>Make your profile public <%= link_to 'here', edit_veteran_path(@veteran), id: "make_profile_public" %>.
+                          </p>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <div class="small-12 medium-4 columns">
+                    <%= link_to "<strong>Sign in </strong> to publicly post your profile".html_safe, user_omniauth_authorize_path(:saml), class: 'button primary expand', id: "ds_logon" %>
+                  </div>
+                <% end %>
+              </div>
+            </div><!-- end div#resume -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

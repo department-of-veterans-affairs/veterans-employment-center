@@ -1,0 +1,1 @@
+Rails.application.config.assets.precompile += %w( html5shiv.min.js nwmatcher-1.2.5-min.js selectivizr-1.0.3b.js respond.min.js rem.min.js framework_and_overrides.css scaffolds.css search_pages.css site_wide_styles.css static_pages.css veterans.css jquery.dataTables.css )

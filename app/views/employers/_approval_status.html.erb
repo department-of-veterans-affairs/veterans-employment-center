@@ -1,0 +1,6 @@
+<% if employer.approved? %>
+  Approved by <%= employer.approved_by %> on <%= employer.approved_on %>
+<% else %>
+  Unapproved <br />
+  <%= link_to "Approve", employer_path(employer, employer: {approved: true }), method: :patch, class: "" %>
+<% end %>

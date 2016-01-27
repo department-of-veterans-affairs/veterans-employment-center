@@ -1,0 +1,122 @@
+{
+  "educations": {
+    "_total": 2,
+    "values": [
+      {
+        "degree": "BA",
+        "endDate": {"year": 1999},
+        "fieldOfStudy": "Computer Science",
+        "id": 863948,
+        "schoolName": "Undergraduate University",
+        "startDate": {"year": 1995}
+      },
+      {
+        "degree": "MS",
+        "fieldOfStudy": "Computer Science",
+        "id": 863949,
+        "schoolName": "Graduate University"
+      }
+    ]
+  },
+  "emailAddress": "joe@veteran.com",
+  "firstName": "Joe",
+  "honorsAwards": {
+    "_total": 1,
+    "values": [{
+      "id": 44,
+      "issuer": "Pretend Awarder",
+      "name": "Pretend Award"
+    }]
+  },
+  "lastName": "Veteran",
+  "location": {
+    "country": {"code": "us"},
+    "name": "Washington D.C. Metro Area"
+  },
+  "positions": {
+    "_total": 2,
+    "values": [
+      {
+        "company": {"name": "ACME Inc."},
+        "endDate": {
+          "month": 1,
+          "year": 2014
+        },
+        "id": 531598054,
+        "isCurrent": false,
+        "startDate": {
+          "year": 2013
+        },
+        "summary": "Working as a software developer.",
+        "title": "Senior Software Developer"
+      },
+      {
+        "company": {
+          "id": 388658,
+          "name": "Another Software Company"
+        },
+        "endDate": {
+          "month": 10,
+          "year": 2013
+        },
+        "id": 470767589,
+        "isCurrent": false,
+        "startDate": {
+          "month": 2,
+          "year": 2013
+        },
+        "summary": "Beginning software developer",
+        "title": "Software developer"
+      },
+      {
+        "company": {
+          "id": 388658,
+          "name": "Current Software Company"
+        },
+        "id": 470767589,
+        "isCurrent": true,
+        "startDate": {
+          "month": 2,
+          "year": 2014
+        },
+        "summary": "Beginning software developer",
+        "title": "Software developer"
+      },
+      {
+        "company": {
+          "id": 388658,
+          "name": "Junk Sortable Entry"
+        },
+        "id": 470767589,
+        "isCurrent": false,
+        "summary": "Beginning software developer",
+        "title": "Junk Sortable Entry"
+      }
+    ]
+  },
+  "skills": {
+    "_total": 3,
+    "values": [
+      {
+        "id": 1,
+        "skill": {"name": "Ruby on Rails"}
+      },
+      {
+        "id": 2,
+        "skill": {"name": "Lucene"}
+      },
+      {
+        "id": 3,
+        "skill": {"name": "MySQL"}
+      }
+    ]
+  },
+  "volunteer": {"volunteerExperiences": {
+    "_total": 1,
+    "values": [{
+      "id": 45,
+      "organization": {"name": "Pretend Volunteer Organization"},
+      "role": "Volunteer"
+    }]
+  }}
+}

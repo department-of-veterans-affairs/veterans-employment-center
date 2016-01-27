@@ -1,0 +1,61 @@
+<% provide(:title, "Resume Builder") %>
+
+<div id="content" class="interior">
+  <a id="content" href="#content" class="sr-only">Content starts here.</a>
+
+  <div class="splash">
+    <div class="row">
+      <div class="small-12 columns">
+        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
+          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
+		  <li class="parent"><%= link_to "For Job Seekers", for_job_seekers_path %></li>
+          <li class="active">Resume Builder</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class="section one">
+    <div class="row">
+    <div class="small-12 columns">
+      <% if current_user.is_veteran? %>
+        <% if current_user.veteran.nil? %>
+        <h3>Build a Profile &amp; R&eacute;sum&eacute;</h3>
+        <p>Use this form to create a <em>public</em> profile so employers committed to hiring Veterans can find you here on the Veterans Employment Center&trade;. Completing these fields will also provide you with the building blocks to take your experience and customize it into a tailored résumé. On the next page, you will be given the opportunity to upload your profile and download the content to build your résumé.</p>
+        <%= render 'form' %>
+        <% else %>
+          <p>You already have a r&eacute;sum&eacute;. Edit it <%= link_to "here", edit_veteran_path(current_user.veteran) %>.</p>
+        <% end %>
+      <% elsif current_user.is_employer? %>
+        <div data-alert class="alert-box">
+          <h4>You are currently logged in as an employer.</h4>
+          <p>If you would also like to post a r&eacute;sum&eacute;, please sign out and return to this page.</p>
+        </div>
+      <% end %>
+    </div>
+    </div>
+    </div>
+  <% else %><!-- if user is not signed in -->
+    <div class="action-bar">
+    <div class="row">
+    <div class="small-12 medium-8 columns">     
+      Already have a profile saved on vets.gov? <%= link_to "Sign in", user_omniauth_authorize_path(:saml), id: "update_profile" %> to access it.
+    </div>
+    </div>
+    </div>
+
+    <div class="section one">
+    <div class="row">
+    <div class="small-12 columns">
+      <h3>Build a Profile &amp; R&eacute;sum&eacute;</h3>  
+      <p>Use this form to create a <em>public</em> profile so employers committed to hiring Veterans can find you here on the Veterans Employment Center&trade;. </p>
+      <p>Manually enter your information into the form fields below, or use the <strong>Auto-fill from LinkedIn</strong> button to pre-populate some of the fields from your LinkedIn account. <em>(Not all fields will be populated).</em></p>
+      <%= render 'form' %>
+    </div>
+    </div>
+    </div>
+  <% end %>
+
+</div>
+

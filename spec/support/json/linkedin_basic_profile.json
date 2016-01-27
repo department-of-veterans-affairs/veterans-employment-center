@@ -1,0 +1,9 @@
+{
+  "emailAddress": "joe@veteran.com",
+  "firstName": "Joe",
+  "lastName": "Veteran",
+  "location": {
+    "country": {"code": "us"},
+    "name": "Washington D.C. Metro Area"
+  }
+}

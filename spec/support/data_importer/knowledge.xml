@@ -1,0 +1,42 @@
+<knowledge code="11-1011.00" report="summary">
+  <element id="2.C.1.a">
+    <name>Administration and Management</name>
+    <description>Knowledge of business and management principles involved in strategic planning, resource allocation, human resources modeling, leadership technique, production methods, and coordination of people and resources.</description>
+  </element>
+  <element id="2.C.1.f">
+    <name>Personnel and Human Resources</name>
+    <description>Knowledge of principles and procedures for personnel recruitment, selection, training, compensation and benefits, labor relations and negotiation, and personnel information systems.</description>
+  </element>
+  <element id="2.C.1.e">
+    <name>Customer and Personal Service</name>
+    <description>Knowledge of principles and processes for providing customer and personal services. This includes customer needs assessment, meeting quality standards for services, and evaluation of customer satisfaction.</description>
+  </element>
+  <element id="2.C.7.a">
+    <name>English Language</name>
+    <description>Knowledge of the structure and content of the English language including the meaning and spelling of words, rules of composition, and grammar.</description>
+  </element>
+  <element id="2.C.8.b">
+    <name>Law and Government</name>
+    <description>Knowledge of laws, legal codes, court procedures, precedents, government regulations, executive orders, agency rules, and the democratic political process.</description>
+  </element>
+  <element id="2.C.1.c">
+    <name>Economics and Accounting</name>
+    <description>Knowledge of economic and accounting principles and practices, the financial markets, banking and the analysis and reporting of financial data.</description>
+  </element>
+  <element id="2.C.4.a">
+    <name>Mathematics</name>
+    <description>Knowledge of arithmetic, algebra, geometry, calculus, statistics, and their applications.</description>
+  </element>
+  <element id="2.C.8.a">
+    <name>Public Safety and Security</name>
+    <description>Knowledge of relevant equipment, policies, procedures, and strategies to promote effective local, state, or national security operations for the protection of people, data, property, and institutions.</description>
+  </element>
+  <element id="2.C.6">
+    <name>Education and Training</name>
+    <description>Knowledge of principles and methods for curriculum and training design, teaching and instruction for individuals and groups, and the measurement of training effects.</description>
+  </element>
+  <element id="2.C.1.d">
+    <name>Sales and Marketing</name>
+    <description>Knowledge of principles and methods for showing, promoting, and selling products or services. This includes marketing strategy and tactics, product demonstration, sales techniques, and sales control systems.</description>
+  </element>
+</knowledge>

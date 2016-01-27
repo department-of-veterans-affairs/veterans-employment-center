@@ -1,0 +1,155 @@
+<div ng-app="skill-translator" ng-controller="SkillCtrl">
+<div id="content" class="interior">
+    <a href="#content" class="sr-only">Content starts here.</a>
+
+    <div class="splash">
+      <div class="row">
+        <div class="small-12 columns">
+          <ul class="breadcrumbs" role="menubar" aria-label="Primary">
+            <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
+			<li class="parent"><%= link_to "For Job Seekers", for_job_seekers_path %></li>
+            <li class="active">Military Skills Translator</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section one">
+      <div class="row">
+        <div class="small-12 medium-12 columns">
+          <h4> Enter your military position </h4>
+          <div class="filters row skill-translator-row">
+            <div class="row translate-box">
+              <div class="small-12 medium-5 columns">
+                <div data-alert id="errorBox" class="alert-box alert radius" ng-show="state.error" ng-cloak>
+                    {{state.error}}
+                </div>
+                <form name="skillRequestForm" ng-submit="submitForm()">
+                  <fieldset class="no-margin">
+                    <div class="row form-group dataItem">
+                      <div class="small-12 columns large-8 columns">
+                        <label for="military_position_branch">Branch of Service (required)</label>
+                        <select name="military_position_branch" ng-model="formData.branch"
+                                ng-options="name for (name, value) in branches"
+                                required id="military_position_branch">
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="row form-group">
+                      <div class="small-12 large-8 columns">
+                        <label for="military_position_code">Military Occupation Code (MOC) (required)</label>
+                        <input name="military_position_code" id="military_position_code" type="text" ng-model="formData.moc" required/>
+                      </div>
+                    </div>
+                    <input type="submit" value="Translate" class="button small-12 large-8" />
+					<br /><em>Scroll down for results</em>
+                  </fieldset>
+                </form>
+
+                <div id="militaryJobMatch" ng-show="data.mo" ng-cloak>
+                  <h4>
+                    <strong><span id="moc-code">{{data.mo.moc != 'DEFAULT' ? data.mo.moc : ""}}</span></strong>
+                    {{data.mo.moc && data.mo.moc != "DEFAULT" ? ":" : ""}}
+                     <span id="moc-title">{{data.mo.title ? data.mo.title : "(Unknown MOC)"}}</span>
+                  </h4>
+                  <label ng-if="data.mo.service && data.mo.category">{{data.mo.service}}, {{data.mo.category}}</label>
+                </div>
+              </div>
+
+              <div class="small-12 medium-7 columns">
+                <div id="instructions">
+                  <p>
+                    You can also skip directly to the
+                    <%= link_to 'Résumé Builder', resume_builder_path %>
+                  </p>
+                  <p>
+                    Translate your military experience into language that private sector employers understand.
+                  </p>
+                  <p>
+                    <strong>Selecting Skills:</strong> Employers look for specific capabilities that you’ve demonstrated in your past roles. Consider selecting skills that are tangible <em>and</em> are relevant to jobs that interest you. You can also add skills not on the list.
+                  </p>
+                  <p>
+                    <strong>After selecting skills:</strong> Use the button at the bottom to automatically import them into the Résumé Builder.
+                  </p>
+                  <p>
+                    The skills translator is based on a new big data partnership with LinkedIn. The more Veterans who use the tool, the better the suggestions will become over time. Thoughtfully finding your own skills will help future Veteran users get even better results.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row translation-results skill-translator-row" ng-show="data.mo" ng-cloak>
+
+            <div class="row">
+              <div class="small-12 medium-6 columns">
+                <h4 class="click-instruction-header">Click Skills to select them</h4>
+              </div>
+              <div class="small-12 medium-6 columns">
+                <form ng-submit="addSkill()" class="add-skill-form">
+                  <div class="row collapse">
+                    <div class="small-9 columns">
+                      <label for="selectSkills" class="hide">Manually search for skills</label>
+                      <input type="text" class="sfTypeahead" options="exampleOptions" datasets="typeaheadData" ng-model="state.newSkill" placeholder="Or search manually" id="selectSkills">
+                    </div>
+                    <div class="small-3 columns">
+                      <button class="button expand postfix">Add</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div id="pill-box" ng-cloak>
+              <span ng-repeat="skill in data.shownSkills" class="skill-label"
+                   id="skill_pill_{{skill.id}}"
+                   ng-class="{selected: skill.selected}"
+                   ng-click="toggleSkill($event)">
+                <i class="fa fa-fw"></i>
+                {{skill.name}}
+              </span>
+
+              <span class="skill-label more-label" ng-click="showMoreSkills()" ng-show="data.allSkills.length > 0">
+                <span class="btn-label"><i class="fa fa-fw fa-refresh"></i></span>
+                Suggest more skills..
+              </span>
+            </div>
+
+          </div>
+
+          <div class="row collapse text-center" ng-show="data.mo" ng-cloak>
+            <form id="new_resume" name="new_resume" method="post" action="<%= new_veteran_path %>" style="display:none">
+              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+              <input name="moc" type="hidden" value="{{formData.moc}}">
+              <input name="branch" type="hidden" value="{{formData.branch}}">
+              <input name="skills[]" type="hidden" ng-repeat="skill in data.selectedSkills" value="{{skill.id}}">
+            </form>
+            <button class="success secondary" id="importButton" ng-click="newResume()">
+              <span class="btn-label"><i class="fa fa-file-text-o"></i></span>
+              Import into resume builder
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--   This fixes a strange Chrome/Angular bug, where if you come back
+  to this page with the browser Back button, Angular will do a
+  bad job handling the old form data in the new_resume form above.
+  It will look like the app functions fine, but then it will submit the wrong
+  skills to the resume builder (it will submit the skills from your previous query).
+  By forcing a page reload, we can clear out whatever broken caching thing
+  Angular is doing. We only want to do this on a browser Back click though,
+  otherwise we would infinitely reload the page. This hidden form is one way,
+  as browsers preserve form data when you click Back. -->
+<form name="chrome_angular_bug_fix">
+    <input type="hidden" id="page_is_dirty" name="page_is_dirty" value="0" />
+</form>
+<script>
+  var dirty_bit = document.getElementById('page_is_dirty');
+  if (dirty_bit.value == '1') window.location.reload();
+  dirty_bit.value = '1';
+</script>

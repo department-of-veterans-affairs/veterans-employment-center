@@ -1,0 +1,464 @@
+[
+    {
+        "id": "usajobs:northcarolina:908277",
+        "position_title": "PL/SQL and Java Developer",
+        "organization_name": "State of North Carolina",
+        "rate_interval_code": "PA",
+        "minimum": 42590,
+        "maximum": 103454,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-08",
+        "locations": [
+            "Wake County, NC"
+        ],
+        "url": "http://agency.governmentjobs.com/northcarolina/default.cfm?action=viewjob&jobid=908277"
+    },
+    {
+        "id": "usajobs:washington:900400",
+        "position_title": "L&I Java Developer",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PA",
+        "minimum": 54504,
+        "maximum": 71496,
+        "start_date": "2014-06-17",
+        "end_date": null,
+        "locations": [
+            "Thurston County – Tumwater, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=900400"
+    },
+    {
+        "id": "usajobs:washington:906937",
+        "position_title": "Java Developer - Expert Level (ITS5: SQ12) 06320",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PM",
+        "minimum": 5010,
+        "maximum": 6575,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-27",
+        "locations": [
+            "Thurston County – Lacey, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=906937"
+    },
+    {
+        "id": "usajobs:northcarolina:908277",
+        "position_title": "PL/SQL and Java Developer",
+        "organization_name": "State of North Carolina",
+        "rate_interval_code": "PA",
+        "minimum": 42590,
+        "maximum": 103454,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-08",
+        "locations": [
+            "Wake County, NC"
+        ],
+        "url": "http://agency.governmentjobs.com/northcarolina/default.cfm?action=viewjob&jobid=908277b"
+    },
+    {
+        "id": "usajobs:washington:900400",
+        "position_title": "L&I Java Developer",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PA",
+        "minimum": 54504,
+        "maximum": 71496,
+        "start_date": "2014-06-17",
+        "end_date": null,
+        "locations": [
+            "Thurston County – Tumwater, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=900400b"
+    },
+    {
+        "id": "usajobs:washington:906937",
+        "position_title": "Java Developer - Expert Level (ITS5: SQ12) 06320",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PM",
+        "minimum": 5010,
+        "maximum": 6575,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-27",
+        "locations": [
+            "Thurston County – Lacey, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=906937b"
+    },
+    {
+        "id": "usajobs:northcarolina:908277",
+        "position_title": "PL/SQL and Java Developer",
+        "organization_name": "State of North Carolina",
+        "rate_interval_code": "PA",
+        "minimum": 42590,
+        "maximum": 103454,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-08",
+        "locations": [
+            "Wake County, NC"
+        ],
+        "url": "http://agency.governmentjobs.com/northcarolina/default.cfm?action=viewjob&jobid=908277c"
+    },
+    {
+        "id": "usajobs:washington:900400",
+        "position_title": "L&I Java Developer",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PA",
+        "minimum": 54504,
+        "maximum": 71496,
+        "start_date": "2014-06-17",
+        "end_date": null,
+        "locations": [
+            "Thurston County – Tumwater, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=900400c"
+    },
+    {
+        "id": "usajobs:washington:906937",
+        "position_title": "Java Developer - Expert Level (ITS5: SQ12) 06320",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PM",
+        "minimum": 5010,
+        "maximum": 6575,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-27",
+        "locations": [
+            "Thurston County – Lacey, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=906937c"
+    },
+    {
+        "id": "usajobs:northcarolina:908277",
+        "position_title": "PL/SQL and Java Developer",
+        "organization_name": "State of North Carolina",
+        "rate_interval_code": "PA",
+        "minimum": 42590,
+        "maximum": 103454,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-08",
+        "locations": [
+            "Wake County, NC"
+        ],
+        "url": "http://agency.governmentjobs.com/northcarolina/default.cfm?action=viewjob&jobid=908277a"
+    },
+    {
+        "id": "usajobs:washington:900400",
+        "position_title": "L&I Java Developer",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PA",
+        "minimum": 54504,
+        "maximum": 71496,
+        "start_date": "2014-06-17",
+        "end_date": null,
+        "locations": [
+            "Thurston County – Tumwater, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=900400a"
+    },
+    {
+        "id": "usajobs:washington:906937",
+        "position_title": "Java Developer - Expert Level (ITS5: SQ12) 06320",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PM",
+        "minimum": 5010,
+        "maximum": 6575,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-27",
+        "locations": [
+            "Thurston County – Lacey, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=906937a"
+    },
+    {
+        "id": "usajobs:northcarolina:908277",
+        "position_title": "PL/SQL and Java Developer",
+        "organization_name": "State of North Carolina",
+        "rate_interval_code": "PA",
+        "minimum": 42590,
+        "maximum": 103454,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-08",
+        "locations": [
+            "Wake County, NC"
+        ],
+        "url": "http://agency.governmentjobs.com/northcarolina/default.cfm?action=viewjob&jobid=908277d"
+    },
+    {
+        "id": "usajobs:washington:900400",
+        "position_title": "L&I Java Developer",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PA",
+        "minimum": 54504,
+        "maximum": 71496,
+        "start_date": "2014-06-17",
+        "end_date": null,
+        "locations": [
+            "Thurston County – Tumwater, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=900400d"
+    },
+    {
+        "id": "usajobs:washington:906937",
+        "position_title": "Java Developer - Expert Level (ITS5: SQ12) 06320",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PM",
+        "minimum": 5010,
+        "maximum": 6575,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-27",
+        "locations": [
+            "Thurston County – Lacey, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=906937d"
+    },
+    {
+        "id": "usajobs:northcarolina:908277",
+        "position_title": "PL/SQL and Java Developer",
+        "organization_name": "State of North Carolina",
+        "rate_interval_code": "PA",
+        "minimum": 42590,
+        "maximum": 103454,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-08",
+        "locations": [
+            "Wake County, NC"
+        ],
+        "url": "http://agency.governmentjobs.com/northcarolina/default.cfm?action=viewjob&jobid=908277e"
+    },
+    {
+        "id": "usajobs:washington:900400",
+        "position_title": "L&I Java Developer",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PA",
+        "minimum": 54504,
+        "maximum": 71496,
+        "start_date": "2014-06-17",
+        "end_date": null,
+        "locations": [
+            "Thurston County – Tumwater, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=900400e"
+    },
+    {
+        "id": "usajobs:washington:906937",
+        "position_title": "Java Developer - Expert Level (ITS5: SQ12) 06320",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PM",
+        "minimum": 5010,
+        "maximum": 6575,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-27",
+        "locations": [
+            "Thurston County – Lacey, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=906937e"
+    },
+    {
+        "id": "usajobs:northcarolina:908277",
+        "position_title": "PL/SQL and Java Developer",
+        "organization_name": "State of North Carolina",
+        "rate_interval_code": "PA",
+        "minimum": 42590,
+        "maximum": 103454,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-08",
+        "locations": [
+            "Wake County, NC"
+        ],
+        "url": "http://agency.governmentjobs.com/northcarolina/default.cfm?action=viewjob&jobid=908277f"
+    },
+    {
+        "id": "usajobs:washington:900400",
+        "position_title": "L&I Java Developer",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PA",
+        "minimum": 54504,
+        "maximum": 71496,
+        "start_date": "2014-06-17",
+        "end_date": null,
+        "locations": [
+            "Thurston County – Tumwater, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=900400f"
+    },
+    {
+        "id": "usajobs:washington:906937",
+        "position_title": "Java Developer - Expert Level (ITS5: SQ12) 06320",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PM",
+        "minimum": 5010,
+        "maximum": 6575,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-27",
+        "locations": [
+            "Thurston County – Lacey, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=906937f"
+    },
+    {
+        "id": "usajobs:northcarolina:908277",
+        "position_title": "PL/SQL and Java Developer",
+        "organization_name": "State of North Carolina",
+        "rate_interval_code": "PA",
+        "minimum": 42590,
+        "maximum": 103454,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-08",
+        "locations": [
+            "Wake County, NC"
+        ],
+        "url": "http://agency.governmentjobs.com/northcarolina/default.cfm?action=viewjob&jobid=908277g"
+    },
+    {
+        "id": "usajobs:washington:900400",
+        "position_title": "L&I Java Developer",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PA",
+        "minimum": 54504,
+        "maximum": 71496,
+        "start_date": "2014-06-17",
+        "end_date": null,
+        "locations": [
+            "Thurston County – Tumwater, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=900400g"
+    },
+    {
+        "id": "usajobs:washington:906937",
+        "position_title": "Java Developer - Expert Level (ITS5: SQ12) 06320",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PM",
+        "minimum": 5010,
+        "maximum": 6575,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-27",
+        "locations": [
+            "Thurston County – Lacey, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=906937g"
+    },
+    {
+        "id": "usajobs:northcarolina:908277",
+        "position_title": "PL/SQL and Java Developer",
+        "organization_name": "State of North Carolina",
+        "rate_interval_code": "PA",
+        "minimum": 42590,
+        "maximum": 103454,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-08",
+        "locations": [
+            "Wake County, NC"
+        ],
+        "url": "http://agency.governmentjobs.com/northcarolina/default.cfm?action=viewjob&jobid=908277h"
+    },
+    {
+        "id": "usajobs:washington:900400",
+        "position_title": "L&I Java Developer",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PA",
+        "minimum": 54504,
+        "maximum": 71496,
+        "start_date": "2014-06-17",
+        "end_date": null,
+        "locations": [
+            "Thurston County – Tumwater, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=900400h"
+    },
+    {
+        "id": "usajobs:washington:906937",
+        "position_title": "Java Developer - Expert Level (ITS5: SQ12) 06320",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PM",
+        "minimum": 5010,
+        "maximum": 6575,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-27",
+        "locations": [
+            "Thurston County – Lacey, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=906937h"
+    },
+    {
+        "id": "usajobs:northcarolina:908277",
+        "position_title": "PL/SQL and Java Developer",
+        "organization_name": "State of North Carolina",
+        "rate_interval_code": "PA",
+        "minimum": 42590,
+        "maximum": 103454,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-08",
+        "locations": [
+            "Wake County, NC"
+        ],
+        "url": "http://agency.governmentjobs.com/northcarolina/default.cfm?action=viewjob&jobid=908277i"
+    },
+    {
+        "id": "usajobs:washington:900400",
+        "position_title": "L&I Java Developer",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PA",
+        "minimum": 54504,
+        "maximum": 71496,
+        "start_date": "2014-06-17",
+        "end_date": null,
+        "locations": [
+            "Thurston County – Tumwater, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=900400i"
+    },
+    {
+        "id": "usajobs:washington:906937",
+        "position_title": "Java Developer - Expert Level (ITS5: SQ12) 06320",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PM",
+        "minimum": 5010,
+        "maximum": 6575,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-27",
+        "locations": [
+            "Thurston County – Lacey, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=906937i"
+    },
+    {
+        "id": "usajobs:northcarolina:908277",
+        "position_title": "PL/SQL and Java Developer",
+        "organization_name": "State of North Carolina",
+        "rate_interval_code": "PA",
+        "minimum": 42590,
+        "maximum": 103454,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-08",
+        "locations": [
+            "Wake County, NC"
+        ],
+        "url": "http://agency.governmentjobs.com/northcarolina/default.cfm?action=viewjob&jobid=908277j"
+    },
+    {
+        "id": "usajobs:washington:900400",
+        "position_title": "L&I Java Developer",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PA",
+        "minimum": 54504,
+        "maximum": 71496,
+        "start_date": "2014-06-17",
+        "end_date": null,
+        "locations": [
+            "Thurston County – Tumwater, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=900400j"
+    },
+    {
+        "id": "usajobs:washington:906937",
+        "position_title": "Java Developer - Expert Level (ITS5: SQ12) 06320",
+        "organization_name": "State of Washington",
+        "rate_interval_code": "PM",
+        "minimum": 5010,
+        "maximum": 6575,
+        "start_date": "2014-06-27",
+        "end_date": "2014-07-27",
+        "locations": [
+            "Thurston County – Lacey, WA"
+        ],
+        "url": "http://agency.governmentjobs.com/washington/default.cfm?action=viewjob&jobid=906937j"
+    }
+]

@@ -1,0 +1,89 @@
+<% provide(:title, "Job Resources : Wounded Warrior") %>
+<div id="content" class="interior">
+  <a href="#content" class="sr-only">Content starts here.</a>
+
+  <div class="splash">
+    <div class="row">
+      <div class="small-12 columns">
+        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
+          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
+          <li class="parent"><%= link_to "For Job Seekers", for_job_seekers_path %></li>
+          <li class="parent"><%= link_to "Job Resources", job_resources_path %></li>
+          <li class="active">Wounded Warrior</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section one">
+    <div class="row">
+      <div class="small-12 medium-12 columns">
+        <h4>Air Force Wounded Warrior Program</h4>
+        <div class="feature">
+          <p>The <abbr>AFW2</abbr> Program works in partnership with the Air Force Survivor Assistance Program and Airman &amp; Family Readiness Centers to ensure Airmen receive professional support and care from the point of injury, through separation or retirement, for life. <abbr>AFW2</abbr> provides information and resources for Air Force Wounded Warriors including transition assistance, employment assistance, counseling, and many more.</p>
+          See also: <a href="http://www.woundedwarrior.af.mil/" target="_blank" class="external_resource" >Air Force Wounded Warrior Program<%= image_tag "new_window.gif", class: "external", alt: "Opens in a new window." %></a>
+        </div>
+
+        <hr>
+
+        <h4>Army Warrior Transition Command (<abbr>WTC</abbr>) / Army Wounded Warrior Program</h4>
+        <div class="feature">
+          <p><abbr>WTC</abbr>&rsquo;s mission is to develop, coordinate, and integrate the Army's Warrior Care and Transition Program (WCTP) for wounded, ill, and injured Soldiers, Veterans, and their Families and caregivers to promote future success in the force or in civilian life.</p>
+          See also: <a href="http://wtc.armylive.dodlive.mil/" target="_blank" class="external_resource" >Army Warrior Transition Command(WTC) / Army Wounded Warrior Program (<abbr>AW2</abbr>)<%= image_tag "new_window.gif", class: "external", alt: "Opens in a new window." %></a>
+        </div>
+
+        <hr>
+
+        <h4>USMC Wounded Warrior Regiment</h4>
+        <div class="feature">
+          <p>The United States Marine Corps Wounded Warrior Regiment provides and enables assistance to wounded, ill and injured Marines, sailors attached to or in support of Marine units, and their family members to assist them as they return to duty or transition to civilian life</p>
+          See also: <a href="http://www.woundedwarriorregiment.org/" target="_blank" class="external_resource" >USMC Wounded Warrior Regiment<%= image_tag "new_window.gif", class: "external", alt: "Opens in a new window." %></a>
+        </div>
+
+        <hr>
+
+        <h4><abbr>NAVSEA</abbr>’s Wounded Warrior Program</h4>
+        <div class="feature">
+          <p><abbr>NAVSEA</abbr>’s Wounded Warrior Program seeks to assist experienced Wounded Warriors with education and training to expand their workforce. Some of the services provided include internships, apprenticeships, employment, and education counseling.</p>
+          See also: <a href="http://www.navsea.navy.mil/Organization/WoundedWarriors.aspx" target="_blank" class="external_resource" >NAVSEA’s Wounded Warrior Program<%= image_tag "new_window.gif", class: "external", alt: "Opens in a new window." %></a>
+        </div>
+
+        <hr>
+
+        <h4>Navy Wounded Warrior &mdash; Safe Harbor</h4>
+        <div class="feature">
+          <p>Navy Wounded Warrior - Safe Harbor is the Navy’s organization for coordinating the non-medical care of seriously wounded, ill and injured Sailors and Coast Guardsmen, and providing resources and support to their families. Through proactive leadership, the program provides individually tailored assistance designed to optimize the success of the shipmates’ recovery, rehabilitation and reintegration activities.</p>
+          See also: <a href="http://safeharbor.navylive.dodlive.mil/" target="_blank" class="external_resource" >Navy Wounded Warrior &mdash; Safe Harbor<%= image_tag "new_window.gif", class: "external", alt: "Opens in a new window." %></a>
+        </div>
+
+        <hr>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Navigation -->
+
+  <div class="navigation">
+    <div class="row">
+      <div class="small-12 columns">
+        <h3>Related Info:</h3>
+        <ul class="small-block-grid-1 medium-block-grid-3 cards small">
+          <li>
+            <%= link_to for_job_seekers_path do %>
+              <h5>Are you a Veteran job seeker?</h5>
+              <span>Visit the Job Seeker Section to search jobs, translate your skills, and build a résumé.</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to career_fairs_path do %>
+              <h5>Career Fairs</h5>
+              <span>In-person and online events where Veterans, Servicemembers, and their families can meet employers and learn about job opportunities.</span>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
