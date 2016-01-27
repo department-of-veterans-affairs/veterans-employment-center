@@ -1,0 +1,61 @@
+<% provide(:title, "Interest Profiler") %>
+<div id="content" class="interior">
+  <a href="#content" class="sr-only">Content starts here.</a>
+
+
+  <div class="splash">
+    <div class="row">
+      <div class="small-12 columns">
+        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
+          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
+          <li class="parent"><%= link_to "For Job Seekers", for_job_seekers_path %></li>
+    		  <li class="active">Interest Profiler</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section one">
+    <div class="row">
+      <div class="small-12 columns">
+		  <iframe src="//www.mynextmove.org/explore/ip?client=va_gov" width="760" height="600" style="border: none;"></iframe>
+      </div>
+    </div>
+  </div><!-- end section one -->
+
+  <!-- Navigation -->
+
+  <div class="navigation">
+    <div class="row">
+      <div class="small-12 columns">
+        <h3>Related Info:</h3>
+        <ul class="small-block-grid-1 medium-block-grid-3 cards small">
+          <li>
+            <a href="https://www.mynextmove.org/vets/" target="_blank" class="external_resource" >
+              <h5>Civilian Occupation Translator <%= image_tag "new_window.gif", class: "external", alt: "Opens in a new window." %></h5>
+              <span>Translate your military experience into a similar civilian occupation, and explore possible new careers by category and keyword.</span>
+            </a>
+          </li>
+          <li>
+            <%= link_to career_fairs_path do %>
+              <h5>Career Fairs</h5>
+              <span>In-person and online events where Veterans, Servicemembers, and their families can meet employers and learn about job opportunities.</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to commitments_path do %>
+              <h5>View Employer Commitments to Hire Veterans</h5>
+              <span>Jobs from companies and organizations that recognize the value Veterans add in the workplace.</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to job_resources_path do %>
+              <h5>Resources</h5>
+              <span>Funds for educational and training programs, information on workplace accommodation, assistive technologies, starting your own business, and more.</span>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

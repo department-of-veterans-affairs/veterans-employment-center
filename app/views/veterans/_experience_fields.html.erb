@@ -1,0 +1,50 @@
+<fieldset>
+  <legend>Add your work experience. Add as many as necessary by using the Add volunteer experience link.</legend>
+  <div class="row form-group dataItem">
+    <div class="small-12 columns">
+      <%= f.label :job_title, "Position " %>
+      <%= f.text_field :job_title %>
+    </div>
+  </div>
+
+  <div class="row form-group dataItem">
+    <div class="small-12 columns">
+      <%= f.label :organization, "Organization " %>
+      <%= f.text_field :organization %>
+    </div>
+  </div>
+
+  <div class="row form-group dataItem">
+    <div class="small-12 columns">
+      <%= f.label :description, "Description" %>
+      <%= f.text_area :description, :class => "form-control"%>
+    </div>
+  </div>
+
+  <div class="row form-group dataItem">
+    <div class="small-12 columns">
+      <%= f.label :start_date, "Start Date (MM/DD/YYYY) " %>
+      <%= f.text_field :start_date,
+        value:       (f.object.start_date.strftime("%m/%d/%Y") if f.object.start_date.present?),
+        err:         "enter date like mm/dd/yyyy",
+        placeholder: "MM/DD/YYYY",
+        data:        {"mask" => "99/99/9999"},
+        pattern:     "^[012]\\d/[0123]\\d/(?:19|20)\\d{2}$" %>
+    </div>
+  </div>
+
+  <div class="row form-group dataItem">
+    <div class="small-12 columns">
+      <%= f.label :end_date, "End Date (MM/DD/YYYY) (leave blank if present)" %>
+      <%= f.text_field :end_date,
+        value:       (f.object.end_date.strftime("%m/%d/%Y") if f.object.end_date.present?),
+        err:         "enter date like mm/dd/yyyy",
+        placeholder: "MM/DD/YYYY",
+        data:        {"mask" => "99/99/9999"},
+        pattern:     "^[012]\\d/[0123]\\d/(?:19|20)\\d{2}$" %>
+    </div>
+  </div>
+
+  <%= f.hidden_field :experience_type, :value => "volunteer" %>
+
+</fieldset>

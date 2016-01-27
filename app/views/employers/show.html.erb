@@ -1,0 +1,93 @@
+<% provide(:title, "Employer Detail") %>
+<div id="content" class="interior">
+  <a id="content" href="#content" class="tabLink sr-only">Content starts here.</a>
+  <div class="splash">
+    <div class="row">
+      <div class="small-12 columns">
+        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
+          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
+		  <li class="parent"><%= link_to "Employers", employer_home_path %></li>
+          <li class="active">Employer Detail</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="section one">
+		<div class="row">
+			<div class="small-12 medium-3 columns">
+				<%= label_tag(:company_name)%>
+			</div>
+			<div class="small-12 medium-9 columns company_name">
+				<%= @employer.company_name %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-12 medium-3 columns">
+				<%= label_tag(:street_address)%>
+			</div>
+			<div class="small-12 medium-9 columns company_name">
+				<%= @employer.street_address %><br /> <%= @employer.city %> <%= @employer.state %> <%= @employer.zip %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="small-12 medium-3 columns">
+				<%= label_tag(:phone)%>
+			</div>
+			<div class="small-12 medium-9 columns company_name">
+				<%= @employer.phone %>
+			</div>
+		</div>
+
+		<!-- #blueberry -->
+		<div class="row">
+			<div class="small-12 medium-3 columns">
+				<%= label_tag("Employer Identification Number")%>
+			</div>
+			<div class="small-12 medium-9 columns employer_ein">
+				<%= @employer.ein %>
+			</div>
+		</div>
+
+		<% if current_user.va_admin? %>
+			<div class="row">
+				<div class="small-12 medium-3 columns approval_status">
+					<%= label_tag("Approval Status")%>
+				</div>
+				<div class="small-12 medium-9 columns approval_status">
+					<%= @employer.approved %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="small-12 medium-3 columns approval_status">
+					<%= label_tag("Admin Notes")%>
+				</div>
+				<div class="small-12 medium-9 columns admin_notes">
+					<%= @employer.admin_notes %>
+				</div>
+			</div>
+		<% end %>
+
+		<div class="row">
+			<div class="small-12 medium-3 columns">
+				<%= label_tag("Commitment Categories")%>
+			</div>
+			<div class="small-12 medium-9 columns employer_ein">
+				<% if @employer.commitment_categories.size > 0 %>
+		      <% @employer.commitment_categories.each do |c| %>
+		        <%= c %><br />
+		      <% end %>
+		    <% end %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="small-12 medium-3 columns">
+				<%= label_tag("Veteran Hiring Commitment")%>
+			</div>
+			<div class="small-12 medium-9 columns company_name">
+				Hired <%= @employer.commit_hired %> of the <%= @employer.commit_to_hire %> Veterans committed to hire by <%= @employer.commit_date %>.
+			</div>
+		</div>
+	</div>
+</div>

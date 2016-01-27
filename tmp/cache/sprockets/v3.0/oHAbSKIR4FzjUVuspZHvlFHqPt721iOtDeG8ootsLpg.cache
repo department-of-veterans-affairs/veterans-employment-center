@@ -1,0 +1,19 @@
+I" (function() {
+  jQuery(function() {
+    return $('form').on('click', '.add_fields', function(event) {
+      var content, regexp, time;
+      time = new Date().getTime();
+      regexp = new RegExp($(this).data('id'), 'g');
+      content = $($(this).data('fields').replace(regexp, time));
+      content.find("input[data-mask]").each(function() {
+        var item;
+        item = $(this);
+        return item.mask(item.attr("data-mask"));
+      });
+      $(this).before(content);
+      return event.preventDefault();
+    });
+  });
+
+}).call(this);
+:ET

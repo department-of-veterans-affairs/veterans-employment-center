@@ -1,0 +1,79 @@
+<% provide(:title, "Workplace Support") %>
+<div id="content" class="interior">
+  <a id="content" href="#content" class="tabLink sr-only">Content starts here.</a>
+  <div class="splash">
+    <div class="row">
+      <div class="small-12 columns">
+        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
+          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>  
+          <li class="parent"><%= link_to "Employers", employer_home_path %></li>
+          <li class="active">Workplace Support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="section one">
+    <div class="row">
+      <div class="small-12 columns">
+
+  <p>Below are some ways to support Veterans and Sevicemembers in the workplace:</p>
+  
+  <hr>
+
+  <h4>Veterans Employment Toolkit</h4>
+  <div class="feature">
+      <p>Designed to provide useful resources to employers, managers or supervisors, and human resource professionals to support these employees.</p>
+
+    See: <a href="http://www.va.gov/vetsinworkplace/" target="_blank" class="external_resource" >Veterans Employment Toolkit<%= image_tag "new_window.gif", class: "external", alt: "Opens in a new window." %></a> 
+  </div>
+
+  <hr>
+
+  <h4>America's Heroes at Work</h4>
+  <div class="feature">
+      <p>Offers information for employers and the workforce development system, to help returning Servicemembers and Veterans living with <abbr>TBI</abbr> and/or <abbr>PTSD</abbr> succeed in the workplace - particularly Servicemembers returning from Iraq and Afghanistan.</p>
+
+    See: <a href="http://www.americasheroesatwork.gov/" target="_blank" class="external_resource" >America's Heroes at Work<%= image_tag "new_window.gif", class: "external", alt: "Opens in a new window." %></a> 
+  </div>
+  
+  <hr>
+
+  <h4>Job Accommodation Network (<abbr>JAN</abbr>)</h4>
+  <div class="feature">
+      <p>A free consulting services for all employers and provides information about job accommodations, the Americans with Disabilities Act (<abbr>ADA</abbr>), and the employability of people with disabilities.</p>
+
+    See: <a href="http://askjan.org/" target="_blank" class="external_resource" >Job Accommodation Network (<abbr>JAN</abbr>)<%= image_tag "new_window.gif", class: "external", alt: "Opens in a new window." %></a> 
+  </div>
+  <p>&nbsp;</p>
+
+      </div>
+    </div>
+  </div>
+  <!-- Navigation -->
+  <div class="navigation">
+    <div class="row">
+      <div class="small-12 columns">
+        <h3>Related Info:</h3>
+        <ul class="small-block-grid-1 medium-block-grid-3 cards small">
+          <li>
+            <%= link_to on_the_job_training_path do %>
+              <h5>On the Job Training</h5>
+              <span>Both on-the-job training (OJT) and apprenticeship programs are available for Veterans using their VA education benefits, including the Post-9/11 GI Bill<sup>&reg;</sup></span>
+            <% end %>
+          </li>   
+          <li>
+            <%= link_to how_to_post_jobs_path do %>
+              <h5>How to Post Jobs</h5>
+              <span>Your listing will be searchable by our capable Veteran workforce and their families.</span>
+            <% end %>
+          </li>      
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

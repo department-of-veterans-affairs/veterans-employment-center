@@ -1,0 +1,29 @@
+<% provide(:title, "Favorite Veteran Profiles") %>
+<div id="content" class="interior">
+  <a id="content" href="#content" class="tabLink sr-only">Content starts here.</a>
+  <div class="splash">
+    <div class="row">
+      <div class="small-12 columns">
+        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
+          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
+		  <li class="parent"><%= link_to "Employers", employer_home_path %></li>
+          <li class="active">Edit Profile</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="section one">
+    <div class="row">
+      <div class="small-12 columns">
+        <div id="veteran-favorites">
+          <% if current_user.va_admin? %>
+            <h2>Edit the Profile for <%= @employer.company_name %></h2>
+          <% else %>
+            <h2>Edit your profile</h2>
+          <% end %>
+          <%= render 'form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

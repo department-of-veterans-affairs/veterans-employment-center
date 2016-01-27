@@ -1,0 +1,448 @@
+# Logfile created on 2016-01-25 11:44:18 -0500 by logger.rb/47272
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Environment: development
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : No known dispatcher detected.
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Installing ActiveJob instrumentation
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Installing Net instrumentation
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Installing Rails 4 view instrumentation
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Finished instrumentation
+[2016-01-25 11:44:18 -0500 VACOLTYALELA1.local (34200)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-25 11:44:29 -0500 VACOLTYALELA1.local (34200)] ERROR : Invalid license key, please contact support@newrelic.com
+[2016-01-25 11:44:29 -0500 VACOLTYALELA1.local (34200)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[2016-01-25 11:44:49 -0500 VACOLTYALELA1.local (34200)] INFO : Starting Agent shutdown
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Environment: development
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Dispatcher: Puma
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Installing ActiveJob instrumentation
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Installing Net instrumentation
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Installing Rails 4 view instrumentation
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-25 11:45:24 -0500 VACOLTYALELA1.local (34893)] INFO : Finished instrumentation
+[2016-01-25 11:45:25 -0500 VACOLTYALELA1.local (34893)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-25 11:45:43 -0500 VACOLTYALELA1.local (34893)] ERROR : Invalid license key, please contact support@newrelic.com
+[2016-01-25 11:45:43 -0500 VACOLTYALELA1.local (34893)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[2016-01-25 11:45:48 -0500 VACOLTYALELA1.local (34893)] INFO : Starting Agent shutdown
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Environment: development
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Environment: development
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Dispatcher: Puma
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Dispatcher: Puma
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Environment: development
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Dispatcher: Puma
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Installing ActiveJob instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Installing ActiveJob instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Installing ActiveJob instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Installing Net instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Installing Net instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Installing Net instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Installing Rails 4 view instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Installing Rails 4 view instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Installing Rails 4 view instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35013)] INFO : Finished instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35015)] INFO : Finished instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-25 11:48:11 -0500 VACOLTYALELA1.local (35014)] INFO : Finished instrumentation
+[2016-01-25 11:48:12 -0500 VACOLTYALELA1.local (35015)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-25 11:48:12 -0500 VACOLTYALELA1.local (35014)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-25 11:48:12 -0500 VACOLTYALELA1.local (35013)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35167)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35169)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35168)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35167)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35168)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35169)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35167)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35168)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35169)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35168)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35167)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35169)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35168)] INFO : Environment: development
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35168)] INFO : Dispatcher: Puma
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35168)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35169)] INFO : Environment: development
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35168)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35167)] INFO : Environment: development
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35169)] INFO : Dispatcher: Puma
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35167)] INFO : Dispatcher: Puma
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35169)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35167)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35169)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-25 11:49:40 -0500 VACOLTYALELA1.local (35167)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35168)] INFO : Installing ActiveJob instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35169)] INFO : Installing ActiveJob instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35167)] INFO : Installing ActiveJob instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35169)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35168)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35169)] INFO : Installing Net instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35168)] INFO : Installing Net instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35167)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35167)] INFO : Installing Net instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35169)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35168)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35169)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35168)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35168)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35169)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35168)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35169)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35167)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35167)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35167)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35167)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35169)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35168)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35169)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35168)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35168)] INFO : Installing Rails 4 view instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35169)] INFO : Installing Rails 4 view instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35169)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35168)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35169)] INFO : Finished instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35168)] INFO : Finished instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35167)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35167)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35167)] INFO : Installing Rails 4 view instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35167)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35167)] INFO : Finished instrumentation
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35169)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35167)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-25 11:49:41 -0500 VACOLTYALELA1.local (35168)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-25 11:49:47 -0500 VACOLTYALELA1.local (35169)] ERROR : Invalid license key, please contact support@newrelic.com
+[2016-01-25 11:49:47 -0500 VACOLTYALELA1.local (35169)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[2016-01-25 11:49:48 -0500 VACOLTYALELA1.local (35167)] ERROR : Invalid license key, please contact support@newrelic.com
+[2016-01-25 11:49:48 -0500 VACOLTYALELA1.local (35167)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[2016-01-25 11:49:54 -0500 VACOLTYALELA1.local (35168)] ERROR : Invalid license key, please contact support@newrelic.com
+[2016-01-25 11:49:54 -0500 VACOLTYALELA1.local (35168)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[2016-01-25 11:51:00 -0500 VACOLTYALELA1.local (35167)] INFO : Starting Agent shutdown
+[2016-01-25 11:51:00 -0500 VACOLTYALELA1.local (35169)] INFO : Starting Agent shutdown
+[2016-01-25 11:51:00 -0500 VACOLTYALELA1.local (35168)] INFO : Starting Agent shutdown
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Environment: development
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Dispatcher: Puma
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Environment: development
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Dispatcher: Puma
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Environment: development
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Dispatcher: Puma
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Installing ActiveJob instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Installing ActiveJob instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Installing ActiveJob instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Installing Net instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Installing Net instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Installing Net instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Installing Rails 4 view instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Installing Rails 4 view instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Installing Rails 4 view instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Finished instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Finished instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Finished instrumentation
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37838)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37837)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-25 11:52:13 -0500 VACOLTYALELA1.local (37839)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-25 11:52:24 -0500 VACOLTYALELA1.local (37837)] ERROR : Invalid license key, please contact support@newrelic.com
+[2016-01-25 11:52:24 -0500 VACOLTYALELA1.local (37837)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[2016-01-25 11:52:25 -0500 VACOLTYALELA1.local (37839)] ERROR : Invalid license key, please contact support@newrelic.com
+[2016-01-25 11:52:25 -0500 VACOLTYALELA1.local (37839)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[2016-01-25 11:52:25 -0500 VACOLTYALELA1.local (37838)] ERROR : Invalid license key, please contact support@newrelic.com
+[2016-01-25 11:52:25 -0500 VACOLTYALELA1.local (37838)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[2016-01-25 12:09:50 -0500 VACOLTYALELA1.local (37839)] INFO : Starting Agent shutdown
+[2016-01-25 12:09:50 -0500 VACOLTYALELA1.local (37837)] INFO : Starting Agent shutdown
+[2016-01-25 12:09:50 -0500 VACOLTYALELA1.local (37838)] INFO : Starting Agent shutdown
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Environment: development
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Dispatcher: Puma
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Environment: development
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Dispatcher: Puma
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Environment: development
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Dispatcher: Puma
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Installing ActiveJob instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Installing ActiveJob instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Installing ActiveJob instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Installing Net instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Installing Net instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Installing Net instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Installing Rails 4 view instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Installing Rails 4 view instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Installing Rails 4 view instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Finished instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Finished instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Finished instrumentation
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56271)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56270)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-25 15:53:00 -0500 VACOLTYALELA1.local (56272)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-25 15:53:12 -0500 VACOLTYALELA1.local (56270)] ERROR : Invalid license key, please contact support@newrelic.com
+[2016-01-25 15:53:12 -0500 VACOLTYALELA1.local (56270)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[2016-01-26 07:21:06 -0500 VACOLTYALELA1.local (72211)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-26 07:21:06 -0500 VACOLTYALELA1.local (72210)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-26 07:21:06 -0500 VACOLTYALELA1.local (72211)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-26 07:21:06 -0500 VACOLTYALELA1.local (72210)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-26 07:21:06 -0500 VACOLTYALELA1.local (72211)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-26 07:21:06 -0500 VACOLTYALELA1.local (72210)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-26 07:21:06 -0500 VACOLTYALELA1.local (72211)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-26 07:21:06 -0500 VACOLTYALELA1.local (72210)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Environment: development
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Environment: development
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Dispatcher: Puma
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Dispatcher: Puma
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Installing ActiveJob instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Installing ActiveJob instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Installing Net instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Installing Net instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Installing deferred Puma::Rack::Builder instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Installing Puma::Rack::Builder middleware instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Installing Rails 4 view instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Installing Rails 4 view instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Finished instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Finished instrumentation
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72211)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-26 07:21:07 -0500 VACOLTYALELA1.local (72210)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Environment: development
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Dispatcher: webrick
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Installing ActiveJob instrumentation
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Installing Net instrumentation
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Installing Rails 4 view instrumentation
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Finished instrumentation
+[2016-01-26 09:03:59 -0500 VACOLTYALELA1.local (1366)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-26 09:04:07 -0500 VACOLTYALELA1.local (1366)] ERROR : Invalid license key, please contact support@newrelic.com
+[2016-01-26 09:04:07 -0500 VACOLTYALELA1.local (1366)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[2016-01-26 09:04:55 -0500 VACOLTYALELA1.local (1366)] INFO : Starting Agent shutdown
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Environment: development
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Dispatcher: webrick
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Installing ActiveJob instrumentation
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Installing Net instrumentation
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Installing Rails 4 view instrumentation
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-26 09:06:34 -0500 VACOLTYALELA1.local (1463)] INFO : Finished instrumentation
+[2016-01-26 09:06:35 -0500 VACOLTYALELA1.local (1463)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-26 09:06:43 -0500 VACOLTYALELA1.local (1463)] ERROR : Invalid license key, please contact support@newrelic.com
+[2016-01-26 09:06:43 -0500 VACOLTYALELA1.local (1463)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[2016-01-26 09:06:50 -0500 VACOLTYALELA1.local (1463)] INFO : Starting Agent shutdown
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Environment: development
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Dispatcher: webrick
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Installing ActiveJob instrumentation
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Installing Net instrumentation
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Installing Rails 4 view instrumentation
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-26 09:13:41 -0500 VACOLTYALELA1.local (4338)] INFO : Finished instrumentation
+[2016-01-26 09:13:42 -0500 VACOLTYALELA1.local (4338)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-26 09:13:50 -0500 VACOLTYALELA1.local (4338)] ERROR : Invalid license key, please contact support@newrelic.com
+[2016-01-26 09:13:50 -0500 VACOLTYALELA1.local (4338)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[2016-01-26 09:14:12 -0500 VACOLTYALELA1.local (4338)] INFO : Starting Agent shutdown
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Starting the New Relic agent in "development" environment.
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Reading configuration from config/newrelic.yml (/Users/vacoyalela/veterans-employment-center)
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : New Relic Agent Developer Mode enabled.
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Environment: development
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Dispatcher: unicorn
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Application: Veterans Employment Center (Development)
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] ERROR : Invalid license key: ENV['NEWRELIC_LICENSE_KEY']
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Installing ActiveJob instrumentation
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Installing ActiveRecord 4 instrumentation
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Installing Net instrumentation
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Installing deferred Rack::Builder instrumentation
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Installing Rack::Builder middleware instrumentation
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Installing Rails 3+ middleware instrumentation
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Installing Rails 4 Controller instrumentation
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Installing Rails 4 view instrumentation
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Installing Rails 4 Error instrumentation
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Finished instrumentation
+[2016-01-26 09:17:37 -0500 VACOLTYALELA1.local (4508)] INFO : Doing deferred dependency-detection before Rack startup
+[2016-01-26 09:17:49 -0500 VACOLTYALELA1.local (4508)] ERROR : Invalid license key, please contact support@newrelic.com
+[2016-01-26 09:17:49 -0500 VACOLTYALELA1.local (4508)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.

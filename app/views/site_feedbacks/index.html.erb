@@ -1,0 +1,67 @@
+<div id="content" class="interior">
+  <a href="#content" class="sr-only">Content starts here.</a>
+  <div class="splash">
+    <div class="row">
+      <div class="small-12 columns">
+        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
+          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
+          <li class="active">Listing Site Feedback</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="section one">
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="right">
+          <%= will_paginate @site_feedbacks %>
+        </div>
+        <p><%= link_to 'Download a spreadsheet of all site feedback'.html_safe, :action => 'download_site_feedback', :format => :csv %></p>
+          <table class="table-striped table small" id="site_feedbacks">
+            <thead>
+              <tr>
+                <th scope="col">Description</th>
+                <th scope="col">URL</th>
+                <th scope="col">Date added</th>
+                <th scope="col">How To Replicate</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @site_feedbacks.each do |site_feedback| %>
+                <tr>
+                  <td width="20%">
+                    <%= site_feedback.description %>
+                  </td>
+                  <td width="20%">
+                    <%= site_feedback.url %>
+                  </td>
+                  <td width="7%">
+                    <%= site_feedback.created_at.strftime "%b %d %Y" %>
+                  </td>
+                  <td width="20%">
+                    <%= site_feedback.how_to_replicate %>
+                  </td>
+                  <td width="7%">
+                    <%= site_feedback.name %>
+                  </td>
+                  <td width="6%">
+                    <%= site_feedback.email %>
+                  </td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="right">
+          <%= will_paginate @site_feedbacks %>
+        </div>
+        <br />
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+
+

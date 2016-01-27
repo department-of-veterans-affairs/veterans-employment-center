@@ -1,0 +1,152 @@
+<% provide(:title, "Search the Veteran Profile Bank") %>
+<script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?libraries=places"%></script>
+<script>
+var autocomplete;
+
+function initialize_autocomplete() {
+  autocomplete = new google.maps.places.Autocomplete((document.getElementById('autocomplete')), { types: ['(regions)'] });
+}
+
+$(document).ready(function(){
+  initialize_autocomplete();
+  });
+
+</script>
+
+<div id="content" class="interior">
+  <a id="content" href="#content" class="tabLink sr-only">Content starts here.</a>
+  <div class="splash">
+    <div class="row">
+      <div class="small-12 columns">
+        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
+          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
+		  <li class="parent"><%= link_to "Employers", employer_home_path %></li>
+          <li class="active">Search for Veterans</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="section one">
+    <div class="row">
+      <div class="small-12 columns">
+        <div id="veteran-favorites">
+          <!-- if employer is not approved -->
+           <% if current_user.is_employer? %>
+            <% unless current_user.employer.approved? %>
+              <div class="action-bar">
+                <div class="row">
+                  <div class="small-12 columns">  		
+                		If you are unable to view Veteran contact information when searching the Veteran profile bank, contact the technical support mailbox at <a href="mailto:OEOECSUPPORT@VA.GOV">OEOECSUPPORT@VA.GOV</a>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+  
+          <% if current_user.va_admin? %>
+            <div class="row">
+              <div class="small-12 columns">
+                <p><%= link_to 'Download a spreadsheet of all veterans'.html_safe, :action => 'download_all_veterans', :format => :csv %></p>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="filters">       
+            <fieldset>
+
+            <%= search_form_for @q, html: { class: "f" } do |f| %>
+
+            <div class="row form-group dataItem">
+              <div class="small-9 columns">
+                <label>Keywords
+                  <%= f.text_field :searchable_summary_cont, id: "keywords" %>
+                </label>
+              </div>
+              <div class="small-3 columns">
+                <label>Match
+                  <%= f.combinator_select %>
+                </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="small-6 columns">
+                <label>Military Occupation Code(MOC)
+                  <%= f.text_field :experiences_moc_eq, id: "moc" %>
+                </label>
+              </div>
+
+              <div class="small-6 columns">
+                <label>Location
+                  <%= f.fields_for :location do |loc_fields| %>
+                    <%= loc_fields.text_field :full_name, :id => 'autocomplete' %>
+                  <% end %>
+                </label>
+              </div>
+
+              <div class="small-6 columns">
+                <label>Special Status
+                  <%= f.select :status_categories_cont, Veteran::STATUS_CATEGORIES, :include_blank => true %>
+                </label>
+              </div>
+
+              <div class="small-6 columns">
+                <label>Applied for Accelerated Learning Program
+                  <%= f.select :applied_for_alp_date_not_null, [["Yes", true],["No", false]],  :include_blank => true  %>
+                </label>
+              </div>
+
+              <div class="small-6 columns">
+                <label>Last Updated
+                  <%= f.select(:updated_at_gt, [["Last 30 Days", Date.today - 30],["Last 90 Days", Date.today - 90]], :include_blank => true) %>
+                </label>
+              </div>
+
+              <div class="small-6 columns">
+                <label>Available as of
+                  <div>
+                    <%= f.date_select :availability_date_lteq, {:include_blank => true, :default => nil, :start_year => Time.now.year, :end_year => Time.now.year + 5, :order => [:month, :day, :year]}, {:class => "date"}  %>
+                  </div>
+                </label>
+              </div>
+
+              <div class="small-6 columns">
+                <label>Minimum Education Level
+                  <%= f.select :by_minimum_education_level, EducationLevel::LEVELS, :include_blank => true %>
+                </label>
+              </div>
+            </div>
+
+            <div class="row form-group dataItem">
+              <div class="small-12 medium-8 columns">
+                <%= f.submit "Search", class: "button primary", id:"veteran-search" %>
+              </div>
+            </div>
+
+            <% end %>
+
+            </fieldset>
+          </div><!-- end filters -->
+
+          <div class="search-results">
+            <div class="right">
+              <%= will_paginate @veterans %>
+            </div>
+            <h4><%= @veterans.total_entries %> Results</h4>
+              <% if @veterans.total_entries > 0 && (current_user.va_admin? || current_user.employer.approved?) %>
+                <div class="right">
+                  <%= link_to 'Download a spreadsheet of these results', params.merge(format: :csv) %>
+                </div>
+              <% end %>
+            <ol class="results-list">
+              <% @veterans.each do |veteran| %><%= render veteran %><% end %>
+            </ol>
+            <div class="right">
+              <%= will_paginate @veterans %>
+            </div>
+          </div><!-- end search-results -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

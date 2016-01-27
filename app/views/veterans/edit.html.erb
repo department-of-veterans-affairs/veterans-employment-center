@@ -1,0 +1,26 @@
+<% provide(:title, "Edit Your Profile") %>
+<div id="content" class="interior">
+  <a id="content" href="#content" class="tabLink sr-only">Content starts here.</a>
+  <div class="splash">
+    <div class="row">
+      <div class="small-12 columns">
+        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
+          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
+		  <li class="parent"><%= link_to "For Job Seekers", for_job_seekers_path %></li>
+          <li class="active">Edit Profile</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="section one">
+    <div class="row">
+      <div class="small-12 columns">
+        <div id="veteran-favorites">
+          <p>Your profile is the information you choose to share with employers looking to hire Veterans and their family members.</p>
+          <p>You can choose to make this profile publicly available in the resume bank where thousands of employers are searching for qualified applicants, or you can create a one-time résumé to download and take with you. If you do not make your profile public, you will not be able to retrieve it again in the future, so be sure to download it!</p>
+          <%= render 'form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
