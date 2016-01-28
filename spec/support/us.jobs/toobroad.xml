@@ -1,0 +1,12 @@
+<api version="1.0">
+  <id>800553650</id>
+  <time>7/15/2014 4:13:55 PM</time>
+  <error>Search too broad</error>
+  <machine/>
+  <query/>
+  <recordcount>0</recordcount>
+  <startrow>0</startrow>
+  <endrow>0</endrow>
+  <order>relevance</order>
+  <jobs/>
+</api>

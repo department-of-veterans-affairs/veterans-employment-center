@@ -1,0 +1,32 @@
+<%= render 'layouts/messages' %>
+<% if user_signed_in? %>
+  <nav class="top-bar" data-topbar role="navigation" id="vec-user-nav">
+    <ul class="title-area">
+      <li class="name"><!-- Leave this empty --></li>
+      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <% if current_user.va_admin? %>
+          <li><%= link_to "Download Veterans", veterans_url %></li>
+          <li class="divider"></li>
+          <li><%= link_to "Approve Employers", employer_list_path %></li>
+          <li class="divider"></li>
+        <% end %>
+        <% if current_user.is_employer? %>
+          <li><%= link_to "Search Veterans", veterans_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to "Favorited Veterans", favorites_path %></li>
+          <li class="divider"></li>
+          <li id="welcome-message"><%= link_to "Manage Your Profile and Hiring Commitment", edit_employer_path(current_user.employer) %></li>
+          <li class="divider"></li>
+          <li class="last"><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+          <% unless current_user.employer.approved? %>
+          <% end %>
+        <% end %>
+      </ul>
+    </section>
+  </nav>
+<% end %>

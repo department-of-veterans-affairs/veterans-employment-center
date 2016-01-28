@@ -1,0 +1,41 @@
+<skills code="11-1011.00" report="summary">
+  <element id="2.B.4.e">
+    <name>Judgment and Decision Making</name>
+    <description>Considering the relative costs and benefits of potential actions to choose the most appropriate one.</description>
+  </element>
+  <element id="2.B.2.i">
+    <name>Complex Problem Solving</name>
+    <description>Identifying complex problems and reviewing related information to develop and evaluate options and implement solutions.</description>
+  </element>
+  <element id="2.A.2.a">
+    <name>Critical Thinking</name>
+    <description>Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions or approaches to problems.</description>
+  </element>
+  <element id="2.A.1.d">
+    <name>Speaking</name>
+    <description>Talking to others to convey information effectively.</description>
+  </element>
+  <element id="2.B.1.b">
+    <name>Coordination</name>
+    <description>Adjusting actions in relation to others' actions.</description>
+  </element>
+  <element id="2.B.5.d">
+    <name>Management of Personnel Resources</name>
+    <description>Motivating, developing, and directing people as they work, identifying the best people for the job.</description>
+  </element>
+  <element id="2.B.1.a">
+    <name>Social Perceptiveness</name>
+    <description>Being aware of others' reactions and understanding why they react as they do.</description>
+  </element>
+  <element id="2.A.1.b">
+    <name>Active Listening</name>
+    <description>Giving full attention to what other people are saying, taking time to understand the points being made, asking questions as appropriate, and not interrupting at inappropriate times.</description>
+  </element>
+  <element id="2.B.5.b">
+    <name>Management of Financial Resources</name>
+    <description>Determining how money will be spent to get the work done, and accounting for these expenditures.</description>
+  </element>
+  <element id="2.A.2.d">
+    <name>Monitoring</name>
+    <description>Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.</description>
+  </element>

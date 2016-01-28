@@ -1,0 +1,265 @@
+<% if user_signed_in? && current_user.is_employer? && current_user.employer.approved? %>
+  <h1><%= @veteran.name %></h1>
+  <p><b><%= @veteran.email %></b></p>
+<% elsif user_signed_in? && current_user.is_employer? %>
+  <h1>Candidate Information Hidden</h1>
+  <p><b>until you are approved</b></p>
+<% else %>
+  <h1><%= @veteran.name %></h1>
+  <p><b><%= @veteran.email %></b></p>
+<% end %>
+
+<% if @for_fed_employment  %>
+
+<div class="row resume">
+    <p style="width: 200px; display: table;">
+    <span style="display: table-cell; width: 100px;">Citizenship </span>
+    <span style="display: table-cell; border-bottom: 1px solid black; background-color:#FFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+</div>
+<p>
+
+<div class="row resume">
+    <p style="width: 200px; display: table;">
+    <span style="display: table-cell; width: 100px;">Your Street Address </span>
+    <span style="display: table-cell; border-bottom: 1px solid black; background-color:#FFF;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+</div>
+<div class="row resume">
+    <p style="width: 200px; display: table;">
+    <span style="display: table-cell; width: 100px;">City </span>
+    <span style="display: table-cell; border-bottom: 1px solid black; background-color:#FFF;">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+    <span style="display: table-cell; width: 100px;">State </span>
+    <span style="display: table-cell; border-bottom: 1px solid black; background-color:#FFF;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+    <span style="display: table-cell; width: 100px;">Zip </span>
+    <span style="display: table-cell; border-bottom: 1px solid black; background-color:#FFF;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+    </p>
+</div>
+<p></p>
+<div class="row resume">
+    <p style="width: 200px; display: table;">
+    <span style="display: table-cell; width: 100px;">Daytime Phone </span>
+    <span style="display: table-cell; border-bottom: 1px solid black; background-color:#FFF;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+    <span style="display: table-cell; width: 100px;">Evening Phone </span>
+    <span style="display: table-cell; border-bottom: 1px solid black; background-color:#FFF;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+    </p>
+</div>
+<div class="row resume">
+    <p style="width: 200px; display: table;">
+    <span style="display: table-cell; width: 100px;">Federal Job Information </span>
+    <span style="display: table-cell; border-bottom: 1px solid black; background-color:#FFF;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+    </p>
+</div>
+<div class="row resume">
+    <p style="width: 200px; display: table;">
+    <span style="display: table-cell; width: 100px;">Veterans Preference </span>
+    <span style="display: table-cell; border-bottom: 1px solid black; background-color:#FFF;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+    </p>
+</div>
+<div class="row resume">
+    <p style="width: 200px; display: table;">
+    <span style="display: table-cell; width: 100px;">Reinstatement Eligibility </span>
+    <span style="display: table-cell; border-bottom: 1px solid black; background-color:#FFF;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+    </p>
+</div>
+<div class="row resume">
+    <p style="width: 200px; display: table;">
+    <span style="display: table-cell; width: 100px;">Highest Federal Grade Held </span>
+    <span style="display: table-cell; border-bottom: 1px solid black; background-color:#FFF;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+    </p>
+</div>
+<% end %>
+
+
+<% if @veteran.locations.present? %>
+  <h3 class="print-doc">Preferred Location(s)</h3>
+    <ul>
+      <% @veteran.locations.each do |location| %>
+      <li><%= location.full_name %></li>
+    <% end %>
+  </ul>
+  <br>
+<% end %>
+
+<% if @veteran.objective.present? %>
+  <h3 class="print-doc">Objective</h3>
+  <p><i><%= @veteran.objective %></i></p>
+<% end %>
+
+<% if @veteran.work_experiences.any? %>
+  <h3>Work Experience</h3>
+  <% @veteran.work_experiences.each do |experience| %>
+    <p>
+    <% if experience.organization.present? %>
+      <b><%= experience.organization %></b><br>
+      <%= experience.job_title %>
+      <% if experience.start_date %>
+        - <%= l(experience.start_date, :format => :written_out) %>
+      <% end %>
+      <% if experience.end_date %>
+       to <%= l(experience.end_date, :format => :written_out) %>
+      <% end %>
+      <% if experience.hours %>
+       to <%= experience.hours %> hrs/w
+      <% end %>
+      <ul>
+        <li><%= experience.description %></li>
+      </ul>
+    </p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if @veteran.military_experiences.any? %>
+  <h3 class="print-doc">Military Service</h3>
+  <% @veteran.military_experiences.each do |experience| %>
+    <p>
+    <% if experience.organization.present? %>
+      <b><%= experience.organization %></b><br>
+       <% if experience.moc %>MOC: <%= experience.moc %><br><% end %>
+       <% if experience.duty_station %>Duty Station: <%= experience.duty_station %><br><% end %>
+       <% if experience.rank.present? %>Rank: <%= experience.rank %><br><% end %>
+      <%= experience.job_title %>
+      <% if experience.start_date %>
+        - <%= l(experience.start_date, :format => :written_out) %>
+      <% end %>
+      <% if experience.end_date %>
+       to <%= l(experience.end_date, :format => :written_out) %>
+      <% end %>
+      <% if experience.hours %>
+       to <%= experience.hours %> hrs/w
+      <% end %>
+      <% if experience.description.present? %>
+      <ul>
+        <li><%= experience.description %></li>
+      </ul>
+    <%end%>
+    </p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if @veteran.educational_experiences.any? %>
+  <h3 class="print-doc">Education &amp; Training</h3>
+  <% @veteran.educational_experiences.each do |experience| %>
+    <p><% if experience.educational_organization.present? %>
+      <b><%= experience.educational_organization %></b><br>
+      <%= experience.credential_type %> <%= experience.credential_topic %>
+      <% if experience.start_date %>
+        <br><%= l(experience.start_date, :format => :written_out) %>
+      <% end %>
+      <% if experience.end_date %>
+       to <%= l(experience.end_date, :format => :written_out) %>
+      <% end %>
+      </p>
+      <ul>
+        <li><%= experience.description %></li>
+      </ul></p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if @veteran.volunteer_experiences.any? %>
+  <h3 class="print-doc">Volunteer Experience</h3>
+  <% @veteran.volunteer_experiences.each do |experience| %>
+    <p><% if experience.organization.present? %>
+      <b><%= experience.organization %></b><br />
+      <%= experience.job_title %>
+      <% if experience.start_date %>
+        <br /><%= l(experience.start_date, :format => :written_out) %>
+      <% end %>
+      <% if experience.end_date %>
+       to <%= l(experience.end_date, :format => :written_out) %>
+      <% end %>
+      </p>
+      <ul>
+        <li><%= experience.description %></li>
+      </ul>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if @veteran.affiliations.any? %>
+  <h3 class="print-doc">Professional Affiliations</h3>
+  <ul>
+    <% @veteran.affiliations.each do |aw| %>
+      <li><%= aw.job_title %> at <%= aw.organization %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+
+  <% if @veteran.awards.any? %>
+    <h3 class="print-doc">Awards</h3>
+    <ul>
+    <% @veteran.awards.each do |aw| %>
+    <li><%= aw.title %> from <%= aw.organization %> <% if aw.date? %>on <%= l(aw.date, :format => :written_out) %><% end %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+    <% if @veteran.skills.size > 0 %>
+      <h3>Skills</h3>
+      <ul>
+      <% @veteran.skills.each do |skill| %>
+        <li><%= skill.name %></li>
+      <% end %>
+      </ul>
+    <% end %>
+
+    <% if @veteran.status_categories.size > 0 %>
+      <h3 class="print-doc">Status Category</h3>
+      <ul>
+        <% @veteran.status_categories.each do |cat| %>
+          <li><%= cat %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <% if @veteran.references.any? %>
+      <h3 class="print-doc">References</h3>
+      <ul>
+        <% @veteran.references.each do |aw| %>
+          <li><%= aw.name %> (<%= aw.job_title %>) <%= aw.email %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <% if @veteran.availability_date %>
+      <p><b>Estimated Availability Date:</b> <%= l(@veteran.availability_date, :format => "%B %d, %Y") %></p>
+    <% end %>
