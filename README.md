@@ -1,4 +1,4 @@
-[ ![Codeship Status for department-of-veterans-affairs/veterans-employment-center](https://codeship.com/projects/1fba4080-f5c0-0132-ef92-664098de17b9/status?branch=master)](https://codeship.com/projects/85851)
+TODO @plusjeff Add Jenkins status here when that is set up. 
 
 # Installation
  * Ensure you are running Ruby 2.2.3
