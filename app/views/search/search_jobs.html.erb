@@ -1,0 +1,26 @@
+<%= render :partial => 'search_header' unless request.xhr? %>
+
+<div class="search-results">
+  <div class="section one">
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="search-results">
+          <%# If we have a federal job search, we can't know how many results there are. %>
+          <%= render :partial => 'featured_jobs' if @page == 1 %>
+          <% if @record_count.nil? %>
+          <%= render :partial => 'federal_pagination', locals: {searcher: @searcher} %>
+        <% end %>
+
+        <%= render :partial => 'jobs' %>
+        <%= render :partial => 'federal_jobs' %>
+        <% if @record_count.nil? %>
+          <%= render :partial => 'federal_pagination', locals: {searcher: @searcher} %>
+        <% else %>
+          <%= render :partial => 'pagination', locals: {searcher: @searcher} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render :partial => 'search_footer' unless request.xhr? %>

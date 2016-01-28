@@ -1,0 +1,16 @@
+<% if employer.website.nil? || employer.website == "" %>
+  <%= employer.company_name %>
+
+<% else %>
+  <%= link_to employer.company_name, employer_website(employer.website), :target => "_blank" %>
+<% end %>
+<br />
+<%= employer.location %>
+<% if employer.note.present? %>
+  <br />
+  <b>Looking for:</b> <%= employer.note %>
+<% end %>
+<% if employer.commitment_categories.size > 0 %>
+  <br />
+  <b>Special commitments to:</b> <% employer.commitment_categories.each do |comm| %><%= comm %> <% end %>
+<% end %>

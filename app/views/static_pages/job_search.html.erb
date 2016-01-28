@@ -1,0 +1,410 @@
+<% provide(:title, "Search the Veterans Jobs Bank") %>
+<div id="content" class="interior">
+  <a href="#content" class="sr-only">Content starts here.</a>
+
+  <div class="splash">
+    <div class="row">
+      <div class="small-12 columns">
+        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
+          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
+          <li class="parent"><%= link_to "For Job Seekers", for_job_seekers_path %></li>
+    		  <li class="active">Veterans Job Bank</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section one">
+    <div class="row">
+      <div class="small-12 columns">
+
+        <div id="content_container" class="content_area evss_container">
+          <form id="user" action="jobSearchResults" method="get" class="job-search">
+            <input type="hidden" name="re" value="25">
+            <div class="filters">
+              <fieldset>
+                <div class="row">
+                  <div class="dataItem">
+                    <label class="main em" for="kw">What
+
+                    <span class="field-details"><span class="example">(job title, keywords)</span></span>
+                    </label>
+                    <input id="kw" name="kw" class="clearable address x" type="text" value="" maxlength="95">
+                    <!-- class="text address"  -->
+                  </div>
+                  <div class="dataItem">
+                    <label class="main em" for="zc">Where
+
+                    <span class="field-details"><span class="example">(city, state, country)</span></span>
+                    </label>
+                    <input id="zc" name="zc" class="clearable address x" type="text" value="" maxlength="95">
+                  </div>
+                  <div class="dataItem">
+                    <label class="main em" for="moc">Military
+
+                    <span class="field-details"><span class="example">(military job title or code)</span></span>
+                    </label>
+                    <input id="moc" name="moc" class="clearable military x" type="text" value="" maxlength="95">
+                  </div>
+                </div>
+                <!-- /row -->
+
+                <div id="adv-srch-flds" class="advancedSearch" style="display: none;">
+                  <input type="hidden" name="searchType" id="searchType" value="basic">
+                  <div class="row">
+                    <div class="dataItem">
+                      <label class="main" for="zc1">Zip Code
+
+                      <span class="field-details"><span class="example">(5 digits)</span></span>
+                      </label>
+                      <input id="zc1" name="zc1" class="clearable zip" type="text" value="" maxlength="5">
+                    </div>
+                    <div class="dataItem">
+                      <label class="main" for="rd1">Distance
+
+                      <span class="field-details"><span class="example">(in miles)</span></span>
+                      </label>
+                      <select id="rd1" name="rd1" class="distance">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="25" selected="">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="300">300</option>
+                      </select>
+                    </div>
+                    <div class="dataItem">
+                      <label class="main" for="onet">Occupation Group
+
+                      <span class="field-details"><span class="example">(type of job)</span></span>
+                      </label>
+                      <select name="onet" id="onet" class="select" onchange="">
+                        <option value="">Choose Occupation group</option>
+                        <option value="17-0000.00">Architecture &amp; Engineering</option>
+                        <option value="27-0000.00">Arts, Design, Entertainment, Media</option>
+                        <option value="37-0000.00">Bldg/Grounds Maintenance &amp; Cleaning</option>
+                        <option value="13-0000.00">Business &amp; Financial Operations</option>
+                        <option value="21-0000.00">Community &amp; Social Services</option>
+                        <option value="15-0000.00">Computer &amp; Mathematical</option>
+                        <option value="47-0000.00">Construction &amp; Extraction</option>
+                        <option value="25-0000.00">Education, Training &amp; Library</option>
+                        <option value="45-0000.00">Farming, Fishing &amp; Forestry</option>
+                        <option value="35-0000.00">Food &amp; Lodging</option>
+                        <option value="29-0000.00">Healthcare</option>
+                        <option value="49-0000.00">Installation, Maintenance &amp; Repair</option>
+                        <option value="23-0000.00">Legal</option>
+                        <option value="19-0000.00">Life, Physical &amp; Social Science</option>
+                        <option value="11-0000.00">Management</option>
+                        <option value="43-0000.00">Office &amp; Administrative Support</option>
+                        <option value="39-0000.00">Personal Care/ Service &amp; Gaming</option>
+                        <option value="51-0000.00">Production</option>
+                        <option value="33-0000.00">Protective Services</option>
+                        <option value="41-0000.00">Sales &amp; Related</option>
+                        <option value="53-0000.00">Transportation &amp; Material Moving</option>
+                      </select>
+                    </div>
+                    <div class="dataItem">
+                      <label class="main" for="ind">Industry
+
+                      <span class="field-details"><span class="example">(job industry)</span></span>
+                      </label>
+                      <select name="ind" id="ind" class="select" onchange="">
+                        <option value="">All Industry Groups</option>
+                        <option value="1">Aerospace / Defense</option>
+                        <option value="31">Agriculture</option>
+                        <option value="2">Automotive / Transport</option>
+                        <option value="3">Banking</option>
+                        <option value="32">Business Services</option>
+                        <option value="33">Charitable Organizations</option>
+                        <option value="4">Chemicals</option>
+                        <option value="5">Computer Hardware</option>
+                        <option value="34">Computer Services</option>
+                        <option value="6">Computer Software</option>
+                        <option value="7">Conglomerates</option>
+                        <option value="8">Consumer Products</option>
+                        <option value="35">Consumer Services</option>
+                        <option value="36">Cultural Institutions</option>
+                        <option value="10">Diversified Services</option>
+                        <option value="11">Drugs / Pharmaceuticals</option>
+                        <option value="30">Education/Higher Education</option>
+                        <option value="12">Electronics &amp; Misc. Tech.</option>
+                        <option value="13">Energy</option>
+                        <option value="37">Environmental Services &amp; Equipment</option>
+                        <option value="14">Financial Services</option>
+                        <option value="15">Food, Beverage &amp; Tobacco</option>
+                        <option value="38">Foundations</option>
+                        <option value="39">Government</option>
+                        <option value="17">Health Products &amp; Services</option>
+                        <option value="16">Hospital / Healthcare</option>
+                        <option value="18">Insurance</option>
+                        <option value="19">Leisure</option>
+                        <option value="20">Manufacturing</option>
+                        <option value="21">Materials &amp; Construction</option>
+                        <option value="22">Media / Publishing</option>
+                        <option value="23">Metals &amp; Mining</option>
+                        <option value="24">Real Estate</option>
+                        <option value="25">Retail</option>
+                        <option value="40">Security Products &amp; Services</option>
+                        <option value="27">Telecommunications</option>
+                        <option value="28">Transportation</option>
+                        <option value="29">Utilities</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- /row -->
+                  <div class="row">
+                    <div class="dataItem">
+                      <label class="main" for="cname">Employer
+
+                      <span class="field-details"><span class="example">(you can use part of the name)</span></span>
+                      </label>
+                      <input id="cname" name="cname" class="clearable address" type="text" value="" maxlength="95">
+                    </div>
+                    <div class="dataItem">
+                      <label class="main" for="tm">Job Added/Updated
+
+                      <span class="field-details"><span class="example">&nbsp;</span></span>
+                      </label>
+                      <select name="tm" class="select" id="tm">
+                        <option value="">At any time</option>
+                        <option value="1">Today</option>
+                        <option value="2">Within the past 2 days</option>
+                        <option value="3">Within the past 3 days</option>
+                        <option value="7">Within the past week</option>
+                        <option value="14">Within the past 2 weeks</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- /row -->
+                </div>
+                <!-- end adv-srch-flds -->
+                <a id="adv-search-jobs" class="toggle-srch advancedTag" href="#"><a href="#">▼ Advanced Search</a></a>
+                <div class="actions">
+
+                  <button class="button primary" type="submit">Search</button>
+
+                  <a class="button secondary" href="javascript:void(0);" onclick="resetForm($('#user'))">Clear Search</a>
+
+                </div>
+              </fieldset>
+            </div>
+            <!-- end filters -->
+          </form>
+          <div class="filters-box-shadow"></div>
+          <!-- Hide Search (may be unnecessary) -->
+          <!--
+            <div class="hideSearchTag" style="float: left; margin-left: 300px;">
+            	<a href="#"><b>Hide Search Bar</b></a>
+            </div>
+            -->
+          <%= javascript_include_tag "jquery.dataTables.js" %>
+          <div class="pagination pagination-top" style="display: none;">
+            <center>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Displaying 0 of 0</td>
+                    <td> &nbsp; &nbsp;&nbsp;</td>
+                    <td>Page 0 of 0&nbsp;&nbsp;</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </center>
+          </div>
+          <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+          <!-- <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-530961ca3f69ff4f"></script> -->
+          <!-- <div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;"><iframe id="_atssh643" title="AddThis utility frame" src="//ct1.addthis.com/static/r07/sh162.html#iit=1402584219987&amp;tmr=load%3D1402584219716%26core%3D1402584219948%26main%3D1402584219983%26ifr%3D1402584219991&amp;cb=0&amp;cdn=1&amp;chr=UTF-8&amp;kw=&amp;ab=-&amp;dh=pint.ebenefits.va.gov&amp;dr=https%3A%2F%2Fpint.ebenefits.va.gov%2Fwssweb%2Fwss-common-webparts%2Fmvc%2FjobSearchResults%3Ftm%3D%26kw%3Dbananas%26zc%3Dcream%26moc%3Dpie%26zc1%3D%26rd1%3D25%26onet%3D%26ind%3D%26cname%3D%26tm%3D&amp;du=https%3A%2F%2Fpint.ebenefits.va.gov%2Fwssweb%2Fwss-common-webparts%2Fmvc%2FjobSearchResults%3Fre%3D25%26kw%3Dzooper%26zc%3Dzoomanya%26moc%3Dzoobo%26searchType%3Dbasic%26zc1%3D%26rd1%3D25%26onet%3D%26ind%3D%26cname%3D%26tm%3D&amp;dt=&amp;dbg=0&amp;md=0&amp;cap=tc%3D0%26ab%3D1&amp;inst=1&amp;vcl=0&amp;jsl=33&amp;prod=undefined&amp;lng=en-US&amp;ogt=&amp;pc=men&amp;pub=ra-530961ca3f69ff4f&amp;ssl=1&amp;sid=5399bc9b205ec845&amp;srpl=1&amp;srcs=1&amp;srd=1&amp;srf=1&amp;srx=1&amp;ver=300&amp;xck=1&amp;xtr=0&amp;og=&amp;aa=0&amp;csi=undefined&amp;rev=1401990517&amp;ct=1&amp;xld=1&amp;xd=1&amp;fcu=U5m8m41dVZo" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0px; left: 0px; top: 0px;"></iframe></div> -->
+          <!-- <script type="text/javascript" src="https://ct1.addthis.com/static/r07/core139.js"></script> -->
+          <div class="results">
+            <div class="pagination pagination-btm" style="display: none;">
+              <center>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Displaying 0 of 0</td>
+                      <td> &nbsp; &nbsp;&nbsp;</td>
+                      <td>Page 0 of 0&nbsp;&nbsp;</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </center>
+            </div>
+          </div>
+          <!--end results-->
+        </div>
+
+      </div>
+    </div>
+  </div><!-- end section one -->
+  
+    <!-- Navigation -->
+
+    <div class="navigation">
+      <div class="row">
+        <div class="small-12 columns">
+          <h3>Related Info:</h3>
+          <ul class="small-block-grid-1 medium-block-grid-3 cards small">
+            <li>
+              <%= link_to career_fairs_path do %>
+                <h5>Career Fairs</h5>
+                <span>In-person and online events where Veterans, Servicemembers, and their families can meet employers and learn about job opportunities.</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to commitments_path do %>
+                <h5>View Employer Commitments to Hire Veterans</h5>
+                <span>Jobs from companies and organizations that recognize the value Veterans add in the workplace.</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to job_resources_path do %>
+                <h5>Resources</h5>
+                <span>Funds for educational and training programs, information on workplace accommodation, assistive technologies, starting your own business, and more.</span>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%= javascript_include_tag "jquery-ui-1.10.4.min.js" %>
+<%= javascript_include_tag "search" %>
+
+<!--
+TODO: grab these stylesheets?
+
+<link rel="stylesheet" type="text/css" href="//ct1.addthis.com/static/r07/widgetbig060.css" media="all">
+<link rel="stylesheet" type="text/css" href="//ct1.addthis.com/static/r07/widget120.css" media="all">
+<link rel="stylesheet" type="text/css" href="/wssweb/wss-common-webparts/resources/css/search/vetsuccess.jobs.css">
+<link href="/wssweb/wss-common-webparts/resources/css/search/vetsuccess.jobs.dotjobs.css" type="text/css" rel="stylesheet">
+<link href="/wssweb/wss-common-webparts/resources/css/search/vetsuccess.dotjobs.results.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="/wssweb/wss-common-webparts/resources/css/search/vetsuccess.jobs.microsite.mobile.css" type="text/css">
+-->
+
+<!-- <script type="text/javascript">
+document.domain="va.gov";
+</script>
+
+<script type="text/javascript" src="/wssweb/wss-common-webparts/resources/js/iframe_control.js"></script>
+<script type="text/javascript" src="/wssweb/wss-common-webparts/resources/js/gov/va/analytics/federated-analytics.js"></script>
+
+<script src="/wssweb/wss-common-webparts/resources/js/jquery/jquery-ui-1.8.17.custom.min.js" type="text/javascript"></script>
+<script src="/wssweb/wss-common-webparts/resources/js/search/search.js" type="text/javascript"></script>
+
+<link href="/wssweb/wss-common-webparts/resources/images/ebn/favicon.png" rel="shortcut icon">
+
+-->
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	if("25" != ""){
+		$("select#rd1").val("25");
+	}
+	if("" != ""){
+		$("select#ind").val("");
+	}
+	if("" != ""){
+		$("select#tm").val("");
+	}
+	if("" != ""){
+		var onetval = "" + "-0000.00";
+		$("select#onet").val(onetval);
+	}
+});
+
+
+$(document).ready(function() {
+
+	//On load we're only displaying the first 25 jobs.
+	var row = "";
+	var jobs = "25";
+	var error = "no errors";
+	var firstShown = 0;
+	var currentPage = 1;
+	var currentStart = 1;
+	var currentEnd = 1;
+	var recordCount = "29";
+	var recordCountString = parseInt("29");
+	var start = parseInt("1");
+	var end = parseInt("25");
+	var nextStart = start + 25;
+	var nextEnd = end + 25;
+	var previousStart = start - 25;
+	var previousEnd = start - 1;
+
+
+	if(recordCount >= 500){
+		recordCountString = recordCountString + "+";
+	}
+
+	if(jobs <= 0)
+	{
+		$(".pagination").hide();
+	}
+
+	if(error != "no errors"){
+		$(".error").html("no errors");
+	} else {
+		$(".error").hide();
+	}
+
+
+	if(recordCount > 25){
+		currentEnd = 25
+		if(start == 1){
+			$(".pagination").html("<center><table><tr><td>Displaying 1 - 25 of "+ recordCountString + "</td><td> &nbsp; &nbsp;&nbsp;</td><td>Page 1 of 2&nbsp;&nbsp;</td><td><a href='/wssweb/wss-common-webparts/mvc/jobSearchResults?kw=bananas&zc=cream&moc=pie&searchType=basic&zc1=&rd1=25&onet=&ind=&cname=&tm=&rs=" + nextStart + "&re=" + nextEnd + "&searchID=636963071&currentPage=" + parseInt(currentPage + 1) + "' class='next'>Next Page</a></td></tr></table></center>");
+		} else if(start > 1 && end < recordCount){
+			$(".pagination").html("<center><table><tr><td>Displaying 1 - 25 of "+ recordCountString + "</td><td> &nbsp; &nbsp;&nbsp;<a href='/wssweb/wss-common-webparts/mvc/jobSearchResults?kw=bananas&zc=cream&moc=pie&searchType=basic&zc1=&rd1=25&onet=&ind=&cname=&tm=&rs=" + previousStart + "&re=" + previousEnd + "&searchID=636963071&currentPage=" + parseInt(currentPage - 1) + "' class='next'>&#9664; Previous Page</a></td><td>Page 1 of 2&nbsp;&nbsp;</td><td><a href='/wssweb/wss-common-webparts/mvc/jobSearchResults?kw=bananas&zc=cream&moc=pie&searchType=basic&zc1=&rd1=25&onet=&ind=&cname=&tm=&rs=" + nextStart + "&re=" + nextEnd + "&searchID=636963071&currentPage=" + parseInt(currentPage + 1) + "' class='next'>Next Page &#9654;</a></td></tr></table></center>");
+		} else if(end == recordCount){
+			$(".pagination").html("<center><table><tr><td>Displaying 1 - 25 of "+ recordCountString + "</td><td> &nbsp; &nbsp;&nbsp;<a href='/wssweb/wss-common-webparts/mvc/jobSearchResults?kw=bananas&zc=cream&moc=pie&searchType=basic&zc1=&rd1=25&onet=&ind=&cname=&tm=&rs=" + previousStart + "&re=" + previousEnd + "&searchID=636963071&currentPage=" + parseInt(currentPage - 1) + "' class='next'>&#9664; Previous Page </a></td><td>Page 1 of 2&nbsp;&nbsp;</td><td>&nbsp;&nbsp;&nbsp;</td></tr></table></center>");
+		}
+	} else {
+		currentEnd = jobs;
+		$(".pagination").html("<center><table><tr><td>Displaying 1 - 25 of "+ recordCountString + "</td><td> &nbsp; &nbsp;&nbsp;</td><td>Page 1 of 2&nbsp;&nbsp;</td><td></td></tr></table></center>");
+	}
+
+
+	formatSearchResults();
+
+});
+
+function formatSearchResults(){
+	$('.job-row:visible:last td').css('border-bottom','0px');
+}
+
+// On page load
+$(function(){
+	$("#zc, #kw, #moc,#zc1,#cname").alphanum({
+	    allow :',.-'
+	});
+});
+
+function tog(v){return v?'addClass':'removeClass';}
+
+$(document).on('input', '.clearable', function(){
+    $(this)[tog(this.value)]('x');
+}).on('mousemove', '.x', function( e ){
+    $(this)[tog(this.offsetWidth-18 < e.clientX-this.getBoundingClientRect().left)]('onX');
+}).on('click', '.onX', function(){
+    $(this).removeClass('x onX').val('');
+});
+
+function resetForm($form) {
+    $form.find('input:text, input:password, input:file, select, textarea').val('');
+    $form.find('input:radio, input:checkbox')
+        .removeAttr('checked').removeAttr('selected');
+    $form.find('input:text')[tog(this.value)]('x'); //remove any x's in any text fields
+    document.getElementById("rd1").value = 25;
+}
+
+
+function checkTxtBoxes($form) {
+	$form.find('input:text').filter(function() { return $(this).val(); }).addClass('x');
+
+}
+</script>

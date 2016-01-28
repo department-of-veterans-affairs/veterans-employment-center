@@ -1,0 +1,35 @@
+<li class="result">
+  <div class="row">
+    <div class="small-12 columns">
+      <%= link_to veteran, class: "vet_profile_link" do %>
+        <% if current_user && (current_user.va_admin? || current_user.is_approved_employer?) %>
+          <h5><%= veteran.name || "Candidate" %></h5>
+        <% else %>
+          <h5><%= "Candidate" %></h5>
+        <% end %>
+        <div class="snippet vet_objective">
+          <%= veteran.objective %>
+        </div>
+        <div class="veteran_location">
+          <h6>Location:</h6>
+          <ul class="inline-list meta">
+            <% veteran.locations.each do |loc| %>
+              <li>
+                <%= loc.full_name %>
+              </li>            
+            <% end %>
+          </ul>
+        </div>
+        <% if user_signed_in? %>
+          <% if current_user.is_employer? %>
+            <% if current_user.employer.favorited?(veteran) %>
+              <%= link_to favorite_veteran_path(veteran, type: "unfavorite"), :class => "button alternate favorite_vet", :title => "Remove Favorite", method: :put do %>Remove from favorites<%= image_tag "star.png", class: "star" %><% end %>
+              <% else %>
+                <%= link_to favorite_veteran_path(veteran, type: "favorite"), :class => "button alternate", :title => "Favorite", method: :put do %>Add to favorites<%= image_tag "empty_star.png", class: "star" %><% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div><!-- end row -->
+</li>

@@ -1,0 +1,156 @@
+<%
+  url_helper = Rails.application.routes.url_helpers
+%>
+
+var placeSearch;
+var autocompletes = {};
+var autocomplete_fields = [];
+var localities = [], postal_codes = [];
+
+function initialize_autocomplete() {
+  // Create the autocomplete object, restricting the search
+  // to geographical location types.
+  var autocomplete_fields = $('.autocomplete');
+  autocomplete_fields.each(function() {
+    initializeAutocompleteForField($(this));
+  });
+}
+
+function initializeAutocompleteForField(field) {
+  var id = field.attr("id");
+  var el = field.get(0);
+
+  // @TODO handle error where id doesn't match - shouldn't happen
+  var loc = id.match(/veteran_locations_attributes_(.*?)_full_name/)[1];
+
+  field.on('keydown', function(e){
+    if (e.keyCode == 13 && $('.pac-container:visible').length){
+      e.preventDefault();
+    }
+  });
+  autocompletes[loc] = new google.maps.places.Autocomplete(el, { types: ['(regions)'] });
+  google.maps.event.addListener(autocompletes[loc], 'place_changed', function() {
+    getLocationParts(loc);
+  });
+}
+
+function getLocationParts(loc) {
+  var place = autocompletes[loc].getPlace();
+  var lat = place.geometry.location.lat();
+  var lng = place.geometry.location.lng();
+  var designators = ['postal_code', 'locality', 'administrative_area_level_1', 'country']
+
+    for (var i=0; i < place.address_components.length; i++) {
+      if (designators.indexOf(place.address_components[i].types[0]) >= 0 ){
+        switch (place.address_components[i].types[0]){
+          case 'locality' : $("#veteran_locations_attributes_"+loc+"_city").val(place.address_components[i].long_name);
+          break;
+          case 'administrative_area_level_1' : $("#veteran_locations_attributes_"+loc+"_state").val(place.address_components[i].long_name);
+          break;
+          case 'country' : $("#veteran_locations_attributes_"+loc+"_country").val(place.address_components[i].long_name);
+          break;
+          case 'postal_code' : $("#veteran_locations_attributes_"+loc+"_zip").val(place.address_components[i].long_name);
+          break;
+          default:
+        }
+      }
+
+    }
+  $("#veteran_locations_attributes_"+loc+"_lat").val(lat);
+  $("#veteran_locations_attributes_"+loc+"_lng").val(lng);
+}
+
+function fixListeners() {
+  // delete a skill from the form
+  $('.skill-deleter').on('click', function (e) {
+    $(e.currentTarget).parent().remove();
+  })
+}
+
+// add skill to DOM helper function
+function addSkill(skill) {
+  var str = '<li> \
+              <input value="' + skill.id + '" type="hidden" name="veteran[skills][]"> \
+              <span>' + skill.name + '</span> \
+              <span class="skill-deleter"><i class="fa fa-trash-o"></i></span> \
+            </li>'
+  $('#checkbox-list').append(str);
+  $('#add-skill-field').typeahead('val', '');
+  fixListeners();
+}
+
+$(document).ready(function(){
+  initialize_autocomplete();
+
+  $('form').on('click', '.add_fields', function() {
+    var fieldset = $(this).prev('fieldset');
+    var autocomplete = fieldset.find(".autocomplete");
+    if (autocomplete.length){
+      initializeAutocompleteForField(autocomplete);
+    }
+  });
+
+  // prevent sending the form on pressing enter
+  $(document).on("keypress", '#veteran_form', function (e) {
+      var code = e.keyCode || e.which;
+      if (code == 13) {
+          e.preventDefault();
+          return false;
+      }
+  });
+
+  // init new skill typeahead
+  var skillSearcher = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: '<%= url_helper.skills_translator_get_common_skills_path(script_name: ENV['RAILS_RELATIVE_URL_ROOT']) %>',
+    remote: {
+      url: '<%= url_helper.skills_translator_get_skills_path("%QUERY", script_name: ENV['RAILS_RELATIVE_URL_ROOT']).sub("25", "") %>',
+      wildcard: '%QUERY'
+    }
+  });
+  $('#add-skill-field').typeahead({
+    hint: false,
+    highlight: true
+  }, {
+    name: 'new-skills',
+    display: 'name',
+    source: skillSearcher
+  });
+
+  // avoid double adding a skill when skill is selected with enter in typeahead
+  var justSelected = false
+
+  // add existing skill via typeahead selection
+  $('#add-skill-field').bind('typeahead:select', function(ev, suggestion) {
+    justSelected = true;
+    setTimeout(function () {
+      justSelected = false;
+    }, 200)
+    addSkill(suggestion);
+  });
+
+  // a new skill (did not exist in typeahead)
+  $('#add-skill-field').keyup(function(e){
+    if(e.keyCode == 13){
+      if (justSelected) return;
+      var skill = e.target.value
+      if(skill == "") return;
+      var data = {name: skill}
+      $.post('<%= url_helper.skills_translator_add_skill_path(script_name: ENV['RAILS_RELATIVE_URL_ROOT']) %>', data, addSkill);
+    }
+  });
+
+  fixListeners();
+});
+
+function repeatDesiredPos() {
+  $("#desiredPosition").append("<input name='veteran[desiredPosition][]' type='text' /><br />");
+}
+
+function addSkillOnClick() {
+   var skill =  document.getElementById('add-skill-field').value
+   if(skill == "") return;
+   var data = { name: skill }
+   $.post('<%= url_helper.skills_translator_add_skill_path(script_name: ENV['RAILS_RELATIVE_URL_ROOT']) %>', data, addSkill)
+}

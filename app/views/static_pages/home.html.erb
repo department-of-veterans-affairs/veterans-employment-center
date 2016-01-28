@@ -1,0 +1,52 @@
+<% provide(:title, "Home") %>
+<div id="content" class="interior">
+  <a id="content" href="#content" class="sr-only">Content starts here.</a>
+
+  <div class="splash">
+    <div class="row">
+      <div class="small-12 columns">
+        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
+          <li class="active"><h2>Veterans Employment Center&trade;</h2></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section one">
+
+    <div class="primary">
+      <div class="row">
+        <div class="small-12 columns">
+
+          <h3>The Veterans Employment Center&trade; connects Veterans and their families with meaningful employment and career development opportunities.</h3>
+    	  
+      	  <p>Resources and tools for both job seekers and employers.</p>
+    	  
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 columns">
+        <div class="section-nav">
+          <ul class="small-block-grid-1 medium-block-grid-2 cards small">
+            <li>
+              <%= link_to for_job_seekers_path, class: "long" do %>
+                <h4 class="alternate">Job Seekers</h4>
+                <span>Map your military skills, build a civilian résumé, and post your profile so employers will easily find you. Search our career opportunities, and learn about organizations that can assist you with career development and employment.</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to employer_home_path, class: "long" do %>
+                <h4 class="alternate">Employers</h4>
+                <span>Access Veterans who are seeking employment directly by searching verified profiles of Veterans and their spouses. Post open positions. Make a public hiring commitment. Access Veteran experience and skills and hire the best!</span>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  <!-- Navigation -->
+  </div>
+</div>
