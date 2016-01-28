@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/department-of-veterans-affairs/veterans-employment-center.png?label=ready&title=Ready)](https://waffle.io/department-of-veterans-affairs/veterans-employment-center)
 TODO @plusjeff Add Jenkins status here when that is set up. 
 
 # Installation
