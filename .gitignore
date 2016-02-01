@@ -13,6 +13,7 @@
 /tmp
 .env
 .ruby-*
+/coverage/*
 
 /spec/tmp
 /config/deploy/*
@@ -25,3 +26,21 @@
 *.css.map
 app/.DS_Store
 app/views/.DS_Store
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore credentials
+doc/
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.secret
+latest.dump
+.ruby-version
+.ruby-gemset
+.env
+*.dump
