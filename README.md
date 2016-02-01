@@ -71,6 +71,22 @@ bundling.
 
 `brew install qt`
 
+#### Problem:
+```
+psql: could not connect to server: No such file or directory
+Is the server running locally and accepting
+connections on Unix domain socket "/tmp/.s.PGSQL.5432"
+```
+
+#### Fix:
+
+Try running these commands:
+```
+rm -fr /usr/local/var/postgres
+initdb /usr/local/var/postgres -E utf8
+```
+
+
 # Git Worklow
 
   - `$ git checkout -b YOUR_BRANCH_NAME` (creates a new feature branch and switches to it)
