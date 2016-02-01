@@ -6,6 +6,7 @@ rvm:
 install:
   - bundle install
   - export RAILS_ENV=test
+  - bundle exec rake db:create
   - bundle exec rake db:schema:load
   - bundle exec rake db:migrate RAILS_ENV=test
 
