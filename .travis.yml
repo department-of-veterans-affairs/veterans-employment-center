@@ -7,7 +7,7 @@ install:
   - bundle install
 
 script:
-  - bundle exec rspec
+  - bundle exec rake
 bundler_args: "--without development"
 cache:
   - bundler
