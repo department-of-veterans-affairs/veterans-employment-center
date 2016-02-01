@@ -15,7 +15,6 @@
 .ruby-*
 
 /spec/tmp
-/config/initializers/secret_token.rb
 /config/deploy/*
 /config/deploy.rb
 /vendor/cache
