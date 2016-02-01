@@ -1,0 +1,15 @@
+
+language: ruby
+rvm:
+  - ruby-2.2.3
+
+install:
+  - bundle install
+
+script:
+  - bundle exec rspec
+bundler_args: "--without development"
+cache:
+  - bundler
+notifications:
+  email: false
