@@ -1,4 +1,4 @@
-TODO @plusjeff Add Jenkins status here when that is set up. 
+TODO @plusjeff Add Jenkins status here when that is set up.
 
 # Installation
  * Ensure you are running Ruby 2.2.3
@@ -37,7 +37,7 @@ TODO @plusjeff Add Jenkins status here when that is set up.
  * In the rails console, create an admin user for you to use:
 
    `$ rails c`
-   `> User.create(email: 'your@email.com', password: 'yourpassword', admin: true)`
+   `> User.create(email: 'your@email.com', password: 'yourpassword', va_admin: true)`
 
  * You should be good to go!
 
