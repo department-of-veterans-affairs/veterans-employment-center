@@ -40,6 +40,7 @@ gem 'ruby-saml', git: "https://github.com/greggersh/ruby-saml", branch: "vaafi-1
 gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
 gem 'schema_plus_pg_indexes'
 gem 'schema_plus_core', git: 'https://github.com/mikeauclair/schema_plus_core', branch: "handle_quoted_newline"
+gem 'puma'
 
 # Generates fake data. Used to create data for staging environment's fictitious veterans, awards, affiliations, employers, etc.
 gem 'ffaker'
