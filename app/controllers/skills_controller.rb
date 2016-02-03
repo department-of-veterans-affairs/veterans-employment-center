@@ -8,12 +8,12 @@ class SkillsController < ApplicationController
   end
 
   def add_skill
-    return render :json => {
-      :error => "name parameter missing"
+    return render json: {
+      error: "name parameter missing"
     }.to_json if params[:name].blank?
     skill = Skill.where('lower(name) = ?', params[:name].downcase).take
     skill ||= Skill.create(name: params[:name], source: 'manual')
-    render json: skill.to_json(:only => [:id, :name])
+    render json: skill.to_json(only: [:id, :name])
   end
 
   def get_skills
@@ -86,10 +86,10 @@ class SkillsController < ApplicationController
     end
 
     # Construct the return json
-    render :json => {
-      :military_occupation => military_occupation,
-      :skills => skills,
-      :query_uuid => query_uuid
+    render json: {
+      military_occupation: military_occupation,
+      skills: skills,
+      query_uuid: query_uuid
     }
   end
 
@@ -188,6 +188,6 @@ class SkillsController < ApplicationController
 
     def return_error(message)
       logger.error message
-      render :json => {error: message}.to_json, status: 500
+      render json: {error: message}.to_json, status: 500
     end
 end

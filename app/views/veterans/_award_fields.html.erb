@@ -21,7 +21,7 @@
         value:       (f.object.date.strftime("%m/%d/%Y") if f.object.date.present?),
         err:         "enter date like mm/dd/yyyy",
         placeholder: "MM/DD/YYYY",
-        data:        {"mask" => "99/99/9999"},
+        data:        {mask: "99/99/9999"},
         pattern:     "^[012]\\d/[0123]\\d/(?:19|20)\\d{2}$" %>
     </div>
   </div>

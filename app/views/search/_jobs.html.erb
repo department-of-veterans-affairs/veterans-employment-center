@@ -11,11 +11,11 @@
         <h3><strong>More</strong> jobs</h3>
       <% end %>
       <% if @record_count %>
-        <%= render :partial => 'pagination', locals: {searcher: @searcher} %>
+        <%= render partial: 'pagination', locals: {searcher: @searcher} %>
       <% end %>
       <div class="panel plain">
         <% @jobs.each do |job| %>
-          <%= render :partial => 'job', :locals => {:job => job} %>
+          <%= render partial: 'job', locals: {job: job} %>
         <% end %>
       </div>
     </div>

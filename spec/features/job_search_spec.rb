@@ -5,15 +5,15 @@ describe 'JobSearch' do
     context "when there are search results" do
       before do
         stub_request(:get, "http://api2.us.jobs/?cname=&ind=&key=#{ENV['US_JOBS_API_KEY']}&kw=java&moc=&onet=&rd1=25&re=25&rs=1&searchType=basic&tm=&zc=washington,%20dc").
-          to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/us.jobs/java_dc.xml"))
+          to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/us.jobs/java_dc.xml"))
       end
 
       context "when there are no featured jobs for a given search" do
         before do
           stub_request(:get, "#{ENV['JOBS_API_BASE_URL']}/search.json?from=0&query=java%20jobs%20in%20washington,%20dc&size=25").
-            to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/jobs_api/empty.json"))
+            to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/jobs_api/empty.json"))
           stub_request(:get, "#{ENV['JOBS_API_BASE_URL']}/search.json?from=0&query=java%20jobs%20in%20washington,%20dc&size=11").
-            to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/jobs_api/empty.json"))
+            to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/jobs_api/empty.json"))
         end
 
         it "should only display results for the main job search results" do
@@ -33,7 +33,7 @@ describe 'JobSearch' do
           visit for_job_seekers_path
           fill_in 'kw', with: "java"
           fill_in 'zc', with: "washington, dc"
-          select 'Federal Jobs Only', :from => "fed"
+          select 'Federal Jobs Only', from: "fed"
           click_button('job-search')
           expect(page).to have_no_content "Featured jobs"
           expect(page).to have_no_content "Java Developer - Java, Spring, Hibernate"
@@ -45,13 +45,13 @@ describe 'JobSearch' do
       context "when federal jobs only" do
         before do
           stub_request(:get, "#{ENV['JOBS_API_BASE_URL']}/search.json?from=0&query=analyst%20jobs%20&size=25").
-            to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/jobs_api/more_than_25_results.json"))
+            to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/jobs_api/more_than_25_results.json"))
         end
 
         it "should display 25 federal results with next links" do
           visit for_job_seekers_path
           fill_in 'kw', with: "analyst"
-          select 'Federal Jobs Only', :from => "fed"
+          select 'Federal Jobs Only', from: "fed"
           click_button('job-search')
           expect(page).to have_content "Federal jobs"
           expect(page).to have_content "Next Page"
@@ -64,7 +64,7 @@ describe 'JobSearch' do
       context "when the featured job API returns an error" do
         before do
           stub_request(:get, "#{ENV['JOBS_API_BASE_URL']}/search.json?from=0&query=java%20jobs%20in%20washington,%20dc&size=11").
-            to_return(:status => 500)
+            to_return(status: 500)
         end
 
         it "should display search results with no featured results" do
@@ -83,7 +83,7 @@ describe 'JobSearch' do
         context "when there are less than 10 featured results" do
           before do
             stub_request(:get, "#{ENV['JOBS_API_BASE_URL']}/search.json?from=0&query=java%20jobs%20in%20washington,%20dc&size=11").
-              to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/jobs_api/less_than_10_results.json"))
+              to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/jobs_api/less_than_10_results.json"))
           end
 
           it "should display all the featured results" do
@@ -102,7 +102,7 @@ describe 'JobSearch' do
             visit for_job_seekers_path
             fill_in 'kw', with: "java"
             fill_in 'zc', with: "washington, dc"
-            select 'Non-Federal Jobs Only', :from => "fed"
+            select 'Non-Federal Jobs Only', from: "fed"
             click_button('job-search')
             expect(page).to have_no_content 'Featured jobs'
             expect(page).to have_no_content 'employers that have committed to hiring veterans'
@@ -115,9 +115,9 @@ describe 'JobSearch' do
           context 'filtering by employer' do
             before do
               stub_request(:get, "#{ENV['JOBS_API_BASE_URL']}/search.json?from=0&organization_name=Carolina&query=java%20jobs%20&size=11").
-                to_return(:status => 200, :body => JSON.parse(File.read(Rails.root.to_s + "/spec/support/jobs_api/less_than_10_results.json"))[0..0].to_json)
+                to_return(status: 200, body: JSON.parse(File.read(Rails.root.to_s + "/spec/support/jobs_api/less_than_10_results.json"))[0..0].to_json)
               stub_request(:get, "http://api2.us.jobs/?cname=Carolina&ind=&key=#{ENV['US_JOBS_API_KEY']}&kw=java&moc=&onet=&rd1=25&re=25&rs=1&searchType=basic&tm=&zc=").
-                to_return(:status => 200, :body => "")
+                to_return(status: 200, body: "")
             end
 
             it 'should provided filtered results' do
@@ -142,10 +142,10 @@ describe 'JobSearch' do
           before do
             # First page of 10
             stub_request(:get, "#{ENV['JOBS_API_BASE_URL']}/search.json?from=0&query=java%20jobs%20in%20washington,%20dc&size=11").
-              to_return(:status => 200, :body => JSON.parse(File.read(Rails.root.to_s + "/spec/support/jobs_api/more_than_25_results.json"))[0..10].to_json)
+              to_return(status: 200, body: JSON.parse(File.read(Rails.root.to_s + "/spec/support/jobs_api/more_than_25_results.json"))[0..10].to_json)
             # Second page
             stub_request(:get, "#{ENV['JOBS_API_BASE_URL']}/search.json?from=10&query=java%20jobs%20in%20washington,%20dc&size=11").
-              to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/jobs_api/less_than_10_results.json"))
+              to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/jobs_api/less_than_10_results.json"))
           end
 
           it 'should page through featured results' do
@@ -169,9 +169,9 @@ describe 'JobSearch' do
           before do
             # First page of 10
             stub_request(:get, "#{ENV['JOBS_API_BASE_URL']}/search.json?from=0&query=java%20jobs%20in%20washington,%20dc&size=11").
-              to_return(:status => 200, :body => JSON.parse(File.read(Rails.root.to_s + "/spec/support/jobs_api/more_than_25_results.json"))[0..9].to_json)
+              to_return(status: 200, body: JSON.parse(File.read(Rails.root.to_s + "/spec/support/jobs_api/more_than_25_results.json"))[0..9].to_json)
             stub_request(:get, "#{ENV['JOBS_API_BASE_URL']}/search.json?from=10&query=java%20jobs%20in%20washington,%20dc&size=11").
-              to_return(:status => 200, :body => [].to_json)
+              to_return(status: 200, body: [].to_json)
           end
 
           before do
@@ -198,25 +198,25 @@ describe 'JobSearch' do
         before do
           # Featured results
           stub_request(:get, "#{ENV['JOBS_API_BASE_URL']}/search.json?from=0&query=java%20jobs%20in%20washington,%20dc&size=11").
-            to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/jobs_api/less_than_10_results.json"))
+            to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/jobs_api/less_than_10_results.json"))
 
           # First page of results from us.jobs
           stub_request(:get, "http://api2.us.jobs/?cname=&ind=&key=#{ENV['US_JOBS_API_KEY']}&kw=java&moc=&onet=&rd1=25&re=25&rs=1&searchType=basic&tm=&zc=washington,%20dc").
-            to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/us.jobs/more_than_25_results.xml"))
+            to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/us.jobs/more_than_25_results.xml"))
 
           # Second page of results from us.jobs
           stub_request(:get, "http://api2.us.jobs/?cname=&ind=&key=#{ENV['US_JOBS_API_KEY']}&kw=java&moc=&onet=&rd1=25&re=50&rs=26&searchType=basic&tm=&zc=washington,%20dc").
-            to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/us.jobs/more_than_25_results.xml"))
+            to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/us.jobs/more_than_25_results.xml"))
 
           # Third page of results from us.jobs
           stub_request(:get, "http://api2.us.jobs/?cname=&ind=&key=#{ENV['US_JOBS_API_KEY']}&kw=java&moc=&onet=&rd1=25&re=75&rs=51&searchType=basic&tm=&zc=washington,%20dc").
-            to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/us.jobs/more_than_25_results.xml"))
+            to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/us.jobs/more_than_25_results.xml"))
         end
 
         it "should scroll to the top of the results on pagination", js: true do
           # I think verifying that scrolling happened is about as close as you
           # can get with this.
-          WebMock.disable_net_connect!(:allow_localhost => true)
+          WebMock.disable_net_connect!(allow_localhost: true)
           visit for_job_seekers_path
           fill_in 'kw', with: "java"
           fill_in 'zc', with: "washington, dc"
@@ -260,9 +260,9 @@ describe 'JobSearch' do
     context "when there are no search results" do
       before do
         stub_request(:get, "http://api2.us.jobs/?cname=&ind=&key=#{ENV['US_JOBS_API_KEY']}&kw=xxxyyy&moc=&onet=&rd1=25&re=25&rs=1&searchType=basic&tm=&zc=washington,%20dc").
-          to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/us.jobs/nojobs.xml"))
+          to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/us.jobs/nojobs.xml"))
         stub_request(:get, "#{ENV['JOBS_API_BASE_URL']}/search.json?from=0&query=xxxyyy%20jobs%20in%20washington,%20dc&size=11").
-          to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/jobs_api/empty.json"))
+          to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/jobs_api/empty.json"))
       end
 
       it "should display the no results message" do

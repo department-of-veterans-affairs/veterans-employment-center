@@ -35,23 +35,23 @@ $(document).ready(function(){
             <% unless current_user.employer.approved? %>
               <div class="action-bar">
                 <div class="row">
-                  <div class="small-12 columns">  		
+                  <div class="small-12 columns">
                 		If you are unable to view Veteran contact information when searching the Veteran profile bank, contact the technical support mailbox at <a href="mailto:OEOECSUPPORT@VA.GOV">OEOECSUPPORT@VA.GOV</a>
                   </div>
                 </div>
               </div>
             <% end %>
           <% end %>
-  
+
           <% if current_user.va_admin? %>
             <div class="row">
               <div class="small-12 columns">
-                <p><%= link_to 'Download a spreadsheet of all veterans'.html_safe, :action => 'download_all_veterans', :format => :csv %></p>
+                <p><%= link_to 'Download a spreadsheet of all veterans'.html_safe, action: 'download_all_veterans', format: :csv %></p>
               </div>
             </div>
           <% end %>
 
-          <div class="filters">       
+          <div class="filters">
             <fieldset>
 
             <%= search_form_for @q, html: { class: "f" } do |f| %>
@@ -79,47 +79,47 @@ $(document).ready(function(){
               <div class="small-6 columns">
                 <label>Location
                   <%= f.fields_for :location do |loc_fields| %>
-                    <%= loc_fields.text_field :full_name, :id => 'autocomplete' %>
+                    <%= loc_fields.text_field :full_name, id: 'autocomplete' %>
                   <% end %>
                 </label>
               </div>
 
               <div class="small-6 columns">
                 <label>Special Status
-                  <%= f.select :status_categories_cont, Veteran::STATUS_CATEGORIES, :include_blank => true %>
+                  <%= f.select :status_categories_cont, Veteran::STATUS_CATEGORIES, include_blank: true %>
                 </label>
               </div>
 
               <div class="small-6 columns">
                 <label>Applied for Accelerated Learning Program
-                  <%= f.select :applied_for_alp_date_not_null, [["Yes", true],["No", false]],  :include_blank => true  %>
+                  <%= f.select :applied_for_alp_date_not_null, [["Yes", true],["No", false]], include_blank: true  %>
                 </label>
               </div>
 
               <div class="small-6 columns">
                 <label>Last Updated
-                  <%= f.select(:updated_at_gt, [["Last 30 Days", Date.today - 30],["Last 90 Days", Date.today - 90]], :include_blank => true) %>
+                  <%= f.select(:updated_at_gt, [["Last 30 Days", Date.today - 30],["Last 90 Days", Date.today - 90]], include_blank: true) %>
                 </label>
               </div>
 
               <div class="small-6 columns">
                 <label>Available as of
                   <div>
-                    <%= f.date_select :availability_date_lteq, {:include_blank => true, :default => nil, :start_year => Time.now.year, :end_year => Time.now.year + 5, :order => [:month, :day, :year]}, {:class => "date"}  %>
+                    <%= f.date_select :availability_date_lteq, {include_blank: true, default: nil, start_year: Time.now.year, end_year: Time.now.year + 5, order: [:month, :day, :year]}, {class: "date"}  %>
                   </div>
                 </label>
               </div>
 
               <div class="small-6 columns">
                 <label>Minimum Education Level
-                  <%= f.select :by_minimum_education_level, EducationLevel::LEVELS, :include_blank => true %>
+                  <%= f.select :by_minimum_education_level, EducationLevel::LEVELS, include_blank: true %>
                 </label>
               </div>
             </div>
 
             <div class="row form-group dataItem">
               <div class="small-12 medium-8 columns">
-                <%= f.submit "Search", class: "button primary", id:"veteran-search" %>
+                <%= f.submit "Search", class: "button primary", id: "veteran-search" %>
               </div>
             </div>
 

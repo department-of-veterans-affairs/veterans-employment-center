@@ -4,7 +4,7 @@ module DataCreator
     csv_text = File.read('db/seed/Mil2FedJobsSupportFiles/all_mos.csv')
     mos_list = CSV.open("db/seed/Mil2FedJobsSupportFiles/mos_list.csv", "a+")
     mos_list1 = CSV.open("db/seed/Mil2FedJobsSupportFiles/mos_list1.csv", "w")
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.parse(csv_text, headers: true)
 
     all_codes = {}
 
@@ -42,7 +42,7 @@ module DataCreator
 
     # get definitions matched up
     csv_text = File.read('db/seed/Mil2FedJobsSupportFiles/all_mos.csv')
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.parse(csv_text, headers: true)
     csv.each_with_index do |row, i|
       rowhash = row.to_hash
       code = rowhash['code']
@@ -68,7 +68,7 @@ module DataCreator
     end
 
     mos_list1 = File.read('db/seed/Mil2FedJobsSupportFiles/mos_list1.csv')
-    csv = CSV.parse(mos_list1, :headers => true)
+    csv = CSV.parse(mos_list1, headers: true)
     csv.each do |row|
       rowhash = row.to_hash
       mo = MilitaryOccupation.find_by_code_and_service_and_active(rowhash['code'], rowhash['service'], rowhash['active'])
@@ -83,7 +83,7 @@ module DataCreator
 
   def self.connect_federal_jobs_to_mocs
     csv_text = File.read('db/seed/Mil2FedJobsSupportFiles/XWALK.csv')
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.parse(csv_text, headers: true)
     csv = csv.take(1)  if Rails.env == 'test'
     csv.each_with_index do |row, i|
       rowhash = row.to_hash
@@ -118,14 +118,14 @@ module DataCreator
   def self.get_onet_jobs_and_skills
     # download this file from ONET http://www.onetcenter.org/taxonomy/2010/list.html
     csv_text = File.read('db/seed/Mil2FedJobsSupportFiles/2010_Occupations.csv')
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.parse(csv_text, headers: true)
     csv = csv.take(1)   if Rails.env == 'test'
     csv.each do |row|
       rowhash = row.to_hash
       code = rowhash["code"]
       # run this to update the jobs in the future
       begin
-        overview = HTTParty.post("http://services.onetcenter.org/v1.2/ws/mnm/careers/"+code, {:headers => { "Authorization" => "Basic #{ENV['ONET_TOKEN']}"}})
+        overview = HTTParty.post("http://services.onetcenter.org/v1.2/ws/mnm/careers/"+code, {headers: { "Authorization" => "Basic #{ENV['ONET_TOKEN']}"}})
         element = Hash.from_xml((Nokogiri::XML(overview).search("tags").first).to_s)
         tags = element.nil? ? nil : element["tags"]
         is_green = tags.nil? ?  false : tags["green"]=="true"
@@ -143,7 +143,7 @@ module DataCreator
       job_skill_matches = []
 
       begin
-        knowledge_response = HTTParty.post("http://services.onetcenter.org/v1.2/ws/online/occupations/#{code}/summary/knowledge", {:headers => { "Authorization" => "Basic #{ENV['ONET_TOKEN']}"}})
+        knowledge_response = HTTParty.post("http://services.onetcenter.org/v1.2/ws/online/occupations/#{code}/summary/knowledge", {headers: { "Authorization" => "Basic #{ENV['ONET_TOKEN']}"}})
         Nokogiri::HTML(knowledge_response).search("element").each do |element|
           job_skill = JobSkill.find_by_code(element.attribute("id").value)
           if (job_skill.nil?)
@@ -159,7 +159,7 @@ module DataCreator
       end
 
       begin
-        skills_response = HTTParty.post("http://services.onetcenter.org/v1.2/ws/online/occupations/#{code}/summary/skills", {:headers => { "Authorization" => "Basic #{ENV['ONET_TOKEN']}"}})
+        skills_response = HTTParty.post("http://services.onetcenter.org/v1.2/ws/online/occupations/#{code}/summary/skills", {headers: { "Authorization" => "Basic #{ENV['ONET_TOKEN']}"}})
         Nokogiri::HTML(skills_response).search("element").each do |element|
           job_skill = JobSkill.find_by_code(element.attribute("id").value)
           if (job_skill.nil?)
@@ -184,7 +184,7 @@ module DataCreator
 
   def self.connect_definitions
     csv_text = File.read('db/seed/Mil2FedJobsSupportFiles/all_mos.csv')
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.parse(csv_text, headers: true)
     csv.each_with_index do |row, i|
       rowhash = row.to_hash
       code = rowhash['code']
@@ -212,7 +212,7 @@ module DataCreator
 
   def self.import_federal_jobs
     csv_text = File.read('db/seed/Mil2FedJobsSupportFiles/federal_jobs.csv')
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.parse(csv_text, headers: true)
     csv = csv.take(1)  if Rails.env == 'test'
     csv.each_with_index do |row, i|
       rowhash = row.to_hash
@@ -224,7 +224,7 @@ module DataCreator
 
   def self.import_mosdb
     csv_text = File.read('db/seed/Mil2FedJobsSupportFiles/mosdb.csv')
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.parse(csv_text, headers: true)
     csv.each_with_index do |row, i|
       rowhash = row.to_hash
       mo = MilitaryOccupation.find_by_code(rowhash["code"])
@@ -328,7 +328,7 @@ module DataCreator
   end
 
   def self.code_exists(code)
-    response = HTTParty.post("http://services.onetcenter.org/ws/veterans/military", {:headers => { "Authorization" => "Basic #{ENV['ONET_TOKEN']}"}, body: {keyword: code}})
+    response = HTTParty.post("http://services.onetcenter.org/ws/veterans/military", {headers: { "Authorization" => "Basic #{ENV['ONET_TOKEN']}"}, body: {keyword: code}})
     return Nokogiri::HTML(response).search("career").length > 0
   end
 

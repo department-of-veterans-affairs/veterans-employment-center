@@ -24,33 +24,33 @@
 	  <div class="row form-group">
 		  <div class="small-12 columns">
 			  <%= f.label :company_name, "Employer Name" %>
-			  <%= f.text_field :company_name, :class => "form-control" %>
+			  <%= f.text_field :company_name, class: "form-control" %>
 		  </div>
 	  </div>
 
 	  <div class="row form-group">
 		  <div class="small-12 medium-6 columns">
 			  <%= f.label :ein, "Employer Identification Number (no dashes)" %>
-			  <%= f.text_field :ein, :class => "form-control" %>
+			  <%= f.text_field :ein, class: "form-control" %>
 		  </div>
 
   		<div class="small-12 medium-6 columns">
   			<%= f.label :phone, "Phone Number" %>
-  			<%= f.text_field :phone, :class => "form-control" %>
+  			<%= f.text_field :phone, class: "form-control" %>
   		</div>
   	</div>
 
   	<div class="row form-group">
   		<div class="small-12 columns">
   			<%= f.label :street_address, "Street Address" %>
-  			<%= f.text_field :street_address, :class => "form-control" %>
+  			<%= f.text_field :street_address, class: "form-control" %>
   		</div>
   	</div>
 
   	<div class="row form-group">
   		<div class="small-12 medium-8 columns">
   			<%= f.label :city, "City" %>
-        <%= f.text_field :city, :class => "form-control" %>
+        <%= f.text_field :city, class: "form-control" %>
   		</div>
 
 
@@ -61,7 +61,7 @@
 
   		<div class="small-12 medium-2 columns">
         <%= f.label :zip, "Zip Code" %>
-  			<%= f.text_field :zip, :class => "form-control" %>
+  			<%= f.text_field :zip, class: "form-control" %>
   		</div>
 
   	</div>
@@ -69,11 +69,11 @@
     <div class="row form-group">
       <div class="small-12 medium-6 columns">
         <%= f.label :poc_name, "Point of Contact Name" %>
-        <%= f.text_field :poc_name, :class => "form-control" %>
+        <%= f.text_field :poc_name, class: "form-control" %>
       </div>
       <div class="small-12 medium-6 columns">
         <%= f.label :poc_email, "Point of Contact Email" %>
-        <%= f.text_field :poc_email, :class => "form-control" %>
+        <%= f.text_field :poc_email, class: "form-control" %>
       </div>
     </div>
 
@@ -84,7 +84,7 @@
   	  <div class="small-12 medium-6 columns">
   	    <%= f.label :commit_to_hire, "We are committed to hiring this many Veterans" %>
         <span class="tip">(no commas)</span>
-  		  <%= f.number_field :commit_to_hire, :class => "form-control" %>
+  		  <%= f.number_field :commit_to_hire, class: "form-control" %>
   	  </div>
 
   	  <div class="small-12 medium-3 columns">
@@ -94,14 +94,14 @@
                 value:       (f.object.commit_date.strftime("%m/%d/%Y") if f.object.commit_date.present?),
                 err:         "enter date like mm/dd/yyyy",
                 placeholder: "MM/DD/YYYY",
-                data:        {"mask" => "99/99/9999"},
+                data:        {mask: "99/99/9999"},
                 pattern:     "^[012]\\d/[0123]\\d/(?:19|20)\\d{2}$",
                 class: "form-control" %>
   	  </div>
 
   	  <div class="small-12 medium-3 columns">
   	    <%= f.label :commit_hired, "We have hired this many so far" %><span class="tip">(no commas)</span>
-  		  <%= f.number_field :commit_hired, :class => "form-control" %>
+  		  <%= f.number_field :commit_hired, class: "form-control" %>
 
   	  </div>
   	</div>
@@ -127,7 +127,7 @@
             <span class="prefix">http://</span>
           </div>
           <div class="small-11 columns">
-		        <%= f.text_field :website, :class => "form-control" %>
+		        <%= f.text_field :website, class: "form-control" %>
           </div>
 	      </div>
       </div>
@@ -138,21 +138,21 @@
 	      <%= f.label :location, "Location (to display publicly with your commitment): " %>
 	    </div>
 		  <div class="small-12 columns">
-		    <%= f.text_field :location, :class => "form-control" %>
+		    <%= f.text_field :location, class: "form-control" %>
 	    </div>
 	  </div>
 
 	  <div class="row form-group">
 	    <div class="small-12 columns">
 	      <%= f.label :note, "Types of positions you are looking to fill: " %>
-		    <%= f.text_field :note, :class => "form-control" %>
+		    <%= f.text_field :note, class: "form-control" %>
 	    </div>
 	  </div>
 
     <div class="row form-group">
       <div class="small-12 columns">
         <%= f.label :job_postings_url, "URL of page with job postings" %>
-        <%= f.text_field :job_postings_url, :class => "form-control" %>
+        <%= f.text_field :job_postings_url, class: "form-control" %>
       </div>
       <div class="small-12 columns">
         <p>
@@ -169,14 +169,14 @@
       <div class="row form-group">
 		    <div class="small-12 columns">
 			    <%= f.label :admin_notes, "Admin Notes" %>
-				  <%= f.text_field :admin_notes, :class => "form-control" %>
+				  <%= f.text_field :admin_notes, class: "form-control" %>
 		    </div>
 	    </div>
 
       <div class="row form-group">
   		  <div class="small-12 columns">
   			  <%= f.label :approved, "Approved" %>
-  			  <%= f.check_box :approved, :class => "form-control" %>
+  			  <%= f.check_box :approved, class: "form-control" %>
   		  </div>
   	  </div>
     <% end %>
@@ -184,7 +184,7 @@
   	<div class="row">
 		  <div class="small-12 columns">
         <div class="actions">
-    		  <%= f.submit :class => "button primary" %>
+    		  <%= f.submit class: "button primary" %>
 		    </div>
       </div>
   	</div>

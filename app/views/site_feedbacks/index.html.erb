@@ -16,7 +16,7 @@
         <div class="right">
           <%= will_paginate @site_feedbacks %>
         </div>
-        <p><%= link_to 'Download a spreadsheet of all site feedback'.html_safe, :action => 'download_site_feedback', :format => :csv %></p>
+        <p><%= link_to 'Download a spreadsheet of all site feedback'.html_safe, action: 'download_site_feedback', format: :csv %></p>
           <table class="table-striped table small" id="site_feedbacks">
             <thead>
               <tr>

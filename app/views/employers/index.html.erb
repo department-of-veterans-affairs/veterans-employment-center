@@ -38,7 +38,7 @@
           <%= will_paginate @employers.data %>
         </div>
         <div>
-          <p><%= link_to 'Download a spreadsheet of all employers'.html_safe, :action => 'download_employers', :format => :csv %></p>
+          <p><%= link_to 'Download a spreadsheet of all employers'.html_safe, action: 'download_employers', format: :csv %></p>
           <table class="table-striped table small" id="employers">
             <thead>
               <tr>

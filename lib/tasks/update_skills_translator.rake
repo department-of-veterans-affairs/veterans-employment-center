@@ -4,7 +4,7 @@ include SkillsTranslatorUpdateModel
 namespace :db do
   desc 'Updates skills relevance and skills translator model number.'
   task :update_skills_translator, [:from_model_id] => :environment do |t, args|
-    args.with_defaults(:from_model_id => ENV["SKILLS_TRANSLATOR_MODEL_ID"])
+    args.with_defaults(from_model_id: ENV["SKILLS_TRANSLATOR_MODEL_ID"])
     from_model_id = args[:from_model_id]
     if not from_model_id.present?
       fail %q(You must call this task with the target model id

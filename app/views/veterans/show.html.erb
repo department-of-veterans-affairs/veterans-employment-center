@@ -35,9 +35,9 @@
             <% if user_signed_in? && current_user.is_employer? %>
               <div class="right">
                 <% if current_user.employer.favorited?(@veteran) %>
-                  <%= link_to favorite_veteran_path(@veteran, type: "unfavorite"), :title => "Remove Favorite", method: :put do %><%= image_tag "star.png", :align => 'center' %>Remove from favorites<% end %>
+                  <%= link_to favorite_veteran_path(@veteran, type: "unfavorite"), title: "Remove Favorite", method: :put do %><%= image_tag "star.png", align: 'center' %>Remove from favorites<% end %>
                 <% else %>
-                  <%= link_to favorite_veteran_path(@veteran, type: "favorite"), :title => "Favorite", method: :put do %><%= image_tag "empty_star.png" %>Add to favorites<% end %>
+                  <%= link_to favorite_veteran_path(@veteran, type: "favorite"), title: "Favorite", method: :put do %><%= image_tag "empty_star.png" %>Add to favorites<% end %>
                 <% end %>
               </div>
             <% end %>
@@ -64,11 +64,11 @@
                     <div class="small-12 medium-3 align-right columns">
                       <% if user_signed_in? %>
                         <% if current_user.is_veteran? %>
-                          <%= link_to t('.destroy', :default => "Delete"),
+                          <%= link_to t('.destroy', default: "Delete"),
                                       veteran_path(@veteran),
-                                      :method => 'delete',
-                                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure? This will delete your profile entirely from the site.')) },
-                                      :class => 'button tertiary' %>
+                                      method: 'delete',
+                                      data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure? This will delete your profile entirely from the site.')) },
+                                      class: 'button tertiary' %>
                         <% end %>
                       <% end %>
 
@@ -131,9 +131,9 @@
                             <p><span id="organization"><%= experience.organization %></span></p>
                             <% if experience.job_title %><%= experience.job_title %><% end %>
                             <% if experience.start_date %>
-                              <p><%= l(experience.start_date, :format => "%B %d, %Y") %>
+                              <p><%= l(experience.start_date, format: "%B %d, %Y") %>
                               <% if experience.end_date %>
-                               to <%= l(experience.end_date, :format => "%B %d, %Y") %>
+                               to <%= l(experience.end_date, format: "%B %d, %Y") %>
                               <% end %>
                             <% end %>
                             <% if experience.hours.present? %>
@@ -161,7 +161,7 @@
                             <p><span id="organization"><%= experience.educational_organization %></span></p>
                             <% if experience.credential_type %><%= experience.credential_type %><% end %> <% if experience.credential_topic %> in <%= experience.credential_topic %><% end %>
                             <% if experience.start_date %>
-                              <p><%= l(experience.start_date, :format => "%B %d, %Y") %><% if experience.end_date %> to <%= l(experience.end_date, :format => "%B %d, %Y") %><% end %></p>
+                              <p><%= l(experience.start_date, format: "%B %d, %Y") %><% if experience.end_date %> to <%= l(experience.end_date, format: "%B %d, %Y") %><% end %></p>
                             <% end %>
                             <% if experience.description.present? %>
                               <ul>
@@ -187,7 +187,7 @@
                             <% if experience.rank.present? %><p>Rank: <%= experience.rank %></p><% end %>
                             <% if experience.job_title %><%= experience.job_title %><% end %>
                             <% if experience.start_date %>
-                              <p><%= l(experience.start_date, :format => "%B %d, %Y") %><% if experience.end_date %> to <%= l(experience.end_date, :format => "%B %d, %Y") %><% end %></p>
+                              <p><%= l(experience.start_date, format: "%B %d, %Y") %><% if experience.end_date %> to <%= l(experience.end_date, format: "%B %d, %Y") %><% end %></p>
                             <% end %>
                             <% if experience.description.present? %>
                               <ul>
@@ -211,7 +211,7 @@
                           <% end %>
                             <% if experience.job_title %><%= experience.job_title %><% end %>
                             <% if experience.start_date %>
-                              <p><%= l(experience.start_date, :format => "%B %d, %Y") %><% if experience.end_date %> to <%= l(experience.end_date, :format => "%B %d, %Y") %><% end %></p>
+                              <p><%= l(experience.start_date, format: "%B %d, %Y") %><% if experience.end_date %> to <%= l(experience.end_date, format: "%B %d, %Y") %><% end %></p>
                             <% if experience.description.present? %>
                               <ul>
                                 <li><%= experience.description %></li>
@@ -277,12 +277,12 @@
                     </div><!-- end row -->
                   <% end %>
 
-                  <hr />  
+                  <hr />
                   <% if @veteran.availability_date %>
                     <div class="row">
                       <div class="small-12 columns">
                         <div class="resume_section" id="availability_date">
-                          <p><b>Candidate&rsquo;s Estimated Availability Date:</b> <%= l(@veteran.availability_date, :format => "%B %d, %Y") %></p>
+                          <p><b>Candidate&rsquo;s Estimated Availability Date:</b> <%= l(@veteran.availability_date, format: "%B %d, %Y") %></p>
                         </div>
                       </div>
                     </div><!-- end row -->
@@ -290,7 +290,7 @@
                   <div class="row">
                     <div class="small-12 columns">
                       <div class="resume_section" id="last_modified">
-                        <p><b>Profile Last Updated:</b> <%= l(@veteran.updated_at, :format => "%B %d, %Y") %></p>
+                        <p><b>Profile Last Updated:</b> <%= l(@veteran.updated_at, format: "%B %d, %Y") %></p>
                       </div>
                     </div>
                   </div><!-- end row -->

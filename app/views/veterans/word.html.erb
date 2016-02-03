@@ -128,10 +128,10 @@
       <b><%= experience.organization %></b><br>
       <%= experience.job_title %>
       <% if experience.start_date %>
-        - <%= l(experience.start_date, :format => :written_out) %>
+        - <%= l(experience.start_date, format: :written_out) %>
       <% end %>
       <% if experience.end_date %>
-       to <%= l(experience.end_date, :format => :written_out) %>
+       to <%= l(experience.end_date, format: :written_out) %>
       <% end %>
       <% if experience.hours %>
        to <%= experience.hours %> hrs/w
@@ -155,10 +155,10 @@
        <% if experience.rank.present? %>Rank: <%= experience.rank %><br><% end %>
       <%= experience.job_title %>
       <% if experience.start_date %>
-        - <%= l(experience.start_date, :format => :written_out) %>
+        - <%= l(experience.start_date, format: :written_out) %>
       <% end %>
       <% if experience.end_date %>
-       to <%= l(experience.end_date, :format => :written_out) %>
+       to <%= l(experience.end_date, format: :written_out) %>
       <% end %>
       <% if experience.hours %>
        to <%= experience.hours %> hrs/w
@@ -180,10 +180,10 @@
       <b><%= experience.educational_organization %></b><br>
       <%= experience.credential_type %> <%= experience.credential_topic %>
       <% if experience.start_date %>
-        <br><%= l(experience.start_date, :format => :written_out) %>
+        <br><%= l(experience.start_date, format: :written_out) %>
       <% end %>
       <% if experience.end_date %>
-       to <%= l(experience.end_date, :format => :written_out) %>
+       to <%= l(experience.end_date, format: :written_out) %>
       <% end %>
       </p>
       <ul>
@@ -200,10 +200,10 @@
       <b><%= experience.organization %></b><br />
       <%= experience.job_title %>
       <% if experience.start_date %>
-        <br /><%= l(experience.start_date, :format => :written_out) %>
+        <br /><%= l(experience.start_date, format: :written_out) %>
       <% end %>
       <% if experience.end_date %>
-       to <%= l(experience.end_date, :format => :written_out) %>
+       to <%= l(experience.end_date, format: :written_out) %>
       <% end %>
       </p>
       <ul>
@@ -228,7 +228,7 @@
     <h3 class="print-doc">Awards</h3>
     <ul>
     <% @veteran.awards.each do |aw| %>
-    <li><%= aw.title %> from <%= aw.organization %> <% if aw.date? %>on <%= l(aw.date, :format => :written_out) %><% end %></li>
+    <li><%= aw.title %> from <%= aw.organization %> <% if aw.date? %>on <%= l(aw.date, format: :written_out) %><% end %></li>
     <% end %>
     </ul>
   <% end %>
@@ -261,5 +261,5 @@
     <% end %>
 
     <% if @veteran.availability_date %>
-      <p><b>Estimated Availability Date:</b> <%= l(@veteran.availability_date, :format => "%B %d, %Y") %></p>
+      <p><b>Estimated Availability Date:</b> <%= l(@veteran.availability_date, format: "%B %d, %Y") %></p>
     <% end %>

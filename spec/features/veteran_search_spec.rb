@@ -4,8 +4,8 @@ describe 'Veteran Search' do
 
   context 'when there are no search results' do
     it "should display 0 results" do
-      @user1 = User.create(:email => 'suzy@veteran.org', :password => 'Password')
-      @user2 = User.create(:email => 'robin.h@sherwood.org', :password => 'Password')
+      @user1 = User.create(email: 'suzy@veteran.org', password: 'Password')
+      @user2 = User.create(email: 'robin.h@sherwood.org', password: 'Password')
       @vet1 = create :veteran, name: "Suzy Veteran", objective: "Build great web apps.", user: @user1
       @vet2 = create :veteran, name: "Robin Hood", desiredPosition: ["Archer, Leader, Teacher"], objective: "Become a better person. Help others.",  user: @user2
       approved_employer = employer_user
@@ -21,8 +21,8 @@ describe 'Veteran Search' do
   context 'when there are search results' do
 
     before do
-      @user1 = User.create(:email => 'suzy@veteran.org', :password => 'Password')
-      @user2 = User.create(:email => 'robin.h@sherwood.org', :password => 'Password')
+      @user1 = User.create(email: 'suzy@veteran.org', password: 'Password')
+      @user2 = User.create(email: 'robin.h@sherwood.org', password: 'Password')
       approved_employer = employer_user
       approved_employer.employer.update_attributes(approved: true)
       sign_in_as approved_employer
@@ -184,9 +184,9 @@ describe 'Veteran Search' do
         @vet1 = create :veteran, name: "Suzy Veteran", objective: "Build great web apps.", user: @user1, visible: true, availability_date: "2017-01-01"
         @vet2 = create :veteran, name: "Max Veteran", objective: "Build greater web apps.", user: @user2, visible: true, availability_date: "2016-12-01"
         @vet5 = create :veteran, name: "Robin Hood",  objective: '4. Become a better person. Try to help others.', user: @user2, visible: true, availability_date: "2017-01-02"
-        select('January', :from => 'q_availability_date_lteq_2i')
-        select('1', :from => 'q_availability_date_lteq_3i')
-        select('2017', :from => 'q_availability_date_lteq_1i')
+        select('January', from: 'q_availability_date_lteq_2i')
+        select('1', from: 'q_availability_date_lteq_3i')
+        select('2017', from: 'q_availability_date_lteq_1i')
         experience = create :experience, veteran: @vet1,  job_title: "Learner"
         experience = create :experience, veteran: @vet2,  job_title: "Learner"
         experience = create :experience, veteran: @vet5,  job_title: "Learner"
@@ -250,7 +250,7 @@ describe 'Veteran Search' do
 
     context 'when AND operator is used' do
       it "should display results that have a field matching both keywords" do
-        @user3 = User.create(:email => 'robin.h@sherwood.org', :password => 'Password')
+        @user3 = User.create(email: 'robin.h@sherwood.org', password: 'Password')
         @vet1 = create :veteran, name: "Suzy Veteran", objective: "Build great web apps.", user: @user1, visible: true
         @vet2 = create :veteran, name: "Max Veteran",  objective: "Build great business apps", user: @user2, visible: true
         @vet3 = create :veteran, name: "Robin Hood",  objective: "Help urban development", user: @user3, visible: true
@@ -264,7 +264,7 @@ describe 'Veteran Search' do
 
         fill_in 'keywords', with: 'software, developer'
         select 'all', from: 'Match'
-        
+
         click_button('veteran-search')
         expect(page).to have_content @vet1.objective
         expect(page).to have_content @vet2.objective
@@ -280,7 +280,7 @@ describe 'Veteran Search' do
         @vet2.save
 
         fill_in 'keywords', with: 'accounting, infantry'
-        
+
         click_button('veteran-search')
         expect(page).to have_content @vet1.objective
         expect(page).to have_no_content @vet2.objective
@@ -304,7 +304,7 @@ describe 'Veteran Search' do
 
     context 'when OR operator is used' do
       it "should display results that have a field matching both keywords" do
-        @user3 = User.create(:email => 'robin.h@sherwood.org', :password => 'Password')
+        @user3 = User.create(email: 'robin.h@sherwood.org', password: 'Password')
         @vet1 = create :veteran, name: "Suzy Veteran", objective: "Build great web apps.", user: @user1, visible: true
         @vet2 = create :veteran, name: "Max Veteran",  objective: "Build great business apps", user: @user2, visible: true
         @vet3 = create :veteran, name: "Robin Hood",  objective: "Help urban development", user: @user3, visible: true
@@ -325,7 +325,7 @@ describe 'Veteran Search' do
       end
 
       it "should display results that have a field matching either keyword" do
-        @user3 = User.create(:email => 'robin.h@sherwood.org', :password => 'Password')
+        @user3 = User.create(email: 'robin.h@sherwood.org', password: 'Password')
         @vet1 = create :veteran, name: "Suzy Veteran", objective: "Build great web apps.", user: @user1, visible: true
         @vet2 = create :veteran, name: "Max Veteran",  objective: "Build great business apps", user: @user2, visible: true
         @vet3 = create :veteran, name: "Robin Hood",  objective: "Help urban development", user: @user3, visible: true

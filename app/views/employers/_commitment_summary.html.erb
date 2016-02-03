@@ -2,7 +2,7 @@
   <%= employer.company_name %>
 
 <% else %>
-  <%= link_to employer.company_name, employer_website(employer.website), :target => "_blank" %>
+  <%= link_to employer.company_name, employer_website(employer.website), target: "_blank" %>
 <% end %>
 <br />
 <%= employer.location %>

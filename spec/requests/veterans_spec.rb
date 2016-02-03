@@ -33,8 +33,8 @@ describe "Veterans" do
 
     context "when user is a signed in employer" do
       before do
-        @user1 = create :user, :email => 'suzy@veteran.org', :password => 'Password'
-        @user2 = create :user, :email => 'soozy@veteran.org', :password => 'Password'
+        @user1 = create :user, email: 'suzy@veteran.org', password: 'Password'
+        @user2 = create :user, email: 'soozy@veteran.org', password: 'Password'
         create :veteran, name: "Suzy Veteran", email: 'suzy@veteran.org', objective: "Build great web apps.", user: @user1, visible: true
         create :veteran, name: "Soozy Veteran", email: 'soozy@veteran.org', objective: "Build better web apps.", user: @user2, visible: true
         @unapproved_employer = employer_user
@@ -66,8 +66,8 @@ describe "Veterans" do
 
     context "when user is an admin" do
       before do
-        @user1 = create :user, :email => 'suzy@veteran.org', :password => 'Password'
-        @user2 = create :user, :email => 'soozy@veteran.org', :password => 'Password'
+        @user1 = create :user, email: 'suzy@veteran.org', password: 'Password'
+        @user2 = create :user, email: 'soozy@veteran.org', password: 'Password'
         create :veteran, name: "Suzy Veteran", email: 'suzy@veteran.org', objective: "Build great web apps.", user: @user1, visible: true
         create :veteran, name: "Soozy Veteran", email: 'soozy@veteran.org', objective: "Build better web apps.", user: @user2, visible: true
       end
@@ -90,8 +90,8 @@ describe "Veterans" do
 
   describe "GET /candidate_veterans_download" do
     before do
-      @user1 = create :user, :email => 'suzy@veteran.org', :password => 'Password'
-      @user2 = create :user, :email => 'soozy@veteran.org', :password => 'Password'
+      @user1 = create :user, email: 'suzy@veteran.org', password: 'Password'
+      @user2 = create :user, email: 'soozy@veteran.org', password: 'Password'
       create :veteran, name: "Suzy Veteran", email: 'suzy@veteran.org', objective: "Build great web apps.", user: @user1, visible: true
       create :veteran, name: "Soozy Veteran", email: 'soozy@veteran.org', objective: "Build better web apps.", user: @user2, visible: true
       @approved_employer = employer_user
@@ -116,8 +116,8 @@ describe "Veterans" do
 
   describe "GET /download_all_veterans" do
     before do
-      @user1 = create :user, :email => 'suzy@veteran.org', :password => 'Password'
-      @user2 = create :user, :email => 'soozy@veteran.org', :password => 'Password'
+      @user1 = create :user, email: 'suzy@veteran.org', password: 'Password'
+      @user2 = create :user, email: 'soozy@veteran.org', password: 'Password'
       create :veteran, name: "Suzy Veteran", email: 'suzy@veteran.org', objective: "Build great web apps.", user: @user1, visible: true
       create :veteran, name: "Soozy Veteran", email: 'soozy@veteran.org', objective: "Build better web apps.", user: @user2, visible: true
     end

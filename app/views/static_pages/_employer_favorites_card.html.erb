@@ -1,15 +1,15 @@
 <% if current_user.employer.favorites.count > 0 %>
-  <%= link_to favorites_path, :class => "long" do %>
+  <%= link_to favorites_path, class: "long" do %>
   <h4 class="alternate">Your Favorite Veterans</h4>
   <% if current_user.employer.favorites.count > 1 %>
       <span>You currently have <%= current_user.employer.favorites.count %> favorited candidates.</span>
     <% else %>
-      <span>You currently have 1 favorited candidate.</span>   
+      <span>You currently have 1 favorited candidate.</span>
     <% end %>
     <button class="button expand">View Your Favorites</button>
   <% end %>
 <% else %>
-  <%= link_to veterans_path, :class => "long" do %>
+  <%= link_to veterans_path, class: "long" do %>
     <h4 class="alternate">Your Favorite Veterans</h4>
     <span>You have not favorited any veterans yet.</span>
     <button class="button expand">Find Candidates</button>

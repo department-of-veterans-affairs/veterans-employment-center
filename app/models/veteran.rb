@@ -7,14 +7,14 @@ class Veteran < ActiveRecord::Base
   has_many :experiences, dependent: :destroy, inverse_of: :veteran
   has_many :locations, dependent: :destroy
   has_many :references, dependent: :destroy
-  has_many :favorite_veterans, :dependent => :destroy
-  has_many :favorited_by, :through => :favorite_veterans, source: :employer
+  has_many :favorite_veterans, dependent: :destroy
+  has_many :favorited_by, through: :favorite_veterans, source: :employer
   has_and_belongs_to_many :skills, join_table: :veteran_skills
 
-  validates_presence_of :name, :message => "cannot be blank or employers cannot contact you"
-  validates_presence_of :email, :message => "cannot be blank or employers cannot contact you"
-  validates_length_of :name, :maximum => 255, :message => "cannot exceed 255 characters"
-  validates_length_of :email, :maximum => 255, :message => "cannot exceed 255 characters"
+  validates_presence_of :name, message: "cannot be blank or employers cannot contact you"
+  validates_presence_of :email, message: "cannot be blank or employers cannot contact you"
+  validates_length_of :name, maximum: 255, message: "cannot exceed 255 characters"
+  validates_length_of :email, maximum: 255, message: "cannot exceed 255 characters"
 
   accepts_nested_attributes_for :affiliations, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank?}.all? }
   accepts_nested_attributes_for :awards, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank?}.all? }

@@ -2,7 +2,7 @@ module DataImporter
 
   def self.import_all_mos
     csv_text = File.read('db/seed/Mil2FedJobsSupportFiles/mos_list.csv')
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.parse(csv_text, headers: true)
     csv = csv.take(1)  if Rails.env == 'test'
     csv.each_with_index do |row, i|
       rowhash = row.to_hash
@@ -30,7 +30,7 @@ module DataImporter
 
   def self.import_ONET_job_skills
     csv_text = File.read('db/seed/Mil2FedJobsSupportFiles/skills.csv')
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.parse(csv_text, headers: true)
     csv = csv.take(1) if Rails.env == 'test'
     csv.each do |row|
       rowhash = row.to_hash
@@ -44,7 +44,7 @@ module DataImporter
     codes_not_imported = []
 
     csv_text = File.read('db/seed/Mil2FedJobsSupportFiles/2010_Occupations.csv')
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.parse(csv_text, headers: true)
     csv = csv.take(1)   if Rails.env == 'test'
     csv.each do |row|
       rowhash = row.to_hash
@@ -69,7 +69,7 @@ module DataImporter
 
   def self.import_federal_jobs
     csv_text = File.read('db/seed/Mil2FedJobsSupportFiles/federal_jobs.csv')
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.parse(csv_text, headers: true)
     csv = csv.take(1)  if Rails.env == 'test'
     csv.each do |row|
       rowhash = row.to_hash
@@ -81,7 +81,7 @@ module DataImporter
 
   def self.connect_federal_jobs_to_mocs
     csv_text = File.read('db/seed/Mil2FedJobsSupportFiles/XWALK.csv')
-    csv = CSV.parse(csv_text, :headers => true)
+    csv = CSV.parse(csv_text, headers: true)
     csv = csv.take(1)  if Rails.env == 'test'
     csv.each_with_index do |row, i|
       rowhash = row.to_hash

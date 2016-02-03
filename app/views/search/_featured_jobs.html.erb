@@ -12,7 +12,7 @@
       </div>
     </div>
       <% @search.featured_jobs.each do |featured_job| %>
-        <%= render :partial => 'featured_job.html', :locals => { :featured_job => featured_job }%>
+        <%= render partial: 'featured_job.html', locals: { featured_job: featured_job }%>
         <% end %>
   </div>
 <% end %>

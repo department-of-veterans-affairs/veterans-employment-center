@@ -26,10 +26,10 @@
 
       <div class="required federal">(This section is required for <strong>Federal job applications</strong>)</div>
       <h3 class="no-margin">Add the basics</h3>
-      
+
       <fieldset class="no-margin">
         <legend>Enter your name</legend>
-        
+
         <div class="row form-group dataItem">
           <div class="small-12 columns">
             <%= f.label :name, "Your Name " %>
@@ -39,7 +39,7 @@
         <div class="row form-group dataItem">
           <div class="small-12 columns">
             <%= f.label :email, "Your Email "%>
-            <%= f.email_field :email, :class => "required field" %>
+            <%= f.email_field :email, class: "required field" %>
             <span class="required message" aria=describedby="veteran-email">Required</span>
           </div>
         </div>
@@ -57,7 +57,7 @@
       <div class="row form-group">
         <div class="small-12 columns dataItem">
           <%= f.label :objective, "1 - 2 sentences about your qualifications and career objectives. This appears in search results, so make it stand out!" %>
-          <%= f.text_area :objective, :class => "form-control", :rows => 5 %>
+          <%= f.text_area :objective, class: "form-control", rows: 5 %>
         </div>
       </div>
     </fieldset>
@@ -78,7 +78,7 @@
             value:       (f.object.availability_date.strftime("%m/%d/%Y") if f.object.availability_date.present?),
             err:         "enter date like mm/dd/yyyy",
             placeholder: "MM/DD/YYYY",
-            data:        {"mask" => "99/99/9999"},
+            data:        {mask: "99/99/9999"},
             pattern:     "^[012]\\d/[0123]\\d/(?:19|20)\\d{2}$" %>
         </div>
       </div>
@@ -96,7 +96,7 @@
           <div id="checkbox-list" class="skill_columns">
             <% @veteran.skills.each do |skill| %>
               <li>
-                <%= hidden_field(:veteran, :skills, :value => skill.id, :multiple => true) %>
+                <%= hidden_field(:veteran, :skills, value: skill.id, multiple: true) %>
                 <span><%= skill.name %></span>
                 <span class="skill-deleter"><i class="fa fa-trash-o"></i></span>
               </li>
@@ -135,7 +135,7 @@
   <div class="form-section">
 
     <h3 class="no-margin">Military Service </h3>
-    
+
     <%= f.fields_for :experiences, @veteran.military_experiences.any? ? @veteran.military_experiences : @veteran.experiences.new do |experiences_fields| %>
       <%= render 'military_fields', f: experiences_fields %>
     <% end %>
@@ -147,7 +147,7 @@
 
   <div class="form-section">
     <h3 class="no-margin">Work Experience</h3>
-    
+
     <%= f.fields_for :experiences, @veteran.work_experiences.any? ? @veteran.work_experiences : @veteran.experiences.new do |experiences_fields| %>
       <%= render 'employment_fields', f: experiences_fields %>
     <% end %>
