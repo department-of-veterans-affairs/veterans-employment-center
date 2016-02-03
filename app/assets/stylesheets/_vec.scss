@@ -2,7 +2,7 @@
 
 // Some overrides to look into more later
 ul li:before {
-  content:none;  
+  content:none;
 }
 
 #content ul.breadcrumbs li.active {
@@ -66,7 +66,7 @@ ul li:before {
         background-color: $color-primary-darker;
       }
     }
-  } 
+  }
 }
 
 .row.full {
@@ -90,7 +90,7 @@ ul li:before {
     border-bottom: solid $color-gray-light 1px;
   }
   .feature-badge {
-    margin: 1rem 0; 
+    margin: 1rem 0;
     width: 55px;
   }
   img {
@@ -99,7 +99,7 @@ ul li:before {
 }
 
 .row.pagination {
-  margin-bottom: 2rem;  
+  margin-bottom: 2rem;
 }
 
 .panel.plain {
@@ -422,6 +422,7 @@ fieldset {
   padding: 2rem;
   margin-left: auto;
   margin-right: auto;
+  white-space: normal;
 }
 
 
@@ -447,7 +448,7 @@ fieldset {
   .veteran_location {
     margin-top: 1em;
   }
-  
+
   h6 {
     font-weight: 700;
     font-size: 1em;
