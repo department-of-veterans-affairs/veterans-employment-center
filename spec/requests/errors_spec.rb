@@ -36,9 +36,9 @@ describe "Errors" do
   end
 
   describe "422 Error" do
-    it "should not register as an error" do
+    it "should register as an error" do
       headers = {
-        "ACCEPT" => "application/json",     # This is what Rails 4 accepts
+        "ACCEPT" => "application/json",
       }
       post "/veterans", { :widget => {:name => "My Widget"} }, headers
       expect(response).to be_error

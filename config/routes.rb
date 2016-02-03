@@ -1,6 +1,6 @@
 EmploymentPortal::Application.routes.draw do
 
-devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks' }
+  devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks' }
   resources :veterans do
     member do
       put :favorite
@@ -58,5 +58,4 @@ devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_call
   post 'skills-translator/add_skill' => 'skills#add_skill'
   root 'static_pages#home'
   match '/404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]
-
 end
