@@ -15,7 +15,7 @@ describe "SiteFeedback" do
       get site_feedbacks_path
       expect(response.status).to eq 302
     end
-    
+
     it "should load for an admin user" do
       @user = create :user, email: "admin@thissite.com"
       sign_in_as_admin
@@ -26,7 +26,7 @@ describe "SiteFeedback" do
     it "should produce a downloadable .csv file for admin user" do
       @user = create :user, email: "admin@thissite.com"
       sign_in_as_admin
-      get download_site_feedback_path, :format => 'csv'
+      get download_site_feedback_path, format: 'csv'
       expect(response.content_type).to eq("text/csv")
       expect(response.status).to eq 200
     end

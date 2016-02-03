@@ -23,7 +23,7 @@
     <div class="row">
 		<div class="small-12 columns">
 		  <div class="small-12 medium-8 columns">
-        <h3>Find the best candidates for your open positions.</h3> 
+        <h3>Find the best candidates for your open positions.</h3>
         <p>
           Search our verified Veteran profiles. Post a job. And be sure to make a Veteran hiring commitment &mdash; put your company front and center as one that stands with America’s Veterans and their families.
         </p>
@@ -31,11 +31,11 @@
 		  <div class="small-12 medium-4 columns feature">
         <h5>Employers:<br />Log in to create/manage your account.</h5>
         <div class="actions">
-          <%= link_to "Sign in with LinkedIn", user_omniauth_authorize_path(:linkedin), "class" => "button social linkedin expand" %> <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), "class" => "button social googleplus expand" %>
+          <%= link_to "Sign in with LinkedIn", user_omniauth_authorize_path(:linkedin), class: "button social linkedin expand" %> <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), class: "button social googleplus expand" %>
 	       </div>
 		  </div>
 
-			 
+
   	</div><!-- end columns -->
 	 </div><!-- end row 2 -->
  <% end %>
@@ -76,13 +76,13 @@
         <div class="section-nav">
           <ul class="small-block-grid-1 medium-block-grid-3 cards medium">
             <li>
-              <%= link_to how_to_post_jobs_path, :class => "long" do %>
+              <%= link_to how_to_post_jobs_path, class: "long" do %>
                 <h4 class="alternate">Post a Job</h4>
                 <span>Your listing will be searchable by our capable Veteran workforce and their families.</span>
               <% end %>
             </li>
             <li>
-              <%= link_to veterans_path, :class => "long" do %>
+              <%= link_to veterans_path, class: "long" do %>
                 <h4 class="alternate">Find Veteran Candidates</h4>
                 <span>Leadership, problem solving, management, operations, customer service, sales, and a host of technical skills are just a few of their talents.
                 <br/>
@@ -90,7 +90,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to commitments_path, :class => "long" do %>
+              <%= link_to commitments_path, class: "long" do %>
                 <h4 class="alternate">Make a Hiring Commitment</h4>
                 <span>Stand with Veterans by making a public commitment to hire Veterans. Your pledge will be appreciated by all Americans, and especially by the Veteran community.</span>
               <% end %>
@@ -127,7 +127,7 @@
               <h5>Resources for Employers</h5>
               <span>On-the-job training information, fact sheets, guides, and additional resources for employers.</span>
             <% end %>
-          </li>  
+          </li>
         </ul>
       </div>
     </div>

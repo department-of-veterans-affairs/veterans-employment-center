@@ -55,7 +55,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     Warden.test_mode!
     DatabaseCleaner.clean_with(:truncation)
-    WebMock.disable_net_connect!(:allow_localhost => true)
+    WebMock.disable_net_connect!(allow_localhost: true)
   end
 
   config.before(:each, js: false) do
@@ -89,44 +89,44 @@ OmniAuth.config.test_mode = true
 
 PROVIDERS = {}
 PROVIDERS[:linkedin] = {
-  :provider => 'linkedin',
-  :uid => '123545',
-  :info => {
-    :name => 'Test LinkedIn User',
-    :email => 'test@linkedin.com'
+  provider: 'linkedin',
+  uid: '123545',
+  info: {
+    name: 'Test LinkedIn User',
+    email: 'test@linkedin.com'
   }
 }
 PROVIDERS[:google_oauth2] = {
-  :provider => 'google_oauth2',
-  :uid => '12345',
-  :info => {
-    :name=>'Test Google User',
-    :email => 'test@gmail.com'
+  provider: 'google_oauth2',
+  uid: '12345',
+  info: {
+    name: 'Test Google User',
+    email: 'test@gmail.com'
   }
 }
 PROVIDERS[:saml] = {
-  :extra => {
-    :raw_info => {
-      :dodEdiPnId => '1234567890'
+  extra: {
+    raw_info: {
+      dodEdiPnId: '1234567890'
     }
   },
-  :uid => '12345',
-  :info => {
-    :name=>'Test Google User',
-    :email => 'test@gmail.com'
+  uid: '12345',
+  info: {
+    name: 'Test Google User',
+    email: 'test@gmail.com'
   }
 }
 PROVIDERS[:linkedin_resume] = {
-  :provider => 'linkedin',
-  :uid => '123545',
-  :info => {
-    :name => 'Test LinkedIn User',
-    :email => 'test@linkedin.com'
+  provider: 'linkedin',
+  uid: '123545',
+  info: {
+    name: 'Test LinkedIn User',
+    email: 'test@linkedin.com'
   },
-  :extra => {
-    :access_token => {
-      :token => "access_token",
-      :secret => "secret_token"
+  extra: {
+    access_token: {
+      token: "access_token",
+      secret: "secret_token"
     }
   }
 }

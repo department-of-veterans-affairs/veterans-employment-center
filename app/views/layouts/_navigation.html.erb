@@ -22,7 +22,7 @@
           <li class="divider"></li>
           <li id="welcome-message"><%= link_to "Manage Your Profile and Hiring Commitment", edit_employer_path(current_user.employer) %></li>
           <li class="divider"></li>
-          <li class="last"><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+          <li class="last"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <% unless current_user.employer.approved? %>
           <% end %>
         <% end %>

@@ -20,13 +20,13 @@ describe "Employers" do
       expect(page).to have_content 'Sign in with LinkedIn'
       expect(page).not_to have_content 'Your Favorite Veterans'
     end
-    
+
     it "should NOT show Your Employer Account breadcrumb if the user is not signed in" do
       visit employer_home_path
       expect(page).to have_content 'Sign in with LinkedIn'
       expect(page).to have_selector 'li', text: 'Employers'
     end
-    
+
     it "should NOT show Your Employer Account breadcrumb if logged-in Veteran" do
       veteran = create :user, email: 'test@example.com', password: '12345678'
       sign_in_as veteran
@@ -34,7 +34,7 @@ describe "Employers" do
       expect(page).to have_selector 'li', text: 'Employers'
       expect(page).not_to have_selector 'li', text: 'Your Employer Account'
     end
-    
+
     it "should show Your Employer Account breadcrumb if logged-in employer" do
       employer = employer_user
       sign_in_as employer
@@ -98,7 +98,7 @@ describe "Employers" do
       end
     end
   end
-  
+
   describe "GET /how_to_post_jobs" do
     it "shows a logged-in employer a link to their profile" do
       employer = employer_user
@@ -116,11 +116,11 @@ describe "Employers" do
       expect(page).not_to have_link "your VEC profile"
     end
   end
-  
+
   describe "GET /favorites" do
     it "shows a favorite veteran" do
       employer = employer_user
-      veteran = create :veteran, objective: "To be the best, around. No one is going to get me down." 
+      veteran = create :veteran, objective: "To be the best, around. No one is going to get me down."
       favorite = create :favorite_veteran, veteran: veteran, employer: employer.employer
       sign_in_as employer
       visit favorites_path
@@ -140,16 +140,16 @@ describe "Employers" do
 
   describe "GET /commitments" do
     before do
-      create(:employer, :location => 'Cupertino, CA', :website => 'http://www.apple.com', :commit_to_hire => 100)
-      create(:employer, :company_name => 'Other Employer', :ein => 234456, :location => 'Anytown, USA',
-          :website => 'www.other.com', :commit_to_hire => 10,
-          :user => create(:user, :email => 'veteran1@gmail.com', :password => '12345678'))
-      create(:employer, :company_name => 'Yet Another Employer', :ein => 234456, :location => 'Anytown, USA',
-          :website => 'https://www.yetanother.com', :commit_to_hire => 10,
-          :user => create(:user, :email => 'veteran2@gmail.com', :password => '12345678'))
-      create(:employer, :company_name => 'Yet Another Employer', :ein => 234456, :location => 'Anytown, USA',
-          :website => 'https://www.yetanother.com', :commitment_categories => ["Homeless"], :commit_to_hire => 10,
-          :user => create(:user, :email => 'veteran3@gmail.com', :password => '12345678'))
+      create(:employer, location: 'Cupertino, CA', website: 'http://www.apple.com', commit_to_hire: 100)
+      create(:employer, company_name: 'Other Employer', ein: 234456, location: 'Anytown, USA',
+          website: 'www.other.com', commit_to_hire: 10,
+          user: create(:user, email: 'veteran1@gmail.com', password: '12345678'))
+      create(:employer, company_name: 'Yet Another Employer', ein: 234456, location: 'Anytown, USA',
+          website: 'https://www.yetanother.com', commit_to_hire: 10,
+          user: create(:user, email: 'veteran2@gmail.com', password: '12345678'))
+      create(:employer, company_name: 'Yet Another Employer', ein: 234456, location: 'Anytown, USA',
+          website: 'https://www.yetanother.com', commitment_categories: ["Homeless"], commit_to_hire: 10,
+          user: create(:user, email: 'veteran3@gmail.com', password: '12345678'))
     end
 
     it "should list the employers and link to their websites" do
@@ -160,7 +160,7 @@ describe "Employers" do
     end
 
     it "should have a downloadable CSV" do
-      get commitments_path, :format => 'csv'
+      get commitments_path, format: 'csv'
       expect(response.content_type).to eq("text/csv")
       expect(response.status).to eq 200
     end

@@ -62,7 +62,7 @@ N_QUERIES = 100
 namespace :db do
 
   desc 'Seed with a fake model and click data.'
-  task :fictitious_click_data => :environment do
+  task fictitious_click_data: :environment do
 
     puts ">>> creating toy dataset for #{N_QUERIES} queries"
     model = SkillsTranslatorModel.find_or_create_by(description: "click data fake model")

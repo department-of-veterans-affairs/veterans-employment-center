@@ -14,7 +14,7 @@ class SearchController < ApplicationController
     @page = (@rs.to_i / @per_page.to_i) + 1
 
     respond_to do |format|
-      format.html { render :layout => false if request.xhr? }
+      format.html { render layout: false if request.xhr? }
       format.js {}
     end
   end

@@ -6,7 +6,7 @@
       </div>
     </div>
     <% @search.federal_jobs.each do |federal_job| %>
-      <%= render :partial => 'federal_job', :locals => { :federal_job => federal_job }%>
+      <%= render partial: 'federal_job', locals: { federal_job: federal_job }%>
     <% end %>
   </div>
 <% end %>

@@ -22,7 +22,7 @@ class EmployerReport
     end
     # Normalize the 2 styles of pagination params
     page, per = parse_pagination
-    filtered_pool.order(orderby).paginate(:page => page, :per_page => per).references(:user)
+    filtered_pool.order(orderby).paginate(page: page, per_page: per).references(:user)
   end
 
   def parse_pagination

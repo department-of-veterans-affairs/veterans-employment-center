@@ -11,8 +11,8 @@ describe "seed tasks" do
   describe "veteran seeding task" do
     before do
       stub_request(:get, /http:\/\/maps\.googleapis\.com\/maps\/api\/geocode\/json?.+/).
-        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-        to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/geocode/location.json"), :headers => {})
+        with(headers: {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+        to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/geocode/location.json"), headers: {})
     end
 
     it "should seed the DB with ten fictitious veterans" do
@@ -26,8 +26,8 @@ describe "seed tasks" do
   describe "affiliation seeding task" do
     before do
       stub_request(:get, /http:\/\/maps\.googleapis\.com\/maps\/api\/geocode\/json?.+/).
-        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-        to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/geocode/location.json"), :headers => {})
+        with(headers: {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+        to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/geocode/location.json"), headers: {})
     end
 
     it "should seed the DB with ten fictitious affiliations" do
@@ -43,8 +43,8 @@ describe "seed tasks" do
   describe "award seeding task" do
     before do
       stub_request(:get, /http:\/\/maps\.googleapis\.com\/maps\/api\/geocode\/json?.+/).
-        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-        to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/geocode/location.json"), :headers => {})
+        with(headers: {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+        to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/geocode/location.json"), headers: {})
     end
 
     it "should seed the DB with ten fictitious awards" do

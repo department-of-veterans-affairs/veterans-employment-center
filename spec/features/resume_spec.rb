@@ -35,8 +35,8 @@ feature 'when building a resume, the resume only shows the fields that it should
 
   scenario 'a vet submits a resume with only a name and email' do
     visit resume_builder_path
-    fill_in 'Your Name', :with => 'Suzy Veteran'
-    fill_in 'Your Email', :with => 'suzy@veterans.org'
+    fill_in 'Your Name', with: 'Suzy Veteran'
+    fill_in 'Your Email', with: 'suzy@veterans.org'
     click_button 'Preview Your Veteran Profile and Résumé Content'
     expect(page).to have_content "Veteran was successfully created."
     within('#resume') do
@@ -55,7 +55,7 @@ feature 'when building a resume, the resume only shows the fields that it should
     end
   end
 
-  scenario 'a vet fills in a partial location then selects choice given by autocompletion', :js => true, driver: :webkit do
+  scenario 'a vet fills in a partial location then selects choice given by autocompletion', js: true, driver: :webkit do
     pending "Solution to rack application time out"
     #TODO: Solve Rack application timed out during boot due to the following code
       # The stub_request step below causes a timeout error, slowing down this pending test.
@@ -67,10 +67,10 @@ feature 'when building a resume, the resume only shows the fields that it should
       expect(true).to eq(false)
       #####
 
-      stub_request(:get, /http:\/\/127\.0\.0\.1.*\/__identify__/).with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/auto_location.txt"), :headers => {})
+      stub_request(:get, /http:\/\/127\.0\.0\.1.*\/__identify__/).with(headers: {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/auto_location.txt"), headers: {})
       visit resume_builder_path
-      fill_in 'Your Name', :with => 'Suzy Veteran'
-      fill_in 'Your Email', :with => 'suzy@veterans.org'
+      fill_in 'Your Name', with: 'Suzy Veteran'
+      fill_in 'Your Email', with: 'suzy@veterans.org'
       fill_autocomplete "veteran_locations_attributes_0_full_name", with: "Phil", select: "Philadelphia PA, United States"
       click_button 'Preview Your Veteran Profile and Résumé Content'
       expect(page).to have_content "Philadelphia, PA, United States"
@@ -78,21 +78,21 @@ feature 'when building a resume, the resume only shows the fields that it should
 
   scenario 'a vet fills in a resume' do
     visit resume_builder_path
-    fill_in 'Your Name', :with => 'Suzy Veteran'
-    fill_in 'Your Email', :with => 'suzy@veterans.org'
-    fill_in 'veteran_objective', :with => 'An amazing objective'
-    fill_in 'veteran_availability_date', :with => '02/07/2015'
-    fill_in 'Name of Award', :with => 'An amazing award'
+    fill_in 'Your Name', with: 'Suzy Veteran'
+    fill_in 'Your Email', with: 'suzy@veterans.org'
+    fill_in 'veteran_objective', with: 'An amazing objective'
+    fill_in 'veteran_availability_date', with: '02/07/2015'
+    fill_in 'Name of Award', with: 'An amazing award'
     fill_in 'Awarding Organization', with: 'Awarders'
     select 'E-2', from: 'veteran_experiences_attributes_1_rank'
-    fill_in 'veteran_experiences_attributes_1_job_title', :with => 'Captain'
-    fill_in 'veteran_experiences_attributes_1_organization', :with => 'Navy'
-    fill_in 'veteran_experiences_attributes_2_job_title', :with => 'Captain of Industry'
-    fill_in 'veteran_experiences_attributes_2_organization', :with => 'Naval Industries'
-    fill_in 'veteran_experiences_attributes_2_hours', :with => '55'
-    fill_in 'Name of school or training', :with => 'Harvard'
-    fill_in 'veteran_experiences_attributes_3_job_title', :with => "Homeless Shelter"
-    fill_in 'veteran_experiences_attributes_3_organization', :with => 'Helping homeless'
+    fill_in 'veteran_experiences_attributes_1_job_title', with: 'Captain'
+    fill_in 'veteran_experiences_attributes_1_organization', with: 'Navy'
+    fill_in 'veteran_experiences_attributes_2_job_title', with: 'Captain of Industry'
+    fill_in 'veteran_experiences_attributes_2_organization', with: 'Naval Industries'
+    fill_in 'veteran_experiences_attributes_2_hours', with: '55'
+    fill_in 'Name of school or training', with: 'Harvard'
+    fill_in 'veteran_experiences_attributes_3_job_title', with: "Homeless Shelter"
+    fill_in 'veteran_experiences_attributes_3_organization', with: 'Helping homeless'
     fill_in 'Affiliation', with: 'Head Mason'
     fill_in 'Affiliated Organization', with: 'Masons'
     fill_in 'veteran_references_attributes_0_name', with: 'John Doe'
@@ -176,7 +176,7 @@ feature 'when building a resume, the resume only shows the fields that it should
 
   scenario "autofilling your resume with LinkedIn" do
     stub_request(:get, "https://api.linkedin.com/v1/people/~:(email-address,first-name,last-name,location,positions,educations,skills,volunteer,honors-awards,recommendations-received)").
-      to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/json/linkedin_profile.json"), :headers => {})
+      to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/json/linkedin_profile.json"), headers: {})
     visit resume_builder_path
     click_link 'Auto-fill from LinkedIn'
     expect(page).to have_no_link 'Auto-fill résumé from your LinkedIn profile'
@@ -185,9 +185,9 @@ feature 'when building a resume, the resume only shows the fields that it should
     expect(find_field('Your Email').value).to eq 'joe@veteran.com'
 
     expected_skills = ['Ruby on Rails', 'Lucene', 'MySQL']
-    page.assert_selector('#checkbox-list > li', :count => expected_skills.length)
+    page.assert_selector('#checkbox-list > li', count: expected_skills.length)
     expected_skills.each do |name|
-      expect(page).to have_selector('#checkbox-list > li > span', :text => name)
+      expect(page).to have_selector('#checkbox-list > li > span', text: name)
     end
 
     expect(find_field('veteran_experiences_attributes_0_educational_organization').value).to eq 'Undergraduate University'
@@ -277,7 +277,7 @@ feature 'when building a resume, the resume only shows the fields that it should
 
   scenario "autofilling your resume with a minimal profile" do
     stub_request(:get, "https://api.linkedin.com/v1/people/~:(email-address,first-name,last-name,location,positions,educations,skills,volunteer,honors-awards,recommendations-received)").
-      to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/json/linkedin_basic_profile.json"), :headers => {})
+      to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/json/linkedin_basic_profile.json"), headers: {})
     visit resume_builder_path
     click_link 'Auto-fill from LinkedIn'
     visit resume_builder_path
@@ -301,8 +301,8 @@ feature "profile creation shouldn't redirect to employer login", js: true do
     click_link 'Sign Out'
 
     visit new_veteran_path
-    fill_in 'Your Name', :with => 'Suzy Veteran'
-    fill_in 'Your Email', :with => 'suzy@veterans.org'
+    fill_in 'Your Name', with: 'Suzy Veteran'
+    fill_in 'Your Email', with: 'suzy@veterans.org'
     click_button 'Preview Your Veteran Profile and Résumé Content'
     expect(page).to have_content("Edit Profile")
   end
@@ -312,9 +312,9 @@ feature "you can view and edit a profile after creation" do
 
   scenario "create and edit profile with no fields filled out" do
     visit new_veteran_path
-    fill_in 'Your Name', :with => 'Suzy Veteran'
-    fill_in 'Your Email', :with => 'suzy@veterans.org'
-    fill_in 'veteran_objective', :with => 'An amazing objective'
+    fill_in 'Your Name', with: 'Suzy Veteran'
+    fill_in 'Your Email', with: 'suzy@veterans.org'
+    fill_in 'veteran_objective', with: 'An amazing objective'
     click_button 'Preview Your Veteran Profile and Résumé Content'
     click_link "Edit Profile"
     expect(page).to have_content "Add the basics"

@@ -5,7 +5,7 @@ class SiteFeedbacksController < ApplicationController
   respond_to :html
 
   def index
-    @site_feedbacks = SiteFeedback.all.order(:created_at).paginate(:page => params[:page], :per_page => 50)
+    @site_feedbacks = SiteFeedback.all.order(:created_at).paginate(page: params[:page], per_page: 50)
     respond_with(@site_feedbacks)
   end
 

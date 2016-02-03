@@ -1,7 +1,7 @@
 class CommitmentReport
 
   attr_accessor :viewcontext, :params, :search
-  
+
   def initialize(params = {}, viewcontext = nil)
     @params = params
     @viewcontext = viewcontext
@@ -23,7 +23,7 @@ class CommitmentReport
   def hired_so_far
     Employer.sum(:commit_hired)
   end
-  
+
   def committed
     columns = ['company_name', 'commit_to_hire', 'commit_date', 'commit_hired']
     orders = {'desc' => :desc, 'asc' => :asc}
@@ -44,11 +44,11 @@ class CommitmentReport
       employer_pool
     end
   end
-  
+
   def employer_pool
-    Employer.where.not(:commit_to_hire => nil)
+    Employer.where.not(commit_to_hire: nil)
   end
-  
+
   def as_csv
     employer_pool.order(:created_at)
   end
@@ -62,9 +62,9 @@ class CommitmentReport
     employer_pool.order(:created_at).find_each do |employer|
       csv << csv_fields.map{|c| employer.send(c)}
     end
-      
+
   end
-  
+
   def as_json(opts = {})
     if viewcontext
       output = committed.map do |c|
@@ -77,5 +77,5 @@ class CommitmentReport
       {data: output, recordsTotal: total_employers, recordsFiltered: filtered_pool.count}
     end
   end
-  
+
 end

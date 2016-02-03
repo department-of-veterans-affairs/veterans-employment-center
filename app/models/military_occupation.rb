@@ -5,7 +5,7 @@ class MilitaryOccupation < ActiveRecord::Base
   has_many :deprecated_job_skill_matches, as: :matchable
   has_many :deprecated_job_skills, through: :deprecated_job_skill_matches
 
-  validates_uniqueness_of :code, :scope => [:service, :active]
+  validates_uniqueness_of :code, scope: [:service, :active]
   validates :service, inclusion: {in: ['Army', 'Navy', 'Marine Corps', 'Coast Guard', 'Air Force', 'DEFAULT'],
     message: "%{value} must be one of the following: Army, Navy, Marine Corps, Coast Guard, or Air Force"}
 

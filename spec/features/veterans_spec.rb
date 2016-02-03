@@ -15,7 +15,7 @@ end
 
 feature "an employer visits index of all veterans and can see the veterans" do
   before do
-    @user = User.create(:email => 'suzy@veteran.org', :password => 'Password')
+    @user = User.create(email: 'suzy@veteran.org', password: 'Password')
     @vet = create :veteran, name: "Suzy Veteran", objective: "Build great web apps.", user: @user, visible: true
   end
 
@@ -60,7 +60,7 @@ end
 
 feature "guests are restricted from editing or viewing veteran data" do
   before do
-    @user = User.create(:email => 'suzy@veteran.org', :password => 'Password')
+    @user = User.create(email: 'suzy@veteran.org', password: 'Password')
   end
 
   scenario "guest cannot view a veteran profile marked as invisible" do

@@ -15,13 +15,13 @@
   <div class="row form-group dataItem">
     <div class="small-12 columns">
       <%= f.label :credential_topic, "Credential topic " %>
-      <%= f.text_field :credential_topic, 'data-toggle' => "popover", 'data-placement' => "right", 'placeholder' => "e.g. Engineering, Political Science" %>
+      <%= f.text_field :credential_topic, data: {toggle: "popover", placement: "right"}, placeholder: "e.g. Engineering, Political Science" %>
     </div>
   </div>
   <div class="row form-group dataItem">
     <div class="small-12 columns">
       <%= f.label :description, "Description" %>
-      <%= f.text_area :description, :class => "form-control" %>
+      <%= f.text_area :description, class: "form-control" %>
     </div>
   </div>
   <div class="row form-group dataItem">
@@ -31,7 +31,7 @@
         value:       (f.object.start_date.strftime("%m/%d/%Y") if f.object.start_date.present?),
         err:         "enter date like mm/dd/yyyy",
         placeholder: "MM/DD/YYYY",
-        data:        {"mask" => "99/99/9999"},
+        data:        {mask: "99/99/9999"},
         pattern:     "^[012]\\d/[0123]\\d/(?:19|20)\\d{2}$" %>
     </div>
   </div>
@@ -42,9 +42,9 @@
         value:       (f.object.end_date.strftime("%m/%d/%Y") if f.object.end_date.present?),
         err:         "enter date like mm/dd/yyyy",
         placeholder: "MM/DD/YYYY",
-        data:        {"mask" => "99/99/9999"},
+        data:        {mask: "99/99/9999"},
         pattern:     "^[012]\\d/[0123]\\d/(?:19|20)\\d{2}$" %>
     </div>
   </div>
-  <%= f.hidden_field :experience_type, :value => "education" %>
+  <%= f.hidden_field :experience_type, value: "education" %>
 </fieldset>

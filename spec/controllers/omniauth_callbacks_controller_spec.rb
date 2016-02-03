@@ -21,7 +21,7 @@ describe Users::OmniauthCallbacksController do
 
       context "when the user already exists" do
         before do
-          User.create(:email => 'test@some_test_domain.com', :provider => 'google_oauth2', :uid => '12345')
+          User.create(email: 'test@some_test_domain.com', provider: 'google_oauth2', uid: '12345')
         end
 
         it "should log the user in and redirect them to the home page" do
@@ -49,7 +49,7 @@ describe Users::OmniauthCallbacksController do
 
       context "when the user already exists" do
         before do
-          User.create(:email => 'test@linkedin.comlinkedin', :provider => 'linkedin', :uid => '12345')
+          User.create(email: 'test@linkedin.comlinkedin', provider: 'linkedin', uid: '12345')
         end
 
         it "should log the user in and redirect them to the home page" do
@@ -77,7 +77,7 @@ describe Users::OmniauthCallbacksController do
 
       context "when the user already exists" do
         before do
-          User.create(:email => 'test@saml.org', :uid => '1234567890', :provider => 'SAML')
+          User.create(email: 'test@saml.org', uid: '1234567890', provider: 'SAML')
         end
 
         it "should log in and redirect the user" do

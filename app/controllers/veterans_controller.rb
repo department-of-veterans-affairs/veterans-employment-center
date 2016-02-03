@@ -11,7 +11,7 @@ class VeteransController < ApplicationController
   KEYWORD_FIELD_NAME = 'searchable_summary_cont'
 
   def index
-    veteran_query = Veteran.where.not(:user_id => nil).where(:visible => true)
+    veteran_query = Veteran.where.not(user_id: nil).where(visible: true)
 
     if !(params[:q].blank?) and !((params)[:q]["location"]["full_name"].blank?)
       # Use geocode gem to find locations near where this employer requests
@@ -27,7 +27,7 @@ class VeteransController < ApplicationController
 
     respond_to do |format|
       format.html do
-        @veterans = @q.result.includes(:experiences, :affiliations, :locations).paginate(:page => params[:page], :per_page => 20).reorder(updated_at: :desc)
+        @veterans = @q.result.includes(:experiences, :affiliations, :locations).paginate(page: params[:page], per_page: 20).reorder(updated_at: :desc)
 
         # Stick the kw query back in as passed to repopulate the text field
         @q.build(KEYWORD_FIELD_NAME => query_params_sans_location[KEYWORD_FIELD_NAME], 'm' => query_params_sans_location['m']) if query_params_sans_location.respond_to?(:keys)
@@ -184,8 +184,8 @@ class VeteransController < ApplicationController
       affiliations_attributes: [:job_title, :organization, :id, :veteran_id, :_destroy],
       awards_attributes: [:title, :veteran_id, :organization, :date, :id, :_destroy],
       experiences_attributes: [:job_title, :organization, :experience_type, :start_date, :end_date, :hours, :educational_organization, :credential_type, :credential_topic, :description, :veteran_id, :moc, :duty_station, :rank, :id, :_destroy],
-      :desiredPosition => [],
-      :status_categories => [],
+      desiredPosition: [],
+      status_categories: [],
       locations_attributes: [:id, :veteran_id, :location_type, :full_name, :city, :state, :country, :lat, :lng, :zip, :include_radius, :radius]
     )
   end

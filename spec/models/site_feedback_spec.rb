@@ -8,7 +8,7 @@ describe SiteFeedback do
   end
 
   it "should be created when provided with at least a description" do
-    site_feedback = SiteFeedback.new(:description => "This is a description")
+    site_feedback = SiteFeedback.new(description: "This is a description")
     expect(site_feedback).to be_valid
   end
 

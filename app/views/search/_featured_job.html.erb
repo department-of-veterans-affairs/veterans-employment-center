@@ -3,7 +3,7 @@
     <div class="result">
       <div class="row">
         <div class="small-12 medium-6 large-7 columns">
-          <div class="job-title"><%= link_to featured_job['position_title'], featured_job['url'], :target => "_blank", class: "featured_job_posting" %></div>
+          <div class="job-title"><%= link_to featured_job['position_title'], featured_job['url'], target: "_blank", class: "featured_job_posting" %></div>
           <div class="job-company"><%= featured_job['organization_name']%></div>
           <div class="job-locations"><%= featured_job["locations"].join(", ") %> - Job posted on <%= featured_job["start_date"] %></div>
           <div class="feature-badge"><%= featured_job_badge(featured_job) %></div>
@@ -17,7 +17,7 @@
           <span class='st_facebook_large'   st_title="<%=featured_job['position_title']%>" st_summary="Employment Center Job Posting" st_url="<%=featured_job['url']%>" displayText='Facebook'></span>
           <span class='st_twitter_large'    st_title="<%=featured_job['position_title']%>" st_summary="Employment Center Job Posting" st_url="<%=featured_job['url']%>" displayText='Twitter'></span>
           <span class='st__large'           st_title="<%=featured_job['position_title']%>" st_summary="Employment Center Job Posting" st_url="<%=featured_job['url']%>" displayText=''></span>
-          <%= link_to "mailto:?subject=Job%20Opening:%20#{featured_job['position_title']}&body=#{featured_job['position_title']}%20job%20listing%20from%20the%20VA%20Employment%20Center:%20#{featured_job['url']}", :target => "_blank", :title => "Email this job listing link." do %><%= image_tag "email_32.png" %><% end %>
+          <%= link_to "mailto:?subject=Job%20Opening:%20#{featured_job['position_title']}&body=#{featured_job['position_title']}%20job%20listing%20from%20the%20VA%20Employment%20Center:%20#{featured_job['url']}", target: "_blank", title: "Email this job listing link." do %><%= image_tag "email_32.png" %><% end %>
         </div>
       </div>
     </div>
