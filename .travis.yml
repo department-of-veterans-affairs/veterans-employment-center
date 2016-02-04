@@ -1,7 +1,5 @@
 
 language: ruby
-rvm:
-  - ruby-2.2.3
 
 before install:
   - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
@@ -11,10 +9,9 @@ before install:
 
 install:
   - bundle install
-  - export RAILS_ENV=test
   - bundle exec rake db:create
   - bundle exec rake db:schema:load
-  - bundle exec rake db:migrate RAILS_ENV=test
+  - bundle exec rake db:migrate
   
 script:
   - xvfb-run -a bundle exec rake
