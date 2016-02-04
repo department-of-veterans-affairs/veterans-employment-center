@@ -17,7 +17,7 @@ install:
   - bundle exec rake db:migrate RAILS_ENV=test
   
 script:
-  - bundle exec rake
+  - xvfb-run -a bundle exec rake
   
 bundler_args: "--without development"
 cache:
