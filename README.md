@@ -1,4 +1,4 @@
-# Veterans Employment Center [![Build Status](https://api.travis-ci.org/department-of-veterans-affairs/veterans-employment-center.svg?branch=master)](https://api.travis-ci.org/department-of-veterans-affairs/veterans-employment-center)
+# Veterans Employment Center [![Build Status](https://api.travis-ci.org/department-of-veterans-affairs/veterans-employment-center.svg?branch=master)](https://travis-ci.org/department-of-veterans-affairs/veterans-employment-center)
 
 # Installation
  * Ensure you are running Ruby 2.2.3
