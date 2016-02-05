@@ -12,7 +12,6 @@
 !/log/.keep
 /tmp
 .env
-.ruby-*
 /coverage/*
 
 /spec/tmp
@@ -40,7 +39,5 @@ doc/
 .idea
 .secret
 latest.dump
-.ruby-version
 .ruby-gemset
-.env
 *.dump
