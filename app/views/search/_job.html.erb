@@ -2,20 +2,12 @@
   <div class="small-12 columns">
     <div class="result">
       <div class="row">
-        <div class="small-12 medium-6 large-7 columns">
-          <span class="job-title job_posting"><a href="http://jcnlx.com/<%= job["jvid"] %>" target="_blank"><%= job["title"] %></a></span>
-          <span class="job-company"><%= job["company"] %></span>
-          <%= job["location"] %> - Job posted on <%= job["dateacquired"].split[0] %>
+        <div class="small-12 columns job-title job_posting"><a href="http://jcnlx.com/<%= job["jvid"] %>" target="_blank"><%= job["title"] %></a>
         </div>
-        <div class="small-12 medium-6 large-5 columns align-right">
-          <span class='st_delicious_large'  st_title="<%=job['title']%>" st_summary="Employment Center Job Posting" st_url="http://jcnlx.com/<%= job["jvid"]%>" displayText='Delicious'></span>
-          <span class='st_pinterest_large'  st_title="<%=job['title']%>" st_summary="Employment Center Job Posting" st_url="http://jcnlx.com/<%= job["jvid"]%>" displayText='Pinterest'></span>
-          <span class='st_linkedin_large'   st_title="<%=job['title']%>" st_summary="Employment Center Job Posting" st_url="http://jcnlx.com/<%= job["jvid"]%>" displayText='LinkedIn'></span>
-          <span class='st_evernote_large'   st_title="<%=job['title']%>" st_summary="Employment Center Job Posting" st_url="http://jcnlx.com/<%= job["jvid"]%>" displayText='Evernote'></span>
-          <span class='st_facebook_large'   st_title="<%=job['title']%>" st_summary="Employment Center Job Posting" st_url="http://jcnlx.com/<%= job["jvid"]%>" displayText='Facebook'></span>
-          <span class='st_twitter_large'    st_title="<%=job['title']%>" st_summary="Employment Center Job Posting" st_url="http://jcnlx.com/<%= job["jvid"]%>" displayText='Twitter'></span>
-          <span class='st__large'           st_title="<%=job['title']%>" st_summary="Employment Center Job Posting" st_url="http://jcnlx.com/<%= job["jvid"]%>" displayText=''></span>
-          <%= link_to "mailto:?subject=Job%20Opening:%20#{job['title']}&body=#{job['tion_title']}%20job%20listing%20from%20the%20VA%20Employment%20Center:%20http://jcnlx.com/#{job['jvid']}", target: "_blank", title: "Email this job listing link." do %><%= image_tag "email_32.png" %><% end %>
+        <div class="small-12 columns job-company">
+          <%= job["company"] %>
+        </div>
+        <div class="small-12 columns"><%= job["location"] %> - Job posted on <%= job["dateacquired"].split[0] %>
         </div>
       </div>
     </div>
