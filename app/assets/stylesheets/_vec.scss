@@ -404,14 +404,35 @@ pre {
       padding: .5em;
       float: right;
     }
+  }
+}
 
+.call-out {
+  background: $color-primary-alt-lightest;
+  padding: 2em;
+  clear: both;
+  margin: 0 0 1.5em 0;
+  p {margin-bottom: 0; padding-bottom: .5em}
+  p:nth-child(1) {
+    font-size: 1em;
+    color: #333;
+    padding-bottom: inherit;
+  }
+  h3 {@media #{$small} {font-size: 1.65em;}}
+  ul {
+    margin: 0 0 .5em 1.5em; padding: 0;
+    li {
+      list-style: square;
+      margin: 0;
+    }
+  }
 }
 
 fieldset {
   border: none;
   margin: 0;
   padding: 0 0;
-  }
+
   legend {
     margin-bottom: 1.25rem;
   }
