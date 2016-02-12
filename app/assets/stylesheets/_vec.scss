@@ -12,6 +12,10 @@ ul li:before {
 
 // Search
 
+.advanced-search {
+  margin-bottom: 1em;
+}
+
 .overlay {
   z-index: 10000;
 }
@@ -84,7 +88,7 @@ ul li:before {
   font-weight: 400;
 }
 
-.row.job-row {
+.job-row {
   margin-bottom: 2rem;
   .result {
     border-bottom: solid $color-gray-light 1px;
@@ -439,11 +443,23 @@ fieldset {
   label {}
 }
 
-.button.primary {
-  padding: 2rem;
-  margin-left: auto;
-  margin-right: auto;
+.button {
   white-space: normal;
+
+  &.primary {
+    padding: 1rem 2rem;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+
+  &.button-left {
+    margin: 0 0.5em 0 1em;
+  }
+
+  &.button-right {
+    margin: 0 1em 0 0.5em;
+  }
 }
 
 

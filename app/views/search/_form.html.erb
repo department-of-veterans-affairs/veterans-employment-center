@@ -44,17 +44,16 @@
             </div>
             <%= render partial: 'advanced_search', locals: { us_jobs_search_params: @us_jobs_search_params } %>
             <div class="row">
-              <div class="small-12 medium-8 columns">
-                <div class="actions">
-                  <button class="button primary" type="submit">Search</button>
-                  &nbsp;&nbsp;&nbsp;
-                  <a href="javascript:void(0);" onclick="resetForm()">Clear Search</a>
-                </div>
-              </div>
-              <div class="small-12 medium-4 align-right columns">
-                <div class="action">
+              <div class="small-12 columns">
+                <div class="actions advanced-search">
                   <a id="adv-job_search" class="toggle-srch advancedTag" href="#"></a>
                 </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="actions">
+                <button class="button primary button-left" type="submit">Search</button>
+                <button class="button secondary button-right" type="button" onclick="resetForm()">Clear Search</button>
               </div>
             </div>
           </fieldset>
