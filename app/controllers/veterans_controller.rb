@@ -27,7 +27,7 @@ class VeteransController < ApplicationController
 
     respond_to do |format|
       format.html do
-        @veterans = @q.result.includes(:experiences, :affiliations, :locations).paginate(page: params[:page], per_page: 20).reorder(updated_at: :desc)
+        @veterans = @q.result.joins(:experiences, :affiliations, :locations).paginate(page: params[:page], per_page: 20).reorder(updated_at: :desc)
 
         # Stick the kw query back in as passed to repopulate the text field
         @q.build(KEYWORD_FIELD_NAME => query_params_sans_location[KEYWORD_FIELD_NAME], 'm' => query_params_sans_location['m']) if query_params_sans_location.respond_to?(:keys)
