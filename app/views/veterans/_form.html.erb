@@ -11,7 +11,7 @@
 
 <%= form_for @veteran, html: { class: 'f resume', id: 'veteran_form', role: 'form' } do |f| %>
   <% if @veteran.errors.any? %>
-    <li class="error_list"> <h3 class="no-margin"><%= pluralize(@veteran.errors.count, "error") %> prohibited this veteran from being saved:</h2>
+    <li class="error_list"> <h3 class="no-margin"><%= pluralize(@veteran.errors.count, "error") %> prohibited this resume from being saved:</h2>
       <div id="error_explanation">
       <ul>
         <% @veteran.errors.full_messages.each do |msg| %>
