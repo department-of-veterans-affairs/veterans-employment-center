@@ -101,13 +101,15 @@ class VeteransController < ApplicationController
     @veteran.skills << Skill.find(params[:skills]) if params[:skills].present?
     return if params['moc'].blank? || params['branch'].blank?
     occupation = MilitaryOccupation.find_by_moc_and_branch(params[:moc], params['branch']).first()
-    @veteran.experiences << Experience.new({
-      moc: occupation.code,
-      organization: occupation.service,
-      job_title: occupation.title,
-      description: occupation.description.gsub(/<\/?p>/i, "\n"),
-      experience_type: 'military',
-    })
+    if occupation
+      @veteran.experiences << Experience.new({
+        moc: occupation.code,
+        organization: occupation.service,
+        job_title: occupation.title,
+        description: occupation.description.gsub(/<\/?p>/i, "\n"),
+        experience_type: 'military',
+      })
+    end
   end
 
   def edit
