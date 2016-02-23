@@ -59,7 +59,7 @@ group :development, :test do
   gem 'launchy'
   gem 'hirb'
   gem 'quiet_assets'
-  gem 'capybara-webkit'
+  gem 'capybara-webkit', '~> 1.7.1'
   gem 'pry'
   gem 'pry-rails'
   gem 'byebug'
