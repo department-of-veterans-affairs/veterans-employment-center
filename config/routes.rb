@@ -58,4 +58,5 @@ EmploymentPortal::Application.routes.draw do
   post 'skills-translator/add_skill' => 'skills#add_skill'
   root 'static_pages#home'
   match '/404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]
+  post 'skills-translator/resume_redirect'=> 'sessions#set_skills_translator_session_var'
 end
