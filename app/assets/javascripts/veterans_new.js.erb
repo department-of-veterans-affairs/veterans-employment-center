@@ -72,7 +72,7 @@ function addSkill(skill) {
   var str = '<li> \
               <input value="' + skill.id + '" type="hidden" name="veteran[skills][]"> \
               <span>' + skill.name + '</span> \
-              <span class="skill-deleter"><i class="fa fa-trash-o"></i></span> \
+              <span class="skill-deleter">- delete</span> \
             </li>'
   $('#checkbox-list').append(str);
   $('#add-skill-field').typeahead('val', '');
