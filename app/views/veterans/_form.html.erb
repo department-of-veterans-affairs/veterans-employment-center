@@ -98,7 +98,7 @@
               <li>
                 <%= hidden_field(:veteran, :skills, value: skill.id, multiple: true) %>
                 <span><%= skill.name %></span>
-                <span class="skill-deleter"><i class="fa fa-trash-o"></i></span>
+                <span class="skill-deleter delete-link">- remove</span>
               </li>
             <% end %>
           </div>
@@ -126,7 +126,6 @@
     <div class="actions alternate">
       <%= link_to_add_fields_education "<span aria-hidden='true'>+ </span>Add Education Experience".html_safe, f, :experiences %>
     </div>
-
   </div>
 
   <div class="form-section">

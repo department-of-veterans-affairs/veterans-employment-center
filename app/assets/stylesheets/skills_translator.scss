@@ -10,8 +10,16 @@
   color: #DDD;
 }
 
-.skill-deleter {
-  cursor: pointer;
+.delete-link {
+  text-decoration:underline;
+  background:rgba(0, 0, 0, 0.05);
+  color: #323a45;
+  font-size: 12px;
+}
+
+.delete-link:hover {
+  cursor:pointer;
+  background:#e6e6e6;
 }
 
 .add-skill-form {
