@@ -43,11 +43,6 @@ FactoryGirl.define do
     end
   end
 
-  factory :site_feedback do
-    url "www.test.com"
-    name "Ms Admin"
-  end
-
   factory :award do
     veteran
   end
