@@ -73,7 +73,7 @@ describe "Employers" do
         sign_in_as employer
         visit employer_home_path
         expect(page).to have_content 'You have not favorited any veterans yet'
-        expect(page).to have_css '.button', text: 'Find Candidates'
+        expect(page).not_to have_css '.button', text: 'Find Candidates'
       end
 
       it "with one favorite, it shows count and link to favorite" do
@@ -83,7 +83,7 @@ describe "Employers" do
         visit employer_home_path
 
         expect(page).to have_content 'You currently have 1 favorited candidate.'
-        expect(page).to have_link 'View Your Favorites'
+        expect(page).not_to have_link 'View Your Favorites'
       end
 
       it "with two or more favorites, it shows count and link to favorites" do
@@ -94,7 +94,7 @@ describe "Employers" do
         visit employer_home_path
 
         expect(page).to have_content 'You currently have 2 favorited candidates.'
-        expect(page).to have_link 'View Your Favorites'
+        expect(page).not_to have_link 'View Your Favorites'
       end
     end
   end
