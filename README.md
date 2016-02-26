@@ -55,22 +55,17 @@
 	$ rake db:seed
 	```
 
- * In the rails console, create an admin user for you to use:
+ * Start the application
 
-   `$ rails c`
-   `> User.create(email: 'your@email.com', password: 'yourpassword', va_admin: true)`
+    ```
+    $ rails s
+    ```
 
- * You should be good to go!
+  * Go to VEC in your browser at [http://127.0.0.1:3000](http://127.0.0.1:3000)
 
-  * Start the application
+## Troubleshooting
 
-      * `$ rails s`
-
-  * Go to it in your browser at [http://127.0.0.1:3000](http://127.0.0.1:3000)
-
-### Troubleshooting
-
-#### Problem 1:
+### Problem 1:
 ```
 > bundle install
 [...]
@@ -90,10 +85,12 @@ bundling.
 
 #### Fix:
 
-`brew install qt`
+```
+brew install qt
+```
 
 
-#### Problem 2:
+### Problem 2:
 ```
 psql: could not connect to server: No such file or directory
 Is the server running locally and accepting
@@ -165,6 +162,37 @@ Here's a list of the environment variables used by the application:
   - SKILLS\_TRANSLATOR\_PERCENT\_SKILLS\_RANDOM - To ensure that we occasionally test all skills, no matter how irrelevant we thought they were, we randomly replace a few of our "relevant" skills with totally random skills.
   - SKILLS\_TRANSLATOR\_NUM\_SKILLS\_TO\_RETURN - The number of skills the backend should return for a branch and MOC. A number of these skills are picked at random (see variable above).
   - SKILLS\_TRANSLATOR\_RELEVANCE\_EXPONENT - A large exponent tends to return skills in order of relevance. A small exponent will tend to pick more at random, surfacing more low-relevance skills. Zero will return skills completely random.
+
+###Becoming an administrator locally for testing
+
+- Export the LinkedIn environment variables (you will need to either create your own LinkedIn client id and secret or talk to someone on the VEC team to get our test variables
+	
+```
+$ export LINKEDIN_OAUTH_CLIENT_ID=put_your_client_id_here
+$ export LINKEDIN_OAUTH_CLIENT_SECRET=put_your_secret_here
+```
+
+- Start VEC locally
+
+```
+$ rails s
+```
+- Go to [http://localhost:3000/employers](http://localhost:3000/employers)
+- Click "Sign in with LinkedIn"
+- Enter your LinkedIn credentials. This will create an employer user for you in VEC. 	
+- In a new terminal window, `cd` to the directory VEC is in and log into the rails console
+
+```
+$ rails c
+```
+- In the rails console, enter the following, replacing `my@email.address` with the email address you used above to log in with LinkedIn:
+
+```
+> User.where(:email => "my@email.address").update_all(va_admin:true)
+```
+
+- Go back to [http://localhost:3000/employers](http://localhost:3000/employers) and you should see the administrative functions along the top of the page. 
+
 
 # VA Jobs API
 
