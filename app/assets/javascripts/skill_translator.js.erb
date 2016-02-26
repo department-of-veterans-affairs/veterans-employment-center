@@ -209,5 +209,10 @@ app.controller('SkillCtrl', ['$scope', '$http', '$timeout', '$cookies', function
     }, 500);
   }
 
+  $(function(){
+    $("#importButton").click(function(){
+      $.post('/skills-translator/resume_redirect');
+    })
+  })
 }])
 

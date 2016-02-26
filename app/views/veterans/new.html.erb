@@ -50,7 +50,7 @@
     <div class="small-12 columns">
       <h3>Build a Profile &amp; R&eacute;sum&eacute;</h3>  
       <p>Use this form to create a <em>public</em> profile so employers committed to hiring Veterans can find you here on the Veterans Employment Center&trade;. </p>
-      <p>Manually enter your information into the form fields below, or use the <strong>Auto-fill from LinkedIn</strong> button to pre-populate some of the fields from your LinkedIn account. <em>(Not all fields will be populated).</em></p>
+      <p>Manually enter your information into the form fields below<%unless session[:linkedin_profile] || session[:skills_translator]%>, or use the <strong>Auto-fill from LinkedIn</strong> button to pre-populate some of the fields from your LinkedIn account. <em>(Not all fields will be populated)</em><% end %>.</p>
       <%= render 'form' %>
     </div>
     </div>
