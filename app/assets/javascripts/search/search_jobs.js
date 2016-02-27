@@ -9,7 +9,6 @@ $(document).ready(function(){
     }).done(function( html ){
       $('.search-results').replaceWith(html );
       $(window).scrollTop($('.search-results').offset().top);
-      stButtons.locateElements();
     });
     e.preventDefault();
     e.stopPropagation();

@@ -18,7 +18,6 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require jquery-ui-1.10.4.custom.min
-//= require buttons
 //= require typeahead.bundle
 //= require typeahead.jquery
 //= require bloodhound
