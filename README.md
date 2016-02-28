@@ -153,7 +153,6 @@ Here's a list of the environment variables used by the application:
   - LINKEDIN\_OAUTH\_CLIENT\_ID - OAuth Client ID for LinkedIn Auth
   - LINKEDIN\_OAUTH\_CLIENT\_SECRET - OAuth Client Secret for LinkedIn Auth
   - NEW\_RELIC\_LICENSE\_KEY - License key for New Relic
-  - ONET\_TOKEN - Access token for the O-Net API
   - SAML\_CERT\_FINGERPRINT - Fingerprint for the SAML cert for AccessVA/DS Logon
   - SAML\_SERVICE\_URL - Callback URL for SAML/DS Logon authentication
   - SAML\_SSO\_TARGET\_URL - Target remote URL for AccessVA/DS Logon authentication
