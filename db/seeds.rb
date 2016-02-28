@@ -9,7 +9,8 @@
 require File.expand_path('../seed/data_importer', __FILE__)
 
 tables = [
-  "military_occupations",]
+  "military_occupations",
+  "skills_for_military_occupations",]
 
 puts "Truncating " + tables.join(', ') + "..." unless Rails.env == 'test'
 ActiveRecord::Base.connection.execute("TRUNCATE "+ tables.join(',') + " RESTART IDENTITY;")
