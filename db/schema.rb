@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151222061239) do
+ActiveRecord::Schema.define(version: 20160228005004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,23 +32,6 @@ ActiveRecord::Schema.define(version: 20151222061239) do
     t.datetime "updated_at"
     t.integer  "veteran_id",   index: {name: "index_awards_on_veteran_id"}
     t.date     "date"
-  end
-
-  create_table "deprecated_job_skill_matches", force: :cascade do |t|
-    t.integer  "matchable_id",            index: {name: "index_deprecated_job_skill_matches_on_matchable_id_and_matchabl", with: ["matchable_type"]}
-    t.string   "matchable_type"
-    t.integer  "deprecated_job_skill_id", index: {name: "index_deprecated_job_skill_matches_on_deprecated_job_skill_id"}
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "deprecated_job_skills", force: :cascade do |t|
-    t.string   "code",        index: {name: "index_deprecated_job_skills_on_code"}
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-    t.string   "source"
-    t.text     "description"
   end
 
   create_table "employers", force: :cascade do |t|
@@ -102,29 +85,6 @@ ActiveRecord::Schema.define(version: 20151222061239) do
     t.integer  "employer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "job_title_military_occupations", force: :cascade do |t|
-    t.integer  "job_title_id",           index: {name: "index_job_title_military_occupations_on_job_title_id"}
-    t.integer  "military_occupation_id", index: {name: "index_job_title_military_occupations_on_military_occupation_id"}
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "preparation_needed"
-    t.string   "pay_grade",              index: {name: "index_job_title_military_occupations_on_pay_grade"}
-    t.string   "match_type"
-  end
-
-  create_table "job_titles", force: :cascade do |t|
-    t.string   "code"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-    t.text     "description"
-    t.string   "source"
-    t.string   "url"
-    t.boolean  "has_bright_outlook"
-    t.boolean  "is_green"
-    t.boolean  "has_apprenticeship"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -262,7 +222,6 @@ ActiveRecord::Schema.define(version: 20151222061239) do
   create_table "veterans", force: :cascade do |t|
     t.text     "desiredLocation",              default: "--- []\n"
     t.text     "desiredPosition",              default: "--- []\n"
-    t.text     "deprecated_skills",            default: "--- []\n"
     t.text     "objective"
     t.datetime "created_at"
     t.datetime "updated_at",                   index: {name: "index_veterans_on_updated_at"}

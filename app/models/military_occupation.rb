@@ -1,9 +1,4 @@
 class MilitaryOccupation < ActiveRecord::Base
-  has_many :job_title_military_occupations
-  has_many :job_titles, through: :job_title_military_occupations
-
-  has_many :deprecated_job_skill_matches, as: :matchable
-  has_many :deprecated_job_skills, through: :deprecated_job_skill_matches
 
   validates_uniqueness_of :code, scope: [:service, :active]
   validates :service, inclusion: {in: ['Army', 'Navy', 'Marine Corps', 'Coast Guard', 'Air Force', 'DEFAULT'],
