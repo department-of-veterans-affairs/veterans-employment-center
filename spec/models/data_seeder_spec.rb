@@ -4,9 +4,7 @@ require 'rake'
 describe 'Data Seeding' do
 
   context "before seeding the DB" do
-    it "should have no data in relevant DB tables" do
-      expect DeprecatedJobSkill.all.empty?
-      expect JobTitle.all.empty?
+    it "should have no data in relevant DB table" do
       expect MilitaryOccupation.all.empty?
     end
   end
@@ -16,12 +14,8 @@ describe 'Data Seeding' do
       load Rails.root + "db/seeds.rb"
     end
 
-    it "should seed the job_titles, deprecated_job_skills, military_occupations, deprecated_job_skill_matches, and job_title_military_occupations tables" do
-      expect JobTitle.all.size > 0
+    it "should seed the military_occupations table" do
       expect MilitaryOccupation.all.size > 0
-      expect DeprecatedJobSkill.all.size > 0
-      expect DeprecatedJobSkillMatch.all.size > 0
-      expect JobTitleMilitaryOccupation.all.size > 0
     end
   end
 end
