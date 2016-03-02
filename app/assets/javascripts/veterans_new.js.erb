@@ -94,7 +94,6 @@ $(document).ready(function(){
   $('form').on('click', '.experience-deleter', function () {
     $(this).next('input').val(1)
     $(this).prev().remove();
-    $(this).next('p').remove();
     $(this).remove();
   })
   // prevent sending the form on pressing enter
