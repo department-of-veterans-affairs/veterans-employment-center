@@ -14,6 +14,7 @@ module ApplicationHelper
       fields = f.fields_for(association, new_object, child_index: id) do |builder|
         render(association.to_s.singularize + "_fields", f: builder)
       end
+      fields = content_tag(:p,fields + content_tag(:span, "Remove Section", class: "delete-link experience-deleter"))
       link_to(name, '#', class: "add_fields leftOffset", data: {id: id, fields: fields.gsub("\n", "")})
   end
   
@@ -33,6 +34,7 @@ module ApplicationHelper
       fields = f.fields_for(association, new_object, child_index: id) do |builder|
         render("military_fields", f: builder)
       end
+      fields = content_tag(:p,fields + content_tag(:span, "Remove Section", class: "delete-link experience-deleter"))
       link_to(name, '#', class: "add_fields leftOffset", data: {id: id, fields: fields.gsub("\n", "")})
   end
     
@@ -42,6 +44,7 @@ module ApplicationHelper
       fields = f.fields_for(association, new_object, child_index: id) do |builder|
         render("employment_fields", f: builder)
       end
+      fields = content_tag(:p,fields + content_tag(:span, "Remove Section", class: "delete-link experience-deleter"))
       link_to(name, '#', class: "add_fields leftOffset", data: {id: id, fields: fields.gsub("\n", "")})
   end
   
@@ -51,6 +54,7 @@ module ApplicationHelper
       fields = f.fields_for(association, new_object, child_index: id) do |builder|
         render("location_fields", f: builder)
       end
+      fields = content_tag(:p,fields + content_tag(:span, "Remove Section", class: "delete-link experience-deleter"))
       link_to(name, '#', id: "addLocationField", class: "add_fields leftOffset", data: {id: id, fields: fields.gsub("\n", "")})
   end
 

@@ -98,7 +98,7 @@
               <li>
                 <%= hidden_field(:veteran, :skills, value: skill.id, multiple: true) %>
                 <span><%= skill.name %></span>
-                <span class="skill-deleter delete-link">- remove</span>
+                <span class="skill-deleter delete-link">remove</span>
               </li>
             <% end %>
           </div>
@@ -120,9 +120,13 @@
     <div class="required federal">(This section is required for <strong>Federal job applications</strong>)</div>
     <h3 class="no-margin">Education &amp; Training</h3>
 
+    <p>
     <%= f.fields_for :experiences, @veteran.educational_experiences.any? ? @veteran.educational_experiences : @veteran.experiences.new do |experiences_fields| %>
       <%= render 'education_fields', f: experiences_fields %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= experiences_fields.check_box :_destroy, :style => 'display:none' %>
     <% end %>
+    </p>
     <div class="actions alternate">
       <%= link_to_add_fields_education "<span aria-hidden='true'>+ </span>Add Education Experience".html_safe, f, :experiences %>
     </div>
@@ -132,9 +136,13 @@
 
     <h3 class="no-margin">Military Service </h3>
 
+    <p>
     <%= f.fields_for :experiences, @veteran.military_experiences.any? ? @veteran.military_experiences : @veteran.experiences.new do |experiences_fields| %>
       <%= render 'military_fields', f: experiences_fields %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= experiences_fields.check_box :_destroy, :style => 'display:none' %>
     <% end %>
+    </p>
     <div class="actions alternate">
       <%= link_to_add_fields_military "<span aria-hidden='true'>+ </span>Add Military Experience".html_safe, f, :experiences %>
     </div>
@@ -144,9 +152,13 @@
   <div class="form-section">
     <h3 class="no-margin">Work Experience</h3>
 
+    <p>
     <%= f.fields_for :experiences, @veteran.work_experiences.any? ? @veteran.work_experiences : @veteran.experiences.new do |experiences_fields| %>
       <%= render 'employment_fields', f: experiences_fields %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= experiences_fields.check_box :_destroy, :style => 'display:none' %>
     <% end %>
+    </p>
     <div class="actions alternate">
       <%= link_to_add_fields_work "<span aria-hidden='true'>+ </span>Add Work Experience".html_safe, f, :experiences %>
     </div>
@@ -155,9 +167,13 @@
 
   <div class="form-section">
     <h3 class="no-margin">Volunteer Experience</h3>
+    <p>
     <%= f.fields_for :experiences, @veteran.volunteer_experiences.any? ? @veteran.volunteer_experiences : @veteran.experiences.new do |experiences_fields| %>
       <%= render 'experience_fields', f: experiences_fields %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= experiences_fields.check_box :_destroy, :style => 'display:none' %>
     <% end %>
+    </p>
     <div class="actions alternate">
       <%= link_to_add_fields "<span aria-hidden='true'>+ </span>Add Volunteer Experience".html_safe, f, :experiences %>
     </div>
@@ -165,9 +181,13 @@
 
   <div class="form-section">
     <h3 class="no-margin">Awards</h3>
+    <p>
     <%= f.fields_for :awards, @veteran.awards.any? ? @veteran.awards : @veteran.awards.new do |builder| %>
       <%= render 'award_fields', f: builder %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= builder.check_box :_destroy, :style => 'display:none' %>
     <% end %>
+    </p>
     <div class="actions alternate">
       <%= link_to_add_fields "<span aria-hidden='true'>+ </span>Add Award".html_safe, f, :awards %>
     </div>
@@ -175,9 +195,13 @@
 
   <div class="form-section">
     <h3 class="no-margin">Professional Affiliations</h3>
+    <p>
     <%= f.fields_for :affiliations, @veteran.affiliations.any? ? @veteran.affiliations : @veteran.affiliations.new do |builder| %>
       <%= render 'affiliation_fields', f: builder %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= builder.check_box :_destroy, :style => 'display:none' %>
     <% end %>
+    </p>
     <div class="actions alternate">
       <%= link_to_add_fields "<span aria-hidden='true'>+ </span>Add Affiliation".html_safe, f, :affiliations %>
     </div>
@@ -185,10 +209,14 @@
 
   <div class="form-section">
     <div class="required federal">(This section is required for <strong>Federal job applications</strong>)</div>
+    <p>
     <h3 class="no-margin">References</h3>
     <%= f.fields_for :references, @veteran.references.any? ? @veteran.references : @veteran.references.new do |builder| %>
       <%= render 'reference_fields', f: builder %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= builder.check_box :_destroy, :style => 'display:none' %>
     <% end %>
+    </p>
     <div class="actions alternate">
       <%= link_to_add_fields "<span aria-hidden='true'>+ </span>Add Reference".html_safe, f, :references %>
     </div>
@@ -196,10 +224,13 @@
 
   <div class="form-section">
     <h3 class="no-margin">Location Preference</h3>
+    <p>
     <%= f.fields_for :locations, @veteran.locations.any? ? @veteran.locations : @veteran.locations.new do |locations_fields| %>
       <%= render 'location_fields', f: locations_fields %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= locations_fields.check_box :_destroy, :style => 'display:none' %>
     <% end %>
-
+    </p>
     <div class="actions alternate">
       <%= link_to_add_fields "<span aria-hidden='true'>+ </span>Add Location".html_safe, f, :locations %>
       <%#= link_to_add_fields_location "<span aria-hidden='true'>+ </span>Add Another Location".html_safe, f, :locations %>

@@ -10,6 +10,7 @@ EmploymentPortal::Application.routes.draw do
   resources :skills
   resources :employers, except: [:index]
   resources :site_feedbacks, only: [:index, :new, :create, :edit]
+  resources :experiences, only: [:destroy]
   namespace :api, defaults: {format: 'json'} do
     resources :employers, only: [:index]
   end
