@@ -217,20 +217,6 @@ describe 'Veteran Search' do
       end
     end
 
-    context 'when there are results per accelerated learning program  (ALP) applicant' do
-      before do
-        fill_in 'keywords', with: ''
-        select 'Yes', from: 'Applied for Accelerated Learning Program'
-      end
-      it "should display results from ALP match" do
-        @vet1 = create :veteran, name: "Suzy Veteran", objective: "Build great web apps.", user: @user1, visible: true
-        @vet2 = create :veteran, name: "Robin Hood", objective: "Do great things", applied_for_alp_date: "2016-01-02",  user: @user2, visible: true
-        click_button('veteran-search')
-        expect(page).to have_no_content @vet1.objective
-        expect(page).to have_content @vet2.objective
-      end
-    end
-
     context 'when there are results per veteran experience.education_level' do
       before do
         fill_in 'keywords', with: ''
