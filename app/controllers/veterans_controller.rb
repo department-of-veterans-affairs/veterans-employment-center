@@ -118,11 +118,6 @@ class VeteransController < ApplicationController
   # If an unauthenticated Veteran creates a resume, the veteran_id is saved to a cookie. If they proceed to log in, the cookie links their User to their Veteran.
   def create
     @veteran = Veteran.new(veteran_params)
-    if params["veteran"]["skills"]
-      @veteran.skills = params["veteran"]["skills"].map do |id|
-        Skill.find(id) unless id.blank?
-      end
-    end
     @veteran.update_attributes(applied_for_alp_date: Time.now) unless veteran_params[:accelerated_learning_program].blank?
     if user_signed_in?
       @veteran.update_attributes(user_id: current_user.id) if current_user.veteran.nil?
@@ -154,7 +149,6 @@ class VeteransController < ApplicationController
     if !veteran_params["locations_attributes"].blank?
       @veteran.update_location_attributes(veteran_params["locations_attributes"])
     end
-    @veteran.skills = params["veteran"]["skills"].map { |id| Skill.find(id) unless id.blank? } if params["veteran"]["skills"]
     if @veteran.update(veteran_params)
       redirect_to @veteran, notice: 'Veteran was successfully updated.'
     else
@@ -255,7 +249,6 @@ class VeteransController < ApplicationController
   end
 
   def clean_blank_params
-    params[:veteran][:skills].reject!(&:empty?) if params[:veteran][:skills]
 ## TODO: REINSTATE THE BELOW IN TERMS OF NEW MODEL/PARAMS
 ##    params[:veteran][:desiredLocation].reject!(&:empty?)
     params[:veteran][:status_categories].reject!(&:empty?) unless params[:veteran][:status_categories].nil?

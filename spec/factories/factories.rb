@@ -88,40 +88,4 @@ FactoryGirl.define do
     active true
   end
 
-  factory :job_title do
-    code "333"
-    name "Teacher"
-    source "O*NET"
-  end
-
-  factory :another_job_title, class: JobTitle do
-    code "444"
-    name "Another Teacher"
-    source "O*NET"
-  end
-
-  factory :job_title_military_occupation do
-    job_title_id "1"
-    military_occupation_id "1"
-  end
-
-  factory :deprecated_job_skill do
-    code   "A1"
-    name   "Helpful"
-    description "A helpful personality"
-  end
-
-  factory :another_deprecated_job_skill, class: DeprecatedJobSkill do
-    code   "A2"
-    name   "More helpful"
-    description "A more helpful personality"
-  end
-
-  factory :deprecated_job_skill_match do
-    matchable_id "1"
-    matchable_type "JobTitle"
-    deprecated_job_skill_id "1"
-  end
-
-
 end
