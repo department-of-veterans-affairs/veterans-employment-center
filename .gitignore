@@ -18,6 +18,7 @@
 /config/deploy/*
 /config/deploy.rb
 /vendor/cache
+/vendor/bundle
 
 # Ignore sass-cache files
 .sass-cache
