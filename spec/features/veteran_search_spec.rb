@@ -248,6 +248,21 @@ describe 'Veteran Search' do
       end
     end
 
+    context 'when there are results per veteran objective and education level' do
+      before do
+        fill_in 'keywords', with: 'learn'
+        select EducationLevel::LEVELS[5], from: 'Minimum Education Level'
+      end
+      it "should display results from objective match" do
+        @vet1 = create :veteran, name: "Suzy Veteran", objective: "Build great web apps.", user: @user1, visible: true
+        @vet2 = create :veteran, name: "Robin Hood", desiredPosition: ["Archer, Leader, Teacher"], objective: "1. Become a better person. Learn to help others.",  user: @user2, visible: true
+        FactoryGirl.create :experience, veteran: @vet2, experience_type: 'education', credential_type: EducationLevel::LEVELS[5]
+        click_button('veteran-search')
+        expect(page).to have_no_content @vet1.objective
+        expect(page).to have_content @vet2.objective
+      end
+    end
+
     context 'when AND operator is used' do
       it "should display results that have a field matching both keywords" do
         @user3 = User.create(email: 'robin.h@sherwood.org', password: 'Password')
