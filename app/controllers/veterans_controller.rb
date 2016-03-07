@@ -173,7 +173,6 @@ class VeteransController < ApplicationController
       :session_id,
       :visible,
       :availability_date,
-      :accelerated_learning_program,
       references_attributes: [:name, :email, :job_title, :id, :veteran_id, :_destroy],
       affiliations_attributes: [:job_title, :organization, :id, :veteran_id, :_destroy],
       awards_attributes: [:title, :veteran_id, :organization, :date, :id, :_destroy],
