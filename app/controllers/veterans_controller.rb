@@ -27,9 +27,12 @@ class VeteransController < ApplicationController
 
     respond_to do |format|
       format.html do
-        @veterans = @q.result.includes(:experiences, :affiliations, :locations).paginate(page: params[:page], per_page: 20).reorder(updated_at: :desc)
-
-        # Stick the kw query back in as passed to repopulate the text field
+	if ((params)[:q] && !(params)[:q]["by_minimum_education_level"].blank?)
+	    @veterans = @q.result.includes(:affiliations, :locations).joins(:experiences).paginate(page: params[:page], per_page: 20).reorder(updated_at: :desc)
+        else
+            @veterans = @q.result.includes(:experiences, :affiliations, :locations).paginate(page: params[:page], per_page: 20).reorder(updated_at: :desc)
+        end
+	# Stick the kw query back in as passed to repopulate the text field
         @q.build(KEYWORD_FIELD_NAME => query_params_sans_location[KEYWORD_FIELD_NAME], 'm' => query_params_sans_location['m']) if query_params_sans_location.respond_to?(:keys)
       end
       format.csv do
