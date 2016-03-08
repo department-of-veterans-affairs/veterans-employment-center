@@ -174,6 +174,21 @@ feature 'when building a resume, the resume only shows the fields that it should
   #   expect(page).to have_content 'gs8'
   # end
 
+#  scenario "you can delete fields on create page",:js => true,driver: :webkit  do
+#    visit resume_builder_path
+#    fill_in 'Your Name', with: 'Suzy Veteran'
+#    fill_in 'Your Email', with: 'suzy@veterans.org'
+#    fill_in 'veteran_objective', with: 'An amazing objective'
+#    fill_in 'Name of school or training', with: 'Harvard'
+#    page.execute_script %Q($('.experience-deleter').first().click())
+#    click_button 'Preview Your Veteran Profile and Résumé Content'
+#    expect(page).to have_content "Suzy Veteran"
+#    expect(page).to have_content 'Objective'
+#    expect(page).to have_content 'An amazing objective'
+#    expect(page).not_to have_content 'Education'
+#    expect(page).not_to have_content 'Harvard'
+#  end
+
   scenario "autofilling your resume with LinkedIn" do
     stub_request(:get, "https://api.linkedin.com/v1/people/~:(email-address,first-name,last-name,location,positions,educations,skills,volunteer,honors-awards,recommendations-received)").
       to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/json/linkedin_profile.json"), headers: {})
@@ -320,4 +335,7 @@ feature "you can view and edit a profile after creation" do
     expect(page).to have_content "Add the basics"
     expect(page).to have_content "An amazing objective"
   end
+
+  #scenario "you can delete fields on edit"
+  #end
 end
