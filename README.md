@@ -146,7 +146,6 @@ Contact @ayaleloehr if you need access to any of these variables
 Here's a list of the environment variables used by the application:
 
   - DEVISE\_SECRET\_KEY - secret key for Devise; set with value from `rake secret`
-  - GI_BILL\_SAML\_SERVICE\_URL - Callback URL for the GI Bill SAML login; not really used
   - GOOGLE\_OAUTH\_CLIENT\_ID - OAuth Client ID for Google Auth
   - GOOGLE\_OAUTH\_CLIENT\_SECRET - OAuth Client Secret for Google Auth
   - JOBS_API\_BASE\_URL - URL to the VA Jobs API server
