@@ -104,7 +104,7 @@ describe "Veterans" do
       expect(page).to have_link "Download a spreadsheet of these results"
       click_link("Download a spreadsheet of these results")
       csv = page.text
-      expect(csv).to start_with "id,desiredLocation,desiredPosition,deprecated_skills,objective"
+      expect(csv).to start_with "id,desiredLocation,desiredPosition,objective"
       expect(csv).to include "Suzy"
       expect(csv).to include "suzy@veteran.org"
       expect(csv).to include "Build great web apps"
@@ -128,7 +128,7 @@ describe "Veterans" do
       expect(page).to have_link "Download a spreadsheet of all veterans"
       click_link("Download a spreadsheet of all veterans")
       csv = page.text
-      expect(csv).to start_with "id,desiredLocation,desiredPosition,deprecated_skills,objective"
+      expect(csv).to start_with "id,desiredLocation,desiredPosition,objective"
       expect(csv).to include "Suzy"
       expect(csv).to include "suzy@veteran.org"
       expect(csv).to include "Build great web apps"

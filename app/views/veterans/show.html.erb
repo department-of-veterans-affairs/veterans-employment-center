@@ -35,9 +35,9 @@
             <% if user_signed_in? && current_user.is_employer? %>
               <div class="right">
                 <% if current_user.employer.favorited?(@veteran) %>
-                  <%= link_to favorite_veteran_path(@veteran, type: "unfavorite"), title: "Remove Favorite", method: :put do %><%= image_tag "star.png", align: 'center' %>Remove from favorites<% end %>
+                  <%= link_to favorite_veteran_path(@veteran, type: "unfavorite"), title: "Remove Favorite", method: :put do %>Remove from favorites<% end %>
                 <% else %>
-                  <%= link_to favorite_veteran_path(@veteran, type: "favorite"), title: "Favorite", method: :put do %><%= image_tag "empty_star.png" %>Add to favorites<% end %>
+                  <%= link_to favorite_veteran_path(@veteran, type: "favorite"), title: "Favorite", method: :put do %>Add to favorites<% end %>
                 <% end %>
               </div>
             <% end %>

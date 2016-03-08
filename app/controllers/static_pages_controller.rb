@@ -1,9 +1,5 @@
 class StaticPagesController < ApplicationController
 
-  def job_translator
-
-  end
-
   def home
   end
 

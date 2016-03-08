@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308154100) do
+ActiveRecord::Schema.define(version: 20160228005004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,23 @@ ActiveRecord::Schema.define(version: 20160308154100) do
     t.datetime "updated_at"
   end
 
+  create_table "job_skill_matches", force: :cascade do |t|
+    t.integer  "matchable_id",   index: {name: "index_job_skill_matches_on_matchable_id_and_matchable_type", with: ["matchable_type"]}
+    t.string   "matchable_type"
+    t.integer  "job_skill_id",   index: {name: "index_job_skill_matches_on_job_skill_id"}
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_skills", force: :cascade do |t|
+    t.string   "code",        index: {name: "index_job_skills_on_code"}
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "source"
+    t.text     "description"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.integer  "veteran_id",     index: {name: "index_locations_on_veteran_id"}
     t.string   "location_type"
@@ -130,6 +147,17 @@ ActiveRecord::Schema.define(version: 20160308154100) do
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at", index: {name: "index_sessions_on_updated_at"}
+  end
+
+  create_table "site_feedbacks", force: :cascade do |t|
+    t.text     "description"
+    t.text     "how_to_replicate"
+    t.string   "url"
+    t.string   "name"
+    t.string   "email"
+    t.text     "reviewer_comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -222,6 +250,7 @@ ActiveRecord::Schema.define(version: 20160308154100) do
     t.date     "availability_date",            index: {name: "index_veterans_on_availability_date"}
     t.text     "status_categories",            default: "--- []\n"
     t.tsvector "searchable_summary"
+    t.datetime "applied_for_alp_date"
     t.string   "accelerated_learning_program"
   end
 

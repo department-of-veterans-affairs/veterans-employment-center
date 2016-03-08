@@ -23,10 +23,6 @@ feature 'User is reading the Skills Translator page' do
             skill_id: sk.id,
             relevance: (10 - i).to_f / 10)
     end
-    @jt = create(:job_title)
-    @moc.job_titles << @jt
-    @js = create(:deprecated_job_skill)
-    @moc.deprecated_job_skills << @js
 
     visit skills_translator_path
   end
