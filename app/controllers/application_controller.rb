@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery #had to comment out 'with: :exception' because of an InvalidAuthenticityToken issue
   #see: https://github.com/plataformatec/devise/issues/2586
-  before_filter :check_maintenance_page
 
   # Override default devise path for employers who have not added a Company name and EIN to their profiles yet.
   def after_sign_in_path_for(resource)
@@ -42,10 +41,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # if the VEC_MAINTENANCE_UNDERWAY variable is present, redirect to a maintenance page
-  def check_maintenance_page
-    if ENV.key? 'VEC_MAINTENANCE_UNDERWAY'
-      redirect_to "/maintenance.html"
-    end
-  end
 end
