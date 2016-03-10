@@ -180,6 +180,13 @@ feature 'when building a resume, the resume only shows the fields that it should
 #    fill_in 'Your Email', with: 'suzy@veterans.org'
 #    fill_in 'veteran_objective', with: 'An amazing objective'
 #    fill_in 'Name of school or training', with: 'Harvard'
+##################################################################
+# The below javascript doesn't throw an error, but it also doesn't
+# modify the page's html to remove the Education section. Part of
+# the issue is that it's using a 'span' element rather than a
+# button or link. The other is that it's trying to modify the page
+# which is currently very difficult to do in testing
+##################################################################
 #    page.execute_script %Q($('.experience-deleter').first().click())
 #    click_button 'Preview Your Veteran Profile and Résumé Content'
 #    expect(page).to have_content "Suzy Veteran"
