@@ -9,7 +9,6 @@ EmploymentPortal::Application.routes.draw do
   end
   resources :skills
   resources :employers, except: [:index]
-  resources :site_feedbacks, only: [:index, :new, :create, :edit]
   resources :experiences, only: [:destroy]
   namespace :api, defaults: {format: 'json'} do
     resources :employers, only: [:index]
@@ -48,7 +47,6 @@ EmploymentPortal::Application.routes.draw do
   get 'employer-news' => 'static_pages#employer_news', as: :employer_news
   get 'microdata-test-data' => 'static_pages#microdata_test_data', as: :microdata_test_data
   get 'microdata-test2-data' => 'static_pages#microdata_test2_data', as: :microdata_test2_data
-  get '/download_site_feedback' => 'site_feedbacks#download_site_feedback'
   get '/download_all_veterans' => 'veterans#download_all_veterans'
   get '/for_job_seekers' => 'static_pages#for_job_seekers'
   get 'skills-translator' => 'skills#index', as: :skills_translator

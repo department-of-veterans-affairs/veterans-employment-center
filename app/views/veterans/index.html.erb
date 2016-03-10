@@ -91,12 +91,6 @@ $(document).ready(function(){
               </div>
 
               <div class="small-6 columns">
-                <label>Applied for Accelerated Learning Program
-                  <%= f.select :applied_for_alp_date_not_null, [["Yes", true],["No", false]], include_blank: true  %>
-                </label>
-              </div>
-
-              <div class="small-6 columns">
                 <label>Last Updated
                   <%= f.select(:updated_at_gt, [["Last 30 Days", Date.today - 30],["Last 90 Days", Date.today - 90]], include_blank: true) %>
                 </label>

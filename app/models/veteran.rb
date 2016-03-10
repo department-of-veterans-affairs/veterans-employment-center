@@ -47,9 +47,6 @@ class Veteran < ActiveRecord::Base
 
   STATUS_CATEGORIES = ["Caretaker", "Family Member", "Guard/Reservist", "Smooth Takeoff Project", "Junior Military Officer (O1-O4)", "Service-Connected Disabled Veteran", "Service-Connected Disabled Veteran (10%)", "Service-Connected Disabled Veteran (30%)", "Transitioning Servicemember", "Military Spouse", "Veteran"]
 
-  ACCELERATED_LEARNING_PROGRAMS = ["Coley and Associates", "Full Circle Computing", "New Horizons, St. Louis", "Three Wire Systems, LLC",
-  "TLG Learning – Help Desk", "TLG Learning – Network Support Engineer", "True Information Assurance"]
-
   after_save :fill_search_summary
 
   class << self
