@@ -64,7 +64,8 @@ function fixListeners() {
   // delete a skill from the form
   $('.skill-deleter').on('click', function (e) {
     $(e.currentTarget).parent().remove();
-  })
+  });
+
 }
 
 // add skill to DOM helper function
@@ -72,7 +73,7 @@ function addSkill(skill) {
   var str = '<li> \
               <input value="' + skill.id + '" type="hidden" name="veteran[skills][]"> \
               <span>' + skill.name + '</span> \
-              <span class="skill-deleter">remove</span> \
+              <span class="skill-deleter delete-link">remove</span> \
             </li>'
   $('#checkbox-list').append(str);
   $('#add-skill-field').typeahead('val', '');
@@ -90,6 +91,11 @@ $(document).ready(function(){
     }
   });
 
+  $('form').on('click', '.experience-deleter', function () {
+    $(this).next('input').val(1)
+    $(this).prev().remove();
+    $(this).remove();
+  })
   // prevent sending the form on pressing enter
   $(document).on("keypress", '#veteran_form', function (e) {
       var code = e.keyCode || e.which;
