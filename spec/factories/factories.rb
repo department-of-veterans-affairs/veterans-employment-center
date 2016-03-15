@@ -87,4 +87,13 @@ FactoryGirl.define do
     active true
   end
 
+  factory :skill do
+    name 'skill'
+  end
+
+  factory :veteran_skill do
+    veteran
+    skill
+  end
+
 end
