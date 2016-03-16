@@ -49,7 +49,7 @@ describe '/employer-list', js: true, driver: :webkit do
   
   it 'should change sort' do
     expect(page).to have_no_content "Processing"
-    expect(first_row).to have_content Employer.order(:approved_on).first.user.email
+    expect(first_row).to have_content Employer.order(:created_at).first.user.email
     email_header = find('th', text: 'Email')
     email_header.trigger('click')
     expect(page).to have_no_content "Processing"
