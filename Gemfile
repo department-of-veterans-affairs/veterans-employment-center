@@ -68,14 +68,6 @@ group :development, :test do
   gem 'guard-rspec', require: false
 end
 
-group :development do
-  gem 'capistrano', '~> 3.4.0'
-  gem 'capistrano-passenger'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-env-config'
-end
-
 group :test do
   gem 'webmock'
   gem 'simplecov', require: false
