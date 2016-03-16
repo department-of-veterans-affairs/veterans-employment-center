@@ -29,13 +29,13 @@ describe Employer do
     employer = create(:employer)
     expect(employer).to be_valid
 
-    invalid = ["alpha", -12, 11111111]
+    invalid = [0, "alpha", -12, 11111111]
     invalid.each do |ex|
       employer.commit_to_hire = ex
       expect(employer).to be_invalid
     end
 
-    valid = [0, "123", 2342352]
+    valid = [1, "123", 2342352]
     valid.each do |ex|
       employer.commit_to_hire = ex
       expect(employer).to be_valid

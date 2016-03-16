@@ -1,20 +1,18 @@
 <%= form_for(@employer) do |f| %>
-  <% if @employer.errors.any? %>
-    <div class="row">
-      <div class="small-12 columns">
-        <div data-alert class="alert-box warning">
-          <div id="error_explanation">
-            <h3><%= pluralize(@employer.errors.count, "error") %> prohibited this employer from being saved:</h3>
-            <ul>
-              <% @employer.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
+  <div class="row" id="error_box" <% if !@employer.errors.any? %> style="display:none;" <%end%>>
+    <div class="small-12 columns">
+      <div data-alert class="alert-box warning">
+        <div id="error_explanation">
+          <h3><%= pluralize(@employer.errors.count, "error") %> prohibited this employer from being saved:</h3>
+          <ul>
+            <% @employer.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
     </div>
-  <% end %>
+  </div>
 
   <div class="panel">
     <h3>Company Details (required)</h3>
@@ -184,7 +182,8 @@
   	<div class="row">
 		  <div class="small-12 columns">
         <div class="actions">
-    		  <%= f.submit class: "button primary" %>
+                  <span id="click-button" class: "button primary">Update Employer</span>
+                  <%= f.submit style: "display:none;", class: "button primary", id: "submit-button" %>
 		    </div>
       </div>
   	</div>

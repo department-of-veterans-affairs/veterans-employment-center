@@ -39,7 +39,7 @@ FactoryGirl.define do
       association :user, factory: :user_with_random_email
       commit_date {(rand(3)+1).months.from_now}
       commit_hired {rand(5)}
-      commit_to_hire {commit_hired + rand(3)}
+      commit_to_hire {commit_hired + rand(3) + 1}
     end
   end
 
