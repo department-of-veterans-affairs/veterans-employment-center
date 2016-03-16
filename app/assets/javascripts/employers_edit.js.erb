@@ -32,7 +32,10 @@ $(document).ready(function(){
       var error_ex = $("#error_explanation");
       error_ex.children().remove();
       error_ex.append(errors);
-      $("#error_box").show();
+      var error_box = $("#error_box");
+      error_box.show();
+      var position = error_box.offset();
+      $('html, body').animate({scrollTop: position.top}, "fast");
     }
   });
   // prevent sending the form on pressing enter
