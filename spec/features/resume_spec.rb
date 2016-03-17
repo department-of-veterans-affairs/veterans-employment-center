@@ -319,7 +319,7 @@ feature "profile creation shouldn't redirect to employer login", js: true do
     visit veterans_path
     click_link "Manage Your Profile and Hiring Commitment"
     fill_in "employer_company_name", with: 'The Editing Company'
-    click_button "Update Employer"
+    find('#click-button').click
     click_link 'Sign Out'
 
     visit new_veteran_path
