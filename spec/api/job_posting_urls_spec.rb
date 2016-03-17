@@ -8,13 +8,13 @@ describe 'Employer contributed Job Posting URLs API' do
     create(:employer, company_name: nil, ein: 234456, location: 'Anytown, USA',
            website: 'www.other.com', commit_to_hire: 10, job_postings_url: 'http://job.postings.url2',
            user: user)
-    create(:employer, company_name: nil, ein: 234456, location: 'Anytown, USA',
+    create(:employer, company_name: nil, ein: 234457, location: 'Anytown, USA',
            website: 'www.other.com', commit_to_hire: 10, job_postings_url: '',
            user: user)
-    create(:employer, company_name: 'Yet Another Employer', ein: 234456, location: 'Anytown, USA',
+    create(:employer, company_name: 'Yet Another Employer', ein: 234458, location: 'Anytown, USA',
            website: 'https://www.yetanother.com', commit_to_hire: 10,
            user: user)
-    create(:employer, company_name: 'Yet Another Employer', ein: 234456, location: 'Anytown, USA',
+    create(:employer, company_name: 'Yet Another Employer', ein: 234459, location: 'Anytown, USA',
            website: 'https://www.yetanother.com', commitment_categories: ["Homeless"], commit_to_hire: 10,
            user: user)
   end
