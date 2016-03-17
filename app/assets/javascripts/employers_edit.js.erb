@@ -5,7 +5,7 @@ function fields_have_errors() {
   var error_text = '';
   if (hiring_commitment && (hiring_commitment < 1)) {
     num_text = '1 error';
-    error_text = '<li>Commit to hire must be a postive number</li>';
+    error_text = '<li>Commit to hire must be a postive number.</li>';
   }
   if (ein && (ein.length < 9)) {
     if (num_text.length > 0) {
@@ -13,7 +13,7 @@ function fields_have_errors() {
     } else {
       num_text = '1 error';
     }
-    error_text = error_text + '<li>Employer Identification Number must be nine characters with no dashes</li>';
+    error_text = error_text + '<li>Employer Identification Number must be nine characters with no dashes.</li>';
   } 
   if (error_text.length > 0) {
     error_text = '<h3>'+num_text+' prohibited this employer from being saved:</h3><ul>'+error_text+'</ul>';

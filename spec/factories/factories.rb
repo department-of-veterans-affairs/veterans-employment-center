@@ -27,9 +27,9 @@ FactoryGirl.define do
   end
 
   factory :employer do
-  	company_name "Apple Computer"
-  	ein 1245
-  	street_address "123 Main St"
+    company_name "Apple Computer"
+    ein {rand(999999999).to_s.center(9, rand(9).to_s)}
+    street_address "123 Main St"
     city "Towny"
     state "WA"
     zip "22222"
