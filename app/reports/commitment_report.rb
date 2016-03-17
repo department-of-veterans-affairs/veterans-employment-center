@@ -9,7 +9,7 @@ class CommitmentReport
   end
 
   def total_employers
-    Employer.count
+    Employer.where(approved: true).count
   end
 
   def total_commitments
@@ -17,11 +17,11 @@ class CommitmentReport
   end
 
   def commitment_sum
-    Employer.sum(:commit_to_hire)
+    Employer.where(approved: true).sum(:commit_to_hire)
   end
 
   def hired_so_far
-    Employer.sum(:commit_hired)
+    Employer.where(approved: true).sum(:commit_hired)
   end
 
   def committed
@@ -39,14 +39,14 @@ class CommitmentReport
 
   def filtered_pool
     if @search
-      report_pool = employer_pool.ransack(company_name_cont: @search).result(distinct: true)
+      report_pool = employer_pool.ransack(company_name_cont: @search, approved: true).result(distinct: true)
     else
       employer_pool
     end
   end
 
   def employer_pool
-    Employer.where.not(commit_to_hire: nil)
+    Employer.where.not(commit_to_hire: nil).where(approved: true)
   end
 
   def as_csv

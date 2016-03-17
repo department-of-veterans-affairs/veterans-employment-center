@@ -142,19 +142,16 @@ describe "Employers" do
     before do
       create(:employer, location: 'Cupertino, CA', website: 'http://www.apple.com', commit_to_hire: 100)
       create(:employer, company_name: 'Other Employer', ein: 234456, location: 'Anytown, USA',
-          website: 'www.other.com', commit_to_hire: 10,
+          website: 'www.other.com', commit_to_hire: 10, approved: true,
           user: create(:user, email: 'veteran1@gmail.com', password: '12345678'))
       create(:employer, company_name: 'Yet Another Employer', ein: 234456, location: 'Anytown, USA',
-          website: 'https://www.yetanother.com', commit_to_hire: 10,
+          website: 'https://www.yetanother.com', commitment_categories: ["Homeless"], commit_to_hire: 10, approved: true,
           user: create(:user, email: 'veteran2@gmail.com', password: '12345678'))
-      create(:employer, company_name: 'Yet Another Employer', ein: 234456, location: 'Anytown, USA',
-          website: 'https://www.yetanother.com', commitment_categories: ["Homeless"], commit_to_hire: 10,
-          user: create(:user, email: 'veteran3@gmail.com', password: '12345678'))
     end
 
-    it "should list the employers and link to their websites" do
+    it "should list the approved employers and link to their websites" do
       visit commitments_path
-      expect(page).to have_link 'Apple Computer', href: "http://www.apple.com"
+      expect(page).not_to have_link 'Apple Computer', href: "http://www.apple.com"
       expect(page).to have_link 'Other Employer', href: "http://www.other.com"
       expect(page).to have_link 'Yet Another Employer', href: "https://www.yetanother.com"
     end
@@ -176,7 +173,8 @@ describe "Employers" do
       visit commitments_path
       click_link 'Download all commitments as spreadsheet'
       csv = page.text
-      expect(csv).to include 'Apple Computer'
+      expect(csv).not_to include 'Apple Computer'
+      expect(csv).to include 'Other Employer'
     end
 
     it "should not show data from excluded columns in the CSV" do
