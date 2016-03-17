@@ -140,7 +140,7 @@ $(document).ready(function(){
   $('#add-skill-field').keyup(function(e){
     if(e.keyCode == 13){
       if (justSelected) return;
-      var skill = e.target.value
+      var skill = escapeHtml(e.target.value);
       if(skill == "") return;
       var data = {name: skill}
       $.post('<%= url_helper.skills_translator_add_skill_path(script_name: ENV['RAILS_RELATIVE_URL_ROOT']) %>', data, addSkill);
@@ -149,6 +149,15 @@ $(document).ready(function(){
 
   fixListeners();
 });
+
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
 
 function repeatDesiredPos() {
   $("#desiredPosition").append("<input name='veteran[desiredPosition][]' type='text' /><br />");
