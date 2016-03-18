@@ -13,7 +13,7 @@ function fields_have_errors() {
     } else {
       num_text = '1 error';
     }
-    error_text = error_text + '<li>Employer Identification Number must be nine characters with no dashes</li>';
+    error_text = error_text + '<li>Employer Identification Number must be nine characters with no dashes.</li>';
   } 
   if (error_text.length > 0) {
     error_text = '<h3>'+num_text+' prohibited this employer from being saved:</h3><ul>'+error_text+'</ul>';

@@ -18,7 +18,7 @@ describe Employer do
       expect(employer).to be_invalid
     end
 
-    valid = [0, "123", 2342352]
+    valid = ['', "123456789", 234235289]
     valid.each do |ex|
       employer.ein = ex
       expect(employer).to be_valid

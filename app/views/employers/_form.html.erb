@@ -6,6 +6,9 @@
           <h3><%= pluralize(@employer.errors.count, "error") %> prohibited this employer from being saved:</h3>
           <ul>
             <% @employer.errors.full_messages.each do |msg| %>
+	      <% if msg == 'Ein has already been taken' %>
+		<% msg = 'Another company has registered with that Employer Identification Number.' %>
+	      <% end %>
               <li><%= msg %></li>
             <% end %>
           </ul>
