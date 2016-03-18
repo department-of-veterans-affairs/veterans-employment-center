@@ -6,12 +6,12 @@ feature 'employers edit their accounts' do
     sign_in_as(@user)
   end    
   
-  scenario 'after logging in with google, they can access the edit profile page' do
+  scenario 'after logging in with google, they can access the edit profile page', :js => true do
     visit veterans_path
     click_link "Manage Your Profile and Hiring Commitment"
     expect(page).to have_selector 'h2', text: "Edit your profile"
     fill_in "employer_company_name", with: 'The Editing Company'
-    click_button "Update Employer"
+    find('#click-button').click
     expect(page).to have_selector "#flash_notice",  text: 'The Editing Company was successfully updated.'
   end
  
@@ -20,17 +20,17 @@ feature 'employers edit their accounts' do
     expect(page).to have_no_field "employer_approved"
   end
   
-  scenario 'when an employer indicates a hiring commitment category, it appears on their show page' do
+  scenario 'when an employer indicates a hiring commitment category, it appears on their show page', :js => true do
     visit edit_employer_path(@user.employer)
     check 'Homeless'
-    click_button "Update Employer"
+    find('#click-button').click
     expect(page).to have_content "Homeless"
   end
   
-  scenario 'when an employer indicates a hiring commitment number, it appears on their account and commitments pages' do
+  scenario 'when an employer indicates a hiring commitment number, it appears on their account and commitments pages', :js => true do
     visit edit_employer_path(@user.employer)
     fill_in "employer_commit_to_hire", with: '500'
-    click_button "Update Employer"
+    find('#click-button').click
     visit employer_home_path
     expect(page).to have_content "publicly committed to hire 500 Veterans."
     expect(page).to have_no_content "publicly committed to hire 500 Veterans by"
@@ -41,11 +41,11 @@ feature 'employers edit their accounts' do
     expect(page).to have_no_content "You haven't yet made a public commitment to hire Veterans"
   end
   
-  scenario 'when an employer indicates a hiring commitment number AND date, both appear on their account and commitments pages' do
+  scenario 'when an employer indicates a hiring commitment number AND date, both appear on their account and commitments pages', :js => true do
     visit edit_employer_path(@user.employer)
     fill_in "employer_commit_to_hire", with: '500'
     fill_in "employer_commit_date", with: '05/15/2016'
-    click_button "Update Employer"
+    find('#click-button').click
     visit employer_home_path
     expect(page).to have_content "publicly committed to hire 500 Veterans by May 15, 2016"
     expect(page).to have_no_content "You haven't yet made a public commitment to hire Veterans"
@@ -54,28 +54,28 @@ feature 'employers edit their accounts' do
     expect(page).to have_no_content "You haven't yet made a public commitment to hire Veterans"
   end
   
-  scenario 'when an employer removes their hiring commitment number, it no longer appears on their account and commitments pages' do
+  scenario 'when an employer removes their hiring commitment number, it no longer appears on their account and commitments pages', :js => true do
     visit edit_employer_path(@user.employer)
     fill_in "employer_commit_to_hire", with: '500'
-    click_button "Update Employer"
+    find('#click-button').click
     visit employer_home_path
     expect(page).to have_content "publicly committed to hire 500 Veterans."
     visit commitments_path
     expect(page).to have_content "publicly committed to hire 500 Veterans."
     visit edit_employer_path(@user.employer)
     fill_in "employer_commit_to_hire", with: ''
-    click_button "Update Employer"
+    find('#click-button').click
     visit employer_home_path
     expect(page).to have_content "You haven't yet made a public commitment to hire Veterans"
     visit commitments_path
     expect(page).to have_content "You haven't yet made a public commitment to hire Veterans"
   end
   
-  scenario 'an employer can specify a job posting url' do
+  scenario 'an employer can specify a job posting url', :js => true do
     visit edit_employer_path(@user.employer)
     fill_in "Employer Name", with: 'Example Inc.'
     fill_in 'URL of page with job postings', with: "http://example.com/jobs"
-    click_button "Update Employer"
+    find('#click-button').click
     expect(page).to have_content "Example Inc. was successfully updated"
   end
 
@@ -198,7 +198,7 @@ feature "logged in admin can search for employers on employer index page" do
 end 
 
 
-feature 'admins can edit an employer' do
+feature 'admins can edit an employer', js: true do
   scenario 'they can visit the edit employer page' do
     employer = create :employer
     sign_in_as_admin
@@ -210,9 +210,9 @@ feature 'admins can edit an employer' do
     employer = create :employer
     sign_in_as_admin
     visit edit_employer_path(employer)
-    fill_in "employer_admin_notes", with: 'Called and left messag'
-    click_button "Update Employer"
-    expect(page).to have_selector "#flash_notice",  text: 'was successfully updated.'
+    fill_in "employer_admin_notes", with: 'Called and left message'
+    find('#click-button').click
+    expect(page).to have_selector('#flash_notice', text: "#{employer.company_name} was successfully updated.")
   end
 end
 

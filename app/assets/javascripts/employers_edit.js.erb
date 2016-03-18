@@ -1,0 +1,49 @@
+function fields_have_errors() {
+  var hiring_commitment = $("#employer_commit_to_hire").val();
+  var ein = $("#employer_ein").val();
+  var num_text = '';
+  var error_text = '';
+  if (hiring_commitment && (hiring_commitment < 1)) {
+    num_text = '1 error';
+    error_text = '<li>Commit to hire must be a positive number</li>';
+  }
+  if (ein && (ein.length != 9)) {
+    if (num_text.length > 0) {
+      num_text = '2 errors';
+    } else {
+      num_text = '1 error';
+    }
+    error_text = error_text + '<li>Employer Identification Number must be nine characters with no dashes</li>';
+  } 
+  if (error_text.length > 0) {
+    error_text = '<h3>'+num_text+' prohibited this employer from being saved:</h3><ul>'+error_text+'</ul>';
+    return error_text;
+  } else {
+    return false;
+  }
+}
+
+$(document).ready(function(){
+  $('form').on('click', '#click-button', function () {
+    var errors = fields_have_errors();
+    if (!errors){
+      $("#submit-button").click();       
+    } else {
+      var error_ex = $("#error_explanation");
+      error_ex.children().remove();
+      error_ex.append(errors);
+      var error_box = $("#error_box");
+      error_box.show();
+      var position = error_box.offset();
+      $('html, body').animate({scrollTop: position.top}, "fast");
+    }
+  });
+  // prevent sending the form on pressing enter
+  $(document).on("keypress", function (e) {
+      var code = e.keyCode || e.which;
+      if (code == 13) {
+          e.preventDefault();
+          return false;
+      }
+  });
+});
