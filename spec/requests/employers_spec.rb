@@ -141,13 +141,13 @@ describe "Employers" do
   describe "GET /commitments" do
     before do
       create(:employer, location: 'Cupertino, CA', website: 'http://www.apple.com', commit_to_hire: 100)
-      create(:employer, company_name: 'Other Employer', ein: 234460, location: 'Anytown, USA',
+      create(:employer, company_name: 'Other Employer',  location: 'Anytown, USA',
           website: 'www.other.com', commit_to_hire: 10,
           user: create(:user, email: 'veteran1@gmail.com', password: '12345678'))
-      create(:employer, company_name: 'Yet Another Employer', ein: 234461, location: 'Anytown, USA',
+      create(:employer, company_name: 'Yet Another Employer', location: 'Anytown, USA',
           website: 'https://www.yetanother.com', commit_to_hire: 10,
           user: create(:user, email: 'veteran2@gmail.com', password: '12345678'))
-      create(:employer, company_name: 'Yet Another Employer', ein: 234462, location: 'Anytown, USA',
+      create(:employer, company_name: 'Yet Another Employer', location: 'Anytown, USA',
           website: 'https://www.yetanother.com', commitment_categories: ["Homeless"], commit_to_hire: 10,
           user: create(:user, email: 'veteran3@gmail.com', password: '12345678'))
     end

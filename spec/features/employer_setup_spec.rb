@@ -143,8 +143,8 @@ feature "logged in admin can search for employers on employer index page" do
   before do
     user1 = create :user, email: "email1@example.com", password: '123456'
     user2 = create :user, email: "email2@example.com", password: '234567'
-    employer1 = create :employer, company_name: "Dell Computer", ein: "12345678", approved: false, user_id: user1.id, poc_name: "Delia D.", poc_email: "poc@dell.com", location: "DTown, USA"
-    employer2 = create :employer, company_name: "Apple Computer", ein: "23452245", approved: true, user_id: user2.id, poc_name: "Appelonia A.", poc_email: "poc@apple.com", location: "Aville, USA"
+    employer1 = create :employer, company_name: "Dell Computer", ein: "123456780", approved: false, user_id: user1.id, poc_name: "Delia D.", poc_email: "poc@dell.com", location: "DTown, USA"
+    employer2 = create :employer, company_name: "Apple Computer", ein: "234522450", approved: true, user_id: user2.id, poc_name: "Appelonia A.", poc_email: "poc@apple.com", location: "Aville, USA"
     sign_in_as_admin
     visit '/employer-list'
   end
@@ -218,21 +218,21 @@ end
 
 feature 'admins can approve an employer', js: true, driver: :webkit do
   scenario 'admin sees all employers on index page' do
-    employer = create :employer, company_name: "Apple Computer", ein: "12345211"
+    employer = create :employer, company_name: "Apple Computer"
     sign_in_as_admin
     visit employer_list_path
     expect(page).to have_selector('.employer_name', text: "Apple Computer")
   end
 
   scenario 'approved employers are noted as approved' do
-    create :employer, company_name: "Apple Computer", ein: "12345211", approved: true
+    create :employer, company_name: "Apple Computer", approved: true
     sign_in_as_admin
     visit employer_list_path
     expect(page).to have_selector('.approval_status', text: 'Approved')
   end
 
   scenario 'unapproved employers are noted as not approved, with a link to approve them' do
-    create :employer, company_name: "Dell Computer", ein: "12345211", approved: false
+    create :employer, company_name: "Dell Computer",  approved: false
     sign_in_as_admin
     visit employer_list_path
     expect(page).to have_selector('.approval_status', text: 'Unapproved')
@@ -240,7 +240,7 @@ feature 'admins can approve an employer', js: true, driver: :webkit do
   end
 
   scenario 'admin can click "approve" button to mark an employer as approved' do
-    employer = create :employer, company_name: "Apple Computer", ein: "12345211"
+    employer = create :employer, company_name: "Apple Computer"
     sign_in_as_admin
     visit employer_list_path
     click_link "Approve"
@@ -249,7 +249,7 @@ feature 'admins can approve an employer', js: true, driver: :webkit do
   end
 
   scenario 'after an admin approves an employer, the admin email and the date appear on employer index' do
-    employer = create :employer, company_name: "Apple Computer", ein: "12345211"
+    employer = create :employer, company_name: "Apple Computer"
     sign_in_as_admin
     visit employer_list_path
     click_link "Approve"
@@ -261,7 +261,7 @@ end
 
 feature 'admins can see employer emails' do
   scenario 'they can visit the employee index page' do
-    employer = create :employer, company_name: "Apple Computer", ein: "12345211"
+    employer = create :employer, company_name: "Apple Computer"
     sign_in_as_admin
     visit employer_list_path
     expect(page).to have_content "test@example.com"
