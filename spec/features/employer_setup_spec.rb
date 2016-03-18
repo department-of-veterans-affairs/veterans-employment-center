@@ -212,7 +212,7 @@ feature 'admins can edit an employer', js: true do
     visit edit_employer_path(employer)
     fill_in "employer_admin_notes", with: 'Called and left message'
     find('#click-button').click
-    expect(page).to have_selector "#flash_notice",  text: 'was successfully updated.'
+    expect(page).to have_selector('#flash_notice', text: "#{employer.company_name} was successfully updated.")
   end
 end
 

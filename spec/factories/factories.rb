@@ -28,7 +28,7 @@ FactoryGirl.define do
 
   factory :employer do
   	company_name "Apple Computer"
-  	ein 1245
+  	ein 123456789
   	street_address "123 Main St"
     city "Towny"
     state "WA"
