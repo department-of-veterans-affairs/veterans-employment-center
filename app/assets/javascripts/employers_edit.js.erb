@@ -5,9 +5,9 @@ function fields_have_errors() {
   var error_text = '';
   if (hiring_commitment && (hiring_commitment < 1)) {
     num_text = '1 error';
-    error_text = '<li>Commit to hire must be a postive number.</li>';
+    error_text = '<li>Commit to hire must be a positive number</li>';
   }
-  if (ein && (ein.length < 9)) {
+  if (ein && (ein.length != 9)) {
     if (num_text.length > 0) {
       num_text = '2 errors';
     } else {

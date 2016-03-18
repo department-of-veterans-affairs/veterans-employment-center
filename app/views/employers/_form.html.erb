@@ -185,12 +185,8 @@
     <div class="row">
       <div class="small-12 columns">
         <div class="actions">
-	  <% if current_user.va_admin? %>
-	    <%= f.submit class: "button primary", id: "submit-button" %>
-	  <% else %>
-	    <span id="click-button" class="button primary">Update Employer</span>
-	    <%= f.submit style: "display:none;", id: "submit-button" %>
-	  <% end %>
+	  <span id="click-button" class="button primary">Update Employer</span>
+	  <%= f.submit style: "display:none;", id: "submit-button" %>
         </div>
       </div>
   	</div>

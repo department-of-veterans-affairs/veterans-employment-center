@@ -38,7 +38,7 @@ class VeteransController < ApplicationController
       format.csv do
         columns = Veteran.column_names
 
-        self.response_body = StreamCSV.new("veterans.csv", self.response) do |csv|
+        self.response_body = StreamCSV.new("veterans", self.response) do |csv|
           csv << columns
           @q.result.find_each do |veteran|
             csv << columns.map{|c| veteran.send(c)}
@@ -57,7 +57,7 @@ class VeteransController < ApplicationController
       format.html
       format.csv do
         columns = Veteran.column_names
-        self.response_body = StreamCSV.new('veterans.csv', self.response) do |csv|
+        self.response_body = StreamCSV.new('veterans', self.response) do |csv|
           csv << columns
           @veterans.each do |veteran|
             csv << columns.map{|c| veteran.send(c)}

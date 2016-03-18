@@ -95,7 +95,7 @@
       'paging':    true,
       'pageLength': 50,
       'info':      false,
-      'order': [[4, "desc"]],
+      'order': [[2, "desc"]],
       'processing': true,
       'serverSide': true,
       'searching': true,
@@ -103,7 +103,7 @@
       'filter': false,
       'ajax': '<%= employer_list_path %>',
       'columns': [
-        {'data': 'company_name', className: 'employer_name'},
+        {'data': 'company_name', className: 'employer_name', render: $.fn.dataTable.render.text()},
         {'data': 'ein'},
         {'data': 'created_at'},
         {'data': 'email'},

@@ -198,7 +198,7 @@ feature "logged in admin can search for employers on employer index page" do
 end 
 
 
-feature 'admins can edit an employer' do
+feature 'admins can edit an employer', js: true do
   scenario 'they can visit the edit employer page' do
     employer = create :employer
     sign_in_as_admin
@@ -210,9 +210,9 @@ feature 'admins can edit an employer' do
     employer = create :employer
     sign_in_as_admin
     visit edit_employer_path(employer)
-    fill_in "employer_admin_notes", with: 'Called and left messag'
-    click_button "Update Employer"
-    expect(page).to have_selector "#flash_notice",  text: 'was successfully updated.'
+    fill_in "employer_admin_notes", with: 'Called and left message'
+    find('#click-button').click
+    expect(page).to have_selector('#flash_notice', text: "#{employer.company_name} was successfully updated.")
   end
 end
 
