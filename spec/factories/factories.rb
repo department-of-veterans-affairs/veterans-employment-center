@@ -31,9 +31,9 @@ FactoryGirl.define do
   end
 
   factory :employer do
-  	company_name "Apple Computer"
-  	ein 1245
-  	street_address "123 Main St"
+    company_name "Apple Computer"
+    ein {rand(999999999).to_s.center(9, rand(9).to_s)}
+    street_address "123 Main St"
     city "Towny"
     state "WA"
     zip "22222"
@@ -43,7 +43,7 @@ FactoryGirl.define do
       association :user, factory: :user_with_random_email
       commit_date {(rand(3)+1).months.from_now}
       commit_hired {rand(5)}
-      commit_to_hire {commit_hired + rand(3)}
+      commit_to_hire {commit_hired + rand(3) + 1}
     end
   end
 

@@ -2,9 +2,9 @@ require 'rails_helper'
 describe '/commitments', js: true, driver: :webkit do
   before do
     11.times do
-      FactoryGirl.create(:employer_with_commitments)
+      FactoryGirl.create(:employer_with_commitments, approved: true)
     end
-    FactoryGirl.create(:employer_with_commitments, company_name: 'Searchable')
+    FactoryGirl.create(:employer_with_commitments, company_name: 'Searchable', approved: true)
     visit '/commitments'
   end
 

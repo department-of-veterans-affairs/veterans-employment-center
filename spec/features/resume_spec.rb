@@ -174,6 +174,28 @@ feature 'when building a resume, the resume only shows the fields that it should
   #   expect(page).to have_content 'gs8'
   # end
 
+#  scenario "you can delete fields on create page",:js => true,driver: :webkit  do
+#    visit resume_builder_path
+#    fill_in 'Your Name', with: 'Suzy Veteran'
+#    fill_in 'Your Email', with: 'suzy@veterans.org'
+#    fill_in 'veteran_objective', with: 'An amazing objective'
+#    fill_in 'Name of school or training', with: 'Harvard'
+##################################################################
+# The below javascript doesn't throw an error, but it also doesn't
+# modify the page's html to remove the Education section. Part of
+# the issue is that it's using a 'span' element rather than a
+# button or link. The other is that it's trying to modify the page
+# which is currently very difficult to do in testing
+##################################################################
+#    page.execute_script %Q($('.experience-deleter').first().click())
+#    click_button 'Preview Your Veteran Profile and Résumé Content'
+#    expect(page).to have_content "Suzy Veteran"
+#    expect(page).to have_content 'Objective'
+#    expect(page).to have_content 'An amazing objective'
+#    expect(page).not_to have_content 'Education'
+#    expect(page).not_to have_content 'Harvard'
+#  end
+
   scenario "autofilling your resume with LinkedIn" do
     stub_request(:get, "https://api.linkedin.com/v1/people/~:(email-address,first-name,last-name,location,positions,educations,skills,volunteer,honors-awards,recommendations-received)").
       to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/json/linkedin_profile.json"), headers: {})
@@ -297,7 +319,7 @@ feature "profile creation shouldn't redirect to employer login", js: true do
     visit veterans_path
     click_link "Manage Your Profile and Hiring Commitment"
     fill_in "employer_company_name", with: 'The Editing Company'
-    click_button "Update Employer"
+    find('#click-button').click
     click_link 'Sign Out'
 
     visit new_veteran_path
@@ -320,4 +342,7 @@ feature "you can view and edit a profile after creation" do
     expect(page).to have_content "Add the basics"
     expect(page).to have_content "An amazing objective"
   end
+
+  #scenario "you can delete fields on edit"
+  #end
 end

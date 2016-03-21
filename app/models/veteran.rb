@@ -16,11 +16,11 @@ class Veteran < ActiveRecord::Base
   validates_length_of :name, maximum: 255, message: "cannot exceed 255 characters"
   validates_length_of :email, maximum: 255, message: "cannot exceed 255 characters"
 
-  accepts_nested_attributes_for :affiliations, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank?}.all? }
-  accepts_nested_attributes_for :awards, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank?}.all? }
-  accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank?}.all? }
-  accepts_nested_attributes_for :experiences, allow_destroy: true, reject_if: proc {|attributes| attributes.reject{|k,v| k == "experience_type"}.collect{|k,v| v.blank?}.all? }
-  accepts_nested_attributes_for :references, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank?}.all? }
+  accepts_nested_attributes_for :affiliations, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank? || k == '_destroy' }.all? }
+  accepts_nested_attributes_for :awards, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank? || k == '_destroy'}.all? }
+  accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank? || k == '_destroy' || k == 'location_type'}.all? }
+  accepts_nested_attributes_for :experiences, allow_destroy: true, reject_if: proc {|attributes| attributes.reject{|k,v| k == "experience_type" || k == '_destroy'}.collect{|k,v| v.blank?}.all? }
+  accepts_nested_attributes_for :references, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank? || k == '_destroy'}.all? }
 
   serialize :desiredPosition, Array
   serialize :status_categories, Array

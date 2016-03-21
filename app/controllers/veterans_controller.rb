@@ -38,7 +38,7 @@ class VeteransController < ApplicationController
       format.csv do
         columns = Veteran.column_names
 
-        self.response_body = StreamCSV.new("veterans.csv", self.response) do |csv|
+        self.response_body = StreamCSV.new("veterans", self.response) do |csv|
           csv << columns
           @q.result.find_each do |veteran|
             csv << columns.map{|c| veteran.send(c)}
@@ -57,7 +57,7 @@ class VeteransController < ApplicationController
       format.html
       format.csv do
         columns = Veteran.column_names
-        self.response_body = StreamCSV.new('veterans.csv', self.response) do |csv|
+        self.response_body = StreamCSV.new('veterans', self.response) do |csv|
           csv << columns
           @veterans.each do |veteran|
             csv << columns.map{|c| veteran.send(c)}
@@ -182,7 +182,7 @@ class VeteransController < ApplicationController
       experiences_attributes: [:job_title, :organization, :experience_type, :start_date, :end_date, :hours, :educational_organization, :credential_type, :credential_topic, :description, :veteran_id, :moc, :duty_station, :rank, :id, :_destroy],
       desiredPosition: [],
       status_categories: [],
-      locations_attributes: [:id, :veteran_id, :location_type, :full_name, :city, :state, :country, :lat, :lng, :zip, :include_radius, :radius]
+      locations_attributes: [:id, :veteran_id, :location_type, :full_name, :city, :state, :country, :lat, :lng, :zip, :include_radius, :radius, :_destroy],
     )
   end
 

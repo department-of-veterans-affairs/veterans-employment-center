@@ -9,6 +9,7 @@ EmploymentPortal::Application.routes.draw do
   end
   resources :skills
   resources :employers, except: [:index]
+  resources :experiences, only: [:destroy]
   namespace :api, defaults: {format: 'json'} do
     resources :employers, only: [:index]
   end
