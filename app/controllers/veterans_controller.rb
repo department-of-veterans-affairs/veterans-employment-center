@@ -74,6 +74,10 @@ class VeteransController < ApplicationController
           response.headers['Content-Disposition'] = 'attachment; filename="resume.doc"'
           render content_type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", layout: 'word'
         end
+        format.html do
+          response.headers['Content-Disposition'] = 'attachment; filename="fed_resume.doc"'
+          render content_type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", layout: 'word'
+        end
       end
     end
 
