@@ -298,8 +298,8 @@
               </div>
               <div class="row" id="download_buttons">
                 <div class="small-6 medium-4 columns">
-                  <%= link_to "Download as résumé".html_safe, word_veteran_path(fed: false), class: "button tertiary expand", id: "download_resume" %>
-                </div>
+                  <%= link_to "Download as résumé".html_safe, word_veteran_path(fed: false, format: :docx), class: "button tertiary expand", id: "download_resume" %>
+		</div>
                 <div class="small-6 medium-4 columns">
                   <%= link_to "Download as résumé for federal employment".html_safe, word_veteran_path(fed: true), class: "button tertiary expand", id: "download_fed_resume" %>
 
