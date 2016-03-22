@@ -137,6 +137,10 @@ class Veteran < ActiveRecord::Base
     experiences_of_type "military"
   end
 
+  def military_and_work_experiences
+    (work_experiences + military_experiences).sort {|ex1,ex2| ex2.start_date && ex1.start_date ? ex2.start_date<=>ex1.start_date : ex1.start_date ? -1 : 1}
+  end
+
   def desired_locations
     locations_of_type "desired"
   end

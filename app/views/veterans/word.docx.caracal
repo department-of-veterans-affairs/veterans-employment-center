@@ -1,0 +1,167 @@
+docx.style id: 'replace_me', name: 'Replace', italic: true, color: 'blue', font: 'Times New Roman'
+docx.p 'Replace blue items with your personal information', style: 'replace_me'
+if user_signed_in? && current_user.is_employer? && current_user.employer.approved?
+  docx.h1 @veteran.name, align: :center, font: 'Times New Roman'
+  docx.p @veteran.email, bold: true, align: :center, font: 'Times New Roman'
+elsif user_signed_in? && current_user.is_employer?
+  docx.h1 'Candidate Information Hidden', align: :center, font: 'Times New Roman'
+  docx.p 'until you are approved', bold: true, align: :center, font: 'Times New Roman'
+else
+  docx.h1 @veteran.name, align: :center, font: 'Times New Roman'
+  docx.p @veteran.email, bold: true, align: :center, font: 'Times New Roman'
+end
+docx.p 'Address Line 1', style: 'replace_me', align: :center
+docx.p 'Address Line 2', style: 'replace_me', align: :center
+docx.p 'City, State Zip', style: 'replace_me', align: :center
+docx.p 'Phone Number', style: 'replace_me', align: :center
+if @veteran.objective.present?
+  docx.h3 'Objective', font: 'Times New Roman'
+  docx.p @veteran.objective, font: 'Times New Roman'
+  docx.p
+end
+if @veteran.has_skills?
+  docx.h3 'Key Skills', font: 'Times New Roman'
+  @veteran.skills.each do |skill|
+    docx.ul do
+      li skill.name, font: 'Times New Roman'
+    end
+  end
+  docx.p
+end
+if @veteran.military_and_work_experiences.any?
+  docx.h3 'Work Experience', font: 'Times New Roman'
+  @veteran.military_and_work_experiences.each do |experience|
+    if experience.organization.present?
+      docx.p do
+        if experience.experience_type == "military"
+          text 'United States ', bold: true, font: 'Times New Roman'
+        end
+	text experience.organization, bold: true, font: 'Times New Roman'
+        if experience.job_title
+          text ", "+experience.job_title, font: 'Times New Roman'
+        end
+      end
+      docx.p do
+        if experience.start_date
+	  text experience.start_date.strftime("%B %Y"), font: 'Times New Roman', size: 16
+        end
+        if experience.end_date
+          if experience.start_date
+            text " - ", font: 'Times New Roman', size: 16
+          end
+          text experience.end_date.strftime("%B %Y"), font: 'Times New Roman', size: 16
+        end
+      end
+      if experience.hours && @for_fed_employment
+        docx.p experience.hours + ' hours per week', font: 'Times New Roman', size: 16
+      end
+      docx.ul do
+        li experience.description, font: 'Times New Roman'
+      end
+      docx.p
+    end
+  end
+end
+if @veteran.volunteer_experiences.any?
+  docx.h3 'Volunteer Experience', font: 'Times New Roman'
+  @veteran.volunteer_experiences.sort {|ex1,ex2| ex2.start_date && ex1.start_date ? ex2.start_date<=>ex1.start_date : ex1.start_date ? -1 : 1}.each do |experience|
+    if experience.organization.present?
+      docx.p do
+        text experience.organization, bold: true, font: 'Times New Roman'
+        if experience.job_title
+          text ", "+experience.job_title, font: 'Times New Roman'
+        end
+      end
+      docx.p do
+        if experience.start_date
+          text experience.start_date.strftime("%B %Y"), font: 'Times New Roman', size: 16
+        end
+        if experience.end_date
+          if experience.start_date
+            text " - ", font: 'Times New Roman', size: 16
+          end
+          text experience.end_date.strftime("%B %Y"), font: 'Times New Roman', size: 16
+        end
+      end
+      if experience.hours && @for_fed_employment
+        docx.p experience.hours + ' hours per week', font: 'Times New Roman', size: 16
+      end
+      docx.ul do
+        li experience.description, font: 'Times New Roman'
+      end
+      docx.p
+    end
+  end
+end
+if @veteran.educational_experiences.any?
+  docx.h3 'Education', font: 'Times New Roman'
+  @veteran.educational_experiences.sort {|ex1,ex2| ex2.end_date && ex1.end_date ? ex2.end_date<=>ex1.end_date : ex1.end_date ? -1 : 1}.each do |experience|
+    if experience.educational_organization.present?
+      docx.p experience.educational_organization, bold: true, font: 'Times New Roman'
+      docx.p do
+        if experience.credential_type.present?
+	  text experience.credential_type, font: 'Times New Roman'
+          if experience.credential_topic.present?
+	    text ' in '+experience.credential_topic, font: 'Times New Roman'
+	  end
+          if experience.end_date.present?
+            text ', '+experience.end_date.strftime("%B %Y"), font: 'Times New Roman'
+          end
+	end
+      end
+      if experience.description.present?
+        docx.ul do
+          li experience.description, font: 'Times New Roman'
+        end
+      end
+      docx.p
+    end
+  end
+end
+if @veteran.awards.any?
+  docx.h3 'Awards', font: 'Times New Roman'
+  @veteran.awards.sort {|ex1,ex2| ex2.date && ex1.date ? ex2.date<=>ex1.date : ex1.date ? -1 : 1}.each do |award|
+    if award.title.present?
+      docx.p do
+	text award.title, font: 'Times New Roman'
+        if award.organization.present?
+          text ', '+award.organization, font: 'Times New Roman'
+        end
+	if award.date.present?
+	  text ', '+award.date.strftime("%B %Y"), font: 'Times New Roman'
+	end
+      end
+    end
+  end
+  docx.p
+end
+if @veteran.affiliations.any?
+  docx.h3 'Professional Affiliations', font: 'Times New Roman'
+  @veteran.affiliations.each do |affiliation|
+    if affiliation.organization.present?
+      docx.p do
+        text affiliation.organization, font: 'Times New Roman'
+        if affiliation.job_title.present?
+	  text ', '+affiliation.job_title, font: 'Times New Roman'
+	end
+      end
+    end
+  end
+  docx.p
+end
+if @veteran.references.any?
+  docx.h3 'References', font: 'Times New Roman'
+  @veteran.references.each do |reference|
+    if reference.name.present?
+      docx.p do
+        text reference.name, font: 'Times New Roman'
+        if reference.job_title.present?
+	  text ', '+reference.job_title, font: 'Times New Roman'
+	end
+	if reference.email.present?
+	  text ', '+reference.email, font: 'Times New Roman'
+	end
+      end
+    end
+  end
+end

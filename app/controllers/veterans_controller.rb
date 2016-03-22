@@ -70,8 +70,12 @@ class VeteransController < ApplicationController
   def word
       @for_fed_employment = params[:fed]=="true"
       respond_to do |format|
-        format.html do
+        format.docx do
           response.headers['Content-Disposition'] = 'attachment; filename="resume.doc"'
+          render content_type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", layout: 'word'
+        end
+        format.html do
+          response.headers['Content-Disposition'] = 'attachment; filename="fed_resume.doc"'
           render content_type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", layout: 'word'
         end
       end
