@@ -5,7 +5,7 @@
     <div class="row">
       <div class="small-12 columns">
         <ul class="breadcrumbs" role="menubar" aria-label="Primary">
-          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
+          <li class="parent"><%= link_to "Employment", "/employment" %></li>
 		  <% if user_signed_in? && current_user.is_employer? %>
 		  <li class="parent"><%= link_to "Employers", employer_home_path %></li>
           <li class="active">Your Employer Account</li>
@@ -76,12 +76,6 @@
         <div class="section-nav">
           <ul class="small-block-grid-1 medium-block-grid-3 cards medium">
             <li>
-              <%= link_to how_to_post_jobs_path, class: "long" do %>
-                <h4 class="alternate">Post a Job</h4>
-                <span>Your listing will be searchable by our capable Veteran workforce and their families.</span>
-              <% end %>
-            </li>
-            <li>
               <%= link_to veterans_path, class: "long" do %>
                 <h4 class="alternate">Find Veteran Candidates</h4>
                 <span>Leadership, problem solving, management, operations, customer service, sales, and a host of technical skills are just a few of their talents.
@@ -105,31 +99,4 @@
 
   <!-- Navigation -->
 
-  <div class="navigation">
-    <div class="row">
-      <div class="small-12 columns">
-        <h3>Related Info:</h3>
-        <ul class="small-block-grid-1 medium-block-grid-3 cards small">
-          <li>
-            <%= link_to workplace_support_path do %>
-              <h5>Workplace Support</h5>
-              <span>Find out how you can support Veterans and Sevicemembers in the workplace.</span>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to on_the_job_training_path do %>
-              <h5>On-the-Job Training</h5>
-              <span>Both on-the-job training (OJT) and apprenticeship programs are available for Veterans using their VA education benefits, including the Post-9/11 GI Bill<sup>&reg;</sup>.</span>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to employer_resources_path do %>
-              <h5>Resources for Employers</h5>
-              <span>On-the-job training information, fact sheets, guides, and additional resources for employers.</span>
-            <% end %>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
 </div>
