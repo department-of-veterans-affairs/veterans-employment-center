@@ -145,7 +145,6 @@ feature 'a veteran views a resume' do
     stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?language=en&latlng=37.422918,-122.085421&sensor=false").
       with(headers: {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
       to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/location/geocode.json"), headers: {})
-    #end
     user = create :user, email: 'suzy@veterans.org', password: '12345678'
     login_as user
     vet = create :veteran, name: "Suzy Veteran", email: 'suzy@veterans.org', objective: "Build great web apps.", user_id: user.id
