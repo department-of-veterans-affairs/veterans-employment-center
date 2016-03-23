@@ -43,10 +43,10 @@ class ApplicationController < ActionController::Base
   end
 
   # if the VEC_MAINTENANCE_UNDERWAY variable is present, redirect to a maintenance page
-    def check_maintenance_page
-      if ENV.key? 'VEC_MAINTENANCE_UNDERWAY'
-        redirect_to "/maintenance.html"
-      end
+  def check_maintenance_page
+    if ENV.key? 'VEC_MAINTENANCE_UNDERWAY'
+      redirect_to "/maintenance.html"
     end
+  end
 
 end
