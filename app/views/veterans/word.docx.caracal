@@ -1,9 +1,7 @@
 docx.style id: 'replace_me', name: 'Replace', italic: true, color: 'blue', font: 'Times New Roman'
 docx.style id: 'fed_info', name: 'Federal Info', italic: true, color: 'red', font: 'Times New Roman'
-docx.style id: 'fed_hints', name: 'Federal Hints', italic: true, color: 'purple', font: 'Times New Roman'
 if @for_fed_employment
-  docx.p 'Respond to red items with information required on federal resumes', style: 'fed_info'
-  docx.p 'Review purple text for suggestions on optimizing your federal resume', style: 'fed_hints'
+  docx.p 'Respond to red items with information required on a federal resume', style: 'fed_info'
 else
   docx.p 'Replace blue items with your personal information', style: 'replace_me'
 end
@@ -23,9 +21,20 @@ if @for_fed_employment
   docx.p 'City, State Zip', style: 'fed_info', align: :center
   docx.p 'Phone Number', style: 'fed_info', align: :center
   docx.p 'Country of Citizenship: ______', style: 'fed_info', align: :center
-  docx.p "Social Security #: ______", style: 'fed_info', align: :center
-  docx.p "Veteran's Preferences: ______", style: 'fed_info', align: :center
-  docx.p 'Federal Civilian Status: ______', style: 'fed_info', align: :center
+  if (@veteran.status_categories & ["Service-Connected Disabled Veteran","Service-Connected Disabled Veteran (10%)","Service-Connected Disabled Veteran (30%)"]).present?
+    docx.p "Veterans' Preference: 10 point preference based on being a service-connected disabled veteran", font: 'Times New Roman', align: :center
+  elsif @veteran.status_categories.include? "Veteran"
+    docx.p "Veterans' Preference: 5 point preference based on being a veteran with an honorable or general discharge", font: 'Times New Roman', align: :center
+  else
+    docx.p align: :center do
+      text "Veterans' Preference: ", color: 'red', italic: 'true', font: 'Times New Roman'
+      text "None, 5 points, or 10 points", color: 'red', italic: 'true', underline: 'true', font: 'Times New Roman'
+    end
+  end
+  docx.p align: :center do
+    text 'Federal Civilian Status: ', color: 'red', italic: 'true', font: 'Times New Roman'
+    text 'Official job title (per OPM)-Series Number-Grade', color: 'red', italic: 'true', font: 'Times New Roman', underline: true
+  end
 else
   docx.p 'Address Line 1', style: 'replace_me', align: :center
   docx.p 'Address Line 2', style: 'replace_me', align: :center
@@ -54,7 +63,7 @@ if @for_fed_employment
       end
     end
   end
-  docx.p 'Add keywords from the USAJOBs post as skills, if applicable', style: 'fed_hints'
+  docx.p 'Add keywords from the USAJOBs post as skills, if applicable', style: 'fed_info'
   docx.p
 else
   if @veteran.has_skills?
@@ -71,20 +80,18 @@ if @veteran.military_and_work_experiences.any?
   docx.h3 'Work Experience', font: 'Times New Roman'
   @veteran.military_and_work_experiences.each do |experience|
     if experience.organization.present?
-      docx.p do
-        if experience.experience_type == "military"
-          text 'United States ', bold: true, font: 'Times New Roman'
-        end
-	text experience.organization, bold: true, font: 'Times New Roman'
-        if experience.job_title.present?
-          text ", "+experience.job_title, font: 'Times New Roman'
-        else
-	  if @for_fed_employment
-	    text ", Job Title", style: 'fed_info'
-	  end
-	end
-      end
       if @for_fed_employment
+	docx.p do
+          if experience.experience_type == "military"
+            text 'United States ', bold: true, font: 'Times New Roman'
+          end
+          text experience.organization + ', ', bold: true, font: 'Times New Roman'
+          if experience.job_title.present?
+            text experience.job_title, font: 'Times New Roman'
+          else
+            text "Job Title", color: 'red', font: 'Times New Roman', italic: true
+          end
+        end
 	docx.p 'Employer Address', style: 'fed_info'
 	docx.p 'Employer City, State Zip', style: 'fed_info'
 	docx.p 'Employer Country', style: 'fed_info'
@@ -104,28 +111,45 @@ if @veteran.military_and_work_experiences.any?
              text experience.start_date.strftime("%B %Y")+' - '+experience.end_date.strftime("%B %Y"), font: 'Times New Roman', size: 16
 	  end
 	end
-      else
-        docx.p do
-          if experience.start_date.present?
-	    text experience.start_date.strftime("%B %Y"), font: 'Times New Roman', size: 16
-	  end
-          if experience.end_date.present?
-            if experience.start_date.present?
-              text " - ", font: 'Times New Roman', size: 16
-            end
-            text experience.end_date.strftime("%B %Y"), font: 'Times New Roman', size: 16
-          end
-	end
-      end
-      if @for_fed_employment
         if experience.hours.present?
           docx.p experience.hours + ' hours per week', font: 'Times New Roman', size: 16
         else
-	  docx.p '__ hours per week', color: 'red', font: 'Times New Roman', italic: true, size: 16
+          docx.p '__ hours per week', color: 'red', font: 'Times New Roman', italic: true, size: 16
+        end
+      else
+	docx.p do
+          if experience.experience_type == "military"
+            text 'United States ', bold: true, font: 'Times New Roman'
+          end
+          text experience.organization, bold: true, font: 'Times New Roman'
+          if experience.job_title.present?
+            text ", "+experience.job_title, font: 'Times New Roman'
+          end
+        end
+        if experience.start_date.present? || experience.end_date.present?
+          docx.p do
+            if experience.start_date.present?
+	      text experience.start_date.strftime("%B %Y"), font: 'Times New Roman', size: 16
+	    end
+            if experience.end_date.present?
+              if experience.start_date.present?
+                text " - ", font: 'Times New Roman', size: 16
+              end
+              text experience.end_date.strftime("%B %Y"), font: 'Times New Roman', size: 16
+            end
+	  end
         end
       end
-      docx.ul do
-        li experience.description, font: 'Times New Roman'
+      if experience.description.present?
+        docx.ul do
+          li experience.description, font: 'Times New Roman'
+	end
+      else
+	if @for_fed_employment
+	  docx.ul do
+            li 'Description of duties, accomplishments, etc.', color: 'red', font: 'Times New Roman', italic: true
+          end
+	end
       end
       docx.p
     end
@@ -141,15 +165,17 @@ if @veteran.volunteer_experiences.any?
           text ", "+experience.job_title, font: 'Times New Roman'
         end
       end
-      docx.p do
-        if experience.start_date.present?
-          text experience.start_date.strftime("%B %Y"), font: 'Times New Roman', size: 16
-        end
-        if experience.end_date.present?
+      if experience.start_date.present? || experience.end_date.present?
+        docx.p do
           if experience.start_date.present?
-            text " - ", font: 'Times New Roman', size: 16
+            text experience.start_date.strftime("%B %Y"), font: 'Times New Roman', size: 16
           end
-          text experience.end_date.strftime("%B %Y"), font: 'Times New Roman', size: 16
+          if experience.end_date.present?
+            if experience.start_date.present?
+              text " - ", font: 'Times New Roman', size: 16
+            end
+            text experience.end_date.strftime("%B %Y"), font: 'Times New Roman', size: 16
+	  end
         end
       end
       if experience.hours.present? && @for_fed_employment
@@ -195,15 +221,17 @@ if @veteran.educational_experiences.any?
         docx.p 'School or Program Country', style: 'fed_info'
       else
 	docx.p experience.educational_organization, bold: true, font: 'Times New Roman'
-	docx.p do
-          if experience.credential_type.present?
-            text experience.credential_type, font: 'Times New Roman'
-            if experience.credential_topic.present?
-              text ' in '+experience.credential_topic, font: 'Times New Roman'
-            end
-            if experience.end_date.present?
-              text ', '+experience.end_date.strftime("%B %Y"), font: 'Times New Roman'
-            end
+	if experience.credential_type.present? || experience.end_date.present?
+	  docx.p do
+            if experience.credential_type.present?
+              text experience.credential_type, font: 'Times New Roman'
+              if experience.credential_topic.present?
+                text ' in '+experience.credential_topic, font: 'Times New Roman'
+              end
+              if experience.end_date.present?
+                text ', '+experience.end_date.strftime("%B %Y"), font: 'Times New Roman'
+              end
+	    end
           end
         end
       end
