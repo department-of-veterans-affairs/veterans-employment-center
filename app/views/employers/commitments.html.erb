@@ -14,7 +14,45 @@
     </div>
   </div>
 
+  <% if user_signed_in? && current_user.is_employer? %>
+  <% else %>
+    <!-- employer not logged in -->
+    <!-- @emilyville TODO: I commented this out until I pull in updated css from vets-website -->
+    <!-- <div class="action-bar">
+      <div class="row">
+        <div class="small-12 columns">
+          <h5>Employers:<br />Log in to create/manage your hiring commitment.</h5>
+          <%= link_to "Sign in with LinkedIn", user_omniauth_authorize_path(:linkedin), class: "usa-button-primary social linkedin" %> 
+          <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), class: "usa-button-outline social googleplus" %>
+        </div>
+      </div>
+    </div> -->
+  <% end %>
+
   <div class="section one">
+    <div class="row">
+      <div class="small-12 medium-9 columns">
+        <p>Employers from every industry and in every state have committed to hiring Veterans and military family members because these individuals have consistently proven themselves to be reliable, independent, and hardworking. </p>
+
+        <p>By signing up and [making a commitment](vets.gov/signup), your company will stand out to candidates eager to enter the civilian workforce. There are also tax benefits to hiring Veterans, such as the Work Opportunity Tax Credit (WOTC), that range from $1,200 to $9,600. Other VA programs provide incentives to hiring Veterans, such as  [Vocational Rehabilitation and Employment](Vets.gov/voc-rehab.link) and [On-the-Job Training](Vets.gov/employerfacingOJTpage). </p>
+
+        <p>You can regularly update your profile with the number of hires made. You can also share that number publicly. </p>
+
+        <p>Read the RAND Corporation’s report titled <a href="http://www.rand.org/pubs/tools/TL160z1.html">What Veterans Bring to Civilian Workplaces </a>: A Prototype Toolkit for Helping Veterans Communicate to Private-Sector Employers About the Nontechnical Skills Taught in the Military. This publication demonstrates how courses such as Army Basic Combat Training, for example, teach attention to detail, teamwork, and persistence. Veterans have other soft skills such as problem solving and creativity that can benefit a company’s bottom line too. </p>
+
+        <p>Make a commitment](vets.gov/signup). View current commitments. 
+        [*this requires a design element]</p>
+
+        <p>To learn more, call 1-800-827-1000 or visit a [VA regional office](link to regional office page).</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-12 medium-9 columns">
+        <em> BEGINNING OF OLD COPY </em>
+      </div>
+    </div>
+
     <% unless user_signed_in? && current_user.is_employer? %>
       <div class="row">
           <div class="small-12 columns">
@@ -48,13 +86,6 @@
               <%= link_to "Make/Update Your Commitment", edit_employer_path(current_user.employer, anchor: 'hiring-commitments' ), class: 'button expand' %>
             </div>
           <% end %>
-        </div>
-        <% else %><!-- employer not logged in -->
-        <div class="small-12 medium-4 columns feature">
-          <h5>Employers:<br />Log in to create/manage your hiring commitment.</h5>
-          <div class="actions">
-            <%= link_to "Sign in with LinkedIn", user_omniauth_authorize_path(:linkedin), class: "button social linkedin expand" %> <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), class: "button social googleplus expand" %>
-            </div>
         </div>
       <% end %>
     </div><!-- end row 2 -->
