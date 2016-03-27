@@ -222,6 +222,7 @@ ActiveRecord::Schema.define(version: 20160308154100) do
     t.date     "availability_date",            index: {name: "index_veterans_on_availability_date"}
     t.text     "status_categories",            default: "--- []\n"
     t.tsvector "searchable_summary"
+    t.datetime "applied_for_alp_date"
     t.string   "accelerated_learning_program"
   end
 
