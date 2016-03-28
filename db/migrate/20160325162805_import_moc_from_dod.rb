@@ -26,7 +26,6 @@ class ImportMocFromDod < ActiveRecord::Migration
       mo.updated_at = Time.now
       mo.active = rowhash['status']
       saved = mo.save!
-      puts mo.code + ' ' + (saved ? "true" : "false")
     end
   end
 end
