@@ -3,8 +3,6 @@ require 'iconv' unless String.method_defined?(:encode)
 module DataImporter
 
   def self.import_all_mos
-    csv_text = File.read('db/seed/Mil2FedJobsSupportFiles/mos_list.csv')
-    csv = CSV.parse(csv_text, headers: true)
     csv_text = File.read('db/seed/DOD_ODB_SupportFiles/all_mos.csv')
     if String.method_defined?(:encode)
       csv_text.encode!('UTF-8', 'UTF-8', :invalid => :replace)
