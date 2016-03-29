@@ -1,0 +1,49 @@
+<% provide(:title, "For Job Seekers") %>
+<div id="content" class="interior">
+  <a href="#content" class="sr-only">Content starts here.</a>
+  <script>/*<![CDATA[*/
+    function isFilledOut() {
+      var oneof = ["kw", "zc", "moc", "zc1", "cname"];
+      var result = $.map(oneof, function(x) {
+        return $("[name="+x+"]").val().length; })
+            .filter(function(x) { return x > 0; }).length > 0;
+      if (result == false) {
+        $(".error-message").show().delay(4000).fadeOut();
+        return false;
+      }
+    }
+  </script>
+
+  <div class="splash">
+    <div class="row">
+      <div class="small-12 columns">
+        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
+          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
+          <li class="active">Job Seekers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section one">
+    <div class="row">
+      <div class="small-12 medium-8 columns">
+        <h3>Three steps to finding a great job:</h3>
+        <ol>
+          <li>Use the Skills Translator to map what you learned in the military to your new civilian career.</li>
+          <li>Export the results from the Skills Translator to the Résumé Builder to create a résumé.</li>
+          <li>Search the Veterans Job Bank to find the right position for you.</li>
+        </ol>
+      </div>
+      <div class="small-12 medium-4 columns feature">
+        <p>Already have a public profile? Sign in to update it.</p>
+		<%= link_to "Sign in", user_omniauth_authorize_path(:saml), class: "button expand", id: "update_profile" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Job Search -->
+      <%= render 'jobsearch' %>
+    </div>
+  </div>
+</div>
