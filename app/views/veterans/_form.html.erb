@@ -2,7 +2,7 @@
 
 <% unless session[:linkedin_profile] %>
   <div class="row">
-    <div class="small-12 medium-9 columns">
+    <div class="small-12 medium-8 columns">
       <%= link_to "<i class='icon-linkedin' aria-hidden='true'></i><span>Auto-fill from LinkedIn</span>".html_safe, user_omniauth_authorize_path(:linkedin_resume), class: "button social linkedin", id: "linkedin_autofill"%>
     </div>
   </div>
