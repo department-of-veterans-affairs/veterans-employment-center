@@ -66,6 +66,58 @@ describe Veteran, "#has_awards" do
   end
 end
 
+describe Veteran, "#has_references" do
+  it "returns false if the veteran does not have references" do
+    vet = create :veteran
+    expect(vet.has_references?).to eq false
+  end
+
+  it "returns false if the reference doesn't have a name" do
+    vet = create :veteran
+    reference = create :reference, veteran: vet
+    expect(vet.has_references?).to eq false
+  end
+
+  it "returns true if the veteran has a valid reference" do
+    vet = create :veteran
+    reference = create :reference, name: 'Reference Name', veteran: vet
+    expect(vet.has_references?).to eq true
+  end
+end
+
+describe Veteran, "#has_affiliations" do
+  it "returns false if the veteran does not have affiliations" do
+    vet = create :veteran
+    expect(vet.has_affiliations?).to eq false
+  end
+
+  it "returns false if the affiliation doesn't have a job title" do
+    vet = create :veteran
+    affiliation = create :affiliation, veteran: vet
+    expect(vet.has_affiliations?).to eq false
+  end
+
+  it "returns true if the veteran has a valid affiliation" do
+    vet = create :veteran
+    affiliation = create :affiliation, job_title: 'Job Title', veteran: vet
+    expect(vet.has_affiliations?).to eq true
+  end
+end
+
+describe Veteran, "#has_skills" do
+  it "returns false if the veteran does not have skills" do
+    vet = create :veteran
+    expect(vet.has_skills?).to eq false
+  end
+
+  it "returns true if the veteran has a valid affiliation" do
+    vet = create :veteran
+    skill = create :skill
+    veteran_skill = create :veteran_skill, veteran: vet, skill: skill
+    expect(vet.has_skills?).to eq true
+  end
+end
+
 describe Veteran, 'purge unassociated veteran records' do
   before do
     Veteran.destroy_all
