@@ -5,13 +5,13 @@
     <div class="row">
       <div class="small-12 columns">
         <ul class="breadcrumbs" role="menubar" aria-label="Primary">
-          <li class="parent"><%= link_to "Employment", "/employment" %></li>
-		  <% if user_signed_in? && current_user.is_employer? %>
-		  <li class="parent"><%= link_to "Employers", employer_home_path %></li>
-          <li class="active">Your Employer Account</li>
-		  <% else %>
-		  <li class="active">Employers</li>
-		  <% end %>
+          <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
+ 	  <% if user_signed_in? && current_user.is_employer? %>
+	    <li class="parent"><%= link_to "Employers", employer_home_path %></li>
+            <li class="active">Your Employer Account</li>
+	  <% else %>
+	    <li class="active">Employers</li>
+	  <% end %>
         </ul>
       </div>
     </div>
