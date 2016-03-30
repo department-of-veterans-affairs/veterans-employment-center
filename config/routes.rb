@@ -32,6 +32,6 @@ EmploymentPortal::Application.routes.draw do
   post 'skills-translator/add_skill' => 'skills#add_skill'
   root 'static_pages#home'
   get '/job-seekers/for_job_seekers' => 'static_pages#for_job_seekers', as: :for_job_seekers
-  get '/job-seekers' => 'static_pages#for_job_seekers', as: :job_seekers
+  get '/job-seekers' => redirect("https://www.vets.gov/employment/job-seekers/"), as: :job_seekers
   match '/404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]
 end
