@@ -19,10 +19,6 @@ FactoryGirl.define do
   factory :veteran do
     name "Joe Veteran"
     email "joe@veteran.org"
-    factory :searchable_veteran do
-      association :user, factory: :user_with_random_email
-      visible true
-    end
   end
 
   factory :favorite_veteran do
@@ -85,15 +81,6 @@ FactoryGirl.define do
     title "Default occupation"
     description "Defaults are not at fault."
     active true
-  end
-
-  factory :skill do
-    name 'skill'
-  end
-
-  factory :veteran_skill do
-    veteran
-    skill
   end
 
 end

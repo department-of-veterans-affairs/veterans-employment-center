@@ -116,17 +116,16 @@ feature 'employers can view veterans resumes' do
     #expect(page).not_to have_content 'Your Email'
   end
 
-  scenario 'a logged in employer that is approved can download the resume' do
+  scenario 'a logged in employer that is approved can download the resume and see the name but no placeholder text' do
     approved_employer = employer_user
     approved_employer.employer.update_attributes(approved: true)
     sign_in_as approved_employer
     vet = create :veteran, name: "Suzy Veteran", objective: "Build great web apps."
     visit veteran_path(vet)
     click_link 'download_fed_resume'
-    ### Removing content checks-tests can't read the new format ###
-    #expect(page).not_to have_content 'Candidate Information Hidden'
-    #expect(page).to have_content vet.name
-    #expect(page).not_to have_content 'Your Email'
+    expect(page).not_to have_content 'Candidate Information Hidden'
+    expect(page).to have_content vet.name
+    expect(page).not_to have_content 'Your Email'
   end
 
   scenario 'a logged in employer that is approved can download the resumes' do
@@ -138,8 +137,7 @@ feature 'employers can view veterans resumes' do
     vet.experiences <<  military_experience
     visit veteran_path(vet)
     click_link 'download_fed_resume'
-    ### Removing content checks-tests can't read the new format ###
-    #expect(page).to have_content 'Admiral'
+    expect(page).to have_content 'Admiral'
     visit veteran_path(vet)
     click_link 'download_resume'
     ### Removing content checks-tests can't read the new format ###

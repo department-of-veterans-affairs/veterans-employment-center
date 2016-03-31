@@ -48,5 +48,4 @@ class ApplicationController < ActionController::Base
       redirect_to "/maintenance.html"
     end
   end
-
 end

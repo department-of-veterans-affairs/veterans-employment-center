@@ -96,30 +96,6 @@ describe "Employers" do
         expect(page).to have_content 'You currently have 2 favorited candidates.'
         expect(page).not_to have_link 'View Your Favorites'
       end
-
-      it "uses the favorites button" do
-        employer = employer_user
-        veteran = FactoryGirl.create(:searchable_veteran)
-        sign_in_as employer
-        visit employer_home_path
-        click_link 'Find Veteran Candidates'
-        expect(page).not_to have_content '0 Results'
-        click_link 'Favorite'
-        expect(page).to have_content 'Remove from favorites'
-      end
-
-      it "uses the remove favorites button" do
-        employer = employer_user
-        favorite = create :favorite_veteran, employer: employer.employer
-        sign_in_as employer
-        visit employer_home_path
-        expect(page).to have_content 'Your Favorite Veterans'
-        click_link 'Your Favorite Veterans'
-        expect(page).to have_content 'Remove from favorites'
-        click_link 'Remove from favorites'
-        expect(page).not_to have_content 'Remove from favorites'
-        expect(page).to have_content 'You have not favorited any veterans yet'
-      end
     end
   end
 
