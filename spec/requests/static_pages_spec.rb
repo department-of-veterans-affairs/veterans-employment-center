@@ -58,30 +58,6 @@ describe "Static pages" do
 
   end
 
-  describe "/interest-profiler" do
-    it "should load for anyone" do
-      get interest_profiler_path
-      expect(response.status).to eq 200
-    end
-
-    it "should have the right header" do
-      visit interest_profiler_path
-      expect(page).to have_content 'Interest Profiler'
-    end
-  end
-
-  describe "/career-fairs" do
-    it "should load for anyone" do
-      get career_fairs_path
-      expect(response.status).to eq 200
-    end
-
-    it "should have the right header" do
-      visit career_fairs_path
-      expect(page).to have_content 'Upcoming Career Fairs'
-    end
-  end
-
   describe "/skills-translator" do
     context "when logged in as an employer" do
       pending "should show the logged-in version of the skills translator page" do

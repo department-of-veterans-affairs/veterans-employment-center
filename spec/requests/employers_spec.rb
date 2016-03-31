@@ -99,24 +99,6 @@ describe "Employers" do
     end
   end
 
-  describe "GET /how_to_post_jobs" do
-    it "shows a logged-in employer a link to their profile" do
-      employer = employer_user
-      sign_in_as employer
-      visit how_to_post_jobs_path
-
-      expect(page).to have_content "your VEC profile"
-      expect(page).to have_link "your VEC profile"
-    end
-
-    it "shows plain text to someone who is not logged in as an employer" do
-      visit how_to_post_jobs_path
-
-      expect(page).to have_content "your VEC profile"
-      expect(page).not_to have_link "your VEC profile"
-    end
-  end
-
   describe "GET /favorites" do
     it "shows a favorite veteran" do
       employer = employer_user
