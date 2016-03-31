@@ -16,12 +16,6 @@
           <li class="divider"></li>
         <% end %>
         <% if current_user.is_employer? %>
-          <li><%= link_to "Search Veterans", veterans_path %></li>
-          <li class="divider"></li>
-          <li><%= link_to "Favorited Veterans", favorites_path %></li>
-          <li class="divider"></li>
-          <li id="welcome-message"><%= link_to "Manage Your Profile and Hiring Commitment", edit_employer_path(current_user.employer) %></li>
-          <li class="divider"></li>
           <li class="last"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <% unless current_user.employer.approved? %>
           <% end %>
