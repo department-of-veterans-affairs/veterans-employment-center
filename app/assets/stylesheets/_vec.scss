@@ -45,6 +45,12 @@ ul li:before {
 
 
 // /*** VEC Styles ***/
+
+.button.small.expand.button-margin-top {
+  margin-top: 1.3em;
+  padding: 0.65em .65em;
+}
+
 #vec-user-nav.top-bar {
   background-color: $color-primary-darkest;
   border-bottom: $color-primary-alt-darkest solid 1px;
