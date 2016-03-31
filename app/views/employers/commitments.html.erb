@@ -17,72 +17,96 @@
   <div class="section one">
     <% unless user_signed_in? && current_user.is_employer? %>
       <div class="row">
-          <div class="small-12 columns">
-          <p>Employers every day are committing to hire Veterans &mdash; you should too! Check out the list below to see what employers have already made a commitment and then <%= link_to "create or update your profile", new_user_session_path %> to signal your commitment.</p>
+        <div class="small-12 medium-8 columns">
+          <div class="primary">
+            <p>Veterans and military family members have consistently proven themselves to be the most reliable, independent, and hardworking team members. Additionally, Veterans have soft skills such as problem solving and creativity that can benefit a company’s bottom line. By signing up and <a href="/employment/commitments">making a commitment</a>, your company will stand out to candidates eager to enter the civilian workforce.</p>
+          </div>
         </div>
-      </div><!-- end row 1 -->
+      </div>
+      <% end %>
+
+      <div class="row">
+        <div class="small-12 medium-8 columns">
+
+        <p>Of the <%= @commitment_report.total_employers %> approved employers with the Veteran Employment Center&trade;:</p>
+        <br>
+        <div class="row">
+          <div class="small-12 medium-4 columns">
+            <div class="card information">
+              <span class="number"><%= @commitment_report.total_commitments %></span>
+              <span class="description">public commitments made</span>
+            </div>
+          </div>
+          <div class="small-12 medium-4 columns">
+            <div class="card information">
+              <span class="number"><%= @commitment_report.commitment_sum %></span>
+              <span class="description">total positions committed to hire</span>
+            </div>
+          </div>
+          <div class="small-12 medium-4 columns">
+            <div class="card information">
+              <span class="number"><%= @commitment_report.hired_so_far %></span>
+              <span class="description">Veterans hired so far</span>
+            </div>
+          </div> 
+
+        </div>  
+      </div>
+
+      <% if user_signed_in? && current_user.is_employer? %>
+      <div class="small-12 medium-4 columns feature">
+        <% if current_user.employer.commit_to_hire.present? %>
+          <h5>You've publicly committed to hire <%= current_user.employer.commit_to_hire %> Veterans<% if current_user.employer.commit_date.present? %> by <%= current_user.employer.commit_date.strftime("%b %d, %Y") %><% end %>.<% if current_user.employer.commit_hired.present? %> So far, you've hired <%= current_user.employer.commit_hired %>.<% end %>
+          </h5>
+          <div class="actions">
+            <%= link_to "Update Your Commitment", edit_employer_path(current_user.employer, anchor: 'hiring-commitments' ), class: 'button expand' %>
+          </div>
+        <% else %>
+          <h5>You haven't yet made a public commitment to hire Veterans.</h5>
+          <br/><br/>
+          <div class="actions">
+            <%= link_to "Make/Update Your Commitment", edit_employer_path(current_user.employer, anchor: 'hiring-commitments' ), class: 'button expand' %>
+          </div>
+        <% end %>
+      </div>
+      <% else %><!-- employer not logged in -->
+      
+      <div class="small-12 medium-4 columns feature">
+        <h5>Employers:<br />Log in to create/manage your hiring commitment.</h5>
+        <div class="actions">
+          <%= link_to "Sign in with LinkedIn", user_omniauth_authorize_path(:linkedin), class: "button social linkedin expand" %> <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), class: "button social googleplus expand" %>
+          </div>
+      </div>
     <% end %>
 
-    <div class="row">
-      <div class="small-12 medium-8 columns">
-        <p>Of the <%= @commitment_report.total_employers %> approved employers with the Veteran Employment Center&trade;:</p>
-        <ul class="plain">
-          <li><strong><%= @commitment_report.total_commitments %></strong> public commitments made</li>
-          <li><strong><%= @commitment_report.commitment_sum %></strong> total positions committed to hire</li>
-          <li><strong><%= @commitment_report.hired_so_far %></strong> Veterans hired so far</li>
-        </ul>
-        <p><%= link_to 'Download all commitments as spreadsheet'.html_safe, action: 'commitments', format: :csv %></p>
-      </div>
-      <% if user_signed_in? && current_user.is_employer? %>
-        <div class="small-12 medium-4 columns feature">
-          <% if current_user.employer.commit_to_hire.present? %>
-            <h5>You've publicly committed to hire <%= current_user.employer.commit_to_hire %> Veterans<% if current_user.employer.commit_date.present? %> by <%= current_user.employer.commit_date.strftime("%b %d, %Y") %><% end %>.<% if current_user.employer.commit_hired.present? %> So far, you've hired <%= current_user.employer.commit_hired %>.<% end %>
-            </h5>
-            <div class="actions">
-              <%= link_to "Update Your Commitment", edit_employer_path(current_user.employer, anchor: 'hiring-commitments' ), class: 'button expand' %>
-            </div>
-          <% else %>
-            <h5>You haven't yet made a public commitment to hire Veterans.</h5>
-            <br/><br/>
-            <div class="actions">
-              <%= link_to "Make/Update Your Commitment", edit_employer_path(current_user.employer, anchor: 'hiring-commitments' ), class: 'button expand' %>
-            </div>
-          <% end %>
-        </div>
-        <% else %><!-- employer not logged in -->
-        <div class="small-12 medium-4 columns feature">
-          <h5>Employers:<br />Log in to create/manage your hiring commitment.</h5>
-          <div class="actions">
-            <%= link_to "Sign in with LinkedIn", user_omniauth_authorize_path(:linkedin), class: "button social linkedin expand" %> <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), class: "button social googleplus expand" %>
-            </div>
-        </div>
-      <% end %>
     </div><!-- end row 2 -->
     <div class="row">
-      <h4>Commitments</h4>
-      <table id="commitments" role="grid">
-        <thead>
-          <tr>
-            <th scope="col">Company</th>
-            <th scope="col">Committed to hire</th>
-            <th scope="col">By date</th>
-            <th scope="col">Hired so far</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @commitment_report.committed.each do |employer| %>
+      <div class="small-12 columns">
+        <h4>Commitments</h4>
+        <table id="commitments" role="grid">
+          <thead>
             <tr>
-              <td class="employer_name">
-                <%= render partial: 'commitment_summary', locals: {employer: employer} %>
-              </td>
-              <td><%= employer.commit_to_hire %></td>
-              <td><%= employer.commit_date %></td>
-              <td><%= employer.commit_hired %></td>
+              <th scope="col">Company</th>
+              <th scope="col">Committed to hire</th>
+              <th scope="col">By date</th>
+              <th scope="col">Hired so far</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <p>&nbsp;</p>
+          </thead>
+          <tbody>
+            <% @commitment_report.committed.each do |employer| %>
+              <tr>
+                <td class="employer_name">
+                  <%= render partial: 'commitment_summary', locals: {employer: employer} %>
+                </td>
+                <td><%= employer.commit_to_hire %></td>
+                <td><%= employer.commit_date %></td>
+                <td><%= employer.commit_hired %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <p><%= link_to 'Download all commitments as spreadsheet'.html_safe, action: 'commitments', format: :csv %></p>
+      </div>
     </div><!-- end row 3 -->
 
   </div><!-- end section one -->
