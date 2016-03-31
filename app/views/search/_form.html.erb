@@ -1,17 +1,27 @@
-<div class="small-12 medium-8 columns">
-  <script>
-    function isFilledOut() {
-      var oneof = ["kw", "zc", "moc", "zc1", "cname"];
-      var result = $.map(oneof, function(x) {
-        return $("[name="+x+"]").val().length; })
-        .filter(function(x) { return x > 0; }).length > 0;
-      if (result == false) {
-        $(".error-message").show().delay(4000).fadeOut();
-        return false;
-      }
+<script>
+  function isFilledOut() {
+    var oneof = ["kw", "zc", "moc", "zc1", "cname"];
+    var result = $.map(oneof, function(x) {
+      return $("[name="+x+"]").val().length; })
+      .filter(function(x) { return x > 0; }).length > 0;
+    if (result == false) {
+      $(".error-message").show().delay(4000).fadeOut();
+      return false;
     }
-  </script>
+  }
+</script>
 
+<div class="small-12 medium-4 columns right">
+  <div class="search-results">
+    <%# If we have a federal job search, we can't know how many results there are. %>
+    <%= render partial: 'featured_jobs' if @page == 1 %>
+    <% if @record_count.nil? %>
+    <%= render partial: 'federal_pagination', locals: {searcher: @searcher} %>
+  <% end %>
+  </div>
+</div>
+
+<div class="small-12 medium-8 columns">
   <form action="search_jobs" class="job-search" method="get" target="" onsubmit="return isFilledOut()">
     <input type="hidden" name="searchType" id="searchType" value="<%= @us_jobs_search_params["searchType"] %>">
     <input name="tm" type="hidden" value="">
@@ -62,15 +72,21 @@
       </fieldset>
     </div>
   </form>
-</div>
-<div class="search-results">
-  <div class="small-12 medium-4 columns">
-    <div class="search-results">
-      <%# If we have a federal job search, we can't know how many results there are. %>
-      <%= render partial: 'featured_jobs' if @page == 1 %>
-      <% if @record_count.nil? %>
-      <%= render partial: 'federal_pagination', locals: {searcher: @searcher} %>
-    <% end %>
+<!--   <div class="section one">
+    <div class="row">
+      <h5>Three tips to get the most out of the job search tool:</h5>
+      <ol>
+        <li>Make your search as broad as possible.</li>
+        <li>Explore a variety of geographical areas.</li>
+        <li>Use the Skills Translator tool translate your military skills into language hiring managers will understand.</li>
+      </ol>
+
+      <h5>Additional Resources</h5>
+      <ul>
+        <li>One-on-one Job Assistance</li>
+        <li>Apply for Federal Jobs</li>
+        <li>Veteran Administration Job</li>
+        <li>Start your own business</li>
+      </ul>
     </div>
-  </div>
-</div>
+  </div> -->
