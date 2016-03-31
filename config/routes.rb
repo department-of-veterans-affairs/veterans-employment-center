@@ -26,10 +26,10 @@ EmploymentPortal::Application.routes.draw do
   get '/download_all_veterans' => 'veterans#download_all_veterans'
   get 'job-seekers/skills-translator' => 'skills#index', as: :skills_translator
   post 'skills-translator/save_event' => 'skills#save_event'
-  post 'skills-translator/suggest' => 'skills#suggest'
   get  'skills-translator/get_skills/:prefix' => 'skills#get_skills', as: :skills_translator_get_skills
   get  'skills-translator/get_common_skills' => 'skills#get_common_skills'
   post 'skills-translator/add_skill' => 'skills#add_skill'
+  post 'skills-translator/suggest_skills' => 'skills#suggest'
   root 'static_pages#home'
   get '/job-seekers/for_job_seekers' => 'static_pages#for_job_seekers', as: :for_job_seekers
   get '/job-seekers' => redirect("https://www.vets.gov/employment/job-seekers/"), as: :job_seekers
