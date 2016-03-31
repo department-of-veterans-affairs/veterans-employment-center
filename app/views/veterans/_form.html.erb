@@ -11,7 +11,8 @@
 
 <%= form_for @veteran, html: { class: 'f resume', id: 'veteran_form', role: 'form' } do |f| %>
   <% if @veteran.errors.any? %>
-    <li class="error_list"> <h3 class="no-margin"><%= pluralize(@veteran.errors.count, "error") %> prohibited this resume from being saved:</h2>
+    <div class="alert-box error_highlight">
+      <h3 class="no-margin"><%= pluralize(@veteran.errors.count, "error") %> prohibited this resume from being saved:</h3>
       <div id="error_explanation">
       <ul>
         <% @veteran.errors.full_messages.each do |msg| %>
@@ -19,7 +20,7 @@
         <% end %>
       </ul>
       </div>
-    </li>
+    </div>
   <% end %>
 
     <div class="form-section">
@@ -28,7 +29,7 @@
       <h3 class="no-margin">Add the basics</h3>
 
       <fieldset class="no-margin">
-        <legend>Enter your name</legend>
+        <legend>Enter your name and email (required).</legend>
 
         <div class="row form-group dataItem">
           <div class="small-12 columns">
@@ -40,7 +41,6 @@
           <div class="small-12 columns">
             <%= f.label :email, "Your Email "%>
             <%= f.email_field :email, class: "required field" %>
-            <span class="required message" aria=describedby="veteran-email">Required</span>
           </div>
         </div>
       </fieldset>
@@ -69,7 +69,7 @@
     <h3 class="no-margin">When can you start work?</h3>
 
     <fieldset class="no-margin">
-      <legend>When can you start work?</legend>
+      <legend>Enter an estimated start date.</legend>
 
       <div class="row form-group dataItem">
         <div class="small-12 columns">
@@ -90,7 +90,7 @@
     <h3 class="no-margin"> Your Civilian Skills</h3>
 
     <fieldset class="no-margin">
-      <legend>Add your civilian skills. Add as many as necessary by using the autocomplete field</legend>
+      <legend>Add your civilian skills. Add as many as necessary by using the autocomplete field.</legend>
       <div class="row form-group">
         <ul>
           <div id="checkbox-list" class="skill_columns">

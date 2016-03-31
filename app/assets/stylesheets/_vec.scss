@@ -98,6 +98,12 @@ ul li:before {
   font-weight: 400;
 }
 
+.alert-box.error_highlight {
+  color: #112e51;
+  background-color: #f9dede;
+  border-color: #f9dede;
+}
+
 .job-row {
   margin-bottom: 2rem;
   .result {

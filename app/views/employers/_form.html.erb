@@ -1,14 +1,11 @@
 <%= form_for(@employer) do |f| %>
   <div class="row" id="error_box" <% if !@employer.errors.any? %> style="display:none;" <%end%>>
     <div class="small-12 columns">
-      <div data-alert class="alert-box warning">
+      <div data-alert class="alert-box error_highlight">
         <div id="error_explanation">
           <h3><%= pluralize(@employer.errors.count, "error") %> prohibited this employer from being saved:</h3>
           <ul>
             <% @employer.errors.full_messages.each do |msg| %>
-	      <% if msg == 'Ein has already been taken' %>
-		<% msg = 'Another company has registered with that Employer Identification Number.' %>
-	      <% end %>
               <li><%= msg %></li>
             <% end %>
           </ul>
