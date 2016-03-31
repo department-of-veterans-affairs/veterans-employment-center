@@ -1,12 +1,7 @@
 <script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?libraries=places"%></script>
 
 <% unless session[:linkedin_profile] %>
-  <div class="row">
-    <div class="small-12 medium-8 columns">
       <%= link_to "<i class='icon-linkedin' aria-hidden='true'></i><span>Auto-fill from LinkedIn</span>".html_safe, user_omniauth_authorize_path(:linkedin_resume), class: "button social linkedin", id: "linkedin_autofill"%>
-    </div>
-  </div>
-  <p>LinkedIn is also providing a <b>free</b> 1-year Job Seeker Premium subscription ($360 value) to all U.S. Veterans and Servicemembers. Learn more <a href="https://veterans.linkedin.com/" id="linkedin_site" target="_blank">here</a>.</p>
 <% end %>
 
 <%= form_for @veteran, html: { class: 'f resume', id: 'veteran_form', role: 'form' } do |f| %>

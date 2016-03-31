@@ -273,6 +273,6 @@ feature 'logging out' do
     sign_in_as(employer_user)
     visit employer_list_path
     click_link 'Sign Out'
-    expect(page).to have_content 'Resources and tools for both job seekers and employers'
+    expect(page).to have_content 'Signed out successfully'
   end
 end
