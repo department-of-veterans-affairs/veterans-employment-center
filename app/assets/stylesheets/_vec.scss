@@ -45,6 +45,16 @@ ul li:before {
 
 
 // /*** VEC Styles ***/
+
+// TODO: Remove this block after demo
+.featured-jobs-height-hack {
+    overflow: hidden;
+    max-height: 660px;
+    margin-bottom: 2rem;
+}
+// end remove block
+
+
 #vec-user-nav.top-bar {
   background-color: $color-primary-darkest;
   border-bottom: $color-primary-alt-darkest solid 1px;
