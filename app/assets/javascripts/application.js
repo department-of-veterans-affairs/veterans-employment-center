@@ -27,6 +27,7 @@
 //= require angular-cookies
 //= require va_common_main
 //= require_tree .
+//= require garlic
 
 var Application = {
   init: function() {

@@ -9,7 +9,7 @@
   <p>LinkedIn is also providing a <b>free</b> 1-year Job Seeker Premium subscription ($360 value) to all U.S. Veterans and Servicemembers. Learn more <a href="https://veterans.linkedin.com/" id="linkedin_site" target="_blank">here</a>.</p>
 <% end %>
 
-<%= form_for @veteran, html: { class: 'f resume', id: 'veteran_form', role: 'form' } do |f| %>
+<%= form_for @veteran, html: { class: 'f resume', id: 'veteran_form', role: 'form', data: { persist: 'garlic' }} do |f| %>
   <% if @veteran.errors.any? %>
     <div class="alert-box error_highlight">
       <h3 class="no-margin"><%= pluralize(@veteran.errors.count, "error") %> prohibited this resume from being saved:</h3>

@@ -19,7 +19,8 @@ gem 'jquery-validation-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-
+gem 'garlicjs-rails'
+gem 'localstorageshim-rails'
 gem 'caracal-rails', '1.0.1'
 gem 'caracal', '1.0.2'
 gem 'va_common', '0.3.4'
