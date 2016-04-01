@@ -271,7 +271,7 @@ end
 feature 'logging out' do
   scenario 'when logged in, an employer can log out' do
     sign_in_as(employer_user)
-    visit employer_list_path
+    visit employers_path
     click_link 'Sign Out'
     expect(page).to have_content 'Signed out successfully'
   end
