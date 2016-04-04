@@ -1,33 +1,52 @@
+<script>
+  function isFilledOut() {
+    var oneof = ["kw", "zc", "moc", "zc1", "cname"];
+    var result = $.map(oneof, function(x) {
+      return $("[name="+x+"]").val().length; })
+      .filter(function(x) { return x > 0; }).length > 0;
+    if (result == false) {
+      $(".error-message").show().delay(4000).fadeOut();
+      return false;
+    }
+  }
+</script>
+
 <div class="section one">
   <div class="row">
-    <div class="small-12 columns">
-      <script>
-        function isFilledOut() {
-          var oneof = ["kw", "zc", "moc", "zc1", "cname"];
-          var result = $.map(oneof, function(x) {
-            return $("[name="+x+"]").val().length; })
-            .filter(function(x) { return x > 0; }).length > 0;
-          if (result == false) {
-            $(".error-message").show().delay(4000).fadeOut();
-            return false;
-          }
-        }
-      </script>
+    <div class="small-12 medium-9 columns">
+      <div class="primary">
+        <p>Search the Veterans Job Bank to find the right position for you.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-4 columns right">
+      <div class="search-results featured-jobs-height-hack">
+        <%# If we have a federal job search, we can't know how many results there are. %>
+        <%= render partial: 'featured_jobs' if @page == 1 %>
+        <% if @record_count.nil? %>
+        <%= render partial: 'federal_pagination', locals: {searcher: @searcher} %>
+      <% end %>
+      </div>
+    </div>
+
+    <div class="small-12 medium-8 columns">
       <form action="search_jobs" class="job-search" method="get" target="" onsubmit="return isFilledOut()">
         <input type="hidden" name="searchType" id="searchType" value="<%= @us_jobs_search_params["searchType"] %>">
         <input name="tm" type="hidden" value="">
         <div class="filters">
-          <p>Search the Veterans Job Bank</p>
           <h4 class="error-message" style="display:none;">Please enter a search term.</h4>
           <fieldset>
             <div class="row">
-              <div class="small-12 medium-4 columns">
+              <div class="small-12 medium-8 columns">
                 <div class="dataItem">
                   <label class="main em" for="kw">What  <span class="field-details"><span class="example">(job title, keywords)</span></span> </label>
                   <input id="kw" name="kw" class="text address" type="text" value="<%= @us_jobs_search_params["kw"] %>" maxlength="95">
                 </div>
               </div>
-              <div class="small-12 medium-4 columns">
+            </div>
+            <div class="row">
+              <div class="small-12 medium-8 columns">
                 <div class="dataItem">
                   <label class="main em" for="zc">Where
                     <span class="field-details"><span class="example">(city, state, country)</span></span>
@@ -35,7 +54,9 @@
                   <input id="zc" name="zc" class="text address" type="text" value="<%= @us_jobs_search_params["zc"] %>" maxlength="95">
                 </div>
               </div>
-              <div class="small-12 medium-4 columns">
+            </div>
+            <div class="row">
+              <div class="small-12 medium-8 columns">
                 <div class="dataItem">
                   <label class="main em" for="moc">Military  <span class="field-details"><span class="example">(military job title or code)</span></span></label>
                   <input id="moc" name="moc" class="text military" type="text" value="<%= @us_jobs_search_params["moc"] %>" maxlength="95">
@@ -52,13 +73,29 @@
             </div>
             <div class="row">
               <div class="actions">
-                <button class="button primary button-left" type="submit">Search</button>
+                <button class="button primary button-left" type="submit" id="job-search">Search</button>
                 <button class="button secondary button-right" type="button" onclick="resetForm()">Clear Search</button>
               </div>
             </div>
           </fieldset>
         </div>
       </form>
-    </div>
-  </div>
-</div>
+
+    <hr>
+
+    <h5>Three tips to get the most out of the job search tool:</h5>
+    <ol>
+      <li>Make your search as broad as possible.</li>
+      <li>Explore a variety of geographical areas.</li>
+      <li>Use the Skills Translator tool translate your military skills into language hiring managers will understand.</li>
+    </ol>
+
+    <br>
+
+    <h5>Additional Resources</h5>
+    <ul>
+      <li><a href="/employment/job_seekers/one-on-one">One-on-one Job Assistance</a></li>
+      <li><a href="/employment/job_seekers/federal-employment">Apply for Federal Jobs</a></li>
+      <li><a href="http://vaforvets.va.gov/">Veteran Administration Job</a></li>
+      <li><a href="/employment/job_seekers/start">Start your own business</a></li>
+    </ul>

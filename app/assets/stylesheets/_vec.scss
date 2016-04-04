@@ -45,6 +45,13 @@ ul li:before {
 
 
 // /*** VEC Styles ***/
+// TODO: Remove this block after demo
+.featured-jobs-height-hack {
+    overflow: hidden;
+    max-height: 660px;
+    margin-bottom: 2rem;
+}
+// end remove block
 
 .card.information {
   background: rgba(0,0,0,.05);

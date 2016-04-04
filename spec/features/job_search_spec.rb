@@ -4,8 +4,14 @@ describe 'JobSearch' do
   describe "/search_jobs" do
     context "when there are search results" do
       before do
-        stub_request(:get, "http://api2.us.jobs/?cname=&ind=&key=#{ENV['US_JOBS_API_KEY']}&kw=java&moc=&onet=&rd1=25&re=25&rs=1&searchType=basic&tm=&zc=washington,%20dc").
-          to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/us.jobs/java_dc.xml"))
+        #stub_request(:get, "http://api2.us.jobs/?cname=&ind=&key=#{ENV['US_JOBS_API_KEY']}&kw=java&moc=&onet=&rd1=25&re=25&rs=1&searchType=basic&tm=&zc=washington,%20dc").
+          #to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/us.jobs/java_dc.xml"))
+        stub_request(:get, "http://api2.us.jobs/?key=&re=25&rs=1").
+          to_return(:status => 200, :body => "", :headers => {})
+        stub_request(:get, "https://va-jobs-api-staging.herokuapp.com/search.json?from=0&query=%20jobs%20&size=11").
+          to_return(:status => 200, :body => "", :headers => {})
+	stub_request(:get, "http://api2.us.jobs/?cname=&ind=&key=&kw=java&moc=&onet=&rd1=5&re=25&rs=1&searchType=&tm=&zc=washington,%20dc").
+          to_return(:status => 200, :body => File.read(Rails.root.to_s + "/spec/support/us.jobs/java_dc.xml"), :headers => {})
       end
 
       context "when there are no featured jobs for a given search" do
@@ -14,10 +20,14 @@ describe 'JobSearch' do
             to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/jobs_api/empty.json"))
           stub_request(:get, "#{ENV['JOBS_API_BASE_URL']}/search.json?from=0&query=java%20jobs%20in%20washington,%20dc&size=11").
             to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/jobs_api/empty.json"))
+          #stub_request(:get, "http://api2.us.jobs/?key=&re=25&rs=1").
+          #  to_return(:status => 200, :body => "", :headers => {})
+	  #stub_request(:get, "https://va-jobs-api-staging.herokuapp.com/search.json?from=0&query=%20jobs%20&size=11").
+          #  to_return(:status => 200, :body => "", :headers => {})
         end
 
         it "should only display results for the main job search results" do
-          visit for_job_seekers_path
+          visit search_jobs_path
           fill_in 'kw', with: "java"
           fill_in 'zc', with: "washington, dc"
           click_button('job-search')
@@ -30,10 +40,11 @@ describe 'JobSearch' do
         end
 
         it "should only display results for federal jobs when specified (none returned here)" do
-          visit for_job_seekers_path
+          visit search_jobs_path
           fill_in 'kw', with: "java"
           fill_in 'zc', with: "washington, dc"
-          select 'Federal Jobs Only', from: "fed"
+          click_link 'adv-job_search'
+	  select 'Federal Jobs Only', from: "fed"
           click_button('job-search')
           expect(page).to have_no_content "Featured jobs"
           expect(page).to have_no_content "Java Developer - Java, Spring, Hibernate"
@@ -49,8 +60,9 @@ describe 'JobSearch' do
         end
 
         it "should display 25 federal results with next links" do
-          visit for_job_seekers_path
+          visit search_jobs_path
           fill_in 'kw', with: "analyst"
+	  click_link 'adv-job_search'
           select 'Federal Jobs Only', from: "fed"
           click_button('job-search')
           expect(page).to have_content "Federal jobs"
@@ -68,7 +80,7 @@ describe 'JobSearch' do
         end
 
         it "should display search results with no featured results" do
-          visit for_job_seekers_path
+          visit search_jobs_path
           fill_in 'kw', with: "java"
           fill_in 'zc', with: "washington, dc"
           click_button('job-search')
@@ -87,7 +99,7 @@ describe 'JobSearch' do
           end
 
           it "should display all the featured results" do
-            visit for_job_seekers_path
+            visit search_jobs_path
             fill_in 'kw', with: "java"
             fill_in 'zc', with: "washington, dc"
             click_button('job-search')
@@ -99,9 +111,10 @@ describe 'JobSearch' do
           end
 
           it "should not display featured results when user selects non-federal jobs only" do
-            visit for_job_seekers_path
+            visit search_jobs_path
             fill_in 'kw', with: "java"
             fill_in 'zc', with: "washington, dc"
+	    click_link 'adv-job_search'
             select 'Non-Federal Jobs Only', from: "fed"
             click_button('job-search')
             expect(page).to have_no_content 'Featured jobs'
@@ -121,9 +134,9 @@ describe 'JobSearch' do
             end
 
             it 'should provided filtered results' do
-              visit for_job_seekers_path
+              visit search_jobs_path
               fill_in 'kw', with: "java"
-              click_link 'Advanced Search'
+              click_link 'adv-job_search'
               fill_in 'cname', with: 'Carolina'
               click_button('job-search')
               expect(page).to have_content 'Featured jobs'
@@ -149,7 +162,7 @@ describe 'JobSearch' do
           end
 
           it 'should page through featured results' do
-            visit for_job_seekers_path
+            visit search_jobs_path
             fill_in 'kw', with: "java"
             fill_in 'zc', with: "washington, dc"
             click_button('job-search')
@@ -175,7 +188,7 @@ describe 'JobSearch' do
           end
 
           before do
-            visit for_job_seekers_path
+            visit search_jobs_path
             fill_in 'kw', with: "java"
             fill_in 'zc', with: "washington, dc"
             click_button('job-search')
@@ -217,7 +230,7 @@ describe 'JobSearch' do
           # I think verifying that scrolling happened is about as close as you
           # can get with this.
           WebMock.disable_net_connect!(allow_localhost: true)
-          visit for_job_seekers_path
+          visit search_jobs_path
           fill_in 'kw', with: "java"
           fill_in 'zc', with: "washington, dc"
           click_button('job-search')
@@ -231,7 +244,7 @@ describe 'JobSearch' do
         end
 
         it "should display them correctly and have a links to the next/prev page of results" do
-          visit for_job_seekers_path
+          visit search_jobs_path
           fill_in 'kw', with: "java"
           fill_in 'zc', with: "washington, dc"
           click_button('job-search')
@@ -263,10 +276,16 @@ describe 'JobSearch' do
           to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/us.jobs/nojobs.xml"))
         stub_request(:get, "#{ENV['JOBS_API_BASE_URL']}/search.json?from=0&query=xxxyyy%20jobs%20in%20washington,%20dc&size=11").
           to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/jobs_api/empty.json"))
+        stub_request(:get, "http://api2.us.jobs/?key=&re=25&rs=1").
+          to_return(:status => 200, :body => "", :headers => {})
+	stub_request(:get, "https://va-jobs-api-staging.herokuapp.com/search.json?from=0&query=%20jobs%20&size=11").
+          to_return(:status => 200, :body => "", :headers => {})
+        stub_request(:get, "http://api2.us.jobs/?cname=&ind=&key=&kw=xxxyyy&moc=&onet=&rd1=5&re=25&rs=1&searchType=&tm=&zc=washington,%20dc").
+          to_return(:status => 200, :body => "", :headers => {})
       end
 
       it "should display the no results message" do
-        visit for_job_seekers_path
+        visit search_jobs_path
         fill_in 'kw', with: "xxxyyy"
         fill_in 'zc', with: "washington, dc"
         click_button('job-search')

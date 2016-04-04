@@ -126,7 +126,7 @@ module Search
       }
       jobs_api_response = JobsApi.new.search(params)
       if jobs_api_response.code == 200
-        JSON.parse(jobs_api_response.body)
+	jobs_api_response.body && jobs_api_response.body.length >= 2 ? JSON.parse(jobs_api_response.body) : []
       else
         []
       end
