@@ -67,6 +67,7 @@
             <th scope="col">Committed to hire</th>
             <th scope="col">By date</th>
             <th scope="col">Hired so far</th>
+	    <th scope="col">Last updated</th>
           </tr>
         </thead>
         <tbody>
@@ -78,6 +79,7 @@
               <td><%= employer.commit_to_hire %></td>
               <td><%= employer.commit_date %></td>
               <td><%= employer.commit_hired %></td>
+	      <td><%= employer.updated_at %></td>
             </tr>
           <% end %>
         </tbody>
@@ -127,8 +129,8 @@
             {'data': 'summary'},
             {'data': 'commit_to_hire'},
             {'data': 'commit_date'},
-            {'data': 'commit_hired'}
-
+            {'data': 'commit_hired'},
+	    {'data': 'updated_at'}
       ]
 
   });

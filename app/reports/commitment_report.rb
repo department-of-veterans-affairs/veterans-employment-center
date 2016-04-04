@@ -25,7 +25,7 @@ class CommitmentReport
   end
 
   def committed
-    columns = ['company_name', 'commit_to_hire', 'commit_date', 'commit_hired']
+    columns = ['company_name', 'commit_to_hire', 'commit_date', 'commit_hired', 'updated_at']
     orders = {'desc' => :desc, 'asc' => :asc}
     orderparam = params[:order].try(:values).try(:first)
     ordercolumnparam = orderparam.try(:[], 'column') || 1
@@ -54,7 +54,7 @@ class CommitmentReport
   end
 
   def csv_fields
-    [:company_name, :commit_date, :commit_to_hire, :commit_hired, :website, :location, :note, :commitment_categories]
+    [:company_name, :commit_date, :commit_to_hire, :commit_hired, :updated_at, :website, :location, :note, :commitment_categories]
   end
 
   def to_csv(csv)
@@ -68,7 +68,7 @@ class CommitmentReport
   def as_json(opts = {})
     if viewcontext
       output = committed.map do |c|
-        c.as_json.slice('commit_to_hire', 'commit_date', 'commit_hired').merge(
+        c.as_json.slice('commit_to_hire', 'commit_date', 'commit_hired', 'updated_at').merge(
           {
             summary: viewcontext.render_to_string(partial: 'commitment_summary.html', locals: {employer: c})
           }
