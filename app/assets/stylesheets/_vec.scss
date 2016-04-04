@@ -50,7 +50,17 @@ ul li:before {
   margin-top: 1.3em;
   padding: 0.65em .65em;
 }
-
+ 
+.card.information {
+  background: rgba(0,0,0,.05);
+  min-height: 11.2rem;
+}
+.card .description {
+    text-transform: none;
+    font-size: 1em;
+    padding: .5em 0;
+    color: color-primary-darkest;
+}
 #vec-user-nav.top-bar {
   background-color: $color-primary-darkest;
   border-bottom: $color-primary-alt-darkest solid 1px;

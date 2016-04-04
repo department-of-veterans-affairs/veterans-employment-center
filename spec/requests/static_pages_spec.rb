@@ -25,19 +25,19 @@ describe "Static pages" do
       user = employer_user
       sign_in_as(user)
       visit root_path
-      expect(page).to have_link 'Search Veterans', href: "/veterans"
+      expect(page).to have_link 'Sign Out'
     end
 
     it "should not have the employer top nav if logged in but not an employer" do
       user = create :user, email: 'test@example.com', password: '12345678'
       sign_in_as user
       visit root_path
-      expect(page).not_to have_link 'Search Veterans', href: "/veterans"
+      expect(page).not_to have_link 'Search Veterans'
     end
 
     it "should not have the employer top nav if not logged-in" do
       visit root_path
-      expect(page).not_to have_link 'Search Veterans', href: "/veterans"
+      expect(page).not_to have_link 'Sign Out', href: "/veterans"
     end
 
     it "should have a message to email OEC if a logged-in employer who is not approved" do
