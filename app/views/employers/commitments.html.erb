@@ -79,7 +79,7 @@
               <td><%= employer.commit_to_hire %></td>
               <td><%= employer.commit_date %></td>
               <td><%= employer.commit_hired %></td>
-	      <td><%= employer.updated_at %></td>
+	      <td><%= employer.updated_at.to_s[0..9] %></td>
             </tr>
           <% end %>
         </tbody>
