@@ -46,6 +46,11 @@ ul li:before {
 
 // /*** VEC Styles ***/
 
+.button.small.expand.button-margin-top {
+  margin-top: 1.3em;
+  padding: 0.65em .65em;
+}
+ 
 .card.information {
   background: rgba(0,0,0,.05);
   min-height: 11.2rem;
