@@ -61,6 +61,10 @@ ul li:before {
     padding: .5em 0;
     color: color-primary-darkest;
 }
+// Make this smaller than va.scss because employer numbers are huge
+.card .number {
+    font-size: 2.5em;
+}
 #vec-user-nav.top-bar {
   background-color: $color-primary-darkest;
   border-bottom: $color-primary-alt-darkest solid 1px;
