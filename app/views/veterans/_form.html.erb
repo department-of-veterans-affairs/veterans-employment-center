@@ -20,20 +20,20 @@
     <div class="form-section">
 
       <div class="required federal">(This section is required for <strong>Federal job applications</strong>)</div>
-      <h3 class="no-margin">Add the basics</h3>
+      <h3 class="no-margin">Add the Basics</h3>
 
       <fieldset class="no-margin">
-        <legend>Enter your name</legend>
+        <legend>Enter your name and email</legend>
 
         <div class="row form-group dataItem">
           <div class="small-12 columns">
-            <%= f.label :name, "Your Name " %>
+            <%= f.label :name, "Your name " %>
             <%= f.text_field :name %>
           </div>
         </div>
         <div class="row form-group dataItem">
           <div class="small-12 columns">
-            <%= f.label :email, "Your Email "%>
+            <%= f.label :email, "Your email "%>
             <%= f.email_field :email, class: "required field" %>
             <span class="required message" aria=describedby="veteran-email">Required</span>
           </div>
@@ -51,7 +51,7 @@
       <legend>Enter basic information about your career goals and objectives.</legend>
       <div class="row form-group">
         <div class="small-12 columns dataItem">
-          <%= f.label :objective, "1 - 2 sentences about your qualifications and career objectives. This appears in search results, so make it stand out!" %>
+          <%= f.label :objective, "Provide 1-2 sentences. This appears in search results, so make it stand out!" %>
           <%= f.text_area :objective, class: "form-control", rows: 5 %>
         </div>
       </div>
@@ -61,10 +61,10 @@
   <div class="form-section">
 
     <div class="required federal">(This section is required for <strong>Federal job applications</strong>)</div>
-    <h3 class="no-margin">When can you start work?</h3>
+    <h3 class="no-margin">Your Start Date</h3>
 
     <fieldset class="no-margin">
-      <legend>When can you start work?</legend>
+      <legend>Enter your available start date.</legend>
 
       <div class="row form-group dataItem">
         <div class="small-12 columns">
@@ -85,7 +85,7 @@
     <h3 class="no-margin"> Your Civilian Skills</h3>
 
     <fieldset class="no-margin">
-      <legend>Add your civilian skills. Add as many as necessary by using the autocomplete field</legend>
+      <legend>Provide your civilian skills. Add as many as necessary with the help of the autocomplete field.</legend>
       <div class="row form-group">
         <ul>
           <div id="checkbox-list" class="skill_columns">
@@ -113,7 +113,7 @@
   <div class="form-section">
 
     <div class="required federal">(This section is required for <strong>Federal job applications</strong>)</div>
-    <h3 class="no-margin">Education &amp; Training</h3>
+    <h3 class="no-margin">Education and Training</h3>
 
     <%= f.fields_for :experiences, @veteran.educational_experiences.any? ? @veteran.educational_experiences : @veteran.experiences.new do |experiences_fields| %>
       <%= render 'education_fields', f: experiences_fields %>
@@ -219,7 +219,7 @@
   <div class="form-section">
     <h3 class="no-margin">Other</h3>
     <fieldset class="no-margin">
-      <legend>Enter optional additional information to assist potential employers in finding your profile.</legend>
+      <legend>Enter optional additional information to help potential employers find your profile.</legend>
       <div class="row form-group dataItem">
         <div class="small-12 columns">
           <label>Indicate any special categories that apply to you: </label>
@@ -234,7 +234,7 @@
   </div>
 
   <div class="form-section">
-    <h3 class="no-margin">Save As Draft</h3>
+    <h3 class="no-margin">Save as Draft</h3>
     <fieldset class="no-margin">
       <legend>Let employers find and view your profile, or save it as a draft.</legend>
       <div class="row form-group dataItem">
