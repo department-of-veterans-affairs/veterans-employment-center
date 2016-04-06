@@ -1,6 +1,6 @@
 class MilitaryOccupation < ActiveRecord::Base
 
-  validates_uniqueness_of :code, scope: [:service, :active]
+  validates_uniqueness_of :code, scope: [:service, :active, :category]
   validates :service, inclusion: {in: ['Army', 'Navy', 'Marine Corps', 'Coast Guard', 'Air Force', 'DEFAULT'],
     message: "%{value} must be one of the following: Army, Navy, Marine Corps, Coast Guard, or Air Force"}
 

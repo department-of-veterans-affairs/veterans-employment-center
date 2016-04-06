@@ -135,6 +135,8 @@ initdb /usr/local/var/postgres -E utf8
 
 Common military codes to test the skills translator include 11B and 88M.
 
+MOC codes are sourced from the DoD Occupational Database [https://www.dmdc.osd.mil/owa/odb/](https://www.dmdc.osd.mil/owa/odb/)
+
 Default browser at VA is IE9 Compatibility Mode with IE7 Document Standards.
 
 # Environment variables
