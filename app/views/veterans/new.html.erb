@@ -9,7 +9,7 @@
         <ul class="breadcrumbs" role="menubar" aria-label="Primary">
 	  <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
 	  <li class="parent"><%= link_to "Job Seekers", job_seekers_path %></li>
-          <li class="active">Resume Builder</li>
+          <li class="active">Résumé Builder</li>
         </ul>
       </div>
     </div>
@@ -22,12 +22,12 @@
     <div class="primary">
       <% if current_user.is_veteran? %>
         <% if current_user.veteran.nil? %>
-
+        
           <p>The Veterans Employment Center™ (VEC) can help you build your profile so potential employers can find you on vets.gov. This profile can then be downloaded into a civilian or federal résumé. Your public job-seeker profile will be stored on vets.gov, and you can update your information as often as needed.</p>
 
-          <p>Manually enter your information into the form fields below, or use the Auto-fill from LinkedIn button to pre-populate some of the fields from your LinkedIn account.</p>
+          <p>Manually enter your information into the form fields below, or click the blue Auto-fill from LinkedIn button to prepopulate some of the fields from your LinkedIn account.</p>
 
-        <%= render 'form' %>
+          <%= render 'form' %>
         <% else %>
           <p>You already have a r&eacute;sum&eacute;. Edit it <%= link_to "here", edit_veteran_path(current_user.veteran) %>.</p>
         <% end %>
@@ -51,24 +51,22 @@
     </div>
 
     <div class="section one">
-    <div class="row">
-    <div class="small-12 medium-9 columns">
-    <div class="primary">
+      <div class="row">
+        <div class="small-12 medium-9 columns">
+          <div class="primary">
 
-      <p>The Veterans Employment Center™ (VEC) can help you build your profile so potential employers can find you on vets.gov. This profile can then be downloaded into a civilian or federal résumé. Your public job-seeker profile will be stored on vets.gov, and you can update your information as often as needed.</p>
+            <p>The Veterans Employment Center™ (VEC) can help you build your profile so potential employers can find you on vets.gov. This profile can then be downloaded into a civilian or federal résumé. Your public job-seeker profile will be stored on vets.gov, and you can update your information as often as needed.</p>
 
-      <p>Manually enter your information into the form fields below, or use the Auto-fill from LinkedIn button to pre-populate some of the fields from your LinkedIn account.</p>
+            <p>Manually enter your information into the form fields below, or click the blue Auto-fill from LinkedIn button to prepopulate some of the fields from your LinkedIn account.</p>
 
-    </div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="small-12 columns">
-
-      <%= render 'form' %>
-
-    </div>
-    </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12 columns">
+          <%= render 'form' %>
+        </div>
+      </div>
     </div>
   <% end %>
 

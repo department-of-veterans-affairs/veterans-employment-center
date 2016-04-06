@@ -1,10 +1,8 @@
 <fieldset>
-  <legend>
-    Enter your location preferences below. Add as many as necessary by using the Add another location link. (For the best employment search results, specify one or more cities rather than just a state or country.)
-  </legend>
+  <legend>Enter your location preferences below. Add as many locations as necessary by clicking Add Location below.</legend>
   <div class="row form-group dataItem">
     <div class="small-12 columns desired-location">
-      <%= f.label :location, "Desired Location" %>
+      <%= f.label :location, "Desired location" %>
       <%= f.text_field  :full_name, class: "autocomplete" %>
       <%= f.hidden_field :city %>
       <%= f.hidden_field :state %>
