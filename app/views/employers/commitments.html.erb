@@ -130,7 +130,11 @@
             {'data': 'commit_to_hire'},
             {'data': 'commit_date'},
             {'data': 'commit_hired'},
-	    {'data': 'updated_at'}
+	    {'data': 'updated_at',
+	     'render': function ( data, type, row ) {
+		return data.substr(0,10);
+	     }
+	    }
       ]
 
   });
