@@ -6,9 +6,9 @@
       <div class="row">
         <div class="small-12 columns">
           <ul class="breadcrumbs" role="menubar" aria-label="Primary">
-            <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
-            <li class="parent"><%= link_to "For Job Seekers", for_job_seekers_path %></li>
-            <li class="active">Military Skills Translator</li>
+	    <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
+	    <li class="parent"><%= link_to "Job Seekers", job_seekers_path %></li>
+	    <li class="active">Military Skills Translator</li>
           </ul>
         </div>
       </div>
@@ -16,34 +16,37 @@
 
     <div class="section one">
       <div class="row">
-        <div class="small-12 medium-12 columns">
-          <h4> Enter your military position </h4>
+        <div class="small-12 medium-9 columns">
+          <div class="primary">
+            <p>Convert your military experience into civilian language that hiring managers can easily understand.</p>
+          </div>
+        </div>
+        <div class="small-12 medium-9 columns">
           <div class="filters row skill-translator-row">
-            <div class="row translate-box">
-              <div class="small-12 medium-5 columns">
+            <div class="translate-box">
                 <div data-alert id="errorBox" class="alert-box alert radius" ng-show="state.error" ng-cloak>
                     {{state.error}}
                 </div>
                 <form name="skillRequestForm" ng-submit="submitForm()">
                   <fieldset class="no-margin">
                     <div class="row form-group dataItem">
-                      <div class="small-12 columns large-8 columns">
-                        <label for="military_position_branch">Branch of Service (required)</label>
-                        <select name="military_position_branch" ng-model="formData.branch"
-                                ng-options="name for (name, value) in branches"
-                                required id="military_position_branch">
-                        </select>
+                      
+                      <div class="small-12 medium-4 columns">
+                      <label for="military_position_branch">Branch of Service (required)</label>
+                      <select name="military_position_branch" ng-model="formData.branch"
+                              ng-options="name for (name, value) in branches"
+                              required id="military_position_branch">
+                      </select>
                       </div>
-                    </div>
-
-                    <div class="row form-group">
-                      <div class="small-12 large-8 columns">
+                      
+                      <div class="small-12 medium-5 columns">
                         <label for="military_position_code">Military Occupation Code (MOC) (required)</label>
                         <input name="military_position_code" id="military_position_code" type="text" ng-model="formData.moc" required/>
                       </div>
-                    </div>
-                    <input type="submit" value="Translate" class="button small-12 large-8" />
-                    <br /><em>Scroll down for results</em>
+                    
+                      <div class="small-12 medium-3 columns">
+                        <input type="submit" value="Translate" class="button small expand button-margin-top">
+                      </div>
                   </fieldset>
                 </form>
 
@@ -56,79 +59,83 @@
                   <label ng-if="data.mo.service && data.mo.category">{{data.mo.service}}, {{data.mo.category}}</label>
                 </div>
               </div>
+            </div>
+          </div>
 
-              <div class="small-12 medium-7 columns">
-                <div id="instructions">
-                  <p>
-                    You can also skip directly to the
-                    <%= link_to 'Résumé Builder', resume_builder_path %>
-                  </p>
-                  <p>
-                    Translate your military experience into language that private sector employers understand.
-                  </p>
-                  <p>
-                    <strong>Selecting Skills:</strong> Employers look for specific capabilities that you’ve demonstrated in your past roles. Consider selecting skills that are tangible <em>and</em> are relevant to jobs that interest you. You can also add skills not on the list.
-                  </p>
-                  <p>
-                    <strong>After selecting skills:</strong> Use the button at the bottom to automatically import them into the Résumé Builder.
-                  </p>
-                  <p>
-                    The skills translator includes a large set of civilian skills based on industry best practices and the most widely used employment websites, including LinkedIn. As Veterans select skills from the skills translator, it promotes the most relevant and widely used skills to the top of future search results. The more Veterans who use the tool, the better the suggestions will become over time.
-                  </p>
+          <div class="small-12 medium-9 columns">
+            <div class="row translation-results skill-translator-row" ng-show="data.mo" ng-cloak>
+
+              <div class="row">
+              </div>
+
+              <div id="pill-box" ng-cloak>
+                <span ng-repeat="skill in data.shownSkills" class="skill-label"
+                     id="skill_pill_{{skill.id}}"
+                     ng-class="{selected: skill.selected}"
+                     ng-click="toggleSkill($event)">
+                  <i class="fa fa-fw"></i>
+                  {{skill.name}}
+                </span>
+
+                <span class="skill-label more-label" ng-click="showMoreSkills()" ng-show="data.allSkills.length > 0">
+                  <span class="btn-label"><i class="fa fa-fw fa-refresh"></i></span>
+                  Suggest more skills..
+                </span>
+              </div>
+              <div class="row">
+                <div class="small-12 medium-9 columns">
+                  <em>Click checkboxes to import skills into the Résumé Builder</em> 
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="small-12 medium-6 columns">
+                  <b>Missing skills?</b> Search and add to your list
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="small-12 medium-6 columns">
+                  <form ng-submit="addSkill()" class="add-skill-form">
+                    <div class="row collapse">
+                      <div class="small-9 columns">
+                        <label for="selectSkills" class="hide">Manually search for skills</label>
+                        <input type="text" class="sfTypeahead" options="exampleOptions" datasets="typeaheadData" ng-model="state.newSkill" placeholder="Search" id="selectSkills">
+                      </div>
+                      <div class="small-3 columns">
+                        <button class="button expand postfix">Add</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="row translation-results skill-translator-row right" ng-show="data.mo" ng-cloak>
+                  <form id="new_resume" name="new_resume" method="post" action="<%= new_veteran_path %>" style="display:none">
+                    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                    <input name="moc" type="hidden" value="{{formData.moc}}">
+                    <input name="branch" type="hidden" value="{{formData.branch}}">
+                    <input name="skills[]" type="hidden" ng-repeat="skill in data.selectedSkills" value="{{skill.id}}">
+                  </form>
+                  <button class="success secondary" id="importButton" ng-click="newResume()">
+                    <span class="btn-label"><i class="fa fa-file-text-o"></i></span>
+                    Import into Résumé Builder
+                  </button>
                 </div>
               </div>
             </div>
           </div>
+          
+          <hr>
+          <div class="small-12 medium-9 columns">
+            <h5>Tips for using the Skills Translator:</h5>
 
-          <div class="row translation-results skill-translator-row" ng-show="data.mo" ng-cloak>
-
-            <div class="row">
-              <div class="small-12 medium-6 columns">
-                <h4 class="click-instruction-header">Click Skills to select them</h4>
-              </div>
-              <div class="small-12 medium-6 columns">
-                <form ng-submit="addSkill()" class="add-skill-form">
-                  <div class="row collapse">
-                    <div class="small-9 columns">
-                      <label for="selectSkills" class="hide">Manually search for skills</label>
-                      <input type="text" class="sfTypeahead" options="exampleOptions" datasets="typeaheadData" ng-model="state.newSkill" placeholder="Or search manually" id="selectSkills">
-                    </div>
-                    <div class="small-3 columns">
-                      <button class="button expand postfix">Add</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-
-            <div id="pill-box" ng-cloak>
-              <span ng-repeat="skill in data.shownSkills" class="skill-label"
-                   id="skill_pill_{{skill.id}}"
-                   ng-class="{selected: skill.selected}"
-                   ng-click="toggleSkill($event)">
-                <i class="fa fa-fw"></i>
-                {{skill.name}}
-              </span>
-
-              <span class="skill-label more-label" ng-click="showMoreSkills()" ng-show="data.allSkills.length > 0">
-                <span class="btn-label"><i class="fa fa-fw fa-refresh"></i></span>
-                Suggest more skills..
-              </span>
-            </div>
-
-          </div>
-
-          <div class="row collapse text-center" ng-show="data.mo" ng-cloak>
-            <form id="new_resume" name="new_resume" method="post" action="<%= new_veteran_path %>" style="display:none">
-              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-              <input name="moc" type="hidden" value="{{formData.moc}}">
-              <input name="branch" type="hidden" value="{{formData.branch}}">
-              <input name="skills[]" type="hidden" ng-repeat="skill in data.selectedSkills" value="{{skill.id}}">
-            </form>
-            <button class="success secondary" id="importButton" ng-click="newResume()">
-              <span class="btn-label"><i class="fa fa-file-text-o"></i></span>
-              Import into resume builder
-            </button>
+            <ul>
+              <li>The initial set of skills will be generated by your Military Occupation Code (MOC). </li>
+              <li>You may add any skills you see missing by manually searching for skills or qualities not listed by the translator.</li>
+              <li>Selected skills will be imported into the Résumé Builder on the next page. Carefully select skills that will best fit either a specific job description or the employment sector that interests you.</li>
+              <li>Once you have selected your skills, click Import into Résumé Builder and continue to work on your Résumé.</li>
+              <li>Know which skills you want to use on your resume? Skip directly to the <a href="/employment/job-seekers/create-resume">Résumé Builder</a> to create a resume and public profile that employers can search. They can also connect with you directly.</li>
+            </ul>
           </div>
         </div>
       </div>

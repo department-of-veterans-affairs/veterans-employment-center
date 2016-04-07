@@ -14,7 +14,7 @@ describe "Employers" do
   end
 
   describe "GET /employers" do
-    it "should redirect to login if not-logged-in user clicks Manage Profile in Employer sidebar" do
+    it "should redirect to login if not-logged-in user tries to search for veterans" do
       visit employer_home_path
       click_link 'Find Veteran Candidates'
       expect(page).to have_content 'Sign in with LinkedIn'
@@ -43,13 +43,13 @@ describe "Employers" do
       expect(page).to have_selector 'li', text: 'Your Employer Account'
     end
 
-    it "should redirect to edit profile page if logged-in employer clicks Manage Profile in Employer sidebar" do
+    it "should redirect to edit profile page if logged-in employer searches for veterans" do
       employer = employer_user
       sign_in_as employer
       visit employer_home_path
       click_link 'Find Veteran Candidates'
       expect(page).not_to have_content 'Employer Sign in'
-      expect(page).to have_content 'Manage Your Profile and Hiring Commitment'
+      expect(page).to have_content 'Sign Out'
     end
 
     it "should prompt user to log in if they aren't yet signed in" do
@@ -64,7 +64,7 @@ describe "Employers" do
       visit employer_home_path
       click_link 'Your Hiring Commitment'
       expect(page).to have_content 'Edit your profile'
-      expect(page).to have_content 'Manage Your Profile and Hiring Commitment'
+      expect(page).to have_content 'Sign Out'
     end
 
     describe "it shows favorites correctly" do
@@ -120,24 +120,6 @@ describe "Employers" do
         expect(page).not_to have_content 'Remove from favorites'
         expect(page).to have_content 'You have not favorited any veterans yet'
       end
-    end
-  end
-
-  describe "GET /how_to_post_jobs" do
-    it "shows a logged-in employer a link to their profile" do
-      employer = employer_user
-      sign_in_as employer
-      visit how_to_post_jobs_path
-
-      expect(page).to have_content "your VEC profile"
-      expect(page).to have_link "your VEC profile"
-    end
-
-    it "shows plain text to someone who is not logged in as an employer" do
-      visit how_to_post_jobs_path
-
-      expect(page).to have_content "your VEC profile"
-      expect(page).not_to have_link "your VEC profile"
     end
   end
 

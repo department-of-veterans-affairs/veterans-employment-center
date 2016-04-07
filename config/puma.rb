@@ -1,6 +1,6 @@
 #!/usr/bin/env puma
 
-ENV['RAILS_RELATIVE_URL_ROOT'] = "/veterans-employment-center"
+ENV['RAILS_RELATIVE_URL_ROOT'] = "/employment"
 
 # Set the environment in which the rack's app will run. The value must be a string.
 #
