@@ -54,7 +54,7 @@ describe "Employers" do
 
     it "should prompt user to log in if they aren't yet signed in" do
       visit employer_home_path
-      click_link 'Make a Hiring Commitment'
+      click_link 'View all Hiring Commitments'
       expect(page).to have_link 'Sign in with LinkedIn'
     end
 
@@ -62,7 +62,7 @@ describe "Employers" do
       employer = employer_user
       sign_in_as employer
       visit employer_home_path
-      click_link 'Your Hiring Commitment'
+      click_link 'Manage Your Profile and Hiring Commitment'
       expect(page).to have_content 'Edit your profile'
       expect(page).to have_content 'Sign Out'
     end
