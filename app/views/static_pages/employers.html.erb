@@ -5,39 +5,34 @@
     <div class="row">
       <div class="small-12 columns">
         <ul class="breadcrumbs" role="menubar" aria-label="Primary">
-          <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
- 	  <% if user_signed_in? && current_user.is_employer? %>
-	    <li class="parent"><%= link_to "Employers", employer_home_path %></li>
-            <li class="active">Your Employer Account</li>
-	  <% else %>
-	    <li class="active">Employers</li>
-	  <% end %>
+          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
+		  <% if user_signed_in? && current_user.is_employer? %>
+		  <li class="parent"><%= link_to "Employers", employer_home_path %></li>
+          <li class="active">Your Employer Account</li>
+		  <% else %>
+		  <li class="active">Employers</li>
+		  <% end %>
         </ul>
       </div>
     </div>
   </div>
   <%= render 'layouts/navigation' %>
-  <div class="section one">
+<div class="section one">
 
 <% unless user_signed_in? && current_user.is_employer? %>
-    <div class="row">
-		<div class="small-12 columns">
-		  <div class="small-12 medium-8 columns">
-        <h3>Find the best candidates for your open positions.</h3>
-        <p>
-          Search our verified Veteran profiles. Post a job. And be sure to make a Veteran hiring commitment &mdash; put your company front and center as one that stands with America’s Veterans and their families.
-        </p>
-		  </div>
-		  <div class="small-12 medium-4 columns feature">
-        <h5>Employers:<br />Log in to create/manage your account.</h5>
-        <div class="actions">
-          <%= link_to "Sign in with LinkedIn", user_omniauth_authorize_path(:linkedin), class: "button social linkedin expand" %> <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), class: "button social googleplus expand" %>
-	       </div>
-		  </div>
-
-
-  	</div><!-- end columns -->
-	 </div><!-- end row 2 -->
+  <div class="row">
+    <div class="small-12 medium-8 columns">
+      <div class="primary">
+        <p>The Veterans Employment Center™ (VEC) provides support for your company during your search for Veteran candidates and after you have hired a Veteran or military family member.</p>
+      </div>
+    </div>
+    <div class="small-12 medium-4 columns feature">
+      <h5>Employers:<br />Log in to create/manage your account.</h5>
+      <div class="actions">
+        <%= link_to "Sign in with LinkedIn", user_omniauth_authorize_path(:linkedin), class: "button social linkedin expand" %> <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), class: "button social googleplus expand" %>
+      </div>
+    </div>
+  </div>
  <% end %>
 
 	<% if user_signed_in? && current_user.is_employer? %>
@@ -45,24 +40,23 @@
       <div class="small-12 columns">
         <div class="section-nav">
           <ul class="small-block-grid-1 medium-block-grid-3 cards small">
+            <div class="primary">
+              <p>Welcome to the Veterans Employment Center. You can post a job, make a hiring commitment, and discover resources to support employees who are Veterans and military family members.</p>
+             </div>
             <li>
 			    <%= link_to edit_employer_path(current_user.employer ), class: 'long' do %>
-                <h4 class="alternate">Your Employer Information</h4>
-                <span>Update your basic account information.</span>
+                <h4 class="alternate">Manage Your Profile and Hiring Commitment</h4>
+                <span>Update your basic account information and make a public commitment to Veterans.</span>
               <% end %>
             </li>
-            <li>
-              <%= link_to edit_employer_path(current_user.employer ), class: 'long' do %>
-                <h4 class="alternate">Your Hiring Commitment</h4>
-        				<% if current_user.employer.commit_to_hire.present? %>
-                  <span>You've publicly committed to hire <%= current_user.employer.commit_to_hire %> Veterans<% if current_user.employer.commit_date.present? %> by <%= current_user.employer.commit_date.strftime("%b %d, %Y") %><% end %>.<% if current_user.employer.commit_hired.present? %> So far, you've hired <%= current_user.employer.commit_hired %>.<% end %> Incorrect? Update it here.</span>
-                <% else %>
-          				<span>You haven't yet made a public commitment to hire Veterans. Click here to make one now!</span>
-        				<% end %>
-              <% end %>
-            </li>
-            <li>
+	    <li>
               <%= render 'employer_favorites_card' %>
+            </li>
+	    <li>
+              <a href='https://employment.vets.gov/employment/employers/post-a-job/' class="long">
+                <h4 class="alternate">Post a Job</h4>
+                <span>Your listing will be searchable by our Veteran workforce and their families.</span>
+              </a>
             </li>
           </ul>
         </div>
@@ -83,20 +77,51 @@
                 View their profiles and save favorites.</span>
               <% end %>
             </li>
-            <li>
-              <%= link_to commitments_path, class: "long" do %>
-                <h4 class="alternate">Make a Hiring Commitment</h4>
-                <span>Stand with Veterans by making a public commitment to hire Veterans. Your pledge will be appreciated by all Americans, and especially by the Veteran community.</span>
-              <% end %>
-            </li>
+	    <li>
+               <%= link_to commitments_path, class: "long" do %>
+                 <h4 class="alternate">View all Hiring Commitments</h4>
+                 <span>See who has made a public commitment to hire Veterans.</span>
+               <% end %>
+             </li>
           </ul>
         </div>
       </div>
-    </div>
 
-
+<% unless user_signed_in? && current_user.is_employer? %>
+    <hr>
+    <div class="small-12 medium-9 columns">
+      <h5>Learn More:</h5>
+        <ul>
+          <li>Read research showing that hiring Veterans is good business, particularly when it comes to entrepreneurship, resiliency, mission strategy, and team-related goals and actions: <a href='http://vets.syr.edu/wp-content/uploads/2014/07/TheBusinessCase7.14.pdf'>“The Business Case for Hiring a Veteran: Beyond the Clichés”</a>.</li>
+          <li>Receive incentives for participating in programs. The <a href='https://www.doleta.gov/business/incentives/opptax/eligible.cfm'>Work Opportunity Tax Credit (WOTC)</a> ranges from $1,200 to $9,600. Additional programs include the <a href='http://www.benefits.va.gov/vocrehab/'>Vocational Rehabilitation and Employment program</a>, and <a href='https://employment.vets.gov/employment/employers/apprenticeship/'>Apprenticeship programs</a>.</li>
+          <li>Find out how your company’s needs may coincide with the <a href='http://www.va.gov/health/cwt/'>Compensated Work Therapy program</a>.</li>
+          <li>Connect with a <a href='https://employment.vets.gov/employment/job-seekers/veci/'>Veterans Economic Community Initiative (VECI)</a> liaison at available cities to learn more about Veterans and their needs.</li>
+        </ul>
+      </div>
+    <%end%>
   </div>
-
+</div>
   <!-- Navigation -->
 
+  <div class="navigation">
+    <div class="row">
+      <div class="small-12 columns">
+        <h3>Related Info:</h3>
+        <ul class="small-block-grid-1 medium-block-grid-3 cards small">
+          <li>
+            <a href='https://employment.vets.gov/employment/employers/support-veteran-employees/'>
+              <h5>Workplace Support</h5>
+              <span>Find ways to make your Veteran employees feel at home.</span>
+            </a>
+	  </li>
+          <li>
+            <a href='https://employment.vets.gov/employment/employers/apprenticeship/'>
+              <h5>Establish an Apprenticeship</h5>
+              <span>Apprenticeship programs are available for Veterans using their VA education benefits.</span>
+            </a>
+	  </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
