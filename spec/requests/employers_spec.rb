@@ -170,14 +170,14 @@ describe "Employers" do
 
     it "should only show the specified columns in the CSV" do
       visit commitments_path
-      click_link 'Download all commitments as spreadsheet'
+      click_link 'Download all commitments as a spreadsheet'
       csv = page.text
       expect(csv).to start_with "company_name,commit_date,commit_to_hire,commit_hired,website,location,note,commitment_categories"
     end
 
     it "should show data from allowed columns in the CSV" do
       visit commitments_path
-      click_link 'Download all commitments as spreadsheet'
+      click_link 'Download all commitments as a spreadsheet'
       csv = page.text
       expect(csv).not_to include 'Apple Computer'
       expect(csv).to include 'Other Employer'
@@ -185,7 +185,7 @@ describe "Employers" do
 
     it "should not show data from excluded columns in the CSV" do
       visit commitments_path
-      click_link 'Download all commitments as spreadsheet'
+      click_link 'Download all commitments as a spreadsheet'
       csv = page.text
       expect(csv).not_to include "veteran3@gmail.com"
     end

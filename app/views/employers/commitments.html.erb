@@ -19,7 +19,7 @@
       <div class="row">
         <div class="small-12 medium-8 columns">
           <div class="primary">
-            <p>Veterans and military family members have consistently proven themselves to be the most reliable, independent, and hardworking team members. Additionally, Veterans have soft skills such as problem solving and creativity that can benefit a company’s bottom line. By signing up and making a commitment, your company will stand out to candidates eager to enter the civilian workforce.</p>
+            <p>Veterans and military family members have consistently proven themselves to be reliable, independent, and hardworking team members. Veterans also have soft skills such as problem solving and creativity that can benefit a company’s bottom line. By signing up and making a commitment, your company will stand out to candidates eager to enter the civilian workforce.</p>
           </div>
         </div>
       </div>
@@ -33,19 +33,19 @@
         <div class="row">
           <div class="small-12 medium-4 columns">
             <div class="card information">
-              <span class="number"><%= @commitment_report.total_commitments %></span>
+              <span class="number"><%= number_with_delimiter(@commitment_report.total_commitments, :delimiter => ',') %></span>
               <span class="description">public commitments made</span>
             </div>
           </div>
           <div class="small-12 medium-4 columns">
             <div class="card information">
-              <span class="number"><%= @commitment_report.commitment_sum %></span>
+              <span class="number"><%= number_with_delimiter(@commitment_report.commitment_sum, :delimiter => ',') %></span>
               <span class="description">total positions committed to hire</span>
             </div>
           </div>
           <div class="small-12 medium-4 columns">
             <div class="card information">
-              <span class="number"><%= @commitment_report.hired_so_far %></span>
+              <span class="number"><%= number_with_delimiter(@commitment_report.hired_so_far, :delimiter => ',') %></span>
               <span class="description">Veterans hired so far</span>
             </div>
           </div> 
@@ -56,7 +56,7 @@
       <% if user_signed_in? && current_user.is_employer? %>
       <div class="small-12 medium-4 columns feature">
         <% if current_user.employer.commit_to_hire.present? %>
-          <h5>You've publicly committed to hire <%= current_user.employer.commit_to_hire %> Veterans<% if current_user.employer.commit_date.present? %> by <%= current_user.employer.commit_date.strftime("%b %d, %Y") %><% end %>.<% if current_user.employer.commit_hired.present? %> So far, you've hired <%= current_user.employer.commit_hired %>.<% end %>
+          <h5>You've publicly committed to hire <%= number_with_delimiter(current_user.employer.commit_to_hire, :delimiter => ',') %> Veterans<% if current_user.employer.commit_date.present? %> by <%= current_user.employer.commit_date.strftime("%b %d, %Y") %><% end %>.<% if current_user.employer.commit_hired.present? %> So far, you've hired <%= number_with_delimiter(current_user.employer.commit_hired, :delimiter => ',') %>.<% end %>
           </h5>
           <div class="actions">
             <%= link_to "Update Your Commitment", edit_employer_path(current_user.employer, anchor: 'hiring-commitments' ), class: 'button expand' %>
@@ -88,7 +88,7 @@
           <tr>
             <th scope="col">Company</th>
             <th scope="col">Committed to hire</th>
-            <th scope="col">By date</th>
+            <th scope="col">Target hire date</th>
             <th scope="col">Hired so far</th>
 	          <th scope="col">Last updated</th>
           </tr>
@@ -107,7 +107,7 @@
           <% end %>
         </tbody>
       </table>
-      <p><%= link_to 'Download all commitments as spreadsheet'.html_safe, action: 'commitments', format: :csv %></p>
+      <p><%= link_to 'Download all commitments as a spreadsheet'.html_safe, action: 'commitments', format: :csv %></p>
     </div><!-- end row 3 -->
 
   </div><!-- end section one -->
