@@ -15,7 +15,6 @@ describe Users::OmniauthCallbacksController do
       it "should create the user, create a session and redirect to the Employment Center home" do
         post :google_oauth2
         expect(User.find_by_email('test@gmail.com')).not_to be_nil
-        expect(request.flash.notice).to eq "Successfully authenticated from Google account."
         expect(response).to redirect_to employer_home_path
       end
 
@@ -26,7 +25,6 @@ describe Users::OmniauthCallbacksController do
 
         it "should log the user in and redirect them to the home page" do
           post :google_oauth2
-          expect(request.flash.notice).to eq "Successfully authenticated from Google account."
           expect(response).to redirect_to employer_home_path
         end
       end
@@ -43,7 +41,6 @@ describe Users::OmniauthCallbacksController do
       it "should create the user, create a session and redirect to the Employment Center home" do
         post :linkedin
         expect(User.find_by_email('test@linkedin.com')).not_to be_nil
-        expect(request.flash.notice).to eq "Successfully authenticated from LinkedIn account."
         expect(response).to redirect_to employer_home_path
       end
 
@@ -54,7 +51,6 @@ describe Users::OmniauthCallbacksController do
 
         it "should log the user in and redirect them to the home page" do
           post :linkedin
-          expect(request.flash.notice).to eq "Successfully authenticated from LinkedIn account."
           expect(response).to redirect_to employer_home_path
         end
       end
@@ -71,7 +67,6 @@ describe Users::OmniauthCallbacksController do
       it "should create the user, start a session and redirect the user to the new veterans home" do
         post :saml
         expect(User.find_by_provider_and_uid('SAML', '1234567890')).not_to be_nil
-        expect(request.flash.notice).to eq "Successfully authenticated from DS Logon account."
         expect(response).to redirect_to new_veteran_path
       end
 
@@ -82,7 +77,6 @@ describe Users::OmniauthCallbacksController do
 
         it "should log in and redirect the user" do
           post :saml
-          expect(request.flash.notice).to eq "Successfully authenticated from DS Logon account."
           expect(response).to redirect_to new_veteran_path
         end
       end
