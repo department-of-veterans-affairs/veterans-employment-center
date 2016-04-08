@@ -17,34 +17,30 @@
     </div>
   </div>
   <%= render 'layouts/navigation' %>
-<div class="section one">
-
 <% unless user_signed_in? && current_user.is_employer? %>
+  <div class="header-bar">
+    <div class="row">
+      <span class="explanation">Log in to create and manage your account with</span><%= link_to "LinkedIn", user_omniauth_authorize_path(:linkedin), class: "employer-login" %> <%= link_to "Google", user_omniauth_authorize_path(:google_oauth2), class: "employer-login" %></span>
+    </div>
+  </div>
+<% end %>
+
+<div class="section one">
   <div class="row">
     <div class="small-12 medium-8 columns">
       <div class="primary">
         <p>The Veterans Employment Center™ (VEC) provides support for your company during your search for Veteran candidates and after you have hired a Veteran or military family member.</p>
       </div>
     </div>
-    <div class="small-12 medium-4 columns feature">
-      <h5>Employers:<br />Log in to create/manage your account.</h5>
-      <div class="actions">
-        <%= link_to "Sign in with LinkedIn", user_omniauth_authorize_path(:linkedin), class: "button social linkedin expand" %> <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), class: "button social googleplus expand" %>
-      </div>
-    </div>
   </div>
- <% end %>
 
 	<% if user_signed_in? && current_user.is_employer? %>
     <div class="row">
       <div class="small-12 columns">
         <div class="section-nav">
           <ul class="small-block-grid-1 medium-block-grid-3 cards small">
-            <div class="primary">
-              <p>Welcome to the Veterans Employment Center. You can post a job, make a hiring commitment, and discover resources to support employees who are Veterans and military family members.</p>
-             </div>
-            <li>
-			    <%= link_to edit_employer_path(current_user.employer ), class: 'long' do %>
+	    <li>
+	      <%= link_to edit_employer_path(current_user.employer ), class: 'long' do %>
                 <h4 class="alternate">Manage Your Profile and Hiring Commitment</h4>
                 <span>Update your basic account information and make a public commitment to hire Veterans.</span>
               <% end %>
