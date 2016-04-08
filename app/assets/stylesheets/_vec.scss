@@ -31,6 +31,10 @@ ul li:before {
    text-align: center;
    text-decoration: none !important;
    width: auto;
+   &:hover {
+     color: #fff;
+     background-color: #006080;
+   }
 }
 
 .explanation {
