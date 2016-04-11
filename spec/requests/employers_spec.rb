@@ -23,7 +23,8 @@ describe "Employers" do
 
     it "should NOT show Your Employer Account breadcrumb if the user is not signed in" do
       visit employer_home_path
-      expect(page).to have_content 'Sign in with LinkedIn'
+      expect(page).to have_content 'Log in to create and manage your account'
+      expect(page).to have_content 'LinkedIn'
       expect(page).to have_selector 'li', text: 'Employers'
     end
 

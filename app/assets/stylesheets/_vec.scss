@@ -11,6 +11,51 @@ ul li:before {
 
 
 // Search
+.employer-login {
+   appearance: none;
+   background-color: #008CBA ;
+   border: 0;
+   border-radius: .3rem;
+   color: #fff;
+   cursor: pointer;
+   display: inline-block;
+   font-family: "Source Sans Pro","Helvetica","Arial",sans-serif;
+   font-size: 1rem;
+   font-weight: 700;
+   line-height: 0.2;
+   margin-bottom: 0.5em;
+   margin-right: 0.5em;
+   margin-top: 0.5em;
+   outline: none;
+   padding: 1rem 2rem;
+   text-align: center;
+   text-decoration: none !important;
+   width: auto;
+   &:hover {
+     color: #fff;
+     background-color: #006080;
+   }
+}
+
+.explanation {
+  margin-right: 5px;
+}
+
+.header-bar {
+  text-align: right;
+  background: #f1f1f1;
+  line-height: 1.2;
+}
+
+@media only screen and (max-width:480px) {
+  .employer-login {
+    display: block;
+  }
+  .header-bar {
+    padding-left: .5em;
+    text-align: center;
+  }
+}
 
 .advanced-search {
   margin-bottom: 1em;

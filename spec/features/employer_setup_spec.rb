@@ -262,6 +262,6 @@ feature 'logging out' do
     sign_in_as(employer_user)
     visit employers_path
     click_link 'Sign Out'
-    expect(page).to have_content 'Signed out successfully'
+    expect(page).to have_content 'Log in to create and manage your account'
   end
 end
