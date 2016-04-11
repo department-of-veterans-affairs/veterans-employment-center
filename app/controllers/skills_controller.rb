@@ -17,7 +17,7 @@ class SkillsController < ApplicationController
   end
 
   def get_skills
-    query = "source in ('linkedin', 'bayes') and name ilike '#{params['prefix']}%'"
+    query = "source in ('linkedin') and name ilike '#{params['prefix']}%'"
     render json: Skill.where(query).select(:id, :name).to_json
   end
 
@@ -28,7 +28,7 @@ class SkillsController < ApplicationController
   def suggest
     # TODO: do this at load time, not on every query
     # Load the current skills translator model
-    model_id = ENV["SKILLS_TRANSLATOR_MODEL_ID"] || 1
+    model_id = ENV["SKILLS_TRANSLATOR_MODEL_ID"] || 3
     model = SkillsTranslatorModel.find_by(id: model_id)
     if model.nil?
       logger.error "Missing or bad ENV variable SKILLS_TRANSLATOR_MODEL_ID (#{model_id})"
