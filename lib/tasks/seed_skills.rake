@@ -3,7 +3,6 @@
 # or 'Missing or bad ENV variable SKILLS_TRANSLATOR_MODEL_ID'
 require 'csv'
 
-
 namespace :db do
   desc 'Seeds base skills from LinkedIn'
   task :seed_skills => :environment do 
@@ -100,8 +99,7 @@ namespace :db do
   end
 
   def destroy_skills_translator_model(desc)
-    # Finds and destroys the model with the given description
-    # and its skill mapping records.
+    # Finds and destroys the model with the given description and its skill mapping records.
     # Returns true if successful, false if no model was found.
     model = SkillsTranslatorModel.where(id: desc).take
     if not model.nil?
