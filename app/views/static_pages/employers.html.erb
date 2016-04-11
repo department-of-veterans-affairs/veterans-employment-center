@@ -29,72 +29,63 @@
   <div class="row">
     <div class="small-12 medium-8 columns">
       <div class="primary">
-        <p>The Veterans Employment Center™ (VEC) provides support for your company during your search for Veteran candidates and after you have hired a Veteran or military family member.</p>
+        <p>Welcome to the Veterans Employment Center. You can post a job, make a hiring commitment, and discover resources to support employees who are Veterans and military family members.</p>
       </div>
     </div>
   </div>
 
-	<% if user_signed_in? && current_user.is_employer? %>
-    <div class="row">
-      <div class="small-12 columns">
-        <div class="section-nav">
-          <ul class="small-block-grid-1 medium-block-grid-3 cards small">
-	    <li>
-	      <%= link_to edit_employer_path(current_user.employer ), class: 'long' do %>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="section-nav">
+        <ul class="small-block-grid-1 medium-block-grid-3 cards small">
+          <li>
+            <a href='/employment/employers/post-a-job/' class="long">
+              <h4 class="alternate">Post a Job</h4>
+              <span>Your listing will be searchable by our Veteran workforce and their families.</span>
+            </a>
+          </li>
+          <li>
+            <%= link_to veterans_path, class: "long" do %>
+              <h4 class="alternate">Find Veteran Candidates</h4>
+              <span>Leadership, problem solving, management, operations, customer service, sales, and a host of technical skills are just a few of their talents.
+              <br/>
+              View their profiles and save favorites.</span>
+            <% end %>
+          </li>
+           <li>
+              <%= link_to commitments_path, class: "long" do %>
+              <h4 class="alternate">View all Hiring Commitments</h4>
+              <span>See who has made a public commitment to hire Veterans.</span>
+              <% end %>
+           </li>
+        
+           <% if user_signed_in? && current_user.is_employer? %>
+            <li>
+  	            <%= link_to edit_employer_path(current_user.employer ), class: 'long' do %>
                 <h4 class="alternate">Manage Your Profile and Hiring Commitment</h4>
                 <span>Update your basic account information and make a public commitment to hire Veterans.</span>
-              <% end %>
+                <% end %>
             </li>
-	    <li>
-              <%= render 'employer_favorites_card' %>
+  	        <li>
+                <%= render 'employer_favorites_card' %>
             </li>
-	    <li>
-              <a href='/employment/employers/post-a-job/' class="long">
-                <h4 class="alternate">Post a Job</h4>
-                <span>Your listing will be searchable by our Veteran workforce and their families.</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-	<% end %>
-
-
-    <div class="row">
-      <div class="small-12 columns">
-        <div class="section-nav">
-          <ul class="small-block-grid-1 medium-block-grid-3 cards medium">
-            <li>
-              <%= link_to veterans_path, class: "long" do %>
-                <h4 class="alternate">Find Veteran Candidates</h4>
-                <span>Leadership, problem solving, management, operations, customer service, sales, and a host of technical skills are just a few of their talents.
-                <br/>
-                View their profiles and save favorites.</span>
-              <% end %>
-            </li>
-	    <li>
-               <%= link_to commitments_path, class: "long" do %>
-                 <h4 class="alternate">View all Hiring Commitments</h4>
-                 <span>See who has made a public commitment to hire Veterans.</span>
-               <% end %>
-             </li>
+        	  <% end %>
           </ul>
         </div>
       </div>
 
-<% unless user_signed_in? && current_user.is_employer? %>
-    <hr>
-    <div class="small-12 medium-9 columns">
-      <h5>Learn More:</h5>
-        <ul>
-          <li>Read research showing that hiring Veterans is good business, particularly when it comes to entrepreneurship, resiliency, mission strategy, and team-related goals and actions: <a href='http://vets.syr.edu/wp-content/uploads/2014/07/TheBusinessCase7.14.pdf'>“The Business Case for Hiring a Veteran: Beyond the Clichés”</a>.</li>
-          <li>Receive incentives for participating in programs. The <a href='https://www.doleta.gov/business/incentives/opptax/eligible.cfm'>Work Opportunity Tax Credit (WOTC)</a> ranges from $1,200 to $9,600. Additional programs include the <a href='http://www.benefits.va.gov/vocrehab/'>Vocational Rehabilitation and Employment program</a>, and <a href='/employment/employers/apprenticeship/'>Apprenticeship programs</a>.</li>
-          <li>Find out how your company’s needs may coincide with the <a href='http://www.va.gov/health/cwt/'>Compensated Work Therapy program</a>.</li>
-          <li>Connect with a <a href='/employment/job-seekers/veci/'>Veterans Economic Community Initiative (VECI)</a> liaison at available cities to learn more about Veterans and their needs.</li>
-        </ul>
+      <% unless user_signed_in? && current_user.is_employer? %>
+      <hr>
+      <div class="small-12 medium-9 columns">
+        <h5>Learn More:</h5>
+          <ul>
+            <li>Read research showing that hiring Veterans is good business, particularly when it comes to entrepreneurship, resiliency, mission strategy, and team-related goals and actions: <a href='http://vets.syr.edu/wp-content/uploads/2014/07/TheBusinessCase7.14.pdf'>“The Business Case for Hiring a Veteran: Beyond the Clichés”</a>.</li>
+            <li>Receive incentives for participating in programs. The <a href='https://www.doleta.gov/business/incentives/opptax/eligible.cfm'>Work Opportunity Tax Credit (WOTC)</a> ranges from $1,200 to $9,600. Additional programs include the <a href='http://www.benefits.va.gov/vocrehab/'>Vocational Rehabilitation and Employment program</a>, and <a href='/employment/employers/apprenticeship/'>Apprenticeship programs</a>.</li>
+            <li>Find out how your company’s needs may coincide with the <a href='http://www.va.gov/health/cwt/'>Compensated Work Therapy program</a>.</li>
+            <li>Connect with a <a href='/employment/job-seekers/veci/'>Veterans Economic Community Initiative (VECI)</a> liaison at available cities to learn more about Veterans and their needs.</li>
+          </ul>
       </div>
-    <%end%>
+      <%end%>
   </div>
 </div>
   <!-- Navigation -->
