@@ -168,9 +168,9 @@ class SkillsController < ApplicationController
       percentage = 5 + strength * 15  # Replace 5-20%
       num_to_replace = (num_skills_to_return * percentage / 100).round
 
-      # Use only the linkedin and Bayes Impact generated corpus, so we don't
+      # Use only the linkedin corpus, so we don't
       # surface bizarre custom skills people have entered.
-      random_skills = Skill.where("source in ('bayes', 'linkedin')").limit(
+      random_skills = Skill.where("source in ('linkedin')").limit(
         num_to_replace).order("RANDOM()").to_a
 
       # if there are less available rnadom skills than the number we need to
