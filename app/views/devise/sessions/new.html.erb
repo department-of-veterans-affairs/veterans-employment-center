@@ -18,14 +18,13 @@
     <div class="row">
       <div class="small-12 columns">
 
-		  <p>As an employer, you must sign in to search, view, and save Veteran resumes, or to publish / edit your Veteran hiring commitment.</p>
+        <h3>First time here?</h3>
+        <p>It's free and easy to create an account. Simply log in with your LinkedIn or Google account by clicking on one of the buttons below. The first time you log in, we'll ask for your company name and EIN. You will be able to use all the employer features right away, but we have to approve you (by confirming your company name and EIN) before you will be able to view Veteran names or email addresses. This process usually takes less than a day.</p>
 		  <p>
 			  <%= link_to "<span>Sign in with LinkedIn</span>".html_safe, user_omniauth_authorize_path(:linkedin), class: "button" %>
 			  <%= link_to "<span>Sign in with Google</span>".html_safe, user_omniauth_authorize_path(:google_oauth2), class: "button" %></p>
 
-		  <h3>First time here?</h3>
-		  <p>It's free and easy create an account &mdash; simply log in with your LinkedIn or Google account below. On your first login, we'll ask for your company name and <abbr title="Employer Identification Number">EIN</abbr>. You can use all employer features as soon as you sign in, but we have to approve you (by confirming your company name and <abbr title="Employer Identification Number">EIN</abbr> are real) before you can view Veteran names or email addresses. This process usually takes less than a day.</p>
-
+		  
       </div>
     </div>
   </div><!-- end section one -->
