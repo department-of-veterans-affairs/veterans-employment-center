@@ -30,39 +30,38 @@
                 <form name="skillRequestForm" ng-submit="submitForm()">
                   <fieldset class="no-margin">
                     <div class="row form-group dataItem">
-                      
-                      <div class="small-12 medium-4 columns">
+                      <div class="small-12 medium-5 columns">
                       <label for="military_position_branch">Branch of Service (required)</label>
                       <select name="military_position_branch" ng-model="formData.branch"
                               ng-options="name for (name, value) in branches"
                               required id="military_position_branch">
                       </select>
                       </div>
-                      
-                      <div class="small-12 medium-5 columns">
+		      <div class="small-12 medium-5 columns">
                         <label for="military_position_code">Military Occupation Code (MOC) (required)</label>
                         <input name="military_position_code" id="military_position_code" type="text" ng-model="formData.moc" required/>
                       </div>
-
-		      <div class="small-12 medium-4 columns">
+		     </div>
+		     <div class="row form-group dataItem">
+		      <div class="small-12 medium-5 columns">
                         <label for="military_position_status">Code Status (required)</label>
                         <select name="military_position_status" id="military_position_status" ng-model="formData.status" required/>
                           <option value="true">Active
                           <option value="false">Inactive
 			</select>
-		       </div>
+		      </div>
 
-		      <div class="small-12 medium-4 columns">
+		      <div class="small-12 medium-5 columns">
                       <label for="military_position_category">Code Category (required)</label>
                       <select name="military_position_category" ng-model="formData.category"
                               ng-options="name for (name, value) in categories"
                               required id="military_position_category">
                       </select>
                       </div>
-
-                      <div class="small-12 medium-3 columns">
-                        <input type="submit" value="Translate" class="button small expand button-margin-top">
-                      </div>
+		    </div>
+                    <div class="small-12 medium-3 columns">
+                      <input type="submit" value="Translate" class="button small expand button-margin-top">
+                    </div>
                   </fieldset>
                 </form>
 
