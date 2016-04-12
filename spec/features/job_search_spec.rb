@@ -92,7 +92,7 @@ describe 'JobSearch' do
             fill_in 'zc', with: "washington, dc"
             click_button('job-search')
             expect(page).to have_content 'Featured Jobs'
-            expect(page).to have_content 'from employers that have committed to hiring veterans'
+            expect(page).to have_content 'From employers that have committed to hiring Veterans'
             expect(page).to have_content 'PL/SQL and Java Developer'
             expect(page).to have_content 'L&I Java Developer'
             expect(page).to have_content 'Java Developer - Expert Level (ITS5: SQ12) 06320'
@@ -105,7 +105,7 @@ describe 'JobSearch' do
             select 'Non-Federal Jobs Only', from: "fed"
             click_button('job-search')
             expect(page).to have_no_content 'Featured Jobs'
-            expect(page).to have_no_content 'employers that have committed to hiring veterans'
+            expect(page).to have_no_content 'employers that have committed to hiring Veterans'
             expect(page).to have_no_content 'PL/SQL and Java Developer'
             expect(page).to have_no_content 'L&I Java Developer'
             expect(page).to have_no_content 'Java Developer - Expert Level (ITS5: SQ12) 06320'
@@ -127,7 +127,7 @@ describe 'JobSearch' do
               fill_in 'cname', with: 'Carolina'
               click_button('job-search')
               expect(page).to have_content 'Featured Jobs'
-              expect(page).to have_content 'from employers that have committed to hiring veterans'
+              expect(page).to have_content 'From employers that have committed to hiring Veterans'
               expect(page).to have_content 'PL/SQL and Java Developer'
               expect(page).to have_no_content 'L&I Java Developer'
               expect(page).to have_no_content 'Java Developer - Expert Level (ITS5: SQ12) 06320'
@@ -155,11 +155,11 @@ describe 'JobSearch' do
             click_button('job-search')
             expect(page).to have_selector('.feature .job-row', count: 10)
             expect(page).to have_content 'Featured Jobs'
-            expect(page).to have_content 'from employers that have committed to hiring veterans'
+            expect(page).to have_content 'From employers that have committed to hiring Veterans'
             find('.feature a.next_page_link').trigger(:click)
             expect(page).to have_selector('.feature .job-row', count: 3)
             expect(page).to have_content 'Featured Jobs'
-            expect(page).to have_content 'from employers that have committed to hiring veterans'
+            expect(page).to have_content 'From employers that have committed to hiring Veterans'
           end
 
         end
@@ -188,7 +188,7 @@ describe 'JobSearch' do
           it "should not paginate" do
             expect(page).to have_selector('.feature .job-row', count: 10)
             expect(page).to have_content 'Featured Jobs'
-            expect(page).to have_content 'from employers that have committed to hiring veterans.'
+            expect(page).to have_content 'From employers that have committed to hiring Veterans'
             expect(page).to have_no_selector('.feature a.next_page_link')
           end
         end
