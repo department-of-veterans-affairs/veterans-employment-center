@@ -43,10 +43,28 @@
                         <label for="military_position_code">Military Occupation Code (MOC) (required)</label>
                         <input name="military_position_code" id="military_position_code" type="text" ng-model="formData.moc" required/>
                       </div>
-                    
+
+		      <div class="small-12 medium-4 columns">
+                        <label for="military_position_active">Code Status</label>
+                        <select name="military_position_active" id="military_position_active" ng-model="formData.active" required/>
+                          <option value="true">Active
+                          <option value="false">Inactive
+			</select>
+		       </div>
+
+		      <div class="small-12 medium-4 columns">
+                      <label for="military_position_category">Code Category</label>
+                      <select name="military_position_category" ng-model="formData.categories"
+                              ng-options="name for (name, value) in branches"
+			      ng-init="Enlisted"
+                              required id="military_position_category">
+                      </select>
+                      </div>
+
                       <div class="small-12 medium-3 columns">
                         <input type="submit" value="Translate" class="button small expand button-margin-top">
                       </div>
+		      <br /><em>Scroll down for results</em>
                   </fieldset>
                 </form>
 
