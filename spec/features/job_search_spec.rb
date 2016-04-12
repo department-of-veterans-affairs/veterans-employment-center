@@ -153,12 +153,16 @@ describe 'JobSearch' do
             fill_in 'kw', with: "java"
             fill_in 'zc', with: "washington, dc"
             click_button('job-search')
-            expect(page).to have_selector('.feature .job-row', count: 10)
             expect(page).to have_content 'Featured Jobs'
             expect(page).to have_content 'From employers that have committed to hiring Veterans'
-            find('.feature a.next_page_link').trigger(:click)
-            expect(page).to have_selector('.feature .job-row', count: 3)
-            expect(page).to have_content 'Featured Jobs'
+            within('div#featured-jobs') do
+	      expect(page).to have_selector('.job-row', count: 10)
+	    end
+	    find('#next_featured_link').click
+	    within('div#featured-jobs') do
+              expect(page).to have_selector('.job-row', count: 3)
+            end
+	    expect(page).to have_content 'Featured Jobs'
             expect(page).to have_content 'From employers that have committed to hiring Veterans'
           end
 
@@ -186,10 +190,12 @@ describe 'JobSearch' do
           end
 
           it "should not paginate" do
-            expect(page).to have_selector('.feature .job-row', count: 10)
-            expect(page).to have_content 'Featured Jobs'
-            expect(page).to have_content 'From employers that have committed to hiring Veterans'
-            expect(page).to have_no_selector('.feature a.next_page_link')
+	    expect(page).to have_content 'Featured Jobs'
+            expect(page).to have_content 'From employers that have committed to hiring Veterans.'
+	    within('div#featured-jobs') do
+              expect(page).to have_selector('.job-row', count: 10)
+            end
+	    expect(page).to have_no_selector('#next_featured_link')
           end
         end
       end
