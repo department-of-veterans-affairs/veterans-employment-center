@@ -12,8 +12,7 @@ describe "Veterans" do
       employer = employer_user
       sign_in_as employer
       visit favorites_path
-      expect(page).to have_content 'Search Veterans'
-      expect(page).to have_content 'Favorited Veterans'
+      expect(page).to have_content 'Sign Out'
     end
   end
 
@@ -27,8 +26,7 @@ describe "Veterans" do
       employer = employer_user
       sign_in_as employer
       visit favorites_path
-      expect(page).to have_content 'Search Veterans'
-      expect(page).to have_content 'Favorited Veterans'
+      expect(page).to have_content 'Sign Out'
     end
 
     context "when user is a signed in employer" do

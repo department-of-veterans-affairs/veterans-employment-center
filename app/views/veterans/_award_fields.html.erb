@@ -1,22 +1,22 @@
 <fieldset>
-  <legend>Enter your award information. Add as many as necessary by using the "Add Award" link.</legend>
+  <legend>Enter your award information. Add as many awards as necessary by clicking Add Award below.</legend>
   <div class="row form-group dataItem">
     <div class="small-12 columns">
-      <%= f.label :title, "Name of Award " %>
+      <%= f.label :title, "Name of award " %>
       <%= f.text_field :title %>
     </div>
   </div>
 
   <div class="row form-group dataItem">
     <div class="small-12 columns">
-      <%= f.label :organization, "Awarding Organization " %>
+      <%= f.label :organization, "Awarding organization " %>
       <%= f.text_field :organization %>
     </div>
   </div>
 
   <div class="row form-group dataItem">
     <div class="small-12 columns">
-      <%= f.label :date, "Date Received (MM/DD/YYYY)" %>
+      <%= f.label :date, "Date received (MM/DD/YYYY)" %>
       <%= f.text_field :date,
         value:       (f.object.date.strftime("%m/%d/%Y") if f.object.date.present?),
         err:         "enter date like mm/dd/yyyy",

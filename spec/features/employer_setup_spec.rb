@@ -7,7 +7,7 @@ feature 'employers edit their accounts' do
   end    
   
   scenario 'after logging in with google, they can access the edit profile page', :js => true do
-    visit veterans_path
+    visit employers_path
     click_link "Manage Your Profile and Hiring Commitment"
     expect(page).to have_selector 'h2', text: "Edit your profile"
     fill_in "employer_company_name", with: 'The Editing Company'
@@ -27,46 +27,35 @@ feature 'employers edit their accounts' do
     expect(page).to have_content "Homeless"
   end
   
-  scenario 'when an employer indicates a hiring commitment number, it appears on their account and commitments pages', :js => true do
+  scenario 'when an employer indicates a hiring commitment number, it appears on their commitments pages', :js => true do
     visit edit_employer_path(@user.employer)
     fill_in "employer_commit_to_hire", with: '500'
     find('#click-button').click
-    visit employer_home_path
-    expect(page).to have_content "publicly committed to hire 500 Veterans."
-    expect(page).to have_no_content "publicly committed to hire 500 Veterans by"
-    expect(page).to have_no_content "You haven't yet made a public commitment to hire Veterans"
     visit commitments_path
     expect(page).to have_content "publicly committed to hire 500 Veterans."
     expect(page).to have_no_content "publicly committed to hire 500 Veterans by"
     expect(page).to have_no_content "You haven't yet made a public commitment to hire Veterans"
   end
   
-  scenario 'when an employer indicates a hiring commitment number AND date, both appear on their account and commitments pages', :js => true do
+  scenario 'when an employer indicates a hiring commitment number AND date, both appear on their commitments pages', :js => true do
     visit edit_employer_path(@user.employer)
     fill_in "employer_commit_to_hire", with: '500'
     fill_in "employer_commit_date", with: '05/15/2016'
     find('#click-button').click
-    visit employer_home_path
-    expect(page).to have_content "publicly committed to hire 500 Veterans by May 15, 2016"
-    expect(page).to have_no_content "You haven't yet made a public commitment to hire Veterans"
     visit commitments_path
     expect(page).to have_content "publicly committed to hire 500 Veterans by May 15, 2016"
     expect(page).to have_no_content "You haven't yet made a public commitment to hire Veterans"
   end
   
-  scenario 'when an employer removes their hiring commitment number, it no longer appears on their account and commitments pages', :js => true do
+  scenario 'when an employer removes their hiring commitment number, it no longer appears on their commitments pages', :js => true do
     visit edit_employer_path(@user.employer)
     fill_in "employer_commit_to_hire", with: '500'
     find('#click-button').click
-    visit employer_home_path
-    expect(page).to have_content "publicly committed to hire 500 Veterans."
     visit commitments_path
     expect(page).to have_content "publicly committed to hire 500 Veterans."
     visit edit_employer_path(@user.employer)
     fill_in "employer_commit_to_hire", with: ''
     find('#click-button').click
-    visit employer_home_path
-    expect(page).to have_content "You haven't yet made a public commitment to hire Veterans"
     visit commitments_path
     expect(page).to have_content "You haven't yet made a public commitment to hire Veterans"
   end
@@ -271,8 +260,8 @@ end
 feature 'logging out' do
   scenario 'when logged in, an employer can log out' do
     sign_in_as(employer_user)
-    visit employer_list_path
+    visit employers_path
     click_link 'Sign Out'
-    expect(page).to have_content 'Job Seekers'
+    expect(page).to have_content 'Log in to create and manage your account'
   end
 end

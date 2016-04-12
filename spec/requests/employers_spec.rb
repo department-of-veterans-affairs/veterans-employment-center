@@ -14,7 +14,7 @@ describe "Employers" do
   end
 
   describe "GET /employers" do
-    it "should redirect to login if not-logged-in user clicks Manage Profile in Employer sidebar" do
+    it "should redirect to login if not-logged-in user tries to search for veterans" do
       visit employer_home_path
       click_link 'Find Veteran Candidates'
       expect(page).to have_content 'Sign in with LinkedIn'
@@ -23,7 +23,8 @@ describe "Employers" do
 
     it "should NOT show Your Employer Account breadcrumb if the user is not signed in" do
       visit employer_home_path
-      expect(page).to have_content 'Sign in with LinkedIn'
+      expect(page).to have_content 'Log in to create and manage your account'
+      expect(page).to have_content 'LinkedIn'
       expect(page).to have_selector 'li', text: 'Employers'
     end
 
@@ -43,18 +44,18 @@ describe "Employers" do
       expect(page).to have_selector 'li', text: 'Your Employer Account'
     end
 
-    it "should redirect to edit profile page if logged-in employer clicks Manage Profile in Employer sidebar" do
+    it "should redirect to edit profile page if logged-in employer searches for veterans" do
       employer = employer_user
       sign_in_as employer
       visit employer_home_path
       click_link 'Find Veteran Candidates'
       expect(page).not_to have_content 'Employer Sign in'
-      expect(page).to have_content 'Manage Your Profile and Hiring Commitment'
+      expect(page).to have_content 'Sign Out'
     end
 
     it "should prompt user to log in if they aren't yet signed in" do
       visit employer_home_path
-      click_link 'Make a Hiring Commitment'
+      click_link 'View all Hiring Commitments'
       expect(page).to have_link 'Sign in with LinkedIn'
     end
 
@@ -62,9 +63,9 @@ describe "Employers" do
       employer = employer_user
       sign_in_as employer
       visit employer_home_path
-      click_link 'Your Hiring Commitment'
+      click_link 'Manage Your Profile and Hiring Commitment'
       expect(page).to have_content 'Edit your profile'
-      expect(page).to have_content 'Manage Your Profile and Hiring Commitment'
+      expect(page).to have_content 'Sign Out'
     end
 
     describe "it shows favorites correctly" do
@@ -72,7 +73,7 @@ describe "Employers" do
         employer = employer_user
         sign_in_as employer
         visit employer_home_path
-        expect(page).to have_content 'You have not favorited any veterans yet'
+        expect(page).to have_content 'You have not designated any Veterans as favorites yet.'
         expect(page).not_to have_css '.button', text: 'Find Candidates'
       end
 
@@ -118,26 +119,8 @@ describe "Employers" do
         expect(page).to have_content 'Remove from favorites'
         click_link 'Remove from favorites'
         expect(page).not_to have_content 'Remove from favorites'
-        expect(page).to have_content 'You have not favorited any veterans yet'
+        expect(page).to have_content 'You have not designated any Veterans as favorites yet.'
       end
-    end
-  end
-
-  describe "GET /how_to_post_jobs" do
-    it "shows a logged-in employer a link to their profile" do
-      employer = employer_user
-      sign_in_as employer
-      visit how_to_post_jobs_path
-
-      expect(page).to have_content "your VEC profile"
-      expect(page).to have_link "your VEC profile"
-    end
-
-    it "shows plain text to someone who is not logged in as an employer" do
-      visit how_to_post_jobs_path
-
-      expect(page).to have_content "your VEC profile"
-      expect(page).not_to have_link "your VEC profile"
     end
   end
 
@@ -157,7 +140,7 @@ describe "Employers" do
       sign_in_as employer
       visit favorites_path
 
-      expect(page).to have_content "You have not favorited any veterans yet."
+      expect(page).to have_content "You have not designated any Veterans as favorites yet."
       expect(page).to have_link "Find Veteran Candidates"
     end
   end
@@ -188,14 +171,14 @@ describe "Employers" do
 
     it "should only show the specified columns in the CSV" do
       visit commitments_path
-      click_link 'Download all commitments as spreadsheet'
+      click_link 'Download all commitments as a spreadsheet'
       csv = page.text
       expect(csv).to start_with "company_name,commit_date,commit_to_hire,commit_hired,website,location,note,commitment_categories"
     end
 
     it "should show data from allowed columns in the CSV" do
       visit commitments_path
-      click_link 'Download all commitments as spreadsheet'
+      click_link 'Download all commitments as a spreadsheet'
       csv = page.text
       expect(csv).not_to include 'Apple Computer'
       expect(csv).to include 'Other Employer'
@@ -203,7 +186,7 @@ describe "Employers" do
 
     it "should not show data from excluded columns in the CSV" do
       visit commitments_path
-      click_link 'Download all commitments as spreadsheet'
+      click_link 'Download all commitments as a spreadsheet'
       csv = page.text
       expect(csv).not_to include "veteran3@gmail.com"
     end

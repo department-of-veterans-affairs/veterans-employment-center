@@ -1,5 +1,5 @@
 <fieldset>
-  <legend>Add your volunteer experience. Add as many as necessary by using the "Add Volunteer Experience" link.</legend>
+  <legend>Provide your volunteer experience. Add as many positions as necessary by clicking Add Volunteer Experience below.</legend>
   <div class="row form-group dataItem">
     <div class="small-12 columns">
       <%= f.label :job_title, "Position " %>
@@ -23,7 +23,7 @@
 
   <div class="row form-group dataItem">
     <div class="small-12 columns">
-      <%= f.label :start_date, "Start Date (MM/DD/YYYY) " %>
+      <%= f.label :start_date, "Start date (MM/DD/YYYY) " %>
       <%= f.text_field :start_date,
         value:       (f.object.start_date.strftime("%m/%d/%Y") if f.object.start_date.present?),
         err:         "enter date like mm/dd/yyyy",
@@ -35,7 +35,7 @@
 
   <div class="row form-group dataItem">
     <div class="small-12 columns">
-      <%= f.label :end_date, "End Date (MM/DD/YYYY) (leave blank if present)" %>
+      <%= f.label :end_date, "End date (MM/DD/YYYY) (leave blank if present)" %>
       <%= f.text_field :end_date,
         value:       (f.object.end_date.strftime("%m/%d/%Y") if f.object.end_date.present?),
         err:         "enter date like mm/dd/yyyy",

@@ -21,10 +21,10 @@ describe 'JobSearch' do
           fill_in 'kw', with: "java"
           fill_in 'zc', with: "washington, dc"
           click_button('job-search')
-          expect(page).to have_no_content "Featured jobs"
+          expect(page).to have_no_content "Featured Jobs"
           expect(page).to have_content "Java Developer - Java, Spring, Hibernate"
           expect(page).to have_content "Remote PHP Developer to join our dynamic adrtising agency!"
-          expect(page).to have_no_content 'More jobs'
+          expect(page).to have_no_content 'More Jobs'
           expect(page).to have_content "Displaying results 1 - 25 of 373 (page 1 of 15)"
 
         end
@@ -35,7 +35,7 @@ describe 'JobSearch' do
           fill_in 'zc', with: "washington, dc"
           select 'Federal Jobs Only', from: "fed"
           click_button('job-search')
-          expect(page).to have_no_content "Featured jobs"
+          expect(page).to have_no_content "Featured Jobs"
           expect(page).to have_no_content "Java Developer - Java, Spring, Hibernate"
           expect(page).to have_no_content "Remote PHP Developer to join our dynamic adrtising agency!"
           expect(page).to have_no_content "Displaying results 1 - 25 of 373 (page 1 of 15)"
@@ -72,7 +72,7 @@ describe 'JobSearch' do
           fill_in 'kw', with: "java"
           fill_in 'zc', with: "washington, dc"
           click_button('job-search')
-          expect(page).to have_no_content "Featured jobs"
+          expect(page).to have_no_content "Featured Jobs"
           expect(page).to have_content "Java Developer - Java, Spring, Hibernate"
           expect(page).to have_content "Remote PHP Developer to join our dynamic adrtising agency!"
           expect(page).to have_content "Displaying results 1 - 25 of 373 (page 1 of 15)"
@@ -91,8 +91,8 @@ describe 'JobSearch' do
             fill_in 'kw', with: "java"
             fill_in 'zc', with: "washington, dc"
             click_button('job-search')
-            expect(page).to have_content 'Featured jobs'
-            expect(page).to have_content 'from employers that have committed to hiring veterans'
+            expect(page).to have_content 'Featured Jobs'
+            expect(page).to have_content 'From employers that have committed to hiring Veterans'
             expect(page).to have_content 'PL/SQL and Java Developer'
             expect(page).to have_content 'L&I Java Developer'
             expect(page).to have_content 'Java Developer - Expert Level (ITS5: SQ12) 06320'
@@ -104,8 +104,8 @@ describe 'JobSearch' do
             fill_in 'zc', with: "washington, dc"
             select 'Non-Federal Jobs Only', from: "fed"
             click_button('job-search')
-            expect(page).to have_no_content 'Featured jobs'
-            expect(page).to have_no_content 'employers that have committed to hiring veterans'
+            expect(page).to have_no_content 'Featured Jobs'
+            expect(page).to have_no_content 'employers that have committed to hiring Veterans'
             expect(page).to have_no_content 'PL/SQL and Java Developer'
             expect(page).to have_no_content 'L&I Java Developer'
             expect(page).to have_no_content 'Java Developer - Expert Level (ITS5: SQ12) 06320'
@@ -126,8 +126,8 @@ describe 'JobSearch' do
               click_link 'Advanced Search'
               fill_in 'cname', with: 'Carolina'
               click_button('job-search')
-              expect(page).to have_content 'Featured jobs'
-              expect(page).to have_content 'from employers that have committed to hiring veterans'
+              expect(page).to have_content 'Featured Jobs'
+              expect(page).to have_content 'From employers that have committed to hiring Veterans'
               expect(page).to have_content 'PL/SQL and Java Developer'
               expect(page).to have_no_content 'L&I Java Developer'
               expect(page).to have_no_content 'Java Developer - Expert Level (ITS5: SQ12) 06320'
@@ -153,13 +153,17 @@ describe 'JobSearch' do
             fill_in 'kw', with: "java"
             fill_in 'zc', with: "washington, dc"
             click_button('job-search')
-            expect(page).to have_selector('.feature .job-row', count: 10)
-            expect(page).to have_content 'Featured jobs'
-            expect(page).to have_content 'from employers that have committed to hiring veterans'
-            find('.feature a.next_page_link').trigger(:click)
-            expect(page).to have_selector('.feature .job-row', count: 3)
-            expect(page).to have_content 'Featured jobs'
-            expect(page).to have_content 'from employers that have committed to hiring veterans'
+            expect(page).to have_content 'Featured Jobs'
+            expect(page).to have_content 'From employers that have committed to hiring Veterans'
+            within('div#featured-jobs') do
+	      expect(page).to have_selector('.job-row', count: 10)
+	    end
+	    find('#next_featured_link').click
+	    within('div#featured-jobs') do
+              expect(page).to have_selector('.job-row', count: 3)
+            end
+	    expect(page).to have_content 'Featured Jobs'
+            expect(page).to have_content 'From employers that have committed to hiring Veterans'
           end
 
         end
@@ -182,14 +186,16 @@ describe 'JobSearch' do
           end
 
           it 'should display job clarifier' do
-            expect(page).to have_content 'More jobs'
+            expect(page).to have_content 'More Jobs'
           end
 
           it "should not paginate" do
-            expect(page).to have_selector('.feature .job-row', count: 10)
-            expect(page).to have_content 'Featured jobs'
-            expect(page).to have_content 'from employers that have committed to hiring veterans.'
-            expect(page).to have_no_selector('.feature a.next_page_link')
+	    expect(page).to have_content 'Featured Jobs'
+            expect(page).to have_content 'From employers that have committed to hiring Veterans.'
+	    within('div#featured-jobs') do
+              expect(page).to have_selector('.job-row', count: 10)
+            end
+	    expect(page).to have_no_selector('#next_featured_link')
           end
         end
       end

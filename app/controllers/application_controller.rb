@@ -27,7 +27,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    root_path
+    # right now we don't allow veterans to sign out...if we do, this would need to be updated
+    employer_home_path
   end
 
   protected

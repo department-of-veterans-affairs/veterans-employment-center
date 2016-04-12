@@ -94,8 +94,7 @@ app.controller('SkillCtrl', ['$scope', '$http', '$timeout', '$cookies', function
   $scope.skill_pill_unselected_color = '#032B55';
 
   $scope.submitForm = function () {
-
-    $http.post('<%= url_helper.skills_translator_suggest_path(script_name: ENV['RAILS_RELATIVE_URL_ROOT']) %>', $scope.formData).then(function (res) {
+    $http.post('<%= url_helper.skills_translator_suggest_skills_path(script_name: ENV['RAILS_RELATIVE_URL_ROOT']) %>', $scope.formData).then(function (res) {
       $scope.state.error = null;
       $scope.data.shownSkills = [];
       $scope.data.mo = res.data.military_occupation;

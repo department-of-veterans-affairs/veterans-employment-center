@@ -4,7 +4,7 @@
       <%= link_to "< Prev Page",  featured_previous_page_path(params, @featured_page),  class: "prev_page_link" %>
     <%end%>
     <% if @search.next_featured_page %>
-    <%= link_to "Next Page >",  featured_next_page_path(params, @search.next_featured_page),  class: "next_page_link" %>
+    <%= link_to "Next Page >",  featured_next_page_path(params, @search.next_featured_page),  class: "next_page_link", id: "next_featured_link" %>
       <% end %>
   </div>
 </div>
