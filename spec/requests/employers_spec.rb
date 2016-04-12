@@ -73,7 +73,7 @@ describe "Employers" do
         employer = employer_user
         sign_in_as employer
         visit employer_home_path
-        expect(page).to have_content 'You have not favorited any veterans yet'
+        expect(page).to have_content 'You have not designated any Veterans as favorites yet.'
         expect(page).not_to have_css '.button', text: 'Find Candidates'
       end
 
@@ -119,7 +119,7 @@ describe "Employers" do
         expect(page).to have_content 'Remove from favorites'
         click_link 'Remove from favorites'
         expect(page).not_to have_content 'Remove from favorites'
-        expect(page).to have_content 'You have not favorited any veterans yet'
+        expect(page).to have_content 'You have not designated any Veterans as favorites yet.'
       end
     end
   end
@@ -140,7 +140,7 @@ describe "Employers" do
       sign_in_as employer
       visit favorites_path
 
-      expect(page).to have_content "You have not favorited any veterans yet."
+      expect(page).to have_content "You have not designated any Veterans as favorites yet."
       expect(page).to have_link "Find Veteran Candidates"
     end
   end
