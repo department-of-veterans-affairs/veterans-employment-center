@@ -14,13 +14,6 @@ describe "Employers" do
   end
 
   describe "GET /employers" do
-    it "should redirect to login if not-logged-in user tries to search for veterans" do
-      visit employer_home_path
-      click_link 'Find Veteran Candidates'
-      expect(page).to have_content 'Sign in with LinkedIn'
-      expect(page).not_to have_content 'Your Favorite Veterans'
-    end
-
     it "should NOT show Your Employer Account breadcrumb if the user is not signed in" do
       visit employer_home_path
       expect(page).to have_content 'Log in to create and manage your account'
@@ -44,15 +37,6 @@ describe "Employers" do
       expect(page).to have_selector 'li', text: 'Your Employer Account'
     end
 
-    it "should redirect to edit profile page if logged-in employer searches for veterans" do
-      employer = employer_user
-      sign_in_as employer
-      visit employer_home_path
-      click_link 'Find Veteran Candidates'
-      expect(page).not_to have_content 'Employer Sign in'
-      expect(page).to have_content 'Sign Out'
-    end
-
     it "should prompt user to log in if they aren't yet signed in" do
       visit employer_home_path
       click_link 'View all Hiring Commitments'
@@ -66,82 +50,6 @@ describe "Employers" do
       click_link 'Manage Your Profile and Hiring Commitment'
       expect(page).to have_content 'Edit your profile'
       expect(page).to have_content 'Sign Out'
-    end
-
-    describe "it shows favorites correctly" do
-      it "with no favorites it prompts employer to create some" do
-        employer = employer_user
-        sign_in_as employer
-        visit employer_home_path
-        expect(page).to have_content 'You have not designated any Veterans as favorites yet.'
-        expect(page).not_to have_css '.button', text: 'Find Candidates'
-      end
-
-      it "with one favorite, it shows count and link to favorite" do
-        employer = employer_user
-        favorite = create :favorite_veteran, employer: employer.employer
-        sign_in_as employer
-        visit employer_home_path
-
-        expect(page).to have_content 'You currently have 1 favorited candidate.'
-        expect(page).not_to have_link 'View Your Favorites'
-      end
-
-      it "with two or more favorites, it shows count and link to favorites" do
-        employer = employer_user
-        favorite = create :favorite_veteran, employer: employer.employer
-        favorite2 = create :favorite_veteran, employer: employer.employer
-        sign_in_as employer
-        visit employer_home_path
-
-        expect(page).to have_content 'You currently have 2 favorited candidates.'
-        expect(page).not_to have_link 'View Your Favorites'
-      end
-
-      it "uses the favorites button" do
-        employer = employer_user
-        veteran = FactoryGirl.create(:searchable_veteran)
-        sign_in_as employer
-        visit employer_home_path
-        click_link 'Find Veteran Candidates'
-        expect(page).not_to have_content '0 Results'
-        click_link 'Favorite'
-        expect(page).to have_content 'Remove from favorites'
-      end
-
-      it "uses the remove favorites button" do
-        employer = employer_user
-        favorite = create :favorite_veteran, employer: employer.employer
-        sign_in_as employer
-        visit employer_home_path
-        expect(page).to have_content 'Your Favorite Veterans'
-        click_link 'Your Favorite Veterans'
-        expect(page).to have_content 'Remove from favorites'
-        click_link 'Remove from favorites'
-        expect(page).not_to have_content 'Remove from favorites'
-        expect(page).to have_content 'You have not designated any Veterans as favorites yet.'
-      end
-    end
-  end
-
-  describe "GET /favorites" do
-    it "shows a favorite veteran" do
-      employer = employer_user
-      veteran = create :veteran, objective: "To be the best, around. No one is going to get me down."
-      favorite = create :favorite_veteran, veteran: veteran, employer: employer.employer
-      sign_in_as employer
-      visit favorites_path
-
-      expect(page).to have_content veteran.objective
-    end
-
-    it "shows link to create search for veterans if there are no favorites" do
-      employer = employer_user
-      sign_in_as employer
-      visit favorites_path
-
-      expect(page).to have_content "You have not designated any Veterans as favorites yet."
-      expect(page).to have_link "Find Veteran Candidates"
     end
   end
 
