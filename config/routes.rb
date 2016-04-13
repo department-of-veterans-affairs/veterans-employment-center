@@ -15,15 +15,11 @@ EmploymentPortal::Application.routes.draw do
   end
   get "/commitments" => 'employers#commitments'
   get '/download_employers' => 'employers#download_employers'
-  get '/download_veterans' => 'employers#download_veterans'
-  post '/download_candidate_veterans' => 'veterans#download_candidate_veterans'
-  get "/favorites" => 'veterans#favorites'
   get "job-seekers/create-resume" => 'veterans#new', as: :resume_builder
   get 'job-seekers/search_jobs' => 'search#search_jobs', as: :search_jobs
   post 'veterans/new' => 'veterans#new'
   get '/employers' => 'static_pages#employers', as: :employer_home
   get 'employer-list' => 'employers#index', as: :employer_list
-  get '/download_all_veterans' => 'veterans#download_all_veterans'
   get 'job-seekers/skills-translator' => 'skills#index', as: :skills_translator
   post 'skills-translator/save_event' => 'skills#save_event'
   get  'skills-translator/get_skills/:prefix' => 'skills#get_skills', as: :skills_translator_get_skills
