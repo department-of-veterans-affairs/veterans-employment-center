@@ -9,7 +9,6 @@ ul li:before {
   margin: 0em;
 }
 
-
 // Search
 .employer-login {
    appearance: none;
@@ -95,6 +94,12 @@ ul li:before {
   margin-top: 1.3em;
   padding: 0.65em .65em;
 }
+
+.button.disabled {
+  background-color: #004d66;
+  pointer-events: none;
+  color: #e6e6e6;
+}
  
 .card.information {
   background: rgba(0,0,0,.05);
@@ -155,6 +160,11 @@ ul li:before {
 
 .alert-box.error_highlight {
   color: #112e51;
+  background-color: #f9dede;
+  border-color: #f9dede;
+}
+
+.action-bar.error_highlight {
   background-color: #f9dede;
   border-color: #f9dede;
 }
