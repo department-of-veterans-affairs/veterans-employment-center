@@ -313,27 +313,6 @@
                     <p>Download the content from your profile via the link above. This will provide you with an editable version that you can customize in a résumé for each job opportunity. For more information on how to best customize your résumé, <a href="http://www.careeronestop.org/">visit CareerOneStop</a> or find your local AJC.</p>
                   </div>
                 <% end %>
-
-                <% if user_signed_in? %>
-                  <% unless current_user.is_employer? %>
-                    <% if current_user.is_veteran? %>
-                      <% if @veteran.visible? %>
-                        <div class="small-12 medium-4 columns">
-                          <p><b>Your profile is public.</b> Employers committed to hiring Veterans can see you in search results.</p>
-                        </div>
-                      <% else %>
-                        <div class="small-12 columns">
-                          <p>Make your profile public <%= link_to 'here', edit_veteran_path(@veteran), id: "make_profile_public" %>.
-                          </p>
-                        </div>
-                      <% end %>
-                    <% end %>
-                  <% end %>
-                <% else %>
-                  <div class="small-12 medium-4 columns">
-                    <%= link_to "<strong>Sign in </strong> to publicly post your profile".html_safe, user_omniauth_authorize_path(:saml), class: 'button primary expand', id: "ds_logon" %>
-                  </div>
-                <% end %>
               </div>
             </div><!-- end div#resume -->
           </div>
