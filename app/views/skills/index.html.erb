@@ -44,7 +44,7 @@
 		     </div>
 		     <div class="row form-group dataItem">
 		      <div class="small-12 medium-5 columns">
-                        <label for="military_position_status">Code Status (required)</label>
+                        <label for="military_position_status">Code Status</label>
                         <select name="military_position_status" id="military_position_status" ng-model="formData.status" required/>
                           <option value="true">Active
                           <option value="false">Inactive
@@ -52,7 +52,7 @@
 		      </div>
 
 		      <div class="small-12 medium-5 columns end">
-                      <label for="military_position_category">Code Category (required)</label>
+                      <label for="military_position_category">Code Category</label>
                       <select name="military_position_category" ng-model="formData.category"
                               ng-options="name for (name, value) in categories"
                               required id="military_position_category">
