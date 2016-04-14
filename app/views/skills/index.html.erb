@@ -37,7 +37,7 @@
                               required id="military_position_branch">
                       </select>
                       </div>
-		      <div class="small-12 medium-5 columns">
+		      <div class="small-12 medium-5 columns end">
                         <label for="military_position_code">Military Occupation Code (MOC) (required)</label>
                         <input name="military_position_code" id="military_position_code" type="text" ng-model="formData.moc" required/>
                       </div>
@@ -51,7 +51,7 @@
 			</select>
 		      </div>
 
-		      <div class="small-12 medium-5 columns">
+		      <div class="small-12 medium-5 columns end">
                       <label for="military_position_category">Code Category (required)</label>
                       <select name="military_position_category" ng-model="formData.category"
                               ng-options="name for (name, value) in categories"
