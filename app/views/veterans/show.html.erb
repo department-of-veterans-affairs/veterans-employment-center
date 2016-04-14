@@ -331,10 +331,9 @@
                   <% end %>
                 <% else %>
                   <div class="small-12 medium-4 columns">
-		    <div class="alert-box error_highlight">Signing in with DS Login is temporarily unavailable. We apologize for the inconvenience.</div>
-                    <div class="button primary expand disabled" id="ds_logon">Sign in to publicly post your profile</div>
+                    <%= link_to "<strong>Sign in </strong> to publicly post your profile".html_safe, user_omniauth_authorize_path(:saml), class: 'button primary expand', id: "ds_logon" %>
                   </div>
-		<% end %>
+                <% end %>
               </div>
             </div><!-- end div#resume -->
           </div>

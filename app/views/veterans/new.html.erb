@@ -45,16 +45,7 @@
     <div class="action-bar">
     <div class="row">
     <div class="small-12 medium-8 columns">     
-      Already have a profile saved on vets.gov? Sign in to access it.
-    </div>
-    </div>
-    </div>
-
-    <div class="action-bar error_highlight">
-    <div class="row">
-    <div class="small-12 medium-8 columns">
-      Signing in with DS Login is temporarily unavailable. We apologize for the inconvenience. <br/>
-      You can still generate downloadable civilian and federal résumés.
+      Already have a profile saved on vets.gov? <%= link_to "Sign in", user_omniauth_authorize_path(:saml), id: "update_profile" %> to access it.
     </div>
     </div>
     </div>
