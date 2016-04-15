@@ -61,7 +61,9 @@ app.controller('SkillCtrl', ['$scope', '$http', '$timeout', '$cookies', function
 
   $scope.formData = {
     branch: null,
-    moc: null
+    moc: null,
+    status: "true",
+    category: "Enlisted"
   }
 
   $scope.data = {
@@ -76,6 +78,12 @@ app.controller('SkillCtrl', ['$scope', '$http', '$timeout', '$cookies', function
     "Coast Guard": "coast guard",
     "Navy": "navy",
     "Marine Corps": "marine corps"
+  }
+
+  $scope.categories = {
+    "Officer": "Officer",
+    "Warrant Officer": "Warrant Officer",
+    "Enlisted": "Enlisted"
   }
 
   $scope.state = {
