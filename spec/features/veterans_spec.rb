@@ -8,7 +8,7 @@ feature 'visitors begins to build a new resume' do
 
   scenario "a guest user can start a new resume" do
     visit new_veteran_path
-    expect(page).to have_content 'build your profile'
+    expect(page).to have_content 'enter your information'
     expect(page).not_to have_selector 'h2', text: 'Sign in'
   end
 end
@@ -41,7 +41,7 @@ feature "guests are restricted from editing or viewing veteran data" do
     visit new_veteran_path
     fill_in_resume_fields
     click_button "Preview Your Résumé Content"
-    expect(page).to have_selector 'li', text: 'Profile'
+    expect(page).to have_selector 'li', text: 'Résumé'
   end
 end
 
@@ -104,8 +104,8 @@ feature 'a veteran views a resume' do
     login_as user
     vet = create :veteran, name: "Suzy Veteran", email: 'suzy@veterans.org', objective: "Build great web apps.", user_id: user.id
     visit veteran_path(vet)
-    expect(page).to have_content 'Edit Profile'
-    click_link 'Edit Profile'
+    expect(page).to have_content 'Edit Résumé'
+    click_link 'Edit Résumé'
     fill_in "veteran_locations_attributes_0_full_name", with: "Mountain View, CA"
     click_button "Preview Your Résumé Content"
     expect(page).to have_content "Mountain View, CA"

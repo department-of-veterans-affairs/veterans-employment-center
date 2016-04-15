@@ -102,7 +102,7 @@ class VeteransController < ApplicationController
         payload: {veteran_id: @veteran.id}.to_json) if not last_event.nil?
 
       cookies[:veteran_id] = @veteran.id
-      redirect_to @veteran, notice: 'Veteran was successfully created.'
+      redirect_to @veteran
     else
       render action: 'new'
     end

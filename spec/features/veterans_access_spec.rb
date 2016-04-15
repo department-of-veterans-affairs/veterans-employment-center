@@ -9,7 +9,7 @@ feature 'visitors begins to build a new resume' do
 
   scenario "a guest user can start a new resume" do
     visit new_veteran_path
-    expect(page).to have_content 'build your profile'
+    expect(page).to have_content 'enter your information'
     expect(page).to have_no_selector 'h2', text: 'Sign in'
   end
 end

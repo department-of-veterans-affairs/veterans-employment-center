@@ -217,6 +217,20 @@
       <%#= link_to_add_fields_location "<span aria-hidden='true'>+ </span>Add Another Location".html_safe, f, :locations %>
     </div>
   </div>
+  
+  <div class="form-section">		
+      <h3 class="no-margin">Other</h3>		
+     <fieldset class="no-margin">		
+       <legend>Enter optional additional information to add to your federal résumé.</legend>		
+       <div class="row form-group dataItem">			
+         <div class="small-12 columns">		
+           <%= f.collection_check_boxes(:status_categories, Veteran::STATUS_CATEGORIES, :to_s, :to_s) do |b| %>		
+             <%= b.check_box %> <%= b.label %> <br/>		
+           <% end %>		
+         </div>		
+       </div>		
+     </fieldset>		
+   </div>
 
   <div class="row actions">
     <div class="small-12 columns">

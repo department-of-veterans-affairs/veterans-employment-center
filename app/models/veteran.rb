@@ -45,7 +45,7 @@ class Veteran < ActiveRecord::Base
                     }
                   }
 
-  STATUS_CATEGORIES = ["Caretaker", "Family Member", "Guard/Reservist", "Smooth Takeoff Project", "Junior Military Officer (O1-O4)", "Service-Connected Disabled Veteran", "Service-Connected Disabled Veteran (10%)", "Service-Connected Disabled Veteran (30%)", "Transitioning Servicemember", "Military Spouse", "Veteran"]
+  STATUS_CATEGORIES = ["Service-Connected Disabled Veteran", "Service-Connected Disabled Veteran (10%)", "Service-Connected Disabled Veteran (30%)", "Veteran"]
 
   after_save :fill_search_summary
 

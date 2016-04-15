@@ -15,7 +15,7 @@ feature "guest can create a new resume for themselves" do
     visit new_veteran_path
     fill_in_resume_fields
     click_button "Preview Your Résumé Content"
-    expect(page).to have_content("Edit Profile")
+    expect(page).to have_content("Edit Résumé")
   end
 
   scenario 'it saves a session to the veteran' do
@@ -34,7 +34,6 @@ feature 'when building a resume, the resume only shows the fields that it should
     fill_in 'Your full name', with: 'Suzy Veteran'
     fill_in 'Your email', with: 'suzy@veterans.org'
     click_button 'Preview Your Résumé Content'
-    expect(page).to have_content "Veteran was successfully created."
     within('#resume') do
       expect(page).not_to have_content 'Objective'
       expect(page).not_to have_content 'Awards'
@@ -113,7 +112,7 @@ feature 'when building a resume, the resume only shows the fields that it should
     expect(page).to have_content 'Masons'
     expect(page).to have_content 'References'
     expect(page).to have_content 'John Doe'
-    click_link 'Edit Profile'
+    click_link 'Edit Résumé'
     expect(page).to have_content 'An amazing objective'
     expect(find_field('veteran_availability_date').value).to eq '02/07/2015'
     expect(find_field('Name of award').value).to eq 'An amazing award'
@@ -312,7 +311,7 @@ feature "profile creation shouldn't redirect to employer login", js: true do
     fill_in 'Your full name', with: 'Suzy Veteran'
     fill_in 'Your email', with: 'suzy@veterans.org'
     click_button 'Preview Your Résumé Content'
-    expect(page).to have_content("Edit Profile")
+    expect(page).to have_content("Edit Résumé")
   end
 end
 
@@ -324,7 +323,7 @@ feature "you can view and edit a profile after creation" do
     fill_in 'Your email', with: 'suzy@veterans.org'
     fill_in 'veteran_objective', with: 'An amazing objective'
     click_button 'Preview Your Résumé Content'
-    click_link "Edit Profile"
+    click_link "Edit Résumé"
     expect(page).to have_content "Add the Basics"
     expect(page).to have_content "An amazing objective"
   end
