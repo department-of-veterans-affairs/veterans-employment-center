@@ -165,7 +165,7 @@ class SkillsController < ApplicationController
       # To ensure that we occasionally test all skills, no matter how
       # irrelevant we thought they were, we randomly replace a few
       # of our "relevant" skills with totally random skills.
-      percentage = 5 + strength * 15  # Replace 5-20%
+      percentage = strength * 10  # Replace 0-10%
       num_to_replace = (num_skills_to_return * percentage / 100).round
 
       # Use only the linkedin corpus, so we don't
