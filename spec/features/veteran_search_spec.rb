@@ -217,20 +217,6 @@ describe 'Veteran Search' do
       end
     end
 
-    context 'when there are results per accelerated learning program  (ALP) applicant' do
-      before do
-        fill_in 'keywords', with: ''
-        select 'Yes', from: 'Applied for Accelerated Learning Program'
-      end
-      it "should display results from ALP match" do
-        @vet1 = create :veteran, name: "Suzy Veteran", objective: "Build great web apps.", user: @user1, visible: true
-        @vet2 = create :veteran, name: "Robin Hood", objective: "Do great things", applied_for_alp_date: "2016-01-02",  user: @user2, visible: true
-        click_button('veteran-search')
-        expect(page).to have_no_content @vet1.objective
-        expect(page).to have_content @vet2.objective
-      end
-    end
-
     context 'when there are results per veteran experience.education_level' do
       before do
         fill_in 'keywords', with: ''
@@ -245,6 +231,40 @@ describe 'Veteran Search' do
         click_button('veteran-search')
         expect(page).to have_no_content @vet1.objective
         expect(page).to have_content @vet6.objective
+      end
+    end
+
+    context 'when there are results per veteran objective and education level' do
+      before do
+        fill_in 'keywords', with: 'learn'
+        select EducationLevel::LEVELS[5], from: 'Minimum Education Level'
+      end
+      it "should display results from objective match" do
+        @vet1 = create :veteran, name: "Suzy Veteran", objective: "Build great web apps.", user: @user1, visible: true
+        @vet2 = create :veteran, name: "Robin Hood", desiredPosition: ["Archer, Leader, Teacher"], objective: "1. Become a better person. Learn to help others.",  user: @user2, visible: true
+        FactoryGirl.create :experience, veteran: @vet2, experience_type: 'education', credential_type: EducationLevel::LEVELS[5]
+        click_button('veteran-search')
+        expect(page).to have_no_content @vet1.objective
+        expect(page).to have_content @vet2.objective
+      end
+    end
+
+    context 'when there are results per veteran location' do
+      before do
+	  @vet = create :veteran, name: "Suzy Veteran", objective: "Build great web apps.", user: @user1, visible: true
+          stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=Mountain%20View,%20CA&language=en&sensor=false").
+            with(headers: {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+            to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/location/geocode.json"), headers: {})
+          stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?language=en&latlng=37.422918,-122.085421&sensor=false").
+            with(headers: {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
+            to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/location/geocode.json"), headers: {})
+          loc = Location.create!(full_name: "Mountain View, CA", veteran_id: @vet.id)
+      end
+      it 'should find veteran by location' do
+        fill_in 'autocomplete', with: 'Mountain View, CA'
+        fill_in 'keywords', with: ''
+        click_button('veteran-search')
+        expect(page).to have_content 'Suzy Veteran'
       end
     end
 

@@ -12,8 +12,7 @@ describe "Veterans" do
       employer = employer_user
       sign_in_as employer
       visit favorites_path
-      expect(page).to have_content 'Search Veterans'
-      expect(page).to have_content 'Favorited Veterans'
+      expect(page).to have_content 'Sign Out'
     end
   end
 
@@ -27,8 +26,7 @@ describe "Veterans" do
       employer = employer_user
       sign_in_as employer
       visit favorites_path
-      expect(page).to have_content 'Search Veterans'
-      expect(page).to have_content 'Favorited Veterans'
+      expect(page).to have_content 'Sign Out'
     end
 
     context "when user is a signed in employer" do
@@ -104,7 +102,7 @@ describe "Veterans" do
       expect(page).to have_link "Download a spreadsheet of these results"
       click_link("Download a spreadsheet of these results")
       csv = page.text
-      expect(csv).to start_with "id,desiredLocation,desiredPosition,deprecated_skills,objective"
+      expect(csv).to start_with "id,desiredLocation,desiredPosition,objective"
       expect(csv).to include "Suzy"
       expect(csv).to include "suzy@veteran.org"
       expect(csv).to include "Build great web apps"
@@ -128,7 +126,7 @@ describe "Veterans" do
       expect(page).to have_link "Download a spreadsheet of all veterans"
       click_link("Download a spreadsheet of all veterans")
       csv = page.text
-      expect(csv).to start_with "id,desiredLocation,desiredPosition,deprecated_skills,objective"
+      expect(csv).to start_with "id,desiredLocation,desiredPosition,objective"
       expect(csv).to include "Suzy"
       expect(csv).to include "suzy@veteran.org"
       expect(csv).to include "Build great web apps"

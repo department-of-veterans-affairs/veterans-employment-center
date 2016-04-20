@@ -5,12 +5,6 @@ module OmniAuth::Strategies
       :linkedin_resume
     end
   end
-
-  class GiBillSaml < SAML
-    def name
-      :gi_bill_saml
-    end
-  end
 end
 
 OmniAuth.config.logger = Rails.logger
@@ -245,17 +239,11 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth :google_oauth2, ENV['GOOGLE_OAUTH_CLIENT_ID'], ENV['GOOGLE_OAUTH_CLIENT_SECRET']
+  config.omniauth :google_oauth2, ENV['GOOGLE_OAUTH_CLIENT_ID'], ENV['GOOGLE_OAUTH_CLIENT_SECRET'], skip_jwt: true
   config.omniauth :linkedin, ENV['LINKEDIN_OAUTH_CLIENT_ID'], ENV['LINKEDIN_OAUTH_CLIENT_SECRET']
   config.omniauth :linkedin_resume, ENV['LINKEDIN_OAUTH_CLIENT_ID'], ENV['LINKEDIN_OAUTH_CLIENT_SECRET'], :scope => "r_fullprofile+r_emailaddress"
   config.omniauth :saml,
     :assertion_consumer_service_url     => ENV['SAML_SERVICE_URL'],
-    :issuer                             => "urn:govheroku:serviceprovider",
-    :idp_sso_target_url                 => ENV['SAML_SSO_TARGET_URL'],
-    :idp_cert_fingerprint               => ENV['SAML_CERT_FINGERPRINT'],
-    :name_identifier_format             => "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
-  config.omniauth :gi_bill_saml,
-    :assertion_consumer_service_url     => ENV['GI_BILL_SAML_SERVICE_URL'],
     :issuer                             => "urn:govheroku:serviceprovider",
     :idp_sso_target_url                 => ENV['SAML_SSO_TARGET_URL'],
     :idp_cert_fingerprint               => ENV['SAML_CERT_FINGERPRINT'],

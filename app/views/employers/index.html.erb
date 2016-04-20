@@ -5,13 +5,14 @@
     <div class="row">
       <div class="small-12 columns">
         <ul class="breadcrumbs" role="menubar" aria-label="Primary">
-          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
-          <li class="parent"><%= link_to "For Employers", employer_home_path %></li>
+          <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
+          <li class="parent"><%= link_to "Employers", employer_home_path %></li>
           <li class="active">Search for Employers</li>
         </ul>
       </div>
     </div>
   </div>
+  <%= render 'layouts/navigation' %>
   <div class="section one">
     <div class="row">
       <div class="small-12 columns">
@@ -95,7 +96,7 @@
       'paging':    true,
       'pageLength': 50,
       'info':      false,
-      'order': [[4, "desc"]],
+      'order': [[2, "desc"]],
       'processing': true,
       'serverSide': true,
       'searching': true,
@@ -103,7 +104,7 @@
       'filter': false,
       'ajax': '<%= employer_list_path %>',
       'columns': [
-        {'data': 'company_name', className: 'employer_name'},
+        {'data': 'company_name', className: 'employer_name', render: $.fn.dataTable.render.text()},
         {'data': 'ein'},
         {'data': 'created_at'},
         {'data': 'email'},

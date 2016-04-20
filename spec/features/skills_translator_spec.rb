@@ -23,10 +23,6 @@ feature 'User is reading the Skills Translator page' do
             skill_id: sk.id,
             relevance: (10 - i).to_f / 10)
     end
-    @jt = create(:job_title)
-    @moc.job_titles << @jt
-    @js = create(:deprecated_job_skill)
-    @moc.deprecated_job_skills << @js
 
     visit skills_translator_path
   end
@@ -87,8 +83,8 @@ feature 'User is reading the Skills Translator page' do
     click_button 'importButton'
     expect(find_field('Military Occupation Code').value).to have_content '111'
     expect(find_field('Branch of Service').value).to have_content 'string:army'
-    fill_in 'Your Name', with: 'Suzy Veteran'
-    fill_in 'Your Email', with: 'suzy@veterans.org'
+    fill_in 'Your full name', with: 'Suzy Veteran'
+    fill_in 'Your email', with: 'suzy@veterans.org'
     click_button 'Preview Your Veteran Profile and Résumé Content'
     expect(page).to have_content '111'
     expect(page).to have_content 'Army'

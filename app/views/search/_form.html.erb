@@ -17,43 +17,73 @@
         <input type="hidden" name="searchType" id="searchType" value="<%= @us_jobs_search_params["searchType"] %>">
         <input name="tm" type="hidden" value="">
         <div class="filters">
-          <p>Search the Veterans Job Bank</p>
+          <div class="row">
+            <div class="small-12 medium-8 columns">
+              <div class="primary">
+                <p>Search the Veterans Job Bank to find the right position for you.</p>
+              </div>
+            </div>
+          </div>          
           <h4 class="error-message" style="display:none;">Please enter a search term.</h4>
           <fieldset>
             <div class="row">
-              <div class="small-12 medium-4 columns">
-                <div class="dataItem">
-                  <label class="main em" for="kw">What  <span class="field-details"><span class="example">(job title, keywords)</span></span> </label>
-                  <input id="kw" name="kw" class="text address" type="text" value="<%= @us_jobs_search_params["kw"] %>" maxlength="95">
+              <div class="small-12 medium-7 columns">
+                <div class="row">
+                  <div class="small-12 medium-8 columns left">
+                    <div class="dataItem">
+                      <label class="main em" for="kw">What  <span class="field-details"><span class="example">(job title, keywords)</span></span> </label>
+                      <input id="kw" name="kw" class="text address" type="text" value="<%= @us_jobs_search_params["kw"] %>" maxlength="95">
+                    </div>
+                  </div>
+                  <div class="small-12 medium-8 columns left">
+                    <div class="dataItem">
+                      <label class="main em" for="zc">Where
+                        <span class="field-details"><span class="example">(city, state, country)</span></span>
+                      </label>
+                      <input id="zc" name="zc" class="text address" type="text" value="<%= @us_jobs_search_params["zc"] %>" maxlength="95">
+                    </div>
+                  </div>
+                  <div class="small-12 medium-8 columns left">
+                    <div class="dataItem">
+                      <label class="main em" for="moc">Military  <span class="field-details"><span class="example">(military job title or code)</span></span></label>
+                      <input id="moc" name="moc" class="text military" type="text" value="<%= @us_jobs_search_params["moc"] %>" maxlength="95">
+                    </div>
+                  </div>
+                </div>
+                <%= render partial: 'advanced_search', locals: { us_jobs_search_params: @us_jobs_search_params } %>
+                <div class="row">
+                  <div class="small-12 columns">
+                    <div class="actions advanced-search">
+                      <a id="adv-job_search" class="toggle-srch advancedTag" href="#"></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="actions">
+                    <button class="button primary button-left" type="submit">Search</button>
+                    <button class="button secondary button-right" type="button" onclick="resetForm()">Clear Search</button>
+                  </div>
                 </div>
               </div>
-              <div class="small-12 medium-4 columns">
-                <div class="dataItem">
-                  <label class="main em" for="zc">Where
-                    <span class="field-details"><span class="example">(city, state, country)</span></span>
-                  </label>
-                  <input id="zc" name="zc" class="text address" type="text" value="<%= @us_jobs_search_params["zc"] %>" maxlength="95">
+              <div class="small-12 medium-5 columns">
+                <div class="feature">
+                  <h5>Three tips to get the most out of the job search tool:</h5>
+                  <ol>
+                    <li>Make your search as broad as possible.</li>
+                    <li>Explore a variety of geographical areas.</li>
+                    <li>Use the <%= link_to "Military Skills Translator", skills_translator_path %> to translate your military skills into language hiring managers will understand.</li>
+                  </ol>
+
+                  <br>
+
+                  <h5>Additional Resources</h5>
+                  <ul>
+                    <li><a href="/employment/job-seekers/one-on-one">One-on-one job assistance</a></li>
+                    <li><a href="/employment/job-seekers/federal-employment">Apply for federal jobs</a></li>
+                    <li><a href="http://vaforvets.va.gov/">Veteran Employment Services Office</a></li>
+                    <li><a href="/employment/job-seekers/start">Start your own business</a></li>
+                  </ul>
                 </div>
-              </div>
-              <div class="small-12 medium-4 columns">
-                <div class="dataItem">
-                  <label class="main em" for="moc">Military  <span class="field-details"><span class="example">(military job title or code)</span></span></label>
-                  <input id="moc" name="moc" class="text military" type="text" value="<%= @us_jobs_search_params["moc"] %>" maxlength="95">
-                </div>
-              </div>
-            </div>
-            <%= render partial: 'advanced_search', locals: { us_jobs_search_params: @us_jobs_search_params } %>
-            <div class="row">
-              <div class="small-12 columns">
-                <div class="actions advanced-search">
-                  <a id="adv-job_search" class="toggle-srch advancedTag" href="#"></a>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="actions">
-                <button class="button primary button-left" type="submit">Search</button>
-                <button class="button secondary button-right" type="button" onclick="resetForm()">Clear Search</button>
               </div>
             </div>
           </fieldset>

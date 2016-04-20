@@ -16,11 +16,11 @@ class Veteran < ActiveRecord::Base
   validates_length_of :name, maximum: 255, message: "cannot exceed 255 characters"
   validates_length_of :email, maximum: 255, message: "cannot exceed 255 characters"
 
-  accepts_nested_attributes_for :affiliations, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank?}.all? }
-  accepts_nested_attributes_for :awards, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank?}.all? }
-  accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank?}.all? }
-  accepts_nested_attributes_for :experiences, allow_destroy: true, reject_if: proc {|attributes| attributes.reject{|k,v| k == "experience_type"}.collect{|k,v| v.blank?}.all? }
-  accepts_nested_attributes_for :references, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank?}.all? }
+  accepts_nested_attributes_for :affiliations, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank? || k == '_destroy' }.all? }
+  accepts_nested_attributes_for :awards, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank? || k == '_destroy'}.all? }
+  accepts_nested_attributes_for :locations, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank? || k == '_destroy' || k == 'location_type'}.all? }
+  accepts_nested_attributes_for :experiences, allow_destroy: true, reject_if: proc {|attributes| attributes.reject{|k,v| k == "experience_type" || k == '_destroy'}.collect{|k,v| v.blank?}.all? }
+  accepts_nested_attributes_for :references, allow_destroy: true, reject_if: proc {|attributes| attributes.collect{|k,v| v.blank? || k == '_destroy'}.all? }
 
   serialize :desiredPosition, Array
   serialize :status_categories, Array
@@ -46,9 +46,6 @@ class Veteran < ActiveRecord::Base
                   }
 
   STATUS_CATEGORIES = ["Caretaker", "Family Member", "Guard/Reservist", "Smooth Takeoff Project", "Junior Military Officer (O1-O4)", "Service-Connected Disabled Veteran", "Service-Connected Disabled Veteran (10%)", "Service-Connected Disabled Veteran (30%)", "Transitioning Servicemember", "Military Spouse", "Veteran"]
-
-  ACCELERATED_LEARNING_PROGRAMS = ["Coley and Associates", "Full Circle Computing", "New Horizons, St. Louis", "Three Wire Systems, LLC",
-  "TLG Learning – Help Desk", "TLG Learning – Network Support Engineer", "True Information Assurance"]
 
   after_save :fill_search_summary
 
@@ -138,6 +135,10 @@ class Veteran < ActiveRecord::Base
 
   def military_experiences
     experiences_of_type "military"
+  end
+
+  def military_and_work_experiences
+    (work_experiences + military_experiences).sort {|ex1,ex2| ex2.start_date && ex1.start_date ? ex2.start_date<=>ex1.start_date : ex1.start_date ? -1 : 1}
   end
 
   def desired_locations

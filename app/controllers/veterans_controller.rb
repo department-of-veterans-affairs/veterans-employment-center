@@ -27,15 +27,18 @@ class VeteransController < ApplicationController
 
     respond_to do |format|
       format.html do
-        @veterans = @q.result.includes(:experiences, :affiliations, :locations).paginate(page: params[:page], per_page: 20).reorder(updated_at: :desc)
-
-        # Stick the kw query back in as passed to repopulate the text field
+	if ((params)[:q] && !(params)[:q]["by_minimum_education_level"].blank?)
+	    @veterans = @q.result.includes(:affiliations, :locations).joins(:experiences).paginate(page: params[:page], per_page: 20).reorder(updated_at: :desc)
+        else
+            @veterans = @q.result.includes(:experiences, :affiliations, :locations).paginate(page: params[:page], per_page: 20).reorder(updated_at: :desc)
+        end
+	# Stick the kw query back in as passed to repopulate the text field
         @q.build(KEYWORD_FIELD_NAME => query_params_sans_location[KEYWORD_FIELD_NAME], 'm' => query_params_sans_location['m']) if query_params_sans_location.respond_to?(:keys)
       end
       format.csv do
         columns = Veteran.column_names
 
-        self.response_body = StreamCSV.new("veterans.csv", self.response) do |csv|
+        self.response_body = StreamCSV.new("veterans", self.response) do |csv|
           csv << columns
           @q.result.find_each do |veteran|
             csv << columns.map{|c| veteran.send(c)}
@@ -54,7 +57,7 @@ class VeteransController < ApplicationController
       format.html
       format.csv do
         columns = Veteran.column_names
-        self.response_body = StreamCSV.new('veterans.csv', self.response) do |csv|
+        self.response_body = StreamCSV.new('veterans', self.response) do |csv|
           csv << columns
           @veterans.each do |veteran|
             csv << columns.map{|c| veteran.send(c)}
@@ -67,7 +70,7 @@ class VeteransController < ApplicationController
   def word
       @for_fed_employment = params[:fed]=="true"
       respond_to do |format|
-        format.html do
+        format.docx do
           response.headers['Content-Disposition'] = 'attachment; filename="resume.doc"'
           render content_type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", layout: 'word'
         end
@@ -118,12 +121,6 @@ class VeteransController < ApplicationController
   # If an unauthenticated Veteran creates a resume, the veteran_id is saved to a cookie. If they proceed to log in, the cookie links their User to their Veteran.
   def create
     @veteran = Veteran.new(veteran_params)
-    if params["veteran"]["skills"]
-      @veteran.skills = params["veteran"]["skills"].map do |id|
-        Skill.find(id) unless id.blank?
-      end
-    end
-    @veteran.update_attributes(applied_for_alp_date: Time.now) unless veteran_params[:accelerated_learning_program].blank?
     if user_signed_in?
       @veteran.update_attributes(user_id: current_user.id) if current_user.veteran.nil?
     else
@@ -150,11 +147,9 @@ class VeteransController < ApplicationController
     if @veteran.user_id.nil?
       @veteran.update_attributes(user_id: current_user.id) if user_signed_in? && current_user.veteran.nil?
     end
-    @veteran.update_attributes(applied_for_alp_date: Time.now) unless veteran_params[:accelerated_learning_program].blank?
     if !veteran_params["locations_attributes"].blank?
       @veteran.update_location_attributes(veteran_params["locations_attributes"])
     end
-    @veteran.skills = params["veteran"]["skills"].map { |id| Skill.find(id) unless id.blank? } if params["veteran"]["skills"]
     if @veteran.update(veteran_params)
       redirect_to @veteran, notice: 'Veteran was successfully updated.'
     else
@@ -181,14 +176,13 @@ class VeteransController < ApplicationController
       :session_id,
       :visible,
       :availability_date,
-      :accelerated_learning_program,
       references_attributes: [:name, :email, :job_title, :id, :veteran_id, :_destroy],
       affiliations_attributes: [:job_title, :organization, :id, :veteran_id, :_destroy],
       awards_attributes: [:title, :veteran_id, :organization, :date, :id, :_destroy],
       experiences_attributes: [:job_title, :organization, :experience_type, :start_date, :end_date, :hours, :educational_organization, :credential_type, :credential_topic, :description, :veteran_id, :moc, :duty_station, :rank, :id, :_destroy],
       desiredPosition: [],
       status_categories: [],
-      locations_attributes: [:id, :veteran_id, :location_type, :full_name, :city, :state, :country, :lat, :lng, :zip, :include_radius, :radius]
+      locations_attributes: [:id, :veteran_id, :location_type, :full_name, :city, :state, :country, :lat, :lng, :zip, :include_radius, :radius, :_destroy],
     )
   end
 
@@ -255,7 +249,6 @@ class VeteransController < ApplicationController
   end
 
   def clean_blank_params
-    params[:veteran][:skills].reject!(&:empty?) if params[:veteran][:skills]
 ## TODO: REINSTATE THE BELOW IN TERMS OF NEW MODEL/PARAMS
 ##    params[:veteran][:desiredLocation].reject!(&:empty?)
     params[:veteran][:status_categories].reject!(&:empty?) unless params[:veteran][:status_categories].nil?
