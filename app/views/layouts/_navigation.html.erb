@@ -9,8 +9,6 @@
       <!-- Right Nav Section -->
       <ul class="right">
         <% if current_user.va_admin? %>
-          <li><%= link_to "Download Veterans", veterans_url %></li>
-          <li class="divider"></li>
           <li><%= link_to "Approve Employers", employer_list_path %></li>
           <li class="divider"></li>
         <% end %>

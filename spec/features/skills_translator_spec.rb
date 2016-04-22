@@ -85,7 +85,7 @@ feature 'User is reading the Skills Translator page' do
     expect(find_field('Branch of Service').value).to have_content 'string:army'
     fill_in 'Your full name', with: 'Suzy Veteran'
     fill_in 'Your email', with: 'suzy@veterans.org'
-    click_button 'Preview Your Veteran Profile and Résumé Content'
+    click_button 'Preview Your Résumé Content'
     expect(page).to have_content '111'
     expect(page).to have_content 'Army'
     expect(page).to have_content 'Trainer'

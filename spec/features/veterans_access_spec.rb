@@ -9,51 +9,10 @@ feature 'visitors begins to build a new resume' do
 
   scenario "a guest user can start a new resume" do
     visit new_veteran_path
-    expect(page).to have_content 'build your profile'
+    expect(page).to have_content 'enter your information'
     expect(page).to have_no_selector 'h2', text: 'Sign in'
   end
 end
-
-feature "an employer visits index of all veterans and can see the veterans" do
-  scenario "the employer is not logged in" do
-    vet = create :veteran, name: "Suzy Veteran", objective: "Build great web apps."
-    visit veterans_path
-    expect(page).to have_no_selector '.vet_objective', text: vet.objective
-    expect(page).to have_content "Only signed in employers or administrators can view this page"
-  end
-
-  scenario "a user that is not an employer is logged in" do
-    user = create :user, email: 'test@example.com', password: '12345678'
-    sign_in_as user
-    vet = create :veteran, name: "Suzy Veteran", objective: "Build great web apps."
-    visit veterans_path
-    expect(page).to have_no_selector '.vet_objective', text: vet.objective
-    expect(page).to have_selector '#flash_alert'
-  end
-
-  scenario "the employer is logged in but not approved" do
-    user = create :user, email: 'test@example.com', password: '12345678'
-    vet = create :veteran, name: "Suzy Veteran", objective: "Build great web apps.", user: user, visible: true
-    non_approved_employer = employer_user
-    sign_in_as non_approved_employer
-    visit veterans_path
-    expect(page).to have_selector '.vet_objective', text: vet.objective
-    expect(page).not_to have_content vet.name
-  end
-
-  scenario "the employer is logged in and approved" do
-    user = create :user, email: 'test@example.com', password: '12345678'
-    vet = create :veteran, name: "Suzy Veteran", objective: "Build great web apps.", user: user, visible: true
-    approved_employer = employer_user
-    approved_employer.employer.update_attributes(approved: true)
-    sign_in_as approved_employer
-    visit veterans_path
-    expect(page).to have_selector '.vet_objective', text: vet.objective
-    expect(page).to have_content vet.name
-  end
-end
-
-
 
 feature 'employers can view veterans resumes' do
 

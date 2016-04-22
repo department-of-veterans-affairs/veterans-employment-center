@@ -11,41 +11,6 @@ class VeteransController < ApplicationController
   KEYWORD_FIELD_NAME = 'searchable_summary_cont'
 
   def index
-    veteran_query = Veteran.where.not(user_id: nil).where(visible: true)
-
-    if !(params[:q].blank?) and !((params)[:q]["location"]["full_name"].blank?)
-      # Use geocode gem to find locations near where this employer requests
-      # TODO: Redefine 'near' once we implement radius preferences for vet's desired locations
-      default_radius = 20
-      candidate_vet_ids = Location.near(params[:q]["location"]["full_name"],default_radius).map{|loc| loc.veteran_id}
-
-      veteran_query = veteran_query.where(id: candidate_vet_ids.uniq)
-    end
-
-    query_params_sans_location = params[:q].except("location") unless params[:q].blank?
-    @q = build_search(veteran_query, query_params_sans_location)
-
-    respond_to do |format|
-      format.html do
-	if ((params)[:q] && !(params)[:q]["by_minimum_education_level"].blank?)
-	    @veterans = @q.result.includes(:affiliations, :locations).joins(:experiences).paginate(page: params[:page], per_page: 20).reorder(updated_at: :desc)
-        else
-            @veterans = @q.result.includes(:experiences, :affiliations, :locations).paginate(page: params[:page], per_page: 20).reorder(updated_at: :desc)
-        end
-	# Stick the kw query back in as passed to repopulate the text field
-        @q.build(KEYWORD_FIELD_NAME => query_params_sans_location[KEYWORD_FIELD_NAME], 'm' => query_params_sans_location['m']) if query_params_sans_location.respond_to?(:keys)
-      end
-      format.csv do
-        columns = Veteran.column_names
-
-        self.response_body = StreamCSV.new("veterans", self.response) do |csv|
-          csv << columns
-          @q.result.find_each do |veteran|
-            csv << columns.map{|c| veteran.send(c)}
-          end
-        end
-      end
-    end
   end
 
   def show
@@ -137,7 +102,7 @@ class VeteransController < ApplicationController
         payload: {veteran_id: @veteran.id}.to_json) if not last_event.nil?
 
       cookies[:veteran_id] = @veteran.id
-      redirect_to @veteran, notice: 'Veteran was successfully created.'
+      redirect_to @veteran
     else
       render action: 'new'
     end
