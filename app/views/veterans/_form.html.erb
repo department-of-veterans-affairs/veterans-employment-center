@@ -93,7 +93,7 @@
           <div id="checkbox-list" class="skill_columns">
             <% @veteran.skills.each do |skill| %>
               <li>
-                <%= hidden_field(:veteran, :skills, value: skill.id, multiple: true) %>
+                <%= hidden_field(:veteran, :skill_ids, value: skill.id, multiple: true) %>
                 <span><%= skill.name %></span>
                 <span class="skill-deleter delete-link">remove</span>
               </li>
