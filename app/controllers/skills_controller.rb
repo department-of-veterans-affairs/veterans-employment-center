@@ -39,13 +39,11 @@ class SkillsController < ApplicationController
     # Validate query
     moc = params[:moc] || "DEFAULT"
     branch = params[:branch] || "DEFAULT"
-    status = params[:status] || "true"
-    category = params[:category] || "Enlisted"
 
     query_str = "MOC #{moc} with the #{branch.split.map(&:capitalize).join(' ')}"
 
     # Find matching unique MOC
-    occupation_matches = MilitaryOccupation.find_by_moc_branch_status_category(moc, branch, status, category)
+    occupation_matches = MilitaryOccupation.find_by_moc_and_branch(moc, branch)
     if occupation_matches.length == 0
       military_occupation = MilitaryOccupation.default_occupation(moc, branch)
     elsif occupation_matches.length > 1
