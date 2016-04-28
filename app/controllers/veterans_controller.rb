@@ -181,6 +181,7 @@ class VeteransController < ApplicationController
       awards_attributes: [:title, :veteran_id, :organization, :date, :id, :_destroy],
       experiences_attributes: [:job_title, :organization, :experience_type, :start_date, :end_date, :hours, :educational_organization, :credential_type, :credential_topic, :description, :veteran_id, :moc, :duty_station, :rank, :id, :_destroy],
       desiredPosition: [],
+      :skill_ids => [],
       status_categories: [],
       locations_attributes: [:id, :veteran_id, :location_type, :full_name, :city, :state, :country, :lat, :lng, :zip, :include_radius, :radius, :_destroy],
     )
