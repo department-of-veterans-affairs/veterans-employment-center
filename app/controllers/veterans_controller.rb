@@ -68,7 +68,7 @@ class VeteransController < ApplicationController
     @veteran = session[:linkedin_profile] ? Veteran.new_from_linkedin_profile(session[:linkedin_profile]) : Veteran.new
     @veteran.skills << Skill.find(params[:skills]) if params[:skills].present?
     return if params['moc'].blank? || params['branch'].blank?
-    occupation = MilitaryOccupation.find_by_moc_and_branch(params[:moc], params['branch']).first()
+    occupation = MilitaryOccupation.find_by_moc_branch_status_category(params[:moc], params['branch'], params['status'], params['category']).first()
     if occupation
       @veteran.experiences << Experience.new({
         moc: occupation.code,
