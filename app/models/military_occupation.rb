@@ -13,6 +13,11 @@ class MilitaryOccupation < ActiveRecord::Base
   def self.find_by_moc_branch_status_category(moc, branch, status, category)
     matches = MilitaryOccupation.where(
       'lower(code) = ? and lower(service) = ? and active = ? and category = ?', moc.downcase, branch.downcase, status, category)
+    matches.each do |m|
+      if !m.active
+        m.description = ''
+      end
+    end
     return matches
   end
 
