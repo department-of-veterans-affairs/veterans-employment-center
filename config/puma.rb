@@ -6,14 +6,14 @@ ENV['RAILS_RELATIVE_URL_ROOT'] = "/employment"
 #
 # The default is "development".
 #
-# environment 'production'
+environment 'production'
 
 # Configure "min" to be the minimum number of threads to use to answer
 # requests and "max" the maximum.
 #
 # The default is "0, 16".
 #
-threads 1, 5
+threads 16, 16
 
 # === Cluster mode ===
 
@@ -28,3 +28,17 @@ workers 3
 # value is 60 seconds.
 #
 worker_timeout 60
+
+
+# The below additions from https://github.com/puma/puma#thread-pool and better described in 
+#  https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server
+#
+preload_app!
+
+on_worker_boot do
+  ActiveRecord::Base.establish_connection
+end
+
+before_fork do
+  ActiveRecord::Base.connection_pool.disconnect!
+end

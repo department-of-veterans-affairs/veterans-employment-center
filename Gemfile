@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'caracal-rails', '1.0.1'
 gem 'caracal', '1.0.2'
-gem 'va_common', '0.3.4'
+gem 'va_common', '0.3.6'
 gem "font-awesome-rails"
 gem 'enumerize'
 gem 'newrelic_rpm'
@@ -42,7 +42,7 @@ gem 'ruby-saml', git: "https://github.com/greggersh/ruby-saml", branch: "vaafi-1
 gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
 gem 'schema_plus_pg_indexes'
 gem 'schema_plus_core', git: 'https://github.com/mikeauclair/schema_plus_core', branch: "handle_quoted_newline"
-gem 'puma', '~> 2.15.3'
+gem 'puma', '3.2.0'
 
 # Generates fake data. Used to create data for staging environment's fictitious veterans, awards, affiliations, employers, etc.
 gem 'ffaker'

@@ -17,7 +17,7 @@ class SkillsController < ApplicationController
   end
 
   def get_skills
-    query = "source in ('linkedin', 'bayes') and name ilike '#{params['prefix']}%'"
+    query = "source in ('linkedin') and name ilike '#{params['prefix']}%'"
     render json: Skill.where(query).select(:id, :name).to_json
   end
 
@@ -28,7 +28,7 @@ class SkillsController < ApplicationController
   def suggest
     # TODO: do this at load time, not on every query
     # Load the current skills translator model
-    model_id = ENV["SKILLS_TRANSLATOR_MODEL_ID"] || 1
+    model_id = ENV["SKILLS_TRANSLATOR_MODEL_ID"] || 3
     model = SkillsTranslatorModel.find_by(id: model_id)
     if model.nil?
       logger.error "Missing or bad ENV variable SKILLS_TRANSLATOR_MODEL_ID (#{model_id})"
@@ -39,13 +39,11 @@ class SkillsController < ApplicationController
     # Validate query
     moc = params[:moc] || "DEFAULT"
     branch = params[:branch] || "DEFAULT"
-    status = params[:status] || "true"
-    category = params[:category] || "Enlisted"
 
     query_str = "MOC #{moc} with the #{branch.split.map(&:capitalize).join(' ')}"
 
     # Find matching unique MOC
-    occupation_matches = MilitaryOccupation.find_by_moc_branch_status_category(moc, branch, status, category)
+    occupation_matches = MilitaryOccupation.find_by_moc_and_branch(moc, branch)
     if occupation_matches.length == 0
       military_occupation = MilitaryOccupation.default_occupation(moc, branch)
     elsif occupation_matches.length > 1
@@ -167,12 +165,12 @@ class SkillsController < ApplicationController
       # To ensure that we occasionally test all skills, no matter how
       # irrelevant we thought they were, we randomly replace a few
       # of our "relevant" skills with totally random skills.
-      percentage = 5 + strength * 15  # Replace 5-20%
+      percentage = strength * 10  # Replace 0-10%
       num_to_replace = (num_skills_to_return * percentage / 100).round
 
-      # Use only the linkedin and Bayes Impact generated corpus, so we don't
+      # Use only the linkedin corpus, so we don't
       # surface bizarre custom skills people have entered.
-      random_skills = Skill.where("source in ('bayes', 'linkedin')").limit(
+      random_skills = Skill.where("source in ('linkedin')").limit(
         num_to_replace).order("RANDOM()").to_a
 
       # if there are less available rnadom skills than the number we need to

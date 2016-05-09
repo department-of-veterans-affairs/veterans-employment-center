@@ -30,5 +30,9 @@ module EmploymentPortal
     config.autoload_paths += %W(#{Rails.root.to_s}/lib)
 
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+    
+    # Gzip files when possible
+    config.middleware.use Rack::Deflater
+    
   end
 end

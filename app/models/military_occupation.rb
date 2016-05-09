@@ -10,12 +10,6 @@ class MilitaryOccupation < ActiveRecord::Base
     return matches.length > 1 ? matches.where(active: true) : matches
   end
 
-  def self.find_by_moc_branch_status_category(moc, branch, status, category)
-    matches = MilitaryOccupation.where(
-      'lower(code) = ? and lower(service) = ? and active = ? and category = ?', moc.downcase, branch.downcase, status, category)
-    return matches
-  end
-
   def self.default_occupation(moc, branch)
     default = MilitaryOccupation.find_by_moc_and_branch('DEFAULT', 'DEFAULT').
                                  select(:id, :title, :category, :service,  \

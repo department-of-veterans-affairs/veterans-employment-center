@@ -35,9 +35,10 @@ module SkillsTranslatorUpdateModel
         next if event.nil?
 
         query_params = JSON.parse(query.payload)
+	next if event.shown_skills == 'null'
         shown_skills_array = JSON.parse(event.shown_skills)
         moc = MilitaryOccupation.find_by_moc_and_branch(query_params["moc"], query_params["branch"]).first
-
+	next if moc.nil?
         shown_skills_array.each {|shown_skill|
           count_skill_impression(moc.id, shown_skill["id"], shown_skill["page"], shown_skill["selected"])
         }
@@ -63,6 +64,7 @@ module SkillsTranslatorUpdateModel
       puts "Now updating the model. The new translator model id is #{@new_model.id}."
       @new_clicks_imps.each do |mocid, skill_hash|
         skill_hash.each do |skillid, click_imp|
+	  next if skillid.nil? or mocid.nil?
           moc_skill = load_current_relevance(mocid, skillid)
 
           new_impression = moc_skill.impressions + click_imp[1]

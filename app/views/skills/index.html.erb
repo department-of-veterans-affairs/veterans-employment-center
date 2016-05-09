@@ -30,38 +30,23 @@
                 <form name="skillRequestForm" ng-submit="submitForm()">
                   <fieldset class="no-margin">
                     <div class="row form-group dataItem">
-                      <div class="small-12 medium-5 columns">
+                      
+                      <div class="small-12 medium-4 columns">
                       <label for="military_position_branch">Branch of Service (required)</label>
                       <select name="military_position_branch" ng-model="formData.branch"
                               ng-options="name for (name, value) in branches"
                               required id="military_position_branch">
                       </select>
                       </div>
-		      <div class="small-12 medium-5 columns end">
+                      
+                      <div class="small-12 medium-5 columns">
                         <label for="military_position_code">Military Occupation Code (MOC) (required)</label>
                         <input name="military_position_code" id="military_position_code" type="text" ng-model="formData.moc" required/>
                       </div>
-		     </div>
-		     <div class="row form-group dataItem">
-		      <div class="small-12 medium-5 columns">
-                        <label for="military_position_status">Code Status</label>
-                        <select name="military_position_status" id="military_position_status" ng-model="formData.status" required/>
-                          <option value="true">Active
-                          <option value="false">Inactive
-			</select>
-		      </div>
-
-		      <div class="small-12 medium-5 columns end">
-                      <label for="military_position_category">Code Category</label>
-                      <select name="military_position_category" ng-model="formData.category"
-                              ng-options="name for (name, value) in categories"
-                              required id="military_position_category">
-                      </select>
+                    
+                      <div class="small-12 medium-3 columns">
+                        <input type="submit" value="Translate" class="button small expand button-margin-top">
                       </div>
-		    </div>
-                    <div class="small-12 medium-3 columns">
-                      <input type="submit" value="Translate" class="button small expand button-margin-top">
-                    </div>
                   </fieldset>
                 </form>
 
@@ -80,9 +65,6 @@
           <div class="small-12 medium-9 columns">
             <div class="row translation-results skill-translator-row" ng-show="data.mo" ng-cloak>
 
-              <div class="row">
-              </div>
-
               <div id="pill-box" ng-cloak>
                 <span ng-repeat="skill in data.shownSkills" class="skill-label"
                      id="skill_pill_{{skill.id}}"
@@ -91,22 +73,23 @@
                   <i class="fa fa-fw"></i>
                   {{skill.name}}
                 </span>
-
-                <span class="skill-label more-label" ng-click="showMoreSkills()" ng-show="data.allSkills.length > 0">
-                  <span class="btn-label"><i class="fa fa-fw fa-refresh"></i></span>
-                  Suggest more skills..
-                </span>
-              </div>
+	      </div>
               <div class="row">
                 <div class="small-12 medium-9 columns">
                   <em>Click checkboxes to import skills into the Résumé Builder</em> 
                 </div>
+		<div>
+                  <span class="skill-label more-label" ng-click="showMoreSkills()" ng-show="data.allSkills.length > 0">
+                  <span class="btn-label"><i class="fa fa-fw fa-refresh"></i></span>
+                    See more skills
+                  </span>
+                </div>
               </div>
               <br>
               <div class="row">
-                <div class="small-12 medium-6 columns">
+                <div class="medium-6 columns">
                   <b>Missing skills?</b> Search and add to your list
-                </div>
+		</div>
               </div>
               
               <div class="row">
