@@ -127,6 +127,8 @@
                     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
                     <input name="moc" type="hidden" value="{{formData.moc}}">
                     <input name="branch" type="hidden" value="{{formData.branch}}">
+                    <input name="status" type="hidden" value="{{formData.status}}">
+                    <input name="category" type="hidden" value="{{formData.category}}">
                     <input name="skills[]" type="hidden" ng-repeat="skill in data.selectedSkills" value="{{skill.id}}">
                   </form>
                   <button class="success secondary" id="importButton" ng-click="newResume()">
