@@ -40,14 +40,6 @@ describe "Static pages" do
       expect(page).not_to have_link 'Sign Out', href: "/veterans"
     end
 
-    it "should have a message to email OEC if a logged-in employer who is not approved" do
-      non_approved_employer = employer_user
-      non_approved_employer.employer.update_attributes(approved: false)
-      sign_in_as non_approved_employer
-      visit veterans_path
-      expect(page).to have_content 'unable to view Veteran contact information'
-    end
-
     it "should not have a message to email OEC if a logged-in employer who is approved" do
       approved_employer = employer_user
       approved_employer.employer.update_attributes(approved: true)

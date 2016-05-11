@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.5.1'
 gem 'pg', '0.15.1'
 
 # Use SCSS for stylesheets
@@ -54,6 +54,7 @@ gem 'libv8', '3.16.14.11'
 gem 'rubysl-securerandom'
 
 group :development, :test do
+  gem 'brakeman'
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara', '~> 2.3.0'
   gem 'factory_girl_rails', '4.2.1'

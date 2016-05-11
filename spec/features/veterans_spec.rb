@@ -8,53 +8,8 @@ feature 'visitors begins to build a new resume' do
 
   scenario "a guest user can start a new resume" do
     visit new_veteran_path
-    expect(page).to have_content 'build your profile'
+    expect(page).to have_content 'enter your information'
     expect(page).not_to have_selector 'h2', text: 'Sign in'
-  end
-end
-
-feature "an employer visits index of all veterans and can see the veterans" do
-  before do
-    @user = User.create(email: 'suzy@veteran.org', password: 'Password')
-    @vet = create :veteran, name: "Suzy Veteran", objective: "Build great web apps.", user: @user, visible: true
-  end
-
-  scenario "the employer is not logged in" do
-    visit veterans_path
-    expect(page).to have_content "Only signed in employers or administrators can view this page"
-  end
-
-  scenario "a user that is not an employer is logged in" do
-    user = create :user, email: 'test@example.com', password: '12345678'
-    sign_in_as user
-    visit veterans_path
-    expect(page).to have_content 'Signed in.'
-    expect(page).to have_content "Veterans Employment Center"
-    expect(page).not_to have_content "Search for Veterans"
-  end
-
-  scenario "the employer is logged in but not approved" do
-    non_approved_employer = employer_user
-    sign_in_as non_approved_employer
-    visit veterans_path
-    expect(page).to have_link 'Sign Out'
-    expect(page).to have_content 'Search for Veterans'
-    expect(page).to have_content 'Candidate'
-    expect(page).to have_content @vet.objective
-  end
-
-  scenario "the employer is logged in and approved" do
-    approved_employer = employer_user
-    approved_employer.employer.update_attributes(approved: true)
-    sign_in_as approved_employer
-    visit veterans_path
-    expect(page).to have_link 'Sign Out'
-    expect(page).to have_content 'Search for Veterans'
-    expect(page).to have_content @vet.name
-    expect(page).to have_content @vet.objective
-    click_link "Suzy Veteran"
-    expect(page).to have_content "Profile"
-    expect(page).to have_no_content "Sign in using your DS-LOGON"
   end
 end
 
@@ -85,8 +40,8 @@ feature "guests are restricted from editing or viewing veteran data" do
   scenario "guest can view a resume they created when marked as invisible" do
     visit new_veteran_path
     fill_in_resume_fields
-    click_button "Preview Your Veteran Profile and Résumé Content"
-    expect(page).to have_selector 'li', text: 'Profile'
+    click_button "Preview Your Résumé Content"
+    expect(page).to have_selector 'li', text: 'Résumé'
   end
 end
 
@@ -132,7 +87,7 @@ feature 'a veteran views a resume' do
   scenario 'a logged in veteran can see their own temporary profile' do
     visit new_veteran_path
     fill_in_resume_fields
-    click_button "Preview Your Veteran Profile and Résumé Content"
+    click_button "Preview Your Résumé Content"
     vet = Veteran.first
     expect(vet.session_id).not_to eq nil
   end
@@ -149,10 +104,10 @@ feature 'a veteran views a resume' do
     login_as user
     vet = create :veteran, name: "Suzy Veteran", email: 'suzy@veterans.org', objective: "Build great web apps.", user_id: user.id
     visit veteran_path(vet)
-    expect(page).to have_content 'Edit Profile'
-    click_link 'Edit Profile'
+    expect(page).to have_content 'Edit Résumé'
+    click_link 'Edit Résumé'
     fill_in "veteran_locations_attributes_0_full_name", with: "Mountain View, CA"
-    click_button "Preview Your Veteran Profile and Résumé Content"
+    click_button "Preview Your Résumé Content"
     expect(page).to have_content "Mountain View, CA"
   end
 end

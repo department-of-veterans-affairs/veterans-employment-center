@@ -96,18 +96,6 @@ feature 'employers edit their accounts' do
   end  
 end
 
-feature 'employers can search veteran profiles' do
-  before do
-    user = employer_user
-    sign_in_as(user)
-  end
-  
-  scenario 'employers click on search veterans link and they arrive at the veterans index page' do
-    visit veterans_path
-    expect(page).to have_content "Search for Veterans"
-  end
-end
-
 feature 'only admins can access employer index' do
   scenario "non-logged in user visits employer index route" do
     visit employer_list_path

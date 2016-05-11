@@ -71,7 +71,7 @@ FactoryGirl.define do
 
   factory :military_occupation do
     service "Army"
-    category "Category 1"
+    category "Enlisted"
     code "111"
     title "Expert Trainer"
     description "Expert trainers do training"
