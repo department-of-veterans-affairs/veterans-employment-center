@@ -154,14 +154,8 @@ Here's a list of the environment variables used by the application:
   - LINKEDIN\_OAUTH\_CLIENT\_ID - OAuth Client ID for LinkedIn Auth
   - LINKEDIN\_OAUTH\_CLIENT\_SECRET - OAuth Client Secret for LinkedIn Auth
   - NEW\_RELIC\_LICENSE\_KEY - License key for New Relic
-  - SAML\_CERT\_FINGERPRINT - Fingerprint for the SAML cert for AccessVA/DS Logon
-  - SAML\_SERVICE\_URL - Callback URL for SAML/DS Logon authentication
-  - SAML\_SSO\_TARGET\_URL - Target remote URL for AccessVA/DS Logon authentication
   - US\_JOBS\_API\_KEY - Key for accessing the US.jobs API
   - SKILLS\_TRANSLATOR\_MODEL\_ID - The skill translator model to use. This variable has to be increased every time the model gets retrained from new userdata.
-  - SKILLS\_TRANSLATOR\_PERCENT\_SKILLS\_RANDOM - To ensure that we occasionally test all skills, no matter how irrelevant we thought they were, we randomly replace a few of our "relevant" skills with totally random skills.
-  - SKILLS\_TRANSLATOR\_NUM\_SKILLS\_TO\_RETURN - The number of skills the backend should return for a branch and MOC. A number of these skills are picked at random (see variable above).
-  - SKILLS\_TRANSLATOR\_RELEVANCE\_EXPONENT - A large exponent tends to return skills in order of relevance. A small exponent will tend to pick more at random, surfacing more low-relevance skills. Zero will return skills completely random.
 
 ###Becoming an administrator locally for testing
 
