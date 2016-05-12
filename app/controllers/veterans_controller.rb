@@ -1,9 +1,8 @@
 class VeteransController < ApplicationController
   before_action :set_veteran, only: [:show, :edit, :update, :destroy, :favorite, :word]
   before_filter :ensure_employer, only: [:favorites, :favorite]
-  before_filter :ensure_employer_or_admin, only: [:index, :download_candidate_veterans]
-  before_filter :validate_veteran, only: [:edit, :destroy, :update]
-  before_filter :validate_veteran_or_employer, only: [:show, :word]
+  before_filter :ensure_employer_or_admin, only: [:index]
+  before_filter :validate_veteran, only: [:edit, :destroy, :update, :show, :word]
   before_filter :clean_params, only: [:create, :update]
   before_filter :ensure_admin, only: [:download_all_veterans]
 
@@ -14,22 +13,6 @@ class VeteransController < ApplicationController
   end
 
   def show
-  end
-
-  def download_all_veterans
-    @veterans = Veteran.all
-    respond_to do |format|
-      format.html
-      format.csv do
-        columns = Veteran.column_names
-        self.response_body = StreamCSV.new('veterans', self.response) do |csv|
-          csv << columns
-          @veterans.each do |veteran|
-            csv << columns.map{|c| veteran.send(c)}
-          end
-        end
-      end
-    end
   end
 
   def word
@@ -180,12 +163,12 @@ class VeteransController < ApplicationController
     elsif user_owns_veteran?
       return
     else
-      redirect_to_employer_login
+      redirect_to_home_page
     end
   end
 
   def validate_veteran
-    redirect_to_employer_login unless user_owns_veteran?
+    redirect_to_home_page unless user_owns_veteran?
   end
 
   def user_owns_veteran?
@@ -199,14 +182,9 @@ class VeteransController < ApplicationController
     end
   end
 
-  def redirect_to_employer_login
-    if current_user
-      flash[:error] = "You do not have access to that content."
-      redirect_to root_path
-    else
-      flash[:error] = "You must be signed in to access this content."
-      redirect_to new_user_session_path
-    end
+  def redirect_to_home_page
+    flash[:error] = "You do not have access to that content."
+    redirect_to root_path
   end
 
   def clean_params
