@@ -28,13 +28,13 @@ feature "guests are restricted from editing or viewing veteran data" do
     vet = create :veteran, visible: true
     visit veteran_path(vet)
     expect(page).to have_no_selector 'h1', text: 'Résumé'
-    expect(page).to have_content "You must be signed in to access this content."
+    expect(page).to have_content "You do not have access to that content."
   end
 
   scenario "guest cannot edit a veteran profile" do
     vet = create :veteran, visible: false, name: "Suzy Veteran"
     visit edit_veteran_path(vet)
-    expect(page).to have_content "You must be signed in to access this content."
+    expect(page).to have_content "You do not have access to that content."
   end
 
   scenario "guest can view a resume they created when marked as invisible" do
@@ -50,7 +50,7 @@ feature 'employers can view veterans resumes' do
     vet = create :veteran
     visit veteran_path(vet)
     expect(page).to have_no_selector '.resume_section', text: 'Objective'
-    expect(page).to have_content 'Sign in with LinkedIn'
+    expect(page).to have_content 'You do not have access to that content'
   end
 
   scenario 'a logged in user that is not an employer cannot view veteran profiles' do
@@ -62,24 +62,22 @@ feature 'employers can view veterans resumes' do
     expect(page).to have_selector '#flash_error'
   end
 
-  scenario 'a logged in employer that is not approved can view the profile but not the name' do
+  scenario 'a logged in employer that is not approved cannot view the profile but not the name' do
     non_approved_employer = employer_user
     sign_in_as non_approved_employer
     vet = create :veteran, name: "Suzy Veteran", objective: "Build great web apps."
     visit veteran_path(vet)
-    expect(page).to have_content "Candidate Name/Email Hidden Until You Are Approved"
-    expect(page).not_to have_content vet.name
-    expect(page).not_to have_selector '#flash_error'
+    expect(page).to have_content "You do not have access to that content"
+    expect(page).to have_selector '#flash_error'
   end
 
-  scenario 'a logged in employer that is approved can view veteran profiles, including names' do
+  scenario 'a logged in employer that is approved cannot view veteran profiles, including names' do
     approved_employer = employer_user
     approved_employer.employer.update_attributes(approved: true)
     sign_in_as approved_employer
     vet = create :veteran, name: "Suzy Veteran", objective: "Build great web apps."
     visit veteran_path(vet)
-    expect(page).to have_content vet.name
-    expect(page).not_to have_selector 'h2', text: 'Sign in'
+    expect(page).to have_content "You do not have access to that content"
   end
 end
 
