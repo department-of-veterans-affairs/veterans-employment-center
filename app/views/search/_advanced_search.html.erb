@@ -1,27 +1,5 @@
 <div id="adv-srch-flds" class="advancedSearch" style="display: <%= params[:searchType] != 'advanced' ? 'none' : 'block' %>;">
   <div class="row">
-    <div class="small-12 medium-2 columns">
-      <label class="main" for="zc1">Zip Code
-        <span class="field-details"><span class="example">(5 digits)</span></span>
-      </label>
-      <input id="zc1" name="zc1" class="clearable zip" type="text" value="<%= us_jobs_search_params['zip'] %>" maxlength="5">
-    </div>
-    <div class="small-12 medium-2 columns left">
-      <label class="main" for="rd1">Distance
-        <span class="field-details"><span class="example">(in miles)</span></span>
-      </label>
-      <select id="rd1" name="rd1" class="distance">
-        <option value="5" <%= "selected" if us_jobs_search_params['rd1'] == "5" %>>5</option>
-        <option value="10" <%= "selected" if us_jobs_search_params['rd1'] == "10" %>>10</option>
-        <option value="15" <%= "selected" if us_jobs_search_params['rd1'] == "15" %>>15</option>
-        <option value="25" <%= "selected" if us_jobs_search_params['rd1'] == "25" %>>25</option>
-        <option value="50" <%= "selected" if us_jobs_search_params['rd1'] == "50" %>>50</option>
-        <option value="100" <%= "selected" if us_jobs_search_params['rd1'] == "100" %>>100</option>
-        <option value="300" <%= "selected" if us_jobs_search_params['rd1'] == "300" %>>300</option>
-      </select>
-    </div>
-  </div>
-  <div class="row">
     <div class="small-12 medium-8 columns left">
       <label class="main" for="onet">Occupation Group
         <span class="field-details"><span class="example">(type of job)</span></span>
