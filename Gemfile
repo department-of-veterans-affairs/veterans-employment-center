@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.1'
+gem 'rails', '4.2.5.2'
 gem 'pg', '0.15.1'
 
 # Use SCSS for stylesheets
@@ -20,6 +20,7 @@ gem 'jquery-validation-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'actionpack', '4.2.5.2'
 gem 'caracal-rails', '1.0.1'
 gem 'caracal', '1.0.2'
 gem 'va_common', '0.3.6'
