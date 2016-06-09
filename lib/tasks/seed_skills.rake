@@ -65,7 +65,6 @@ namespace :db do
     puts "Inserted #{inserts.length} default skills.\n\n"
   end
   
-  ## Copied from lib/migration_helper.rb
   def mass_skills_translator_insert(inserts, translator_model_id)
     # Given an array of [military_occupation_id, skill_id, relevance] arrays,
     # inserts them all into the skill mapping table with the given model id.
