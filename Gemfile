@@ -69,6 +69,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'guard'
   gem 'guard-rspec', require: false
+  gem 'bundler-audit'
 end
 
 group :test do
