@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.1'
+gem 'rails', '4.2.5.2'
 gem 'pg', '0.15.1'
 
 # Use SCSS for stylesheets
@@ -27,7 +27,7 @@ gem "font-awesome-rails"
 gem 'enumerize'
 gem 'newrelic_rpm'
 gem 'httparty', '0.13.1'
-gem 'nokogiri'
+gem 'nokogiri', '~> 1.6'
 gem 'will_paginate', '~> 3.0'
 gem "ransack", '1.6.6'
 gem "pg_search"
@@ -69,6 +69,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'guard'
   gem 'guard-rspec', require: false
+  gem 'bundler-audit'
 end
 
 group :test do
