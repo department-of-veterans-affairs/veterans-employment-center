@@ -2,22 +2,17 @@
 <div id="content" class="interior">
   <a href="#content" class="sr-only">Content starts here.</a>
 
-  <div class="splash">
-    <div class="row">
-      <div class="small-12 columns">
-        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
-          <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
-          <li class="parent"><%= link_to "Employers", employer_home_path %></li>
-	  <li class="active">Commitments</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
   <div class="section one">
     <% unless user_signed_in? && current_user.is_employer? %>
       <div class="row">
         <div class="small-12 medium-8 columns">
+          <nav class="va-nav-breadcrumbs">
+            <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
+              <li><%= link_to "Careers and Employment", root_path %></li>
+              <li class="parent"><%= link_to "Employers", employer_home_path %></li>
+              <li class="active">Commitments</li>
+            </ul>
+          </nav>
           <div class="primary">
             <p>Veterans and military family members have consistently proven themselves to be reliable, independent, and hardworking team members. Veterans also have soft skills such as problem solving and creativity that can benefit a company’s bottom line. By signing up and making a commitment, your company will stand out to candidates eager to enter the civilian workforce.</p>
           </div>
