@@ -1,0 +1,13 @@
+// // Mobile First Breakpoints
+// $small-screen:      481px;
+// $medium-screen:     600px;
+// $large-screen:      1201px;
+
+html,
+body {
+  font-size: 100%;
+}
+
+form {
+  max-width: 50rem;
+}
