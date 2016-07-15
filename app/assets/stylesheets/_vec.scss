@@ -71,6 +71,15 @@ button {
   position: static;
 }
 
+// Global Styles
+
+.va-notice--banner {
+  p {
+    font-weight: 300;
+  }
+}
+
+
 // Some overrides to look into more later
 ul li:before {
   content:none;
