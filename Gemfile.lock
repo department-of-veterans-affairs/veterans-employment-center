@@ -448,14 +448,12 @@ DEPENDENCIES
   enumerize
   factory_girl_rails (= 4.2.1)
   ffaker
-  font-awesome-rails
   geocoder
   guard
   guard-rspec
   hirb
   httparty (= 0.13.1)
   jbuilder (~> 1.2)
-  jquery-rails
   jquery-validation-rails
   launchy
   libv8 (= 3.16.14.11)
