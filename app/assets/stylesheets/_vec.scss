@@ -461,4 +461,17 @@ h1:first-child {
 
 .section.one {
     padding: 0;
+    p:nth-child(1), p:first-of-type {
+      color: #205493;
+      letter-spacing: normal;
+      font-size: 1.25em;
+    }
+}
+
+form {
+  max-width: 100%;
+  input[type="submit"] {
+    font-size: 1em;
+    margin-bottom: 0;
+  }
 }
