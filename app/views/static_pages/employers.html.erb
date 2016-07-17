@@ -11,6 +11,7 @@
 <% end %>
 <nav class="va-nav-breadcrumbs">
   <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
+    <li><a href="/">Home</a></li>
     <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
     <% if user_signed_in? && current_user.is_employer? %>
         <li class="active">Your Employer Account</li>
