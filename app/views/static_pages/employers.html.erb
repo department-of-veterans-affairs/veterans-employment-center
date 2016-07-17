@@ -9,20 +9,19 @@
     </div>
   </div>
 <% end %>
-
+<nav class="va-nav-breadcrumbs">
+  <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
+    <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
+    <% if user_signed_in? && current_user.is_employer? %>
+        <li class="active">Your Employer Account</li>
+    <% else %>
+        <li class="active">Employers</li>
+    <% end %>
+  </ul>
+</nav>
 <div class="section one">
   <div class="row">
     <div class="small-12 medium-8 columns">
-      <nav class="va-nav-breadcrumbs">
-            <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
-              <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
-              <% if user_signed_in? && current_user.is_employer? %>
-                  <li class="active">Your Employer Account</li>
-              <% else %>
-                  <li class="active">Employers</li>
-              <% end %>
-            </ul>
-          </nav>
       <div class="primary">
         <p>Welcome to the Veterans Employment Center. You can post a job, make a hiring commitment, and discover resources to support employees who are Veterans and military family members.</p>
       </div>

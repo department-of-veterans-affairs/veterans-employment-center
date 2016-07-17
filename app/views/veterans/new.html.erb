@@ -2,18 +2,17 @@
 
 <div id="content" class="interior">
   <a id="content" href="#content" class="sr-only">Content starts here.</a>
-
+  <nav class="va-nav-breadcrumbs">
+    <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
+      <li><%= link_to "Careers and Employment", root_path %></li>
+      <li class="parent"><%= link_to "Job Seekers", job_seekers_path %></li>
+      <li class="active">Résumé Builder</li>
+    </ul>
+  </nav>
   <% if user_signed_in? && current_user.is_employer? %>
       <div class="section one">
         <div class="row">
           <div class="small-12 medium-9 columns">
-          <nav class="va-nav-breadcrumbs">
-            <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
-              <li><%= link_to "Careers and Employment", root_path %></li>
-              <li class="parent"><%= link_to "Job Seekers", job_seekers_path %></li>
-              <li class="active">Résumé Builder</li>
-            </ul>
-          </nav>
             <div class="primary">
               <div data-alert class="alert-box">
                 <h4>You are currently logged in as an employer.</h4>
@@ -27,13 +26,6 @@
       <div class="section one">
         <div class="row">
           <div class="small-12 medium-9 columns">
-          <nav class="va-nav-breadcrumbs">
-            <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
-              <li><%= link_to "Careers and Employment", root_path %></li>
-              <li class="parent"><%= link_to "Job Seekers", job_seekers_path %></li>
-              <li class="active">Résumé Builder</li>
-            </ul>
-          </nav>
             <div class="primary">
 
               <p>The Veterans Employment Center (VEC) can help you build a civilian or federal résumé.</p>
