@@ -373,6 +373,12 @@ select {
 // Long term goal is to drop Foundation.
 //========================================================
 
+$base-font-size: rem(16px);
+
+body {
+  font-size: $base-font-size;
+}
+
 .accordion .accordion-navigation > a, 
 .accordion dd > a {
   font-size: inherit;
@@ -381,6 +387,16 @@ select {
 
 p, ul, ol, dl {
   font-size: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.5;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: rem(32px);
+  margin: 0.67em 0;
 }
 
 .section.one {
@@ -405,9 +421,6 @@ p, ul, ol, dl {
     background-position: 100% 50%;
   }
 
-  p {
-    font-size: inherit
-  }
 }
 
 #search_form input[type="text"] {
@@ -434,7 +447,7 @@ button {
   position: static;
 }
 
-// Global Styles
+// Global Styles that should be added to va_common at some point
 
 .va-notice--banner {
   p {
@@ -444,4 +457,8 @@ button {
 
 h1:first-child {
     margin-top: 0;
+}
+
+.section.one {
+    padding: 0;
 }
