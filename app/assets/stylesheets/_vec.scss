@@ -433,9 +433,12 @@ h1 {
 
 table tr th,
 table tr td,
+table tbody tr th, 
+table tbody tr td,
 table thead tr th,
 table thead tr td {
   font-size: inherit;
+  line-height: 2rem;
 }
 
 dl dt, dl dd {
