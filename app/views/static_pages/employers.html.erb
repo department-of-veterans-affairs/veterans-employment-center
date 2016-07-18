@@ -23,37 +23,48 @@
 <div class="section one">
   <div class="row">
     <div class="small-12 medium-8 columns">
-      <div class="primary">
-        <p>Welcome to the Veterans Employment Center. You can post a job, make a hiring commitment, and discover resources to support employees who are Veterans and military family members.</p>
-      </div>
+      <h1>Your Employer Account</h1>
+      <p>Welcome to the Veterans Employment Center. You can post a job, make a hiring commitment, and discover resources to support employees who are Veterans and military family members.</p>
     </div>
   </div>
 
   <div class="row">
-    <div class="small-12 columns">
+    <div class="small-12">
       <div class="section-nav">
-        <ul class="small-block-grid-1 medium-block-grid-2 cards small">
-          <li>
-            <a href='/employment/employers/post-a-job/' class="long">
-              <h4 class="alternate">Post a Job</h4>
+        <ul class="va-cards va-cards--2across">
+          <li class="va-card">
+            <a href='/employment/employers/post-a-job/' class="va-card-body">
+              <h3 class="va-card-title">Post a Job</h3>
               <span>Your listing will be searchable by our Veteran workforce and their families.</span>
             </a>
           </li>
-           <li>
-              <%= link_to commitments_path, class: "long" do %>
-              <h4 class="alternate">View All Hiring Commitments</h4>
+           <li class="va-card">
+              <%= link_to commitments_path, class: "va-card-body" do %>
+              <h4 class="va-card-title">View All Hiring Commitments</h4>
               <span>See who has made a public commitment to hire Veterans.</span>
               <% end %>
            </li>
         
            <% if user_signed_in? && current_user.is_employer? %>
-            <li>
-  	            <%= link_to edit_employer_path(current_user.employer ), class: 'long' do %>
-                <h4 class="alternate">Manage Your Profile and Hiring Commitment</h4>
+            <li class="va-card">
+  	            <%= link_to edit_employer_path(current_user.employer ), class: 'va-card-body' do %>
+                <h4 class="va-card-title">Manage Your Profile and Hiring Commitment</h4>
                 <span>Update your basic account information and make a public commitment to hire Veterans.</span>
                 <% end %>
             </li>
         	  <% end %>
+            <li class="va-card">
+              <a href='/employment/employers/support-veteran-employees/' class="va-card-body">
+                <h4 class="va-card-title">Workplace Support</h4>
+                <span>Find ways to make your Veteran employees feel at home.</span>
+              </a>
+            </li>
+            <li class="va-card">
+              <a href='/employment/employers/apprenticeship/' class="va-card-body">
+                <h4 class="va-card-title">Establish an Apprenticeship</h4>
+                <span>Apprenticeship programs are available for Veterans using their VA education benefits.</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -72,26 +83,5 @@
       <%end%>
   </div>
 </div>
-  <!-- Navigation -->
 
-  <div class="navigation">
-    <div class="row">
-      <div class="small-12 columns">
-        <ul class="small-block-grid-1 medium-block-grid-3 cards small">
-          <li>
-            <a href='/employment/employers/support-veteran-employees/'>
-              <h5>Workplace Support</h5>
-              <span>Find ways to make your Veteran employees feel at home.</span>
-            </a>
-	        </li>
-          <li>
-            <a href='/employment/employers/apprenticeship/'>
-              <h5>Establish an Apprenticeship</h5>
-              <span>Apprenticeship programs are available for Veterans using their VA education benefits.</span>
-            </a>
-	        </li>
-        </ul>
-      </div>
-    </div>
-  </div>
 </div>
