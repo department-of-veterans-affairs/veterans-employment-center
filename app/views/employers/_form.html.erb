@@ -72,7 +72,7 @@
         <%= f.text_field :poc_email, class: "form-control" %>
       </div>
     </div>
-
+    <br/>
 	  <h3 id="hiring-commitments">Veteran Hiring Commitment</h3>
     <p>Share your commitment to hiring Veterans! The information you provide here <b>will be made public</b> to help Veterans seeking employment connect with committed employers. We encourage you to return often to keep this information current.</p>
 
@@ -119,12 +119,7 @@
 	    </div>
 		  <div class="small-12 columns input-group">
         <div class="row collapse">
-		      <div class="small-1 columns">
-            <span class="prefix">http://</span>
-          </div>
-          <div class="small-11 columns">
-		        <%= f.text_field :website, class: "form-control" %>
-          </div>
+          <%= f.text_field :website, class: "form-control" %>
 	      </div>
       </div>
 	  </div>
@@ -150,6 +145,7 @@
         <%= f.label :job_postings_url, "URL of page with job postings" %>
         <%= f.text_field :job_postings_url, class: "form-control" %>
       </div>
+      <br/><br/>
       <div class="small-12 columns">
         <p>
           By specifying a job postings URL and making a commitment to hire veterans, your jobs will be featured in the Veterans Employment Center job search. You have several options for this <abbr>URL</abbr>; it can point to any one of the following:
@@ -180,7 +176,7 @@
     <div class="row">
       <div class="small-12 columns">
         <div class="actions">
-	  <span id="click-button" class="button primary">Update Employer</span>
+	  <span id="click-button" class="usa-button">Update Employer</span>
 	  <%= f.submit style: "display:none;", id: "submit-button" %>
         </div>
       </div>
