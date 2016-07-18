@@ -473,5 +473,15 @@ form {
   input[type="submit"] {
     font-size: 1em;
     margin-bottom: 0;
+    &.page-end {
+      margin-bottom: 1em;
+    }
+  }
+  .usa-button, button[type="button"], button[type="submit"] {
+    margin: 0;
+  }
+  legend {
+    font-size: 2rem;
+    font-weight: 700;
   }
 }

@@ -1,17 +1,13 @@
 <% provide(:title, "Home") %>
 <div id="content" class="interior">
   <a id="content" href="#content" class="sr-only">Content starts here.</a>
-
-  <div class="splash">
-    <div class="row">
-      <div class="small-12 columns">
-        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
-          <li class="active"><h2>Veterans Employment Center</h2></li>
-        </ul>
-      </div>
-    </div>
-  </div>
   <%= render 'layouts/navigation' %>
+  <nav class="va-nav-breadcrumbs">
+    <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
+      <li class="parent"><a href="/">Home</a></li>
+      <li class="active">Veterans Employment Center</li>
+    </ul>
+  </nav>
   <div class="section one">
 
     <div class="primary">
