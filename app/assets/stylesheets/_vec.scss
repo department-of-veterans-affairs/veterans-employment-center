@@ -468,6 +468,12 @@ h1:first-child {
     }
 }
 
+.usa-button {
+  &.sign-in {
+    width: 100%;
+  }
+}
+
 form {
   max-width: 100%;
   input[type="submit"] {
