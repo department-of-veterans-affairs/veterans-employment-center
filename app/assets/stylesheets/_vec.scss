@@ -13,7 +13,7 @@ ul li:before {
 // Search
 .employer-login {
    appearance: none;
-   background-color: #008CBA ;
+   background-color: #205493;
    border: 0;
    border-radius: .3rem;
    color: #fff;
@@ -21,7 +21,7 @@ ul li:before {
    display: inline-block;
    font-family: "Source Sans Pro","Helvetica","Arial",sans-serif;
    font-size: 1rem;
-   font-weight: 700;
+   font-weight: 500;
    line-height: 0.2;
    margin-bottom: 0.5em;
    margin-right: 0.5em;
@@ -33,7 +33,10 @@ ul li:before {
    width: auto;
    &:hover {
      color: #fff;
-     background-color: #006080;
+     background-color: #0071bc;
+   }
+   &:visited {
+     color: #fff;
    }
 }
 
