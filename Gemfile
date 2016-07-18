@@ -14,7 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
-# gem 'jquery-rails'
+gem 'jquery-rails'
 gem 'jquery-validation-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'caracal-rails', '1.0.1'
 gem 'caracal', '1.0.2'
 gem 'va_common', '0.4.1'
-# gem "font-awesome-rails"
+gem "font-awesome-rails"
 gem 'enumerize'
 gem 'newrelic_rpm'
 gem 'httparty', '0.13.1'
