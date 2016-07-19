@@ -1,17 +1,15 @@
 <% provide(:title, "View Profile") %>
 <div id="content" class="interior">
   <a href="#content" class="sr-only">Content starts here.</a>
-    <div class="splash">
-      <div class="row">
-        <div class="small-12 columns">
-          <ul class="breadcrumbs" role="menubar" aria-label="Primary">
-	    <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
-	    <li class="parent"><%= link_to "Job Seekers", job_seekers_path %></li>
-            <li class="active">Résumé</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+  
+  <nav class="va-nav-breadcrumbs">
+    <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
+      <li><a href="/">Home</a></li>
+      <li><%= link_to "Careers and Employment", root_path %></li>
+      <li class="parent"><%= link_to "Job Seekers", job_seekers_path %></li>
+      <li class="active">Résumé</li>
+    </ul>
+  </nav>
     <div class="section one">
       <div class="row">
         <div class="small-12 columns">
@@ -49,11 +47,11 @@
 
                       <% if user_signed_in? %>
                         <% unless current_user.is_employer? %>
-                          <%= link_to("Edit Résumé".html_safe, edit_veteran_path(@veteran), class: 'button right alternate') %>
+                          <%= link_to("Edit Résumé".html_safe, edit_veteran_path(@veteran), class: 'usa-button right alternate') %>
                           <% end %>
                       <% else %>
                         <!-- This seems wrong. They should only see edit if it is their profile. -->
-                        <%= link_to("Edit Résumé".html_safe, edit_veteran_path(@veteran), class: 'button right alternate') %>
+                        <%= link_to("Edit Résumé".html_safe, edit_veteran_path(@veteran), class: 'usa-button right alternate') %>
                       <% end %>
                     </div>
                   </div>
@@ -273,10 +271,10 @@
               </div>
               <div class="row" id="download_buttons">
                 <div class="small-6 medium-4 columns">
-                  <%= link_to "Download as résumé".html_safe, word_veteran_path(fed: false, format: :docx), class: "button tertiary expand", id: "download_resume" %>
+                  <%= link_to "Download as résumé".html_safe, word_veteran_path(fed: false, format: :docx), class: "usa-button tertiary expand", id: "download_resume" %>
 		</div>
                 <div class="small-6 medium-4 columns">
-                  <%= link_to "Download as résumé for federal employment".html_safe, word_veteran_path(fed: true, format: :docx), class: "button tertiary expand", id: "download_fed_resume" %>
+                  <%= link_to "Download as résumé for federal employment".html_safe, word_veteran_path(fed: true, format: :docx), class: "usa-button tertiary expand", id: "download_fed_resume" %>
 
                   <div>
                     <p>This download contains placeholders for Federal-specific data you can fill or remove as needed.</p>
