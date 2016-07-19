@@ -1,6 +1,7 @@
 <% provide(:title, "Commitments") %>
 <div id="content" class="interior">
   <a href="#content" class="sr-only">Content starts here.</a>
+
   <nav class="va-nav-breadcrumbs">
     <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
       <li><a href="/">Home</a></li>
@@ -9,39 +10,16 @@
       <li class="active">Commitments</li>
     </ul>
   </nav>
+
   <div class="section one">
     <% unless user_signed_in? && current_user.is_employer? %>
       <div class="row">
-        <div class="small-12 medium-7 columns">
+        <div class="small-12 medium-8 columns">
           <h1>Commitments</h1>
           <p>Veterans and military family members have consistently proven themselves to be reliable, independent, and hardworking team members. Veterans also have soft skills such as problem solving and creativity that can benefit a company’s bottom line. By signing up and making a commitment, your company will stand out to candidates eager to enter the civilian workforce.</p>
         </div>
-        <% if user_signed_in? && current_user.is_employer? %>
-        <div class="small-12 medium-4 columns feature">
-          <% if current_user.employer.commit_to_hire.present? %>
-            <h5>You've publicly committed to hire <%= number_with_delimiter(current_user.employer.commit_to_hire, :delimiter => ',') %> Veterans<% if current_user.employer.commit_date.present? %> by <%= current_user.employer.commit_date.strftime("%b %d, %Y") %><% end %>.<% if current_user.employer.commit_hired.present? %> So far, you've hired <%= number_with_delimiter(current_user.employer.commit_hired, :delimiter => ',') %>.<% end %>
-            </h5>
-            <div class="actions">
-              <%= link_to "Update Your Commitment", edit_employer_path(current_user.employer, anchor: 'hiring-commitments' ), class: 'button expand' %>
-            </div>
-          <% else %>
-            <h5>You haven't yet made a public commitment to hire Veterans.</h5>
-            <br/><br/>
-            <div class="actions">
-              <%= link_to "Make/Update Your Commitment", edit_employer_path(current_user.employer, anchor: 'hiring-commitments' ), class: 'button expand' %>
-            </div>
-          <% end %>
-        </div>
-        <% else %><!-- employer not logged in -->
-        
-        <div class="small-12 medium-4 columns feature">
-          <h5>Employers:<br />Log in to create/manage your hiring commitment.</h5>
-          <div class="actions">
-            <%= link_to "Sign in with LinkedIn", user_omniauth_authorize_path(:linkedin), class: "usa-button sign-in" %> <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), class: "usa-button sign-in" %>
-            </div>
-        </div>
-        <% end %>
       </div>
+
       <% end %>
 
       <div class="row">
@@ -71,6 +49,33 @@
 
         </div>  
       </div>
+
+      <% if user_signed_in? && current_user.is_employer? %>
+        <div class="small-12 medium-4 columns feature">
+          <% if current_user.employer.commit_to_hire.present? %>
+            <h5>You've publicly committed to hire <%= number_with_delimiter(current_user.employer.commit_to_hire, :delimiter => ',') %> Veterans<% if current_user.employer.commit_date.present? %> by <%= current_user.employer.commit_date.strftime("%b %d, %Y") %><% end %>.<% if current_user.employer.commit_hired.present? %> So far, you've hired <%= number_with_delimiter(current_user.employer.commit_hired, :delimiter => ',') %>.<% end %>
+            </h5>
+            <div class="actions">
+              <%= link_to "Update Your Commitment", edit_employer_path(current_user.employer, anchor: 'hiring-commitments' ), class: 'button expand' %>
+            </div>
+          <% else %>
+            <h5>You haven't yet made a public commitment to hire Veterans.</h5>
+            <br/><br/>
+            <div class="actions">
+              <%= link_to "Make/Update Your Commitment", edit_employer_path(current_user.employer, anchor: 'hiring-commitments' ), class: 'button expand' %>
+            </div>
+          <% end %>
+        </div>
+        <% else %><!-- employer not logged in -->
+
+        <div class="small-12 medium-4 columns feature">
+          <h5>Employers:<br />Log in to create/manage your hiring commitment.</h5>
+          <div class="actions">
+            <%= link_to "Sign in with LinkedIn", user_omniauth_authorize_path(:linkedin), class: "usa-button sign-in" %> <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), class: "usa-button sign-in" %>
+          </div>
+        </div>
+        <% end %>
+
     </div><!-- end row 2 -->
     
     <div class="row">
