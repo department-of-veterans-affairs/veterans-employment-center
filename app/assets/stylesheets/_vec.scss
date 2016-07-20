@@ -442,6 +442,13 @@ table thead tr td {
   line-height: 2rem;
 }
 
+table caption {
+  text-align: left;
+  font-size: 2rem;
+  padding: 2rem 0;
+  color: $color-primary-darkest;
+}
+
 dl dt, dl dd {
   margin-bottom: 0;
 }
