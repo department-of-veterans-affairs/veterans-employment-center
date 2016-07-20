@@ -22,7 +22,7 @@ feature 'employers edit their accounts' do
   
   scenario 'when an employer indicates a hiring commitment category, it appears on their show page', :js => true do
     visit edit_employer_path(@user.employer)
-    check 'Homeless'
+    page.find("#employer_commitment_categories_homeless").trigger("click")
     find('#click-button').click
     expect(page).to have_content "Homeless"
   end

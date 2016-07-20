@@ -1,25 +1,19 @@
 <div ng-app="skill-translator" ng-controller="SkillCtrl">
 <div id="content" class="interior">
     <a href="#content" class="sr-only">Content starts here.</a>
-
-    <div class="splash">
-      <div class="row">
-        <div class="small-12 columns">
-          <ul class="breadcrumbs" role="menubar" aria-label="Primary">
-	    <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
-	    <li class="parent"><%= link_to "Job Seekers", job_seekers_path %></li>
-	    <li class="active">Military Skills Translator</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
+    <nav class="va-nav-breadcrumbs">
+      <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
+        <li><a href="/">Home</a></li>
+        <li><%= link_to "Careers and Employment", root_path %></li>
+        <li class="parent"><%= link_to "Job Seekers", job_seekers_path %></li>
+        <li class="active">Military Skills Translator</li>
+      </ul>
+    </nav>
     <div class="section one">
       <div class="row">
         <div class="small-12 medium-9 columns">
-          <div class="primary">
-            <p>Convert your military experience into civilian language that hiring managers can easily understand.</p>
-          </div>
+          <h1>Military Skills Translator</h1>
+          <p>Convert your military experience into civilian language that hiring managers can easily understand.</p>
         </div>
         <div class="small-12 medium-9 columns">
           <div class="filters row skill-translator-row">
@@ -59,8 +53,8 @@
                       </select>
                       </div>
 		    </div>
-                    <div class="small-12 medium-3 columns">
-                      <input type="submit" value="Translate" class="button small expand button-margin-top">
+                    <div class="small-12 medium-3">
+                      <input type="submit" value="Translate">
                     </div>
                   </fieldset>
                 </form>
@@ -116,7 +110,7 @@
                         <input type="text" class="sfTypeahead" options="exampleOptions" datasets="typeaheadData" ng-model="state.newSkill" placeholder="Search" id="selectSkills">
                       </div>
                       <div class="small-3 columns">
-                        <button class="button expand postfix">Add</button>
+                        <button class="usa-button">Add</button>
                       </div>
                     </div>
                   </form>

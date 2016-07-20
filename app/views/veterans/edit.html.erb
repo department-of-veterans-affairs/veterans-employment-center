@@ -1,17 +1,14 @@
 <% provide(:title, "Edit Your Profile") %>
 <div id="content" class="interior">
   <a id="content" href="#content" class="tabLink sr-only">Content starts here.</a>
-  <div class="splash">
-    <div class="row">
-      <div class="small-12 columns">
-        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
-          <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
-          <li class="parent"><%= link_to "Job Seekers", job_seekers_path %></li>
-          <li class="active">Edit Résumé</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+    <nav class="va-nav-breadcrumbs">
+    <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
+      <li><a href="/">Home</a></li>
+      <li><%= link_to "Careers and Employment", root_path %></li>
+      <li class="parent"><%= link_to "Job Seekers", job_seekers_path %></li>
+      <li class="active">Edit Résumé</li>
+    </ul>
+  </nav>
   <div class="section one">
     <div class="row">
       <div class="small-12 columns">

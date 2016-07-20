@@ -13,7 +13,7 @@ ul li:before {
 // Search
 .employer-login {
    appearance: none;
-   background-color: #008CBA ;
+   background-color: #205493;
    border: 0;
    border-radius: .3rem;
    color: #fff;
@@ -21,7 +21,7 @@ ul li:before {
    display: inline-block;
    font-family: "Source Sans Pro","Helvetica","Arial",sans-serif;
    font-size: 1rem;
-   font-weight: 700;
+   font-weight: 500;
    line-height: 0.2;
    margin-bottom: 0.5em;
    margin-right: 0.5em;
@@ -33,7 +33,10 @@ ul li:before {
    width: auto;
    &:hover {
      color: #fff;
-     background-color: #006080;
+     background-color: #0071bc;
+   }
+   &:visited {
+     color: #fff;
    }
 }
 
@@ -151,6 +154,7 @@ ul li:before {
 .alert-box.notice {
   margin-bottom: 0px;
   font-weight: 400;
+  font-size: inherit;
 }
 
 .alert-box.error_highlight {
@@ -345,5 +349,152 @@ fieldset {
   }
   .result:last-child {
     border-bottom: none;
+  }
+}
+
+
+// VA Crisis Line 
+
+.va-crisis-line {
+  &:hover, &:focus {
+    background-color: $color-gold;
+    color: rgb(0,0,0);
+  }
+}
+
+//========================================================
+// These styles override USWDS styles for visual
+// compatibility with current vets.gov look
+//========================================================
+select {
+  height: auto;
+}
+
+
+//========================================================
+// These styles override Foundation styles
+// for visual compatibility with the current vets.gov look
+// Long term goal is to drop Foundation.
+//========================================================
+
+$base-font-size: rem(16px);
+
+body {
+  font-size: $base-font-size;
+}
+
+.accordion .accordion-navigation > a, 
+.accordion dd > a {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+p, ul, ol, dl {
+  font-size: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.5;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: rem(32px);
+  margin: 0.67em 0;
+}
+
+.section.one {
+  color: $color-base;
+
+  button {
+    font-size: inherit;
+  }
+  select, input, button {
+    height: auto;
+  }
+  label {
+    font-size: 1.5rem;
+  }
+
+  #search-button {
+    height: 4.8rem;
+  }
+  select {
+    background-size: 3rem;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+");
+    background-position: 100% 50%;
+  }
+
+}
+
+#search_form input[type="text"] {
+  font-size: inherit;
+  max-height: inherit;
+}
+
+table tr th,
+table tr td,
+table tbody tr th, 
+table tbody tr td,
+table thead tr th,
+table thead tr td {
+  font-size: inherit;
+  line-height: 2rem;
+}
+
+dl dt, dl dd {
+  margin-bottom: 0;
+}
+
+p, ul, ol, dl {
+  line-height: inherit; 
+}
+
+button {
+  position: static;
+}
+
+// Global Styles that should be added to va_common at some point
+
+.va-notice--banner {
+  p {
+    font-weight: 300;
+  }
+}
+
+h1:first-child {
+    margin-top: 0;
+}
+
+.section.one {
+    padding: 0;
+    p:nth-child(1), p:first-of-type {
+      color: #205493;
+      letter-spacing: normal;
+      font-size: 1.25em;
+    }
+}
+
+.usa-button {
+  &.sign-in {
+    width: 100%;
+  }
+}
+
+form {
+  max-width: 100%;
+  input[type="submit"] {
+    font-size: 1em;
+    margin-bottom: 0;
+    &.page-end {
+      margin-bottom: 1em;
+    }
+  }
+  .usa-button, button[type="button"], button[type="submit"] {
+    margin: 0;
+  }
+  legend {
+    font-size: 2rem;
+    font-weight: 700;
   }
 }

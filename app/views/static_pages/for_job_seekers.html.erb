@@ -13,21 +13,16 @@
       }
     }
   </script>
-
-  <div class="splash">
-    <div class="row">
-      <div class="small-12 columns">
-        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
-          <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
-          <li class="active">Job Seekers</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
+  <nav class="va-nav-breadcrumbs">
+    <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
+      <li><a href="/">Home</a></li>
+      <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
+      <li class="active">Job Seekers</li>
+    </ul>
+  </nav>
   <div class="section one">
     <div class="row">
-      <div class="small-12 medium-8 columns">
+      <div class="small-12 medium-7 columns">
         <h3>Three steps to finding a great job:</h3>
         <ol>
           <li>Use the Skills Translator to map what you learned in the military to your new civilian career.</li>
@@ -37,7 +32,7 @@
       </div>
       <div class="small-12 medium-4 columns feature">
         <p>Already have a public profile? Sign in to update it.</p>
-		<%= link_to "Sign in", user_omniauth_authorize_path(:saml), class: "button expand", id: "update_profile" %>
+		<%= link_to "Sign in", user_omniauth_authorize_path(:saml), class: "usa-button sign-in", id: "update_profile" %>
       </div>
     </div>
 

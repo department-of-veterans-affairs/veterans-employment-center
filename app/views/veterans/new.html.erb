@@ -2,19 +2,14 @@
 
 <div id="content" class="interior">
   <a id="content" href="#content" class="sr-only">Content starts here.</a>
-
-  <div class="splash">
-    <div class="row">
-      <div class="small-12 columns">
-        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
-	  <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
-	  <li class="parent"><%= link_to "Job Seekers", job_seekers_path %></li>
-          <li class="active">Résumé Builder</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
+  <nav class="va-nav-breadcrumbs">
+    <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
+      <li><a href="/">Home</a></li>
+      <li><%= link_to "Careers and Employment", root_path %></li>
+      <li class="parent"><%= link_to "Job Seekers", job_seekers_path %></li>
+      <li class="active">Résumé Builder</li>
+    </ul>
+  </nav>
   <% if user_signed_in? && current_user.is_employer? %>
       <div class="section one">
         <div class="row">
@@ -32,13 +27,10 @@
       <div class="section one">
         <div class="row">
           <div class="small-12 medium-9 columns">
-            <div class="primary">
-
+            <h1>Résumé Builder</h1>
               <p>The Veterans Employment Center (VEC) can help you build a civilian or federal résumé.</p>
 
               <p>Manually enter your information into the form fields below, or click the blue Auto-fill from LinkedIn button to prepopulate some of the fields from your LinkedIn account.</p>
-
-            </div>
           </div>
         </div>
         <div class="row">

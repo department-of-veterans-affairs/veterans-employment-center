@@ -401,7 +401,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     uuid (2.3.8)
       macaddr (~> 1.0)
-    va_common (0.3.6)
+    va_common (0.4.1)
       bourbon (~> 4.2.6)
       css_splitter (~> 0.4.4)
       font-awesome-rails (~> 4.5.0.0)
@@ -485,9 +485,9 @@ DEPENDENCIES
   simplecov
   therubyracer
   uglifier (>= 1.3.0)
-  va_common (= 0.3.6)
+  va_common (= 0.4.1)
   webmock
   will_paginate (~> 3.0)
 
 BUNDLED WITH
-   1.11.2
+   1.12.5
