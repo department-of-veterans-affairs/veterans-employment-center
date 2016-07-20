@@ -3,6 +3,7 @@
   <div class="row form-group dataItem">
     <div class="small-12 columns desired-location">
       <%= f.label :location, "Desired location" %>
+      <%# -- This a throwing a 508 error because the label 'for' and text_field 'name' do not match. --  %>
       <%= f.text_field  :full_name, class: "autocomplete" %>
       <%= f.hidden_field :city %>
       <%= f.hidden_field :state %>
