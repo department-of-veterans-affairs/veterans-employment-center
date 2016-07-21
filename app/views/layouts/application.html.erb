@@ -31,11 +31,12 @@
   </head>
   <body>
 
-
+    <a class="show-on-focus" href="#content">Skip to Content</a>
+    
     <div class="container">
       <%= render 'layouts/messages' %>
       <%= render 'va_common/header' %>
-      <main role="main">
+      <main id="content" role="main">
         <%= yield %>
         <%= render 'va_common/footer' %>
       </main>

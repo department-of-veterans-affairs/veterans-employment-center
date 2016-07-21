@@ -21,8 +21,9 @@
                 <div data-alert id="errorBox" class="alert-box alert radius" ng-show="state.error" ng-cloak>
                     {{state.error}}
                 </div>
-                <form name="skillRequestForm" ng-submit="submitForm()">
+                <form name="skillRequestForm" ng-submit="submitForm()" class="single-form">
                   <fieldset class="no-margin">
+                  <legend>Military Position Information:</legend>
                     <div class="row form-group dataItem">
                       <div class="small-12 medium-5 columns">
                       <label for="military_position_branch">Branch of Service (required)</label>

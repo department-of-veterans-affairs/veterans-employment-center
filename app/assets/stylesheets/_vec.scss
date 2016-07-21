@@ -442,6 +442,13 @@ table thead tr td {
   line-height: 2rem;
 }
 
+table caption {
+  text-align: left;
+  font-size: 2rem;
+  padding: 2rem 0;
+  color: $color-primary-darkest;
+}
+
 dl dt, dl dd {
   margin-bottom: 0;
 }
@@ -488,6 +495,14 @@ form {
     margin-bottom: 0;
     &.page-end {
       margin-bottom: 1em;
+    }
+  }
+
+  &.single-form {
+    legend {
+      padding-top: 1rem;
+      font-weight: normal;
+      margin-bottom: 0;
     }
   }
   .usa-button, button[type="button"], button[type="submit"] {
