@@ -19,4 +19,12 @@ puts "Importing all military occupations ..." unless Rails.env == 'test'
 DataImporter.import_all_mos
 puts "Finished importing all military occupations" unless Rails.env == 'test'
 
+puts "Importing all skills ..." unless Rails.env == 'test'
+Rake::Task['db:seed_skills'].execute
+puts "Finished importing all skills" unless Rails.env == 'test'
+
+puts "Creating initial MOC skills ..." unless Rails.env == 'test'
+Rake::Task['db:create_initial_model'].execute
+puts "Finished creating initial MOC skills" unless Rails.env == 'test'
+
 puts "All data imported" unless Rails.env == 'test'
