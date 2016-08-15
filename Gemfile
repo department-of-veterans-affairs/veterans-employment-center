@@ -79,6 +79,9 @@ end
 
 group :production do
   gem 'rails_12factor', '0.0.2'
+
+  # Allows deployment to configure environment
+  gem 'figaro', '~> 1.1', '>= 1.1.1'
 end
 
 group :doc do
