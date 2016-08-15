@@ -15,7 +15,7 @@
       <div class="small-12 columns">
         <div class="filters">
           <fieldset>
-            <%= search_form_for @search, url: employer_list_path do |f| %>
+            <%= search_form_for @search, url: employer_list_path, class: "usa-search usa-search-big" do |f| %>
               <div class="row form-group dataItem">
                 <div class="small-12 columns">
                   <label>Keywords</label>
@@ -24,7 +24,7 @@
               </div>
               <div class="row form-group dataItem">
                 <div class="small-12 medium-8 columns">
-                  <%= f.submit "Search", class: "button primary", id: "employer-search" %>
+                  <%= button_tag "Search", class: "button primary", id: "employer-search" %>
                 </div>
               </div>
             <% end %>
@@ -114,7 +114,7 @@
     table.on('init', function(){
       $('.server-pagination').hide();
     });
-    $('input[value="Search"]').click(function(e){
+    $('button#employer-search').click(function(e){
       table.search($("#keywords").val());
       table.draw();
       e.preventDefault();
