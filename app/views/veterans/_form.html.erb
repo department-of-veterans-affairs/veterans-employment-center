@@ -5,22 +5,7 @@
 <% end %>
 
 <%= form_for @veteran, html: { class: 'f resume', id: 'veteran_form', role: 'form' } do |f| %>
-  <% if @veteran.errors.any? %>
-    <div class="alert-box error_highlight">
-      <h3 class="no-margin"><%= pluralize(@veteran.errors.count, "error") %> prohibited this resume from being saved:</h3>
-      <div id="error_explanation">
-      <ul>
-        <% @veteran.errors.full_messages.each do |msg| %>
-          <li><span class="resume_error"><%= msg %></span></li>
-        <% end %>
-      </ul>
-      </div>
-    </div>
-  <% end %>
-
-
     <div class="form-section">
-
       <div class="required federal">(This section is required for <strong>Federal job applications</strong>)</div>
       <h3 class="no-margin">Add the Basics</h3>
 
@@ -29,15 +14,12 @@
 
         <div class="row form-group dataItem">
           <div class="small-12 columns">
-            <%= f.label :name, "Your full name " %>
-            <%= f.text_field :name %>
+            <%= form_field(form: f, type: :text_field, name: :name, label_text: "Your full name", errors: @veteran.errors.messages) %>
           </div>
         </div>
         <div class="row form-group dataItem">
           <div class="small-12 columns">
-            <%= f.label :email, "Your email "%>
-            <%= f.email_field :email, class: "required field" %>
-            <span class="required message" aria=describedby="veteran-email">Required</span>
+            <%= form_field(form: f, type: :email_field, name: :email, label_text: "Your email", errors: @veteran.errors.messages) %>
           </div>
         </div>
       </fieldset>
