@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'caracal-rails', '1.0.1'
 gem 'caracal', '1.0.2'
-gem 'va_common', '0.4.1'
+gem 'va_common', '0.4.3'
 gem "font-awesome-rails"
 gem 'enumerize'
 gem 'newrelic_rpm'
