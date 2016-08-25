@@ -38,11 +38,11 @@
                   </div>
                 </div>
                 <div class="row form-group dataItem">
-                  <div class="small-12 medium-5 columns" ng-class="{'usa-input-error': (skillRequestForm.$submitted || skillRequestForm.military_position_code.$touched) && (skillRequestForm.military_position_code.$error.required || (skillRequestForm.$submitted && !data.mo.title)) }">
-                    <label for="military_position_code" ng-class="{'usa-input-error-label': (skillRequestForm.$submitted || skillRequestForm.military_position_code.$touched) && (skillRequestForm.military_position_code.$error.required || (skillRequestForm.$submitted && !data.mo.title)) }">Military Occupation Code (MOC) (required)</label>
+                  <div class="small-12 medium-5 columns" ng-class="{'usa-input-error': (skillRequestForm.$submitted || skillRequestForm.military_position_code.$touched) && (skillRequestForm.military_position_code.$error.required || (skillRequestForm.$submitted && !data.mo)) }">
+                    <label for="military_position_code" ng-class="{'usa-input-error-label': (skillRequestForm.$submitted || skillRequestForm.military_position_code.$touched) && (skillRequestForm.military_position_code.$error.required || (skillRequestForm.$submitted && !data.mo)) }">Military Occupation Code (MOC) (required)</label>
                     <div ng-show="skillRequestForm.$submitted || skillRequestForm.military_position_code.$touched">
                       <span class="usa-input-error-message" ng-show="skillRequestForm.military_position_code.$error.required">Military Occupation Code (MOC) is required</span>
-                      <span class="usa-input-error-message" ng-show="!skillRequestForm.military_position_code.$error.required && (skillRequestForm.$submitted && !data.mo.title)">Unknown MOC</span>
+                      <span class="usa-input-error-message" ng-show="!skillRequestForm.military_position_code.$error.required && (skillRequestForm.$submitted && !data.mo)">Unknown MOC</span>
                     </div>
 
                     <input name="military_position_code" id="military_position_code" type="text" ng-model="formData.moc" required/>
