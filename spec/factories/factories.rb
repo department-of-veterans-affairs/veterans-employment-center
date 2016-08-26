@@ -19,6 +19,10 @@ FactoryGirl.define do
   factory :veteran do
     name "Joe Veteran"
     email "joe@veteran.org"
+    factory :searchable_veteran do
+      association :user, factory: :user_with_random_email
+      visible true
+    end
   end
 
   factory :favorite_veteran do
@@ -27,9 +31,9 @@ FactoryGirl.define do
   end
 
   factory :employer do
-  	company_name "Apple Computer"
-  	ein 1245
-  	street_address "123 Main St"
+    company_name "Apple Computer"
+    ein {rand(999999999).to_s.center(9, rand(9).to_s)}
+    street_address "123 Main St"
     city "Towny"
     state "WA"
     zip "22222"
@@ -39,13 +43,8 @@ FactoryGirl.define do
       association :user, factory: :user_with_random_email
       commit_date {(rand(3)+1).months.from_now}
       commit_hired {rand(5)}
-      commit_to_hire {commit_hired + rand(3)}
+      commit_to_hire {commit_hired + rand(3) + 1}
     end
-  end
-
-  factory :site_feedback do
-    url "www.test.com"
-    name "Ms Admin"
   end
 
   factory :award do
@@ -72,7 +71,7 @@ FactoryGirl.define do
 
   factory :military_occupation do
     service "Army"
-    category "Category 1"
+    category "Enlisted"
     code "111"
     title "Expert Trainer"
     description "Expert trainers do training"
@@ -88,40 +87,13 @@ FactoryGirl.define do
     active true
   end
 
-  factory :job_title do
-    code "333"
-    name "Teacher"
-    source "O*NET"
+  factory :skill do
+    name 'skill'
   end
 
-  factory :another_job_title, class: JobTitle do
-    code "444"
-    name "Another Teacher"
-    source "O*NET"
+  factory :veteran_skill do
+    veteran
+    skill
   end
-
-  factory :job_title_military_occupation do
-    job_title_id "1"
-    military_occupation_id "1"
-  end
-
-  factory :deprecated_job_skill do
-    code   "A1"
-    name   "Helpful"
-    description "A helpful personality"
-  end
-
-  factory :another_deprecated_job_skill, class: DeprecatedJobSkill do
-    code   "A2"
-    name   "More helpful"
-    description "A more helpful personality"
-  end
-
-  factory :deprecated_job_skill_match do
-    matchable_id "1"
-    matchable_type "JobTitle"
-    deprecated_job_skill_id "1"
-  end
-
 
 end

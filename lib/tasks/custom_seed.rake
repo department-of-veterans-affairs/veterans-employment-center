@@ -1,3 +1,5 @@
+## This generates entirely fake data, not used for production.
+
 namespace :db do
 
   desc 'Seed with fake skills translator model and data'

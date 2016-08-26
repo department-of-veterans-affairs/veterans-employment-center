@@ -14,31 +14,26 @@ feature "guest can create a new resume for themselves" do
   scenario 'guest fills in all the fields of the resume' do
     visit new_veteran_path
     fill_in_resume_fields
-    click_button "Preview Your Veteran Profile and Résumé Content"
-    expect(page).to have_content("Edit Profile")
+    click_button "Preview Your Résumé Content"
+    expect(page).to have_content("Edit Résumé")
   end
 
   scenario 'it saves a session to the veteran' do
     visit new_veteran_path
     fill_in_resume_fields
-    click_button "Preview Your Veteran Profile and Résumé Content"
+    click_button "Preview Your Résumé Content"
     vet = Veteran.first
     expect(vet.session_id).not_to eq nil
   end
 end
 
 feature 'when building a resume, the resume only shows the fields that it should' do
-  scenario 'Employer box should not be checked' do
-    visit resume_builder_path
-    expect(find_field('Save as draft')).not_to be_checked
-  end
 
   scenario 'a vet submits a resume with only a name and email' do
     visit resume_builder_path
-    fill_in 'Your Name', with: 'Suzy Veteran'
-    fill_in 'Your Email', with: 'suzy@veterans.org'
-    click_button 'Preview Your Veteran Profile and Résumé Content'
-    expect(page).to have_content "Veteran was successfully created."
+    fill_in 'Your full name', with: 'Suzy Veteran'
+    fill_in 'Your email', with: 'suzy@veterans.org'
+    click_button 'Preview Your Résumé Content'
     within('#resume') do
       expect(page).not_to have_content 'Objective'
       expect(page).not_to have_content 'Awards'
@@ -69,21 +64,21 @@ feature 'when building a resume, the resume only shows the fields that it should
 
       stub_request(:get, /http:\/\/127\.0\.0\.1.*\/__identify__/).with(headers: {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/auto_location.txt"), headers: {})
       visit resume_builder_path
-      fill_in 'Your Name', with: 'Suzy Veteran'
-      fill_in 'Your Email', with: 'suzy@veterans.org'
+      fill_in 'Your full name', with: 'Suzy Veteran'
+      fill_in 'Your email', with: 'suzy@veterans.org'
       fill_autocomplete "veteran_locations_attributes_0_full_name", with: "Phil", select: "Philadelphia PA, United States"
-      click_button 'Preview Your Veteran Profile and Résumé Content'
+      click_button 'Preview Your Résumé Content'
       expect(page).to have_content "Philadelphia, PA, United States"
   end
 
   scenario 'a vet fills in a resume' do
     visit resume_builder_path
-    fill_in 'Your Name', with: 'Suzy Veteran'
-    fill_in 'Your Email', with: 'suzy@veterans.org'
+    fill_in 'Your full name', with: 'Suzy Veteran'
+    fill_in 'Your email', with: 'suzy@veterans.org'
     fill_in 'veteran_objective', with: 'An amazing objective'
     fill_in 'veteran_availability_date', with: '02/07/2015'
-    fill_in 'Name of Award', with: 'An amazing award'
-    fill_in 'Awarding Organization', with: 'Awarders'
+    fill_in 'Name of award', with: 'An amazing award'
+    fill_in 'Awarding organization', with: 'Awarders'
     select 'E-2', from: 'veteran_experiences_attributes_1_rank'
     fill_in 'veteran_experiences_attributes_1_job_title', with: 'Captain'
     fill_in 'veteran_experiences_attributes_1_organization', with: 'Navy'
@@ -94,11 +89,9 @@ feature 'when building a resume, the resume only shows the fields that it should
     fill_in 'veteran_experiences_attributes_3_job_title', with: "Homeless Shelter"
     fill_in 'veteran_experiences_attributes_3_organization', with: 'Helping homeless'
     fill_in 'Affiliation', with: 'Head Mason'
-    fill_in 'Affiliated Organization', with: 'Masons'
+    fill_in 'Affiliated organization', with: 'Masons'
     fill_in 'veteran_references_attributes_0_name', with: 'John Doe'
-    check 'Family Member'
-    check 'Transitioning Servicemember'
-    click_button 'Preview Your Veteran Profile and Résumé Content'
+    click_button 'Preview Your Résumé Content'
     expect(page).to have_content 'Objective'
     expect(page).to have_content 'An amazing objective'
     expect(page).to have_content 'February 07, 2015'
@@ -119,13 +112,10 @@ feature 'when building a resume, the resume only shows the fields that it should
     expect(page).to have_content 'Masons'
     expect(page).to have_content 'References'
     expect(page).to have_content 'John Doe'
-    expect(page).to have_content "Special Status"
-    expect(page).to have_content "Family Member"
-    expect(page).to have_content "Transitioning Servicemember"
-    click_link 'Edit Profile'
+    click_link 'Edit Résumé'
     expect(page).to have_content 'An amazing objective'
     expect(find_field('veteran_availability_date').value).to eq '02/07/2015'
-    expect(find_field('Name of Award').value).to eq 'An amazing award'
+    expect(find_field('Name of award').value).to eq 'An amazing award'
     expect(find_field('veteran_experiences_attributes_1_rank').value).to eq 'E2'
     expect(find_field('veteran_experiences_attributes_1_job_title').value).to eq 'Captain'
     expect(find_field('veteran_experiences_attributes_2_job_title').value).to eq 'Captain of Industry'
@@ -133,10 +123,8 @@ feature 'when building a resume, the resume only shows the fields that it should
     expect(find_field('veteran_experiences_attributes_3_job_title').value).to eq 'Homeless Shelter'
     expect(find_field('veteran_experiences_attributes_3_organization').value).to eq 'Helping homeless'
     expect(find_field('Affiliation').value).to eq 'Head Mason'
-    expect(find_field('Affiliated Organization').value).to have_content 'Masons'
+    expect(find_field('Affiliated organization').value).to have_content 'Masons'
     expect(find_field('veteran_references_attributes_0_name').value).to have_content 'John Doe'
-    expect(find_field('Family Member')).to be_checked
-    expect(find_field('Transitioning Servicemember')).to be_checked
   end
 
   # scenario 'a vet creates a federal resume' do
@@ -154,7 +142,7 @@ feature 'when building a resume, the resume only shows the fields that it should
   #   fill_in 'Highest Federal Civilian Grade Held', :with => 'gs8'
   #   fill_in 'Reinstatement Eligibility', :with => 'none'
 
-  #   click_button 'Preview Your Veteran Profile and Résumé Content'
+  #   click_button 'Preview Your Résumé Content'
   #   expect(page).to have_content 'Objective'
   #   expect(page).to have_content 'An amazing objective'
   #   expect(page).to have_content 'Citizenship: US'
@@ -174,6 +162,28 @@ feature 'when building a resume, the resume only shows the fields that it should
   #   expect(page).to have_content 'gs8'
   # end
 
+#  scenario "you can delete fields on create page",:js => true,driver: :webkit  do
+#    visit resume_builder_path
+#    fill_in 'Your Name', with: 'Suzy Veteran'
+#    fill_in 'Your Email', with: 'suzy@veterans.org'
+#    fill_in 'veteran_objective', with: 'An amazing objective'
+#    fill_in 'Name of school or training', with: 'Harvard'
+##################################################################
+# The below javascript doesn't throw an error, but it also doesn't
+# modify the page's html to remove the Education section. Part of
+# the issue is that it's using a 'span' element rather than a
+# button or link. The other is that it's trying to modify the page
+# which is currently very difficult to do in testing
+##################################################################
+#    page.execute_script %Q($('.experience-deleter').first().click())
+#    click_button 'Preview Your Résumé Content'
+#    expect(page).to have_content "Suzy Veteran"
+#    expect(page).to have_content 'Objective'
+#    expect(page).to have_content 'An amazing objective'
+#    expect(page).not_to have_content 'Education'
+#    expect(page).not_to have_content 'Harvard'
+#  end
+
   scenario "autofilling your resume with LinkedIn" do
     stub_request(:get, "https://api.linkedin.com/v1/people/~:(email-address,first-name,last-name,location,positions,educations,skills,volunteer,honors-awards,recommendations-received)").
       to_return(status: 200, body: File.read(Rails.root.to_s + "/spec/support/json/linkedin_profile.json"), headers: {})
@@ -181,8 +191,8 @@ feature 'when building a resume, the resume only shows the fields that it should
     click_link 'Auto-fill from LinkedIn'
     expect(page).to have_no_link 'Auto-fill résumé from your LinkedIn profile'
     expect(page).to have_content 'Your resume has been prefilled with your LinkedIn information.'
-    expect(find_field('Your Name').value).to eq 'Joe Veteran'
-    expect(find_field('Your Email').value).to eq 'joe@veteran.com'
+    expect(find_field('Your full name').value).to eq 'Joe Veteran'
+    expect(find_field('Your email').value).to eq 'joe@veteran.com'
 
     expected_skills = ['Ruby on Rails', 'Lucene', 'MySQL']
     page.assert_selector('#checkbox-list > li', count: expected_skills.length)
@@ -281,8 +291,8 @@ feature 'when building a resume, the resume only shows the fields that it should
     visit resume_builder_path
     click_link 'Auto-fill from LinkedIn'
     visit resume_builder_path
-    expect(find_field('Your Name').value).to eq 'Joe Veteran'
-    expect(find_field('Your Email').value).to eq 'joe@veteran.com'
+    expect(find_field('Your full name').value).to eq 'Joe Veteran'
+    expect(find_field('Your email').value).to eq 'joe@veteran.com'
     expect(find_field('veteran_locations_attributes_0_full_name').value).to eq "Washington D.C. Metro Area"
   end
 end
@@ -294,17 +304,14 @@ feature "profile creation shouldn't redirect to employer login", js: true do
   end
 
   scenario "sign in and out as employer before creating a resume as a vet" do
-    visit veterans_path
-    click_link "Manage Your Profile and Hiring Commitment"
-    fill_in "employer_company_name", with: 'The Editing Company'
-    click_button "Update Employer"
+    visit employers_path
     click_link 'Sign Out'
 
     visit new_veteran_path
-    fill_in 'Your Name', with: 'Suzy Veteran'
-    fill_in 'Your Email', with: 'suzy@veterans.org'
-    click_button 'Preview Your Veteran Profile and Résumé Content'
-    expect(page).to have_content("Edit Profile")
+    fill_in 'Your full name', with: 'Suzy Veteran'
+    fill_in 'Your email', with: 'suzy@veterans.org'
+    click_button 'Preview Your Résumé Content'
+    expect(page).to have_content("Edit Résumé")
   end
 end
 
@@ -312,12 +319,15 @@ feature "you can view and edit a profile after creation" do
 
   scenario "create and edit profile with no fields filled out" do
     visit new_veteran_path
-    fill_in 'Your Name', with: 'Suzy Veteran'
-    fill_in 'Your Email', with: 'suzy@veterans.org'
+    fill_in 'Your full name', with: 'Suzy Veteran'
+    fill_in 'Your email', with: 'suzy@veterans.org'
     fill_in 'veteran_objective', with: 'An amazing objective'
-    click_button 'Preview Your Veteran Profile and Résumé Content'
-    click_link "Edit Profile"
-    expect(page).to have_content "Add the basics"
+    click_button 'Preview Your Résumé Content'
+    click_link "Edit Résumé"
+    expect(page).to have_content "Add the Basics"
     expect(page).to have_content "An amazing objective"
   end
+
+  #scenario "you can delete fields on edit"
+  #end
 end

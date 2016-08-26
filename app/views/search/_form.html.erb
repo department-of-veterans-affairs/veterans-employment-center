@@ -1,3 +1,11 @@
+<nav class="va-nav-breadcrumbs">
+  <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
+    <li><a href="/">Home</a></li>
+    <li><%= link_to "Careers and Employment", root_path %></li>
+    <li class="parent"><%= link_to "Job Seekers", job_seekers_path %></li>
+    <li class="active">Job Search</li>
+  </ul>
+</nav>
 <div class="section one">
   <div class="row">
     <div class="small-12 columns">
@@ -13,47 +21,81 @@
           }
         }
       </script>
-      <form action="search_jobs" class="job-search" method="get" target="" onsubmit="return isFilledOut()">
+      <form action="search-jobs" class="job-search" method="get" target="" onsubmit="return isFilledOut()">
         <input type="hidden" name="searchType" id="searchType" value="<%= @us_jobs_search_params["searchType"] %>">
         <input name="tm" type="hidden" value="">
         <div class="filters">
-          <p>Search the Veterans Job Bank</p>
+          <div class="row">
+            <div class="small-12 medium-8 columns">
+              <h1>Job Search</h1>
+              <p>Search the Veterans Job Bank to find the right position for you.</p>
+            </div>
+          </div>          
           <h4 class="error-message" style="display:none;">Please enter a search term.</h4>
           <fieldset>
+          <legend>Please enter search details below</legend>
             <div class="row">
-              <div class="small-12 medium-4 columns">
-                <div class="dataItem">
-                  <label class="main em" for="kw">What  <span class="field-details"><span class="example">(job title, keywords)</span></span> </label>
-                  <input id="kw" name="kw" class="text address" type="text" value="<%= @us_jobs_search_params["kw"] %>" maxlength="95">
+              <div class="small-12 medium-7 columns">
+                <div class="row">
+                  <div class="small-12 medium-8 columns left">
+                    <div class="dataItem">
+                      <label class="main em" for="kw">What  <span class="field-details"><span class="example">(job title, keywords)</span></span> </label>
+                      <input id="kw" name="kw" class="text address" type="text" value="<%= @us_jobs_search_params["kw"] %>" maxlength="95">
+                    </div>
+                  </div>
+                  <div class="small-12 medium-8 columns left">
+                    <div class="dataItem">
+                      <label class="main em" for="zc">Where
+                        <span class="field-details"><span class="example">(city, state, country)</span></span>
+                      </label>
+                      <input id="zc" name="zc" class="text address" type="text" value="<%= @us_jobs_search_params["zc"] %>" maxlength="95">
+                    </div>
+                  </div>
+                  <div class="small-12 medium-8 columns left">
+                    <div class="dataItem">
+                      <label class="main em" for="moc">Military  <span class="field-details"><span class="example">(military job title or code)</span></span></label>
+                      <input id="moc" name="moc" class="text military" type="text" value="<%= @us_jobs_search_params["moc"] %>" maxlength="95">
+                    </div>
+                  </div>
+                </div>
+                <%= render partial: 'advanced_search', locals: { us_jobs_search_params: @us_jobs_search_params } %>
+                <div class="row">
+                  <div class="small-12 columns">
+                    <div class="actions advanced-search">
+                      <a id="adv-job_search" class="toggle-srch advancedTag" href="#"></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="small-12 medium-3 column">
+                    <button class="usa-button" type="submit">Search</button>
+                  </div>
+                  <div class="small-12 medium-9 column">
+                    <button class="usa-button-gray" type="button" onclick="resetForm()">Clear Search</button>
+                  </div>
                 </div>
               </div>
-              <div class="small-12 medium-4 columns">
-                <div class="dataItem">
-                  <label class="main em" for="zc">Where
-                    <span class="field-details"><span class="example">(city, state, country)</span></span>
-                  </label>
-                  <input id="zc" name="zc" class="text address" type="text" value="<%= @us_jobs_search_params["zc"] %>" maxlength="95">
-                </div>
-              </div>
-              <div class="small-12 medium-4 columns">
-                <div class="dataItem">
-                  <label class="main em" for="moc">Military  <span class="field-details"><span class="example">(military job title or code)</span></span></label>
-                  <input id="moc" name="moc" class="text military" type="text" value="<%= @us_jobs_search_params["moc"] %>" maxlength="95">
-                </div>
-              </div>
-            </div>
-            <%= render partial: 'advanced_search', locals: { us_jobs_search_params: @us_jobs_search_params } %>
-            <div class="row">
-              <div class="small-12 medium-8 columns">
-                <div class="actions">
-                  <button class="button primary" type="submit">Search</button>
-                  &nbsp;&nbsp;&nbsp;
-                  <a href="javascript:void(0);" onclick="resetForm()">Clear Search</a>
-                </div>
-              </div>
-              <div class="small-12 medium-4 align-right columns">
-                <div class="action">
-                  <a id="adv-job_search" class="toggle-srch advancedTag" href="#"></a>
+              <div class="small-12 medium-5 columns">
+                <div class="feature">
+                  <h5>Three tips to get the most out of the job search tool:</h5>
+                  <ol>
+                    <li>Make your search as broad as possible.</li>
+                    <li>Explore a variety of geographical areas.</li>
+                    <li>Use the <%= link_to "Military Skills Translator", skills_translator_path %> to translate your military skills into language hiring managers will understand.</li>
+                  </ol>
+
+                  <br>
+
+                  <h5>Additional Resources</h5>
+                  <ul>
+                    <li><a href="/employment/job-seekers/one-on-one">One-on-one job assistance</a></li>
+                    <li><a href="/employment/job-seekers/federal-employment">Apply for federal jobs</a></li>
+                    <li><a href="http://vaforvets.va.gov/">Veteran Employment Services Office</a></li>
+                    <li><a href="/employment/job-seekers/start">Start your own business</a></li>
+                    <li><a href="https://veterans.linkedin.com/">LinkedIn</a></li>
+                    <li><a href="https://www.surveymonkey.com/r/QSGQRFN">Coursera</a></li>
+                    <li><a href="/employment/job-seekers/create-resume">Résumé Builder</a></li>
+                  </ul>
                 </div>
               </div>
             </div>

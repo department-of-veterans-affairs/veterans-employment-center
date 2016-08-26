@@ -1,11 +1,6 @@
 class MilitaryOccupation < ActiveRecord::Base
-  has_many :job_title_military_occupations
-  has_many :job_titles, through: :job_title_military_occupations
 
-  has_many :deprecated_job_skill_matches, as: :matchable
-  has_many :deprecated_job_skills, through: :deprecated_job_skill_matches
-
-  validates_uniqueness_of :code, scope: [:service, :active]
+  validates_uniqueness_of :code, scope: [:service, :active, :category]
   validates :service, inclusion: {in: ['Army', 'Navy', 'Marine Corps', 'Coast Guard', 'Air Force', 'DEFAULT'],
     message: "%{value} must be one of the following: Army, Navy, Marine Corps, Coast Guard, or Air Force"}
 
@@ -13,6 +8,17 @@ class MilitaryOccupation < ActiveRecord::Base
     matches = MilitaryOccupation.where(
       'lower(code) = ? and lower(service) = ?', moc.downcase, branch.downcase)
     return matches.length > 1 ? matches.where(active: true) : matches
+  end
+
+  def self.find_by_moc_branch_status_category(moc, branch, status, category)
+    matches = MilitaryOccupation.where(
+      'lower(code) = ? and lower(service) = ? and active = ? and category = ?', moc.downcase, branch.downcase, status, category)
+    matches.each do |m|
+      if !m.active
+        m.description = ''
+      end
+    end
+    return matches
   end
 
   def self.default_occupation(moc, branch)

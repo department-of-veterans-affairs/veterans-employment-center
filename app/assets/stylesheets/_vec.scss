@@ -11,6 +11,58 @@ ul li:before {
 
 
 // Search
+.employer-login {
+   appearance: none;
+   background-color: #205493;
+   border: 0;
+   border-radius: .3rem;
+   color: #fff;
+   cursor: pointer;
+   display: inline-block;
+   font-family: "Source Sans Pro","Helvetica","Arial",sans-serif;
+   font-size: 1rem;
+   font-weight: 500;
+   line-height: 0.2;
+   margin-bottom: 0.5em;
+   margin-right: 0.5em;
+   margin-top: 0.5em;
+   outline: none;
+   padding: 1rem 2rem;
+   text-align: center;
+   text-decoration: none !important;
+   width: auto;
+   &:hover {
+     color: #fff;
+     background-color: #0071bc;
+   }
+   &:visited {
+     color: #fff;
+   }
+}
+
+.explanation {
+  margin-right: 5px;
+}
+
+.header-bar {
+  text-align: right;
+  background: #f1f1f1;
+  line-height: 1.2;
+}
+
+@media only screen and (max-width:480px) {
+  .employer-login {
+    display: block;
+  }
+  .header-bar {
+    padding-left: .5em;
+    text-align: center;
+  }
+}
+
+.advanced-search {
+  margin-bottom: 1em;
+}
 
 .overlay {
   z-index: 10000;
@@ -41,6 +93,26 @@ ul li:before {
 
 
 // /*** VEC Styles ***/
+
+.button.small.expand.button-margin-top {
+  margin-top: 1.3em;
+  padding: 0.65em .65em;
+}
+
+.card.information {
+  background: rgba(0,0,0,.05);
+  min-height: 11.2rem;
+}
+.card .description {
+    text-transform: none;
+    font-size: 1em;
+    padding: .5em 0;
+    color: color-primary-darkest;
+}
+// Make this smaller than va.scss because employer numbers are huge
+.card .number {
+    font-size: 2.3em;
+}
 #vec-user-nav.top-bar {
   background-color: $color-primary-darkest;
   border-bottom: $color-primary-alt-darkest solid 1px;
@@ -82,9 +154,16 @@ ul li:before {
 .alert-box.notice {
   margin-bottom: 0px;
   font-weight: 400;
+  font-size: inherit;
 }
 
-.row.job-row {
+.alert-box.error_highlight {
+  color: #112e51;
+  background-color: #f9dede;
+  border-color: #f9dede;
+}
+
+.job-row {
   margin-bottom: 2rem;
   .result {
     border-bottom: solid $color-gray-light 1px;
@@ -155,229 +234,6 @@ pre {
  white-space: -o-pre-wrap;    /* Opera 7 */
  word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
-// /***
-// #translation_results {
-//   -webkit-box-shadow: 0 5px 7px rgba(0,0,0,.15) inset;
-//   padding: 1em;
-//   border-bottom: 1px solid #ddd;
-//   width: 96.5%;
-//   margin: 0 auto 1em auto;
-//   background: #F2FAFF;
-//   -webkit-border-bottom-right-radius: .35em;
-//   -webkit-border-bottom-left-radius: .35em;
-
-
-//   &:after {
-//     visibility: hidden;
-//     display: block;
-//     font-size: 0;
-//     content: " ";
-//     clear: both;
-//     height: 0;
-//   }
-// }
-
-//   font-weight: 700;
-//   color: $primary;
-//   display: block;
-//   line-height: 1em;
-//   padding: 0; margin: 0 0 .2em 0;
-//   span.example {font-weight: normal; font-size: .8em; display: block; color: #333; padding: 0;}
-
-// ***/
-
-
-
-// .onet img {
-//   padding: 0 4px;
-// }
-
-// .result {
-//   border-bottom: 1px solid rgba(0,0,0,.2);
-// }
-
-// .result.key {
-// }
-
-// .filter-tab {
-//   display: inline-block;
-//   padding: 0 16px;
-// }
-
-// .translate-box {
-//   padding: 16px 0 0 0;
-// }
-
-// #confirm_moc ul {
-//   margin: 0 0 15px 0;
-// }
-
-// .error-message {
-//   padding: 0 0 0 10px;
-// }
-
-// p.hint {
-//   margin: 0;
-//   padding: 0;
-//   font-size: .8em;
-// }
-
-// #confirm_moc li {
-//   margin: 0;
-//   list-style-type: none;
-
-//   a {
-//     color: #008cba;
-//     text-decoration: none;
-//     &:hover {
-//       text-decoration: underline;
-//     }
-//   }
-// }
-
-// .job-name {
-//   color: #032b55;
-//   font-weight: 600;
-//   padding-left: 1em;
-// }
-
-// .job {
-//   padding: 6px 0;
-// }
-
-// .heading {
-//   text-decoration: underline;
-//   font-weight: 600;
-// }
-
-// /*** add javascript to make it go into the selected state onclick ***/
-// .filter-tab.selected {
-//   background: #008cba;
-
-// }
-
-// .skill_checkbox {
-//   text-align: center;
-// }
-
-// label.read-less {
-//   padding: 0 0 20px 0;
-// }
-
-
-// .feature {
-//   background: #fff;
-//   background: rgba(255,255,255,.85);
-// }
-
-// #jobTitles, #civilianSkills {
-//   width: 96.5%;
-//   margin: 0 auto 1em auto;
-// }
-
-// .filters.row {
-//   margin-left: 0 !important;
-//   margin-right: 0 !important;
-// }
-
-// .filters {
-//   padding-bottom: 1em;
-// }
-
-// .instructions {
-//   padding: 12px 0;
-// }
-
-// input[type="search"] {
-//   padding-right: 0;
-//   padding-left: 0;
-//   -webkit-appearance: none;
-//   -moz-appearance: none;
-//   -moz-box-sizing: border-box;
-//   -moz-border-radius: none;
-// }
-
-// /*** Form list ***/
-
-// ol.form-list {
-//   margin: 0 0 0 0em;
-//   list-style-position: inside;
-//   font-size: 1.2em;
-//   line-height: 1em;
-//   color: #555;
-//   h3.no-margin {font-size: 1.1em; font-weight: bold; display: inline-block;}
-//   li {
-//     padding: 0 0 1em 0;
-//     margin: 0;
-//   }
-// }
-
-// .blank-underline {
-//   display: block;
-//   border-bottom: 1px solid #999;
-//   height: 1em;
-//   text-decoration: underline;
-// }
-
-// .row.resume {
-//   padding-top: .75em;
-//   padding-bottom: .75em;
-// }
-
-// h4.print-doc {
-//   margin: 1em 0 0 0;
-// }
-
-// table.print-table {
-//   td {
-//     border-bottom: 2px solid #000;
-//     width: 100%;
-//   }
-// }
-
-// #error_explanation {
-//   /* background: #eee; */
-//   margin: 0 0 2.5em 0;
-//   padding: .25em 1em;
-// }
-
-// #error_explanation li {
-//   padding: 0;
-//   margin-top: 6px;
-// }
-
-// .resume_error {
-//   color: white;
-//   background-color: #f04124;
-//   padding: 2px 8px 2px 8px;
-// }
-
-// li.error_list {
-//   list-style: none;
-// }
-
-// .interest_profiler {
-//   @media only screen and (max-width:768px)
-//   {
-//     -ms-zoom: 0.7;
-//     -moz-transform: scale(0.7);
-//     -moz-transform-origin: 0 0;
-//     -o-transform: scale(0.7);
-//     -o-transform-origin: 0 0;
-//     -webkit-transform: scale(0.7);
-//     -webkit-transform-origin: 0 0;
-//   }
-// }
-
-// .row.onet_icons {
-// margin-top: -1em;
-// margin-bottom: .5em;
-// }
-
-// .row.heading {
-// margin-bottom: -1em;
-// }
-
 
 .form-section {
   padding: 2rem;
@@ -404,25 +260,58 @@ pre {
       padding: .5em;
       float: right;
     }
+  }
+}
 
+.call-out {
+  background: $color-primary-alt-lightest;
+  padding: 2em;
+  clear: both;
+  margin: 0 0 1.5em 0;
+  p {margin-bottom: 0; padding-bottom: .5em}
+  p:nth-child(1) {
+    font-size: 1em;
+    color: #333;
+    padding-bottom: inherit;
+  }
+  h3 {@media #{$small} {font-size: 1.65em;}}
+  ul {
+    margin: 0 0 .5em 1.5em; padding: 0;
+    li {
+      list-style: square;
+      margin: 0;
+    }
+  }
 }
 
 fieldset {
   border: none;
   margin: 0;
   padding: 0 0;
-  }
+
   legend {
     margin-bottom: 1.25rem;
   }
   label {}
 }
 
-.button.primary {
-  padding: 2rem;
-  margin-left: auto;
-  margin-right: auto;
+.button {
   white-space: normal;
+
+  &.primary {
+    padding: 1rem 2rem;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+
+  &.button-left {
+    margin: 0 0.5em 0 1em;
+  }
+
+  &.button-right {
+    margin: 0 1em 0 0.5em;
+  }
 }
 
 
@@ -437,6 +326,12 @@ fieldset {
     background: #2e8540 !important;
     border-bottom: none !important;
   }
+}
+
+button.success.secondary {
+  background-color: #2e8540;
+  color: white;
+  border-color: #2e8540;
 }
 
 // Veteran Search Results
@@ -460,5 +355,171 @@ fieldset {
   }
   .result:last-child {
     border-bottom: none;
+  }
+}
+
+
+// VA Crisis Line
+
+.va-crisis-line {
+  &:hover, &:focus {
+    background-color: $color-gold;
+    color: rgb(0,0,0);
+  }
+}
+
+//========================================================
+// These styles override USWDS styles for visual
+// compatibility with current vets.gov look
+//========================================================
+select {
+  height: auto;
+}
+
+
+//========================================================
+// These styles override Foundation styles
+// for visual compatibility with the current vets.gov look
+// Long term goal is to drop Foundation.
+//========================================================
+
+$base-font-size: rem(16px);
+
+body {
+  font-size: $base-font-size;
+}
+
+.accordion .accordion-navigation > a,
+.accordion dd > a {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+p, ul, ol, dl {
+  font-size: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.5;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: rem(32px);
+  margin: 0.67em 0;
+}
+
+.section.one {
+  color: $color-base;
+
+  button {
+    font-size: inherit;
+  }
+  select, input, button {
+    height: auto;
+  }
+  label {
+    font-size: 1.5rem;
+  }
+
+  #search-button {
+    height: 4.8rem;
+  }
+  select {
+    background-size: 3rem;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+");
+    background-position: 100% 50%;
+  }
+
+}
+
+#search_form input[type="text"] {
+  font-size: inherit;
+  max-height: inherit;
+}
+
+table tr th,
+table tr td,
+table tbody tr th,
+table tbody tr td,
+table thead tr th,
+table thead tr td {
+  font-size: inherit;
+  line-height: 2rem;
+}
+
+table caption {
+  text-align: left;
+  font-size: 2rem;
+  padding: 2rem 0;
+  color: $color-primary-darkest;
+}
+
+dl dt, dl dd {
+  margin-bottom: 0;
+}
+
+p, ul, ol, dl {
+  line-height: inherit;
+}
+
+button {
+  position: static;
+}
+
+// Global Styles that should be added to va_common at some point
+
+.va-notice--banner {
+  p {
+    font-weight: 300;
+  }
+}
+
+h1:first-child {
+    margin-top: 0;
+}
+
+.section.one {
+    padding: 0;
+    p:nth-child(1), p:first-of-type {
+      color: #205493;
+      letter-spacing: normal;
+      font-size: 1.25em;
+    }
+}
+
+.usa-button {
+  &.sign-in {
+    width: 100%;
+  }
+}
+
+form {
+  max-width: 100%;
+  input[type="submit"] {
+    font-size: 1em;
+    margin-bottom: 0;
+    &.page-end {
+      margin-bottom: 1em;
+    }
+  }
+
+  &.single-form {
+    legend {
+      padding-top: 1rem;
+      font-weight: normal;
+      margin-bottom: 0;
+    }
+  }
+  .usa-button, button[type="button"], button[type="submit"] {
+    margin: 0;
+  }
+  legend {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .usa-input-error {
+    margin-top: 1em;
   }
 }

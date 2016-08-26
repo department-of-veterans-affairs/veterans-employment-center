@@ -1,55 +1,71 @@
 # Veterans Employment Center [![Build Status](https://api.travis-ci.org/department-of-veterans-affairs/veterans-employment-center.svg?branch=master)](https://travis-ci.org/department-of-veterans-affairs/veterans-employment-center)
 
 # Installation
- * Ensure you are running Ruby 2.2.3
-   * Install [Ruby Version Manager](http://rvm.io/)
-   * `rvm install 2.2.3`
-   * Make sure `ruby --version` says 2.2.3
+ * Ensure you are running Ruby 2.3.0
+   * If you are not, install rbenv, which is a tool that helps install/manage versions of Ruby (Note: make sure and follow the brew's post-install instructions):
+
+		```
+		$ brew install rbenv
+		```
+
+		And follow the initialization instructions for rbenv, provided by brew
+
+		```
+		$ rbenv init
+		```
+		
+		Using rbenv install ruby:
+		
+		```
+		$ rbenv install 2.3.0
+		```
+		
+		Install the bundler gem
+		
+		```
+		gem install bundler
+		```
 
  * Ensure you have [Postgres](http://www.postgresql.org/) installed and running
    * [Instructions](http://www.moncefbelyamani.com/how-to-install-postgresql-on-a-mac-with-homebrew-and-lunchy/) using Homebrew
 
  * Clone the project repository:
 
-   `$ git clone git@github.com/department-of-veterans-affairs/veterans-employment-center.git`
+   ```
+   $ git clone git@github.com/department-of-veterans-affairs/veterans-employment-center.git
+   ```
 
  * Install gems and dependencies:
 
-   `$ bundle install`
+   ```
+   $ bundle install
+   ```
    See "Troubleshooting" below for issues
 
  * Create databases and load DB schemas:
 
-   `$ rake db:create`
+   ```
+   $ rake db:create
+	$ rake db:schema:load
+	```
 
-   `$ rake db:schema:load`
+ * Load Data: seed your database tables--Note: This step may take 30-40 minutes:
 
- * Load Data
+	```
+	$ rake db:seed
+	```
 
-   * Option A: If you have a database dump (e.g. `VEC-prod-dump-20150828`) you can restore it into a db like so (switch out `employmentportal_production` as needed):
+ * Start the application
 
-       `pg_restore --verbose --no-owner --no-acl -d employmentportal_production --clean VEC-prod-dump-20150828`
+    ```
+    $ rails s
+    ```
 
-   * Option B: Seed your database tables--Note: This step may take 30-40 minutes:
+  * Go to VEC in your browser at [http://127.0.0.1:3000](http://127.0.0.1:3000)
 
-       `$ rake db:seed`
+## Troubleshooting
 
- * In the rails console, create an admin user for you to use:
-
-   `$ rails c`
-   `> User.create(email: 'your@email.com', password: 'yourpassword', va_admin: true)`
-
- * You should be good to go!
-
-  * Start the application
-
-      * `$ rails s`
-
-  * Go to it in your browser at [http://127.0.0.1:3000](http://127.0.0.1:3000)
-
-### Troubleshooting
-
-#### Problem:
+### Problem 1:
 ```
 > bundle install
 [...]
@@ -69,9 +85,12 @@ bundling.
 
 #### Fix:
 
-`brew install qt`
+```
+brew install qt
+```
 
-#### Problem:
+
+### Problem 2:
 ```
 psql: could not connect to server: No such file or directory
 Is the server running locally and accepting
@@ -81,6 +100,7 @@ connections on Unix domain socket "/tmp/.s.PGSQL.5432"
 #### Fix:
 
 Try running these commands:
+
 ```
 rm -fr /usr/local/var/postgres
 initdb /usr/local/var/postgres -E utf8
@@ -115,42 +135,74 @@ initdb /usr/local/var/postgres -E utf8
 
 Common military codes to test the skills translator include 11B and 88M.
 
+MOC codes are sourced from the DoD Occupational Database [https://www.dmdc.osd.mil/owa/odb/](https://www.dmdc.osd.mil/owa/odb/)
+
 Default browser at VA is IE9 Compatibility Mode with IE7 Document Standards.
 
 # Environment variables
 
 The Veteran Employment Center relies on a number of environment variables for setting various values used in the application. The project is set up to use the dotenv gem, which means, for local development, you can put these environment variables in a local file, .env, and they will be used by the application in development.  For use in other environments, you'll have to make sure that the application context has access to the environment variables.
 
+Contact @ayaleloehr if you need access to any of these variables
+
 Here's a list of the environment variables used by the application:
 
-  - DEVISE_SECRET_KEY - secret key for Devise; set with value from `rake secret`
-  - GI_BILL_SAML_SERVICE_URL - Callback URL for the GI Bill SAML login; not really used
-  - GOOGLE_OAUTH_CLIENT_ID - OAuth Client ID for Google Auth
-  - GOOGLE_OAUTH_CLIENT_SECRET - OAuth Client Secret for Google Auth
-  - JOBS_API_BASE_URL - URL to the VA Jobs API server
-  - LINKEDIN_OAUTH_CLIENT_ID - OAuth Client ID for LinkedIn Auth
-  - LINKEDIN_OAUTH_CLIENT_SECRET - OAuth Client Secret for LinkedIn Auth
-  - NEW_RELIC_LICENSE_KEY - License key for New Relic
-  - ONET_TOKEN - Access token for the O-Net API
-  - SAML_CERT_FINGERPRINT - Fingerprint for the SAML cert for AccessVA/DS Logon
-  - SAML_SERVICE_URL - Callback URL for SAML/DS Logon authentication
-  - SAML_SSO_TARGET_URL - Target remote URL for AccessVA/DS Logon authentication
-  - US_JOBS_API_KEY - Key for accessing the US.jobs API
-  - SKILLS_TRANSLATOR_MODEL_ID - The skill translator model to use. This variable has to be increased every time the model gets retrained from new userdata.
-  - SKILLS_TRANSLATOR_PERCENT_SKILLS_RANDOM - To ensure that we occasionally test all skills, no matter how irrelevant we thought they were, we randomly replace a few of our "relevant" skills with totally random skills.
-  - SKILLS_TRANSLATOR_NUM_SKILLS_TO_RETURN - The number of skills the backend should return for a branch and MOC. A number of these skills are picked at random (see variable above).
-  - SKILLS_TRANSLATOR_RELEVANCE_EXPONENT - A large exponent tends to return skills in order of relevance. A small exponent will tend to pick more at random, surfacing more low-relevance skills. Zero will return skills completely random.
+  - DEVISE\_SECRET\_KEY - secret key for Devise; set with value from `rake secret`
+  - GOOGLE\_OAUTH\_CLIENT\_ID - OAuth Client ID for Google Auth
+  - GOOGLE\_OAUTH\_CLIENT\_SECRET - OAuth Client Secret for Google Auth
+  - JOBS_API\_BASE\_URL - URL to the VA Jobs API server
+  - LINKEDIN\_OAUTH\_CLIENT\_ID - OAuth Client ID for LinkedIn Auth
+  - LINKEDIN\_OAUTH\_CLIENT\_SECRET - OAuth Client Secret for LinkedIn Auth
+  - NEW\_RELIC\_LICENSE\_KEY - License key for New Relic
+  - SAML\_CERT\_FINGERPRINT - Fingerprint for the SAML cert for AccessVA/DS Logon
+  - SAML\_SERVICE\_URL - Callback URL for SAML/DS Logon authentication
+  - SAML\_SSO\_TARGET\_URL - Target remote URL for AccessVA/DS Logon authentication
+  - US\_JOBS\_API\_KEY - Key for accessing the US.jobs API
+  - SKILLS\_TRANSLATOR\_MODEL\_ID - The skill translator model to use. This variable has to be increased every time the model gets retrained from new userdata.
+  - SKILLS\_TRANSLATOR\_PERCENT\_SKILLS\_RANDOM - To ensure that we occasionally test all skills, no matter how irrelevant we thought they were, we randomly replace a few of our "relevant" skills with totally random skills.
+  - SKILLS\_TRANSLATOR\_NUM\_SKILLS\_TO\_RETURN - The number of skills the backend should return for a branch and MOC. A number of these skills are picked at random (see variable above).
+  - SKILLS\_TRANSLATOR\_RELEVANCE\_EXPONENT - A large exponent tends to return skills in order of relevance. A small exponent will tend to pick more at random, surfacing more low-relevance skills. Zero will return skills completely random.
+
+###Becoming an administrator locally for testing
+
+- Export the LinkedIn environment variables (you will need to either create your own LinkedIn client id and secret or talk to someone on the VEC team to get our test variables
+	
+```
+$ export LINKEDIN_OAUTH_CLIENT_ID=put_your_client_id_here
+$ export LINKEDIN_OAUTH_CLIENT_SECRET=put_your_secret_here
+```
+
+- Start VEC locally
+
+```
+$ rails s
+```
+- Go to [http://localhost:3000/employers](http://localhost:3000/employers)
+- Click "Sign in with LinkedIn"
+- Enter your LinkedIn credentials. This will create an employer user for you in VEC. 	
+- In a new terminal window, `cd` to the directory VEC is in and log into the rails console
+
+```
+$ rails c
+```
+- In the rails console, enter the following, replacing `my@email.address` with the email address you used above to log in with LinkedIn:
+
+```
+> User.where(:email => "my@email.address").update_all(va_admin:true)
+```
+
+- Go back to [http://localhost:3000/employers](http://localhost:3000/employers) and you should see the administrative functions along the top of the page. 
+
 
 # VA Jobs API
 
 The VEC relies on the VA Jobs API for featured job results.
 
-  https://github.com/adhocteam/jobs_api/tree/va-jobs
+```
+https://github.com/department-of-veterans-affairs/jobs_api/tree/va-jobs
+```
 
-There's a test instance up at va-jobs-api-staging.herokuapp.com, and a production instance at va-jobs-api.herokuapp.com.
+# NLX API Points of Contact
 
-# Points of Contact
-
-NLX API:
 - Gerassimides, Pam <pgerassimides@naswa.org>
 - Terrell, Charlie <cterrell@naswa.org>

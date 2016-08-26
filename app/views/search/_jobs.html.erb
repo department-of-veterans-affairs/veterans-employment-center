@@ -4,21 +4,21 @@
   </div>
 <% else %>
 
-  <div class="row job-row">
-    <div class="small-12 full columns">
-      <% # Only display when both are displayed on a page %>
-      <% if @search.featured_jobs.any? %>
-        <h3><strong>More</strong> jobs</h3>
+<div class="row job-row">
+  <div class="small-12 full columns">
+    <% # Only display when both are displayed on a page %>
+    <% if @search.featured_jobs.any? && @record_count && @record_count > 0%>
+      <h3>More Jobs</h3>
+    <% end %>
+    <% if @record_count && @record_count > 0%>
+      <%= render partial: 'pagination', locals: {searcher: @searcher} %>
+    <% end %>
+    <div>
+      <% @jobs.each do |job| %>
+        <%= render partial: 'job', locals: {job: job} %>
       <% end %>
-      <% if @record_count %>
-        <%= render partial: 'pagination', locals: {searcher: @searcher} %>
-      <% end %>
-      <div class="panel plain">
-        <% @jobs.each do |job| %>
-          <%= render partial: 'job', locals: {job: job} %>
-        <% end %>
-      </div>
     </div>
-
+  </div>
 </div>
+
 <% end %>

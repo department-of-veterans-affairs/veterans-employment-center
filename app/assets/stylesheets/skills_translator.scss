@@ -10,13 +10,21 @@
   color: #DDD;
 }
 
-.skill-deleter {
-  cursor: pointer;
+.delete-link {
+  text-decoration:underline;
+  background:rgba(0, 0, 0, 0.05);
+  color: #323a45;
+  font-size: 12px;
 }
 
-.add-skill-form {
-  padding-left: 30px;
-  padding-right: 30px;
+.delete-link:hover {
+  cursor:pointer;
+  background:#e6e6e6;
+}
+
+.experience-deleter {
+  margin-bottom: 30px;
+  display:inline-block;
 }
 
 .moc-description {

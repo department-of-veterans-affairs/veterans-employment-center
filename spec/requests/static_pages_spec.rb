@@ -25,27 +25,19 @@ describe "Static pages" do
       user = employer_user
       sign_in_as(user)
       visit root_path
-      expect(page).to have_link 'Search Veterans', href: "/veterans"
+      expect(page).to have_link 'Sign Out'
     end
 
     it "should not have the employer top nav if logged in but not an employer" do
       user = create :user, email: 'test@example.com', password: '12345678'
       sign_in_as user
       visit root_path
-      expect(page).not_to have_link 'Search Veterans', href: "/veterans"
+      expect(page).not_to have_link 'Search Veterans'
     end
 
     it "should not have the employer top nav if not logged-in" do
       visit root_path
-      expect(page).not_to have_link 'Search Veterans', href: "/veterans"
-    end
-
-    it "should have a message to email OEC if a logged-in employer who is not approved" do
-      non_approved_employer = employer_user
-      non_approved_employer.employer.update_attributes(approved: false)
-      sign_in_as non_approved_employer
-      visit veterans_path
-      expect(page).to have_content 'unable to view Veteran contact information'
+      expect(page).not_to have_link 'Sign Out', href: "/veterans"
     end
 
     it "should not have a message to email OEC if a logged-in employer who is approved" do
@@ -56,30 +48,6 @@ describe "Static pages" do
       expect(page).not_to have_content 'unable to view Veteran contact information'
     end
 
-  end
-
-  describe "/interest-profiler" do
-    it "should load for anyone" do
-      get interest_profiler_path
-      expect(response.status).to eq 200
-    end
-
-    it "should have the right header" do
-      visit interest_profiler_path
-      expect(page).to have_content 'Interest Profiler'
-    end
-  end
-
-  describe "/career-fairs" do
-    it "should load for anyone" do
-      get career_fairs_path
-      expect(response.status).to eq 200
-    end
-
-    it "should have the right header" do
-      visit career_fairs_path
-      expect(page).to have_content 'Upcoming Career Fairs'
-    end
   end
 
   describe "/skills-translator" do

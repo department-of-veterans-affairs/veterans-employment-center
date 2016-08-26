@@ -1,23 +1,21 @@
 <% provide(:title, "Search for Employers") %>
 <div id="content" class="interior">
   <a id="content" href="#content" class="tabLink sr-only">Content starts here.</a>
-  <div class="splash">
-    <div class="row">
-      <div class="small-12 columns">
-        <ul class="breadcrumbs" role="menubar" aria-label="Primary">
-          <li class="parent"><%= link_to "Veterans Employment Center", root_path %></li>
-          <li class="parent"><%= link_to "For Employers", employer_home_path %></li>
-          <li class="active">Search for Employers</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <%= render 'layouts/navigation' %>
+  <nav class="va-nav-breadcrumbs">
+    <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
+      <li><a href="/">Home</a></li>
+      <li><%= link_to "Careers and Employment", root_path %></li>
+      <li class="parent"><%= link_to "Employers", employer_home_path %></li>
+      <li class="active">Search for Employers</li>
+    </ul>
+  </nav>
   <div class="section one">
     <div class="row">
       <div class="small-12 columns">
         <div class="filters">
           <fieldset>
-            <%= search_form_for @search, url: employer_list_path do |f| %>
+            <%= search_form_for @search, url: employer_list_path, class: "usa-search usa-search-big" do |f| %>
               <div class="row form-group dataItem">
                 <div class="small-12 columns">
                   <label>Keywords</label>
@@ -26,7 +24,7 @@
               </div>
               <div class="row form-group dataItem">
                 <div class="small-12 medium-8 columns">
-                  <%= f.submit "Search", class: "button primary", id: "employer-search" %>
+                  <%= button_tag "Search", class: "button primary", id: "employer-search" %>
                 </div>
               </div>
             <% end %>
@@ -95,7 +93,7 @@
       'paging':    true,
       'pageLength': 50,
       'info':      false,
-      'order': [[4, "desc"]],
+      'order': [[2, "desc"]],
       'processing': true,
       'serverSide': true,
       'searching': true,
@@ -103,7 +101,7 @@
       'filter': false,
       'ajax': '<%= employer_list_path %>',
       'columns': [
-        {'data': 'company_name', className: 'employer_name'},
+        {'data': 'company_name', className: 'employer_name', render: $.fn.dataTable.render.text()},
         {'data': 'ein'},
         {'data': 'created_at'},
         {'data': 'email'},
@@ -116,7 +114,7 @@
     table.on('init', function(){
       $('.server-pagination').hide();
     });
-    $('input[value="Search"]').click(function(e){
+    $('button#employer-search').click(function(e){
       table.search($("#keywords").val());
       table.draw();
       e.preventDefault();

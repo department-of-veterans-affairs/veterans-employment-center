@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.5.2'
 gem 'pg', '0.15.1'
 
 # Use SCSS for stylesheets
@@ -20,12 +20,14 @@ gem 'jquery-validation-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'va_common', '0.3.4'
+gem 'caracal-rails', '1.0.1'
+gem 'caracal', '1.0.2'
+gem 'va_common', '0.4.1'
 gem "font-awesome-rails"
 gem 'enumerize'
 gem 'newrelic_rpm'
 gem 'httparty', '0.13.1'
-gem 'nokogiri'
+gem 'nokogiri', '~> 1.6'
 gem 'will_paginate', '~> 3.0'
 gem "ransack", '1.6.6'
 gem "pg_search"
@@ -40,7 +42,7 @@ gem 'ruby-saml', git: "https://github.com/greggersh/ruby-saml", branch: "vaafi-1
 gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
 gem 'schema_plus_pg_indexes'
 gem 'schema_plus_core', git: 'https://github.com/mikeauclair/schema_plus_core', branch: "handle_quoted_newline"
-gem 'puma', '~> 2.15.3'
+gem 'puma', '3.2.0'
 
 # Generates fake data. Used to create data for staging environment's fictitious veterans, awards, affiliations, employers, etc.
 gem 'ffaker'
@@ -52,6 +54,7 @@ gem 'libv8', '3.16.14.11'
 gem 'rubysl-securerandom'
 
 group :development, :test do
+  gem 'brakeman'
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara', '~> 2.3.0'
   gem 'factory_girl_rails', '4.2.1'
@@ -59,21 +62,14 @@ group :development, :test do
   gem 'launchy'
   gem 'hirb'
   gem 'quiet_assets'
-  gem 'capybara-webkit'
+  gem 'capybara-webkit', '~> 1.7.1'
   gem 'pry'
   gem 'pry-rails'
   gem 'byebug'
   gem 'dotenv-rails'
   gem 'guard'
   gem 'guard-rspec', require: false
-end
-
-group :development do
-  gem 'capistrano', '~> 3.4.0'
-  gem 'capistrano-passenger'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-env-config'
+  gem 'bundler-audit'
 end
 
 group :test do

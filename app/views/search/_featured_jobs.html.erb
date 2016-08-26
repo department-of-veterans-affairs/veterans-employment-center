@@ -1,14 +1,14 @@
 <% if @search.featured_jobs.any? %>
-  <div class="feature">
+  <div class="job-row" id="featured-jobs">
     <div class="row">
       <div class="small-7 columns">
-        <h3><strong>Featured</strong> jobs</h3>
+        <h3>Featured Jobs</h3>
       </div>
       <div class="small-5 columns">
         <%= render partial: 'featured_pagination' %>
       </div>
       <div class="small-12 columns">
-        <p>from employers that have committed to hiring veterans.</p>
+        <h5>From employers that have committed to hiring Veterans.</h5>
       </div>
     </div>
       <% @search.featured_jobs.each do |featured_job| %>

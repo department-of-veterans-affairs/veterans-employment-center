@@ -1,9 +1,8 @@
 class VeteransController < ApplicationController
   before_action :set_veteran, only: [:show, :edit, :update, :destroy, :favorite, :word]
   before_filter :ensure_employer, only: [:favorites, :favorite]
-  before_filter :ensure_employer_or_admin, only: [:index, :download_candidate_veterans]
-  before_filter :validate_veteran, only: [:edit, :destroy, :update]
-  before_filter :validate_veteran_or_employer, only: [:show, :word]
+  before_filter :ensure_employer_or_admin, only: [:index]
+  before_filter :validate_veteran, only: [:edit, :destroy, :update, :show, :word]
   before_filter :clean_params, only: [:create, :update]
   before_filter :ensure_admin, only: [:download_all_veterans]
 
@@ -11,63 +10,15 @@ class VeteransController < ApplicationController
   KEYWORD_FIELD_NAME = 'searchable_summary_cont'
 
   def index
-    veteran_query = Veteran.where.not(user_id: nil).where(visible: true)
-
-    if !(params[:q].blank?) and !((params)[:q]["location"]["full_name"].blank?)
-      # Use geocode gem to find locations near where this employer requests
-      # TODO: Redefine 'near' once we implement radius preferences for vet's desired locations
-      default_radius = 20
-      candidate_vet_ids = Location.near(params[:q]["location"]["full_name"],default_radius).map{|loc| loc.veteran_id}
-
-      veteran_query = veteran_query.where(id: candidate_vet_ids.uniq)
-    end
-
-    query_params_sans_location = params[:q].except("location") unless params[:q].blank?
-    @q = build_search(veteran_query, query_params_sans_location)
-
-    respond_to do |format|
-      format.html do
-        @veterans = @q.result.includes(:experiences, :affiliations, :locations).paginate(page: params[:page], per_page: 20).reorder(updated_at: :desc)
-
-        # Stick the kw query back in as passed to repopulate the text field
-        @q.build(KEYWORD_FIELD_NAME => query_params_sans_location[KEYWORD_FIELD_NAME], 'm' => query_params_sans_location['m']) if query_params_sans_location.respond_to?(:keys)
-      end
-      format.csv do
-        columns = Veteran.column_names
-
-        self.response_body = StreamCSV.new("veterans.csv", self.response) do |csv|
-          csv << columns
-          @q.result.find_each do |veteran|
-            csv << columns.map{|c| veteran.send(c)}
-          end
-        end
-      end
-    end
   end
 
   def show
   end
 
-  def download_all_veterans
-    @veterans = Veteran.all
-    respond_to do |format|
-      format.html
-      format.csv do
-        columns = Veteran.column_names
-        self.response_body = StreamCSV.new('veterans.csv', self.response) do |csv|
-          csv << columns
-          @veterans.each do |veteran|
-            csv << columns.map{|c| veteran.send(c)}
-          end
-        end
-      end
-    end
-  end
-
   def word
       @for_fed_employment = params[:fed]=="true"
       respond_to do |format|
-        format.html do
+        format.docx do
           response.headers['Content-Disposition'] = 'attachment; filename="resume.doc"'
           render content_type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", layout: 'word'
         end
@@ -100,14 +51,16 @@ class VeteransController < ApplicationController
     @veteran = session[:linkedin_profile] ? Veteran.new_from_linkedin_profile(session[:linkedin_profile]) : Veteran.new
     @veteran.skills << Skill.find(params[:skills]) if params[:skills].present?
     return if params['moc'].blank? || params['branch'].blank?
-    occupation = MilitaryOccupation.find_by_moc_and_branch(params[:moc], params['branch']).first()
-    @veteran.experiences << Experience.new({
-      moc: occupation.code,
-      organization: occupation.service,
-      job_title: occupation.title,
-      description: occupation.description.gsub(/<\/?p>/i, "\n"),
-      experience_type: 'military',
-    })
+    occupation = MilitaryOccupation.find_by_moc_branch_status_category(params[:moc], params['branch'], params['status'], params['category']).first()
+    if occupation
+      @veteran.experiences << Experience.new({
+        moc: occupation.code,
+        organization: occupation.service,
+        job_title: occupation.title,
+        description: occupation.description.gsub(/<\/?p>/i, "\n"),
+        experience_type: 'military',
+      })
+    end
   end
 
   def edit
@@ -116,12 +69,6 @@ class VeteransController < ApplicationController
   # If an unauthenticated Veteran creates a resume, the veteran_id is saved to a cookie. If they proceed to log in, the cookie links their User to their Veteran.
   def create
     @veteran = Veteran.new(veteran_params)
-    if params["veteran"]["skills"]
-      @veteran.skills = params["veteran"]["skills"].map do |id|
-        Skill.find(id) unless id.blank?
-      end
-    end
-    @veteran.update_attributes(applied_for_alp_date: Time.now) unless veteran_params[:accelerated_learning_program].blank?
     if user_signed_in?
       @veteran.update_attributes(user_id: current_user.id) if current_user.veteran.nil?
     else
@@ -138,7 +85,7 @@ class VeteransController < ApplicationController
         payload: {veteran_id: @veteran.id}.to_json) if not last_event.nil?
 
       cookies[:veteran_id] = @veteran.id
-      redirect_to @veteran, notice: 'Veteran was successfully created.'
+      redirect_to @veteran
     else
       render action: 'new'
     end
@@ -148,11 +95,9 @@ class VeteransController < ApplicationController
     if @veteran.user_id.nil?
       @veteran.update_attributes(user_id: current_user.id) if user_signed_in? && current_user.veteran.nil?
     end
-    @veteran.update_attributes(applied_for_alp_date: Time.now) unless veteran_params[:accelerated_learning_program].blank?
     if !veteran_params["locations_attributes"].blank?
       @veteran.update_location_attributes(veteran_params["locations_attributes"])
     end
-    @veteran.skills = params["veteran"]["skills"].map { |id| Skill.find(id) unless id.blank? } if params["veteran"]["skills"]
     if @veteran.update(veteran_params)
       redirect_to @veteran, notice: 'Veteran was successfully updated.'
     else
@@ -179,14 +124,14 @@ class VeteransController < ApplicationController
       :session_id,
       :visible,
       :availability_date,
-      :accelerated_learning_program,
       references_attributes: [:name, :email, :job_title, :id, :veteran_id, :_destroy],
       affiliations_attributes: [:job_title, :organization, :id, :veteran_id, :_destroy],
       awards_attributes: [:title, :veteran_id, :organization, :date, :id, :_destroy],
       experiences_attributes: [:job_title, :organization, :experience_type, :start_date, :end_date, :hours, :educational_organization, :credential_type, :credential_topic, :description, :veteran_id, :moc, :duty_station, :rank, :id, :_destroy],
       desiredPosition: [],
+      :skill_ids => [],
       status_categories: [],
-      locations_attributes: [:id, :veteran_id, :location_type, :full_name, :city, :state, :country, :lat, :lng, :zip, :include_radius, :radius]
+      locations_attributes: [:id, :veteran_id, :location_type, :full_name, :city, :state, :country, :lat, :lng, :zip, :include_radius, :radius, :_destroy],
     )
   end
 
@@ -218,12 +163,12 @@ class VeteransController < ApplicationController
     elsif user_owns_veteran?
       return
     else
-      redirect_to_employer_login
+      redirect_to_home_page
     end
   end
 
   def validate_veteran
-    redirect_to_employer_login unless user_owns_veteran?
+    redirect_to_home_page unless user_owns_veteran?
   end
 
   def user_owns_veteran?
@@ -237,14 +182,9 @@ class VeteransController < ApplicationController
     end
   end
 
-  def redirect_to_employer_login
-    if current_user
-      flash[:error] = "You do not have access to that content."
-      redirect_to root_path
-    else
-      flash[:error] = "You must be signed in to access this content."
-      redirect_to new_user_session_path
-    end
+  def redirect_to_home_page
+    flash[:error] = "You do not have access to that content."
+    redirect_to root_path
   end
 
   def clean_params
@@ -253,7 +193,6 @@ class VeteransController < ApplicationController
   end
 
   def clean_blank_params
-    params[:veteran][:skills].reject!(&:empty?) if params[:veteran][:skills]
 ## TODO: REINSTATE THE BELOW IN TERMS OF NEW MODEL/PARAMS
 ##    params[:veteran][:desiredLocation].reject!(&:empty?)
     params[:veteran][:status_categories].reject!(&:empty?) unless params[:veteran][:status_categories].nil?

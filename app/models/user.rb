@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
-         :recoverable, :trackable, :omniauthable , omniauth_providers: [:google_oauth2,:linkedin, :saml, :linkedin_resume, :gi_bill_saml]
+         :recoverable, :trackable, :omniauthable , omniauth_providers: [:google_oauth2,:linkedin, :saml, :linkedin_resume]
   validates_presence_of :email
   validates_uniqueness_of :email, scope: :provider
   has_one :employer

@@ -1,46 +1,25 @@
 <script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?libraries=places"%></script>
 
 <% unless session[:linkedin_profile] %>
-  <div class="row">
-    <div class="small-12 medium-9 columns">
-      <%= link_to "<i class='icon-linkedin' aria-hidden='true'></i><span>Auto-fill from LinkedIn</span>".html_safe, user_omniauth_authorize_path(:linkedin_resume), class: "button social linkedin", id: "linkedin_autofill"%>
-    </div>
-  </div>
-  <p>LinkedIn is also providing a <b>free</b> 1-year Job Seeker Premium subscription ($360 value) to all U.S. Veterans and Servicemembers. Learn more <a href="https://veterans.linkedin.com/" id="linkedin_site" target="_blank">here</a>.</p>
+      <%= link_to "<i class='icon-linkedin' aria-hidden='true'></i><span>Auto-fill from LinkedIn</span>".html_safe, user_omniauth_authorize_path(:linkedin_resume), class: "usa-button", id: "linkedin_autofill"%>
 <% end %>
 
 <%= form_for @veteran, html: { class: 'f resume', id: 'veteran_form', role: 'form' } do |f| %>
-  <% if @veteran.errors.any? %>
-    <li class="error_list"> <h3 class="no-margin"><%= pluralize(@veteran.errors.count, "error") %> prohibited this veteran from being saved:</h2>
-      <div id="error_explanation">
-      <ul>
-        <% @veteran.errors.full_messages.each do |msg| %>
-          <li><span class="resume_error"><%= msg %></span></li>
-        <% end %>
-      </ul>
-      </div>
-    </li>
-  <% end %>
-
     <div class="form-section">
-
       <div class="required federal">(This section is required for <strong>Federal job applications</strong>)</div>
-      <h3 class="no-margin">Add the basics</h3>
+      <h3 class="no-margin">Add the Basics</h3>
 
       <fieldset class="no-margin">
-        <legend>Enter your name</legend>
+        <legend>Enter your name and email (required)</legend>
 
         <div class="row form-group dataItem">
           <div class="small-12 columns">
-            <%= f.label :name, "Your Name " %>
-            <%= f.text_field :name %>
+            <%= form_field(form: f, type: :text_field, name: :name, label_text: "Your full name", errors: @veteran.errors.messages) %>
           </div>
         </div>
         <div class="row form-group dataItem">
           <div class="small-12 columns">
-            <%= f.label :email, "Your Email "%>
-            <%= f.email_field :email, class: "required field" %>
-            <span class="required message" aria=describedby="veteran-email">Required</span>
+            <%= form_field(form: f, type: :email_field, name: :email, label_text: "Your email", errors: @veteran.errors.messages) %>
           </div>
         </div>
       </fieldset>
@@ -56,7 +35,7 @@
       <legend>Enter basic information about your career goals and objectives.</legend>
       <div class="row form-group">
         <div class="small-12 columns dataItem">
-          <%= f.label :objective, "1 - 2 sentences about your qualifications and career objectives. This appears in search results, so make it stand out!" %>
+          <%= f.label :objective, "Provide 1-2 sentences. This appears in search results, so make it stand out!" %>
           <%= f.text_area :objective, class: "form-control", rows: 5 %>
         </div>
       </div>
@@ -66,10 +45,10 @@
   <div class="form-section">
 
     <div class="required federal">(This section is required for <strong>Federal job applications</strong>)</div>
-    <h3 class="no-margin">When can you start work?</h3>
+    <h3 class="no-margin">Your Start Date</h3>
 
     <fieldset class="no-margin">
-      <legend>When can you start work?</legend>
+      <legend>Enter your available start date.</legend>
 
       <div class="row form-group dataItem">
         <div class="small-12 columns">
@@ -90,15 +69,15 @@
     <h3 class="no-margin"> Your Civilian Skills</h3>
 
     <fieldset class="no-margin">
-      <legend>Add your civilian skills. Add as many as necessary by using the autocomplete field</legend>
+      <legend>Provide your civilian skills. Add as many as necessary with the help of the autocomplete field.</legend>
       <div class="row form-group">
         <ul>
           <div id="checkbox-list" class="skill_columns">
             <% @veteran.skills.each do |skill| %>
               <li>
-                <%= hidden_field(:veteran, :skills, value: skill.id, multiple: true) %>
+                <%= hidden_field(:veteran, :skill_ids, value: skill.id, multiple: true) %>
                 <span><%= skill.name %></span>
-                <span class="skill-deleter"><i class="fa fa-trash-o"></i></span>
+                <span class="skill-deleter delete-link">remove</span>
               </li>
             <% end %>
           </div>
@@ -113,23 +92,21 @@
         </div>
       </div>
     </fieldset>
-    <div class="actions alternate">
-      <a onclick="addSkillOnClick()" value="+ Add Another Skill"><span aria-hidden='true'>+ </span>Add Another Skill</a>
-    </div>
   </div>
 
   <div class="form-section">
 
     <div class="required federal">(This section is required for <strong>Federal job applications</strong>)</div>
-    <h3 class="no-margin">Education &amp; Training</h3>
+    <h3 class="no-margin">Education and Training</h3>
 
     <%= f.fields_for :experiences, @veteran.educational_experiences.any? ? @veteran.educational_experiences : @veteran.experiences.new do |experiences_fields| %>
       <%= render 'education_fields', f: experiences_fields %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= experiences_fields.check_box :_destroy, :style => 'display:none' %>
     <% end %>
     <div class="actions alternate">
       <%= link_to_add_fields_education "<span aria-hidden='true'>+ </span>Add Education Experience".html_safe, f, :experiences %>
     </div>
-
   </div>
 
   <div class="form-section">
@@ -138,6 +115,8 @@
 
     <%= f.fields_for :experiences, @veteran.military_experiences.any? ? @veteran.military_experiences : @veteran.experiences.new do |experiences_fields| %>
       <%= render 'military_fields', f: experiences_fields %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= experiences_fields.check_box :_destroy, :style => 'display:none' %>
     <% end %>
     <div class="actions alternate">
       <%= link_to_add_fields_military "<span aria-hidden='true'>+ </span>Add Military Experience".html_safe, f, :experiences %>
@@ -150,6 +129,8 @@
 
     <%= f.fields_for :experiences, @veteran.work_experiences.any? ? @veteran.work_experiences : @veteran.experiences.new do |experiences_fields| %>
       <%= render 'employment_fields', f: experiences_fields %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= experiences_fields.check_box :_destroy, :style => 'display:none' %>
     <% end %>
     <div class="actions alternate">
       <%= link_to_add_fields_work "<span aria-hidden='true'>+ </span>Add Work Experience".html_safe, f, :experiences %>
@@ -161,6 +142,8 @@
     <h3 class="no-margin">Volunteer Experience</h3>
     <%= f.fields_for :experiences, @veteran.volunteer_experiences.any? ? @veteran.volunteer_experiences : @veteran.experiences.new do |experiences_fields| %>
       <%= render 'experience_fields', f: experiences_fields %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= experiences_fields.check_box :_destroy, :style => 'display:none' %>
     <% end %>
     <div class="actions alternate">
       <%= link_to_add_fields "<span aria-hidden='true'>+ </span>Add Volunteer Experience".html_safe, f, :experiences %>
@@ -171,6 +154,8 @@
     <h3 class="no-margin">Awards</h3>
     <%= f.fields_for :awards, @veteran.awards.any? ? @veteran.awards : @veteran.awards.new do |builder| %>
       <%= render 'award_fields', f: builder %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= builder.check_box :_destroy, :style => 'display:none' %>
     <% end %>
     <div class="actions alternate">
       <%= link_to_add_fields "<span aria-hidden='true'>+ </span>Add Award".html_safe, f, :awards %>
@@ -181,6 +166,8 @@
     <h3 class="no-margin">Professional Affiliations</h3>
     <%= f.fields_for :affiliations, @veteran.affiliations.any? ? @veteran.affiliations : @veteran.affiliations.new do |builder| %>
       <%= render 'affiliation_fields', f: builder %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= builder.check_box :_destroy, :style => 'display:none' %>
     <% end %>
     <div class="actions alternate">
       <%= link_to_add_fields "<span aria-hidden='true'>+ </span>Add Affiliation".html_safe, f, :affiliations %>
@@ -192,6 +179,8 @@
     <h3 class="no-margin">References</h3>
     <%= f.fields_for :references, @veteran.references.any? ? @veteran.references : @veteran.references.new do |builder| %>
       <%= render 'reference_fields', f: builder %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= builder.check_box :_destroy, :style => 'display:none' %>
     <% end %>
     <div class="actions alternate">
       <%= link_to_add_fields "<span aria-hidden='true'>+ </span>Add Reference".html_safe, f, :references %>
@@ -202,8 +191,9 @@
     <h3 class="no-margin">Location Preference</h3>
     <%= f.fields_for :locations, @veteran.locations.any? ? @veteran.locations : @veteran.locations.new do |locations_fields| %>
       <%= render 'location_fields', f: locations_fields %>
+      <span class="delete-link experience-deleter">Remove Section</span>
+      <%= locations_fields.check_box :_destroy, :style => 'display:none' %>
     <% end %>
-
     <div class="actions alternate">
       <%= link_to_add_fields "<span aria-hidden='true'>+ </span>Add Location".html_safe, f, :locations %>
       <%#= link_to_add_fields_location "<span aria-hidden='true'>+ </span>Add Another Location".html_safe, f, :locations %>
@@ -213,11 +203,8 @@
   <div class="form-section">
     <h3 class="no-margin">Other</h3>
     <fieldset class="no-margin">
-      <legend>Enter optional additional information to assist potential employers in finding your profile.</legend>
+      <legend>Enter optional additional information to add to your federal résumé.</legend>
       <div class="row form-group dataItem">
-        <div class="small-12 columns">
-          <label>Indicate any special categories that apply to you: </label>
-        </div>
         <div class="small-12 columns">
           <%= f.collection_check_boxes(:status_categories, Veteran::STATUS_CATEGORIES, :to_s, :to_s) do |b| %>
             <%= b.check_box %> <%= b.label %> <br/>
@@ -225,33 +212,13 @@
         </div>
       </div>
     </fieldset>
-  </div>
-
-  <div class="form-section">
-    <h3 class="no-margin">Save As Draft</h3>
-    <fieldset class="no-margin">
-      <legend>Let employers find and view your profile, or save it as a draft.</legend>
-      <div class="row form-group dataItem">
-        <div class="small-12 columns">
-          <label>Check this box if you DON'T want employers to find and view your profile.</label>
-          <div class="form-group" id="visible">
-            <%= f.check_box(:visible, {checked: false}, "0", "1")%><%= f.label :visible, "Save as draft" %> <br />
-          </div>
-          <% if user_signed_in? %>
-          <% else %>
-            <p>Your profile will only be visible to employers after you log in to save your information.</p>
-          <% end %>
-          <% %>
-        </div>
-      </div>
-    </fieldset>
-  </div>
+   </div>
 
   <div class="row actions">
     <div class="small-12 columns">
-      <%= f.submit "Preview Your Veteran Profile and Résumé Content", class: 'button primary' %>
+      <%= button_tag "Preview Your Résumé Content", class: 'usa-button page-end' %>
     </div>
+    <br /><br />
   </div>
-
 
 <% end %>

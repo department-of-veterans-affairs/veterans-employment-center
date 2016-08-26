@@ -18,24 +18,32 @@ describe Employer do
       expect(employer).to be_invalid
     end
 
-    valid = [0, "123", 2342352]
+    valid = ['', "123456789", 234235289]
     valid.each do |ex|
       employer.ein = ex
       expect(employer).to be_valid
     end
   end
 
+  it "should allow duplicate EINs" do
+    employer1 = create :employer, ein: "123456789"
+    expect(employer1).to be_valid
+    user = create :user, email: "unique_email@email.com"
+    employer2 = user.build_employer(street_address: "123 Main St", city: "Anywhere", state: "MO", zip: "44444", phone: "222-333-4444", commit_to_hire: 1, ein: "123456789")
+    expect(employer2).to be_valid
+  end
+
   it "should validate commit_to_hire" do
     employer = create(:employer)
     expect(employer).to be_valid
 
-    invalid = ["alpha", -12, 11111111]
+    invalid = [0, "alpha", -12, 11111111]
     invalid.each do |ex|
       employer.commit_to_hire = ex
       expect(employer).to be_invalid
     end
 
-    valid = [0, "123", 2342352]
+    valid = [1, "123", 2342352]
     valid.each do |ex|
       employer.commit_to_hire = ex
       expect(employer).to be_valid
