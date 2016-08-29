@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 describe SkillsController do
   describe '#get_skills' do
