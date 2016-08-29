@@ -98,7 +98,7 @@ ul li:before {
   margin-top: 1.3em;
   padding: 0.65em .65em;
 }
- 
+
 .card.information {
   background: rgba(0,0,0,.05);
   min-height: 11.2rem;
@@ -328,6 +328,12 @@ fieldset {
   }
 }
 
+button.success.secondary {
+  background-color: #2e8540;
+  color: white;
+  border-color: #2e8540;
+}
+
 // Veteran Search Results
 .search-results {
   ol {
@@ -353,7 +359,7 @@ fieldset {
 }
 
 
-// VA Crisis Line 
+// VA Crisis Line
 
 .va-crisis-line {
   &:hover, &:focus {
@@ -383,7 +389,7 @@ body {
   font-size: $base-font-size;
 }
 
-.accordion .accordion-navigation > a, 
+.accordion .accordion-navigation > a,
 .accordion dd > a {
   font-size: inherit;
   font-family: inherit;
@@ -434,7 +440,7 @@ h1 {
 
 table tr th,
 table tr td,
-table tbody tr th, 
+table tbody tr th,
 table tbody tr td,
 table thead tr th,
 table thead tr td {
@@ -454,7 +460,7 @@ dl dt, dl dd {
 }
 
 p, ul, ol, dl {
-  line-height: inherit; 
+  line-height: inherit;
 }
 
 button {
@@ -511,5 +517,9 @@ form {
   legend {
     font-size: 2rem;
     font-weight: 700;
+  }
+
+  .usa-input-error {
+    margin-top: 1em;
   }
 }

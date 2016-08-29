@@ -157,7 +157,17 @@ class SkillsController < ApplicationController
           end
           r -= s["weight"]
         end
-        break if reordered_skills.length == n
+
+        # TODO: the `skills.length == 0` condition is added to address situations where
+        # the skills contain duplicates, and `skills.delete` will remove more than one
+        # instance of a skill from the skills list. This causes a situation where
+        # `reordered_skills.length` will never reach `n`, and results in an infinite loop
+        #
+        # 1) This routine should be simplified, better tested, and added to an interface
+        # that the controller can reference, not live inside the controller.
+        # 2) This routine should perform a parameter integrity check before operation
+        # and/or the routine generating the parameters should not return duplicates.
+        break if skills.length == 0 || reordered_skills.length == n
       end
       reordered_skills.each {|s| s.delete "weight"}
       return reordered_skills
