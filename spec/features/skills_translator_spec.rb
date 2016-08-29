@@ -2,6 +2,8 @@
 require 'rails_helper'
 
 feature 'User is reading the Skills Translator page' do
+  let(:skill_pill_id) { "#skill_pill_#{@skills.first.id}" }
+
   before do
     @moc = create(:military_occupation)
     @default_moc = create(:default_military_occupation)
@@ -10,8 +12,10 @@ feature 'User is reading the Skills Translator page' do
     ENV['SKILLS_TRANSLATOR_MODEL_ID'] = @model.id.to_s
     ENV['SKILLS_TRANSLATOR_PERCENT_SKILLS_RANDOM'] = '0'
     ENV['SKILLS_TRANSLATOR_RELEVANCE_EXPONENT'] = '-1'
+    @skills = []
     10.times do |i|
         sk = Skill.create(name: "Fake Skill #{i+1}", source: "Fake Source")
+        @skills << sk
         rel = SkillsForMilitaryOccupation.create(
             skills_translator_model_id: @model.id,
             military_occupation_id: @moc.id,
@@ -95,7 +99,7 @@ feature 'User is reading the Skills Translator page' do
   scenario 'Skills are imported correctly into resume builder', js: true do
     fill_and_submit_form
     expect(page).to have_content 'Fake Skill 1'
-    page.find('#skill_pill_1').click
+    page.find(skill_pill_id).click
     click_button 'importButton'
     expect(page).to have_content 'Fake Skill 1'
   end
@@ -103,8 +107,8 @@ feature 'User is reading the Skills Translator page' do
   scenario 'Check-then-unchecked skills are not imported into resume builder', js: true do
     fill_and_submit_form
     expect(page).to have_content 'Fake Skill 1'
-    page.find('#skill_pill_1').click
-    page.find('#skill_pill_1').click
+    page.find(skill_pill_id).click
+    page.find(skill_pill_id).click
     click_button 'importButton'
     expect(page).to have_no_content 'Fake Skill 1'
   end
