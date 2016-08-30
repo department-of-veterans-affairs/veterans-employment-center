@@ -15,7 +15,6 @@ namespace :db do
     ActiveRecord::Base.transaction do
       skills.each do |e|
         Skill.create(name: e['skill_name'], source: e['source'], belongs_to: e['belongs_to'], id: e['skill_id'])
-        puts 'Imported a skill'
       end
     end
   end

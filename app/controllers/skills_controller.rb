@@ -17,8 +17,9 @@ class SkillsController < ApplicationController
   end
 
   def get_skills
-    query = "source in ('linkedin') and name ilike '#{params['prefix']}%'"
-    render json: Skill.where(query).select(:id, :name).to_json
+    query = ["source in ('linkedin') and name ilike ?", "#{params[:prefix]}%"]
+    @skills = Skill.where(query)
+    render json: @skills.select(:id, :name).to_json
   end
 
   def get_common_skills
