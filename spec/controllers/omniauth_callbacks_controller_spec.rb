@@ -58,7 +58,7 @@ describe Users::OmniauthCallbacksController do
 
     context "when the auth information does not include an email address" do
       before do
-        omniauth_auth = OmniAuth.config.mock_auth[:linkedin]
+        omniauth_auth = OmniAuth.config.mock_auth[:linkedin].dup
         omniauth_auth.uid = '12345'
         omniauth_auth.info.email = ''
 
