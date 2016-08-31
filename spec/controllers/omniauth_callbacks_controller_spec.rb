@@ -55,6 +55,26 @@ describe Users::OmniauthCallbacksController do
         end
       end
     end
+
+    context "when the auth information does not include an email address" do
+      before do
+        omniauth_auth = OmniAuth.config.mock_auth[:linkedin].dup
+        omniauth_auth.uid = '12345'
+        omniauth_auth.info.email = ''
+
+        request.env["omniauth.auth"] = omniauth_auth
+
+        post :linkedin
+      end
+
+      it 'should redirect to the employer_home_path' do
+        expect(response).to redirect_to employer_home_path
+      end
+
+      it 'should set a flash warning that says the login failed' do
+        expect(flash[:warn]).to match(/failed/)
+      end
+    end
   end
 
   describe "saml" do
