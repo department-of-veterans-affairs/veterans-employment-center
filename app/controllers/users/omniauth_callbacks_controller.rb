@@ -21,13 +21,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user = User.find_by_provider_and_email("linkedin", auth.info.email)
       @user.update_attributes(uid: auth.uid) if @user && @user.persisted?
     end
-    if @user.persisted?
+    if @user && @user.persisted?
       sign_in @user, event: :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, kind: "LinkedIn") if is_navigational_format?
       redirect_to employer_home_path
     else
       session["devise.linkedin_data"] = request.env["omniauth.auth"]
       flash[:warn] = "OAuth failed with LinkedIn"
+      Rails.logger.info "OAuth Failure (LinkedIn)! auth: #{auth.inspect}"
       redirect_to employer_home_path
     end
   end
