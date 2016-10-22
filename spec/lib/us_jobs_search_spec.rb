@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe JobsApi do
+describe UsJobsSearch do
   describe '#search' do
     subject(:search) { described_class.new.search({}) }
 
