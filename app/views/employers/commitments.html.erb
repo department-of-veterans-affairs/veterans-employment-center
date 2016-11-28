@@ -12,20 +12,13 @@
   </nav>
 
   <div class="section one">
-    <% unless user_signed_in? && current_user.is_employer? %>
       <div class="row">
         <div class="small-12 medium-8 columns">
-          <h1>Commitments</h1>
-          <p>Veterans and military family members have consistently proven themselves to be reliable, independent, and hardworking team members. Veterans also have soft skills such as problem solving and creativity that can benefit a company’s bottom line. By signing up and making a commitment, your company will stand out to candidates eager to enter the civilian workforce.</p>
-        </div>
-      </div>
-
-      <% end %>
-
-      <div class="row">
-        <div class="small-12 medium-8 columns">
-
-        <p>Of the <%= @commitment_report.total_employers %> approved employers with the Veterans Employment Center:</p>
+          <% unless user_signed_in? && current_user.is_employer? %>
+            <h1>Commitments</h1>
+            <p>Veterans and military family members have consistently proven themselves to be reliable, independent, and hardworking team members. Veterans also have soft skills such as problem solving and creativity that can benefit a company’s bottom line. By signing up and making a commitment, your company will stand out to candidates eager to enter the civilian workforce.</p>
+          <% end %>
+          <p>Of the <%= @commitment_report.total_employers %> approved employers with the Veterans Employment Center:</p>
         <br>
         <div class="row">
           <div class="small-12 medium-4 columns">
@@ -45,9 +38,9 @@
               <span class="number"><%= number_with_delimiter(@commitment_report.hired_so_far, :delimiter => ',') %></span>
               <span class="description">Veterans hired so far</span>
             </div>
-          </div> 
+          </div>
 
-        </div>  
+        </div>
       </div>
 
       <% if user_signed_in? && current_user.is_employer? %>
@@ -68,18 +61,22 @@
         </div>
         <% else %><!-- employer not logged in -->
 
-        <div class="small-12 medium-4 columns feature">
-          <h5>Employers:<br />Log in to create/manage your hiring commitment.</h5>
+        <div class="small-12 medium-4 columns">
+          <h4 class="highlight">Employers</h4>
+          <p></p>
+          <p>
+            Log in to create/manage your hiring commitment.
+          </p>
           <div class="actions">
-            <%= link_to "Sign in with LinkedIn", user_omniauth_authorize_path(:linkedin), class: "usa-button sign-in" %> <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), class: "usa-button sign-in" %>
+            <%= link_to "Sign in with LinkedIn", user_omniauth_authorize_path(:linkedin), class: "usa-button va-button-secondary" %> <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2), class: "usa-button va-button-secondary" %>
           </div>
         </div>
         <% end %>
 
     </div><!-- end row 2 -->
-    
+
     <div class="row">
-      
+
       <table id="commitments" role="grid">
       <caption>Commitments</caption>
         <thead>
