@@ -50,7 +50,7 @@ feature 'when building a resume, the resume only shows the fields that it should
     end
   end
 
-  scenario 'a vet fills in a partial location then selects choice given by autocompletion', js: true, driver: :webkit do
+  scenario 'a vet fills in a partial location then selects choice given by autocompletion', js: true, driver: :poltergeist do
     pending "Solution to rack application time out"
     #TODO: Solve Rack application timed out during boot due to the following code
       # The stub_request step below causes a timeout error, slowing down this pending test.
@@ -162,7 +162,7 @@ feature 'when building a resume, the resume only shows the fields that it should
   #   expect(page).to have_content 'gs8'
   # end
 
-#  scenario "you can delete fields on create page",:js => true,driver: :webkit  do
+#  scenario "you can delete fields on create page",:js => true,driver: :poltergeist  do
 #    visit resume_builder_path
 #    fill_in 'Your Name', with: 'Suzy Veteran'
 #    fill_in 'Your Email', with: 'suzy@veterans.org'
