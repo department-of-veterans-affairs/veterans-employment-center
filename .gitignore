@@ -40,3 +40,5 @@ doc/
 latest.dump
 .ruby-gemset
 *.dump
+# Ignore application configuration
+/config/application.yml

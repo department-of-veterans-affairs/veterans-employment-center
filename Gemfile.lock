@@ -137,6 +137,8 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffaker (2.2.0)
     ffi (1.9.10)
+    figaro (1.1.1)
+      thor (~> 0.14)
     font-awesome-rails (4.5.0.1)
       railties (>= 3.2, < 5.1)
     formatador (0.2.5)
@@ -452,6 +454,7 @@ DEPENDENCIES
   enumerize
   factory_girl_rails (= 4.2.1)
   ffaker
+  figaro (~> 1.1, >= 1.1.1)
   font-awesome-rails
   geocoder
   guard
