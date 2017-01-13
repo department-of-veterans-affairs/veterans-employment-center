@@ -101,18 +101,6 @@ PROVIDERS[:google_oauth2] = {
     email: 'test@gmail.com'
   }
 }
-PROVIDERS[:saml] = {
-  extra: {
-    raw_info: {
-      dodEdiPnId: '1234567890'
-    }
-  },
-  uid: '12345',
-  info: {
-    name: 'Test Google User',
-    email: 'test@gmail.com'
-  }
-}
 PROVIDERS[:linkedin_resume] = {
   provider: 'linkedin',
   uid: '123545',
