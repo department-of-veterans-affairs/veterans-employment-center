@@ -242,12 +242,6 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, ENV['GOOGLE_OAUTH_CLIENT_ID'], ENV['GOOGLE_OAUTH_CLIENT_SECRET'], skip_jwt: true
   config.omniauth :linkedin, ENV['LINKEDIN_OAUTH_CLIENT_ID'], ENV['LINKEDIN_OAUTH_CLIENT_SECRET']
   config.omniauth :linkedin_resume, ENV['LINKEDIN_OAUTH_CLIENT_ID'], ENV['LINKEDIN_OAUTH_CLIENT_SECRET'], :scope => "r_fullprofile+r_emailaddress"
-  config.omniauth :saml,
-    :assertion_consumer_service_url     => ENV['SAML_SERVICE_URL'],
-    :issuer                             => "urn:govheroku:serviceprovider",
-    :idp_sso_target_url                 => ENV['SAML_SSO_TARGET_URL'],
-    :idp_cert_fingerprint               => ENV['SAML_CERT_FINGERPRINT'],
-    :name_identifier_format             => "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

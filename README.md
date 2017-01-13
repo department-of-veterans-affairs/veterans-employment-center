@@ -153,9 +153,6 @@ Here's a list of the environment variables used by the application:
   - LINKEDIN\_OAUTH\_CLIENT\_ID - OAuth Client ID for LinkedIn Auth
   - LINKEDIN\_OAUTH\_CLIENT\_SECRET - OAuth Client Secret for LinkedIn Auth
   - NEW\_RELIC\_LICENSE\_KEY - License key for New Relic
-  - SAML\_CERT\_FINGERPRINT - Fingerprint for the SAML cert for AccessVA/DS Logon
-  - SAML\_SERVICE\_URL - Callback URL for SAML/DS Logon authentication
-  - SAML\_SSO\_TARGET\_URL - Target remote URL for AccessVA/DS Logon authentication
   - US\_JOBS\_API\_KEY - Key for accessing the US.jobs API
   - SKILLS\_TRANSLATOR\_MODEL\_ID - The skill translator model to use. This variable has to be increased every time the model gets retrained from new userdata.
   - SKILLS\_TRANSLATOR\_PERCENT\_SKILLS\_RANDOM - To ensure that we occasionally test all skills, no matter how irrelevant we thought they were, we randomly replace a few of our "relevant" skills with totally random skills.
