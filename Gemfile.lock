@@ -5,15 +5,6 @@ GIT
     database_cleaner (1.5.3)
 
 GIT
-  remote: https://github.com/greggersh/ruby-saml
-  revision: 74ec691c21627dc3c1b78330bbc7c8dd0649be2f
-  branch: vaafi-1.0.0
-  specs:
-    ruby-saml (1.0.0)
-      nokogiri (>= 1.5.10)
-      uuid (~> 2.3)
-
-GIT
   remote: https://github.com/rails/activerecord-session_store
   revision: 177936e5207603a94a4deeabf6936363693ab96e
   specs:
@@ -188,9 +179,7 @@ GEM
       ruby_dep (~> 1.2)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    lumberjack (1.0.11)
-    macaddr (1.7.1)
-      systemu (~> 2.6.2)
+   lumberjack (1.0.10)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
@@ -239,9 +228,6 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
-    omniauth-saml (1.4.1)
-      omniauth (~> 1.1)
-      ruby-saml (~> 1.0.0)
     orm_adapter (0.5.0)
     pg (0.15.1)
     pg_search (2.0.1)
@@ -381,7 +367,6 @@ GEM
     stellar-js-rails (0.6.2.1)
       jquery-rails (>= 2.0)
       railties (>= 3.2.0, < 5.0)
-    systemu (2.6.5)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -395,8 +380,6 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
-    uuid (2.3.8)
-      macaddr (~> 1.0)
     va_common (0.4.4)
       bourbon (~> 4.2.6)
       css_splitter (~> 0.4.4)
@@ -463,7 +446,6 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-linkedin
   omniauth-oauth2
-  omniauth-saml (~> 1.4.0)
   pg (= 0.15.1)
   pg_search
   poltergeist
@@ -477,7 +459,6 @@ DEPENDENCIES
   ransack (= 1.6.6)
   rspec (~> 3.5)
   rspec-rails (~> 3.5)
-  ruby-saml!
   rubysl-securerandom
   sass-rails (~> 5.0.0)
   schema_plus_core

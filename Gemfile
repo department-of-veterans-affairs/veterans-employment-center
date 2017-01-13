@@ -39,8 +39,6 @@ gem 'omniauth-oauth2'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin' #for some reason oauth2 doesn't work
 gem 'linkedin'
-gem 'omniauth-saml', '~> 1.4.0'
-gem 'ruby-saml', git: "https://github.com/greggersh/ruby-saml", branch: "vaafi-1.0.0"
 gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
 gem 'schema_plus_pg_indexes'
 gem 'schema_plus_core'
