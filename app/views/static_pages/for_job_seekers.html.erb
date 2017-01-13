@@ -32,7 +32,7 @@
       </div>
       <div class="small-12 medium-4 columns feature">
         <p>Already have a public profile? Sign in to update it.</p>
-		<%= link_to "Sign in", user_omniauth_authorize_path(:saml), class: "usa-button sign-in", id: "update_profile" %>
+		<%= link_to "Sign in", user_saml_omniauth_authorize_path(), class: "usa-button sign-in", id: "update_profile" %>
       </div>
     </div>
 

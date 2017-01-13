@@ -57,7 +57,8 @@ gem 'rubysl-securerandom'
 
 group :development, :test do
   gem 'brakeman'
-  gem 'rspec-rails', '~> 3.1.0'
+  gem 'rspec', '~> 3.5'
+  gem 'rspec-rails', '~> 3.5'
   gem 'capybara', '~> 2.3.0'
   gem 'poltergeist'
   gem 'factory_girl_rails', '4.2.1'
