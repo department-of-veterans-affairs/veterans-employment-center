@@ -1,7 +1,7 @@
 <script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?libraries=places"%></script>
 
 <% unless session[:linkedin_profile] %>
-      <%= link_to "<i class='icon-linkedin' aria-hidden='true'></i><span>Auto-fill from LinkedIn</span>".html_safe, user_linkedin_resume_omniauth_authorize_path(), class: "usa-button", id: "linkedin_autofill"%>
+      <%= link_to "<i class='icon-linkedin' aria-hidden='true'></i><span>Auto-fill from LinkedIn</span>".html_safe, user_linkedin_resume_omniauth_authorize_path, class: "usa-button", id: "linkedin_autofill"%>
 <% end %>
 
 <%= form_for @veteran, html: { class: 'f resume', id: 'veteran_form', role: 'form' } do |f| %>

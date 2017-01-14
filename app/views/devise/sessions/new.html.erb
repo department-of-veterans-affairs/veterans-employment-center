@@ -15,8 +15,8 @@
         <h3>First time here?</h3>
         <p>It's free and easy to create an account. Simply log in with your LinkedIn or Google account by clicking on one of the buttons below. The first time you log in, we'll ask for your company name and EIN. You will be able to use all the employer features right away, but we have to approve you (by confirming your company name and EIN) before you will be able to view Veteran names or email addresses. This process usually takes less than a day.</p>
 		  <p>
-			  <%= link_to "<span>Sign in with LinkedIn</span>".html_safe, user_linkedin_omniauth_authorize_path(), class: "usa-button" %>
-			  <%= link_to "<span>Sign in with Google</span>".html_safe, user_google_oauth2_omniauth_authorize_path(), class: "usa-button" %></p>
+			  <%= link_to "<span>Sign in with LinkedIn</span>".html_safe, user_linkedin_omniauth_authorize_path, class: "usa-button" %>
+			  <%= link_to "<span>Sign in with Google</span>".html_safe, user_google_oauth2_omniauth_authorize_path, class: "usa-button" %></p>
 
 		  
       </div>
