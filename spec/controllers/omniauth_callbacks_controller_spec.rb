@@ -76,30 +76,4 @@ describe Users::OmniauthCallbacksController do
       end
     end
   end
-
-  describe "saml" do
-    context "on a successful authorization" do
-      before do
-        request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:saml]
-        expect(User.find_by_provider_and_uid('SAML', '1234567890')).to be_nil
-      end
-
-      it "should create the user, start a session and redirect the user to the new veterans home" do
-        post :saml
-        expect(User.find_by_provider_and_uid('SAML', '1234567890')).not_to be_nil
-        expect(response).to redirect_to new_veteran_path
-      end
-
-      context "when the user already exists" do
-        before do
-          User.create(email: 'test@saml.org', uid: '1234567890', provider: 'SAML')
-        end
-
-        it "should log in and redirect the user" do
-          post :saml
-          expect(response).to redirect_to new_veteran_path
-        end
-      end
-    end
-  end
 end
