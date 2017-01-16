@@ -106,7 +106,6 @@ rm -fr /usr/local/var/postgres
 initdb /usr/local/var/postgres -E utf8
 ```
 
-
 # Git Worklow
 
   - `$ git checkout -b YOUR_BRANCH_NAME` (creates a new feature branch and switches to it)

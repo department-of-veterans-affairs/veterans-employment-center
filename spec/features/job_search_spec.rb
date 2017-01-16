@@ -137,7 +137,7 @@ describe 'JobSearch' do
           end
         end
 
-        context "when there are more than 10 featured results", js: true, driver: :webkit do
+        context "when there are more than 10 featured results", js: true, driver: :poltergeist do
 
           before do
             # First page of 10
@@ -168,7 +168,7 @@ describe 'JobSearch' do
 
         end
 
-        context 'when there are exactly 10 featured results', js: true, driver: :webkit do
+        context 'when there are exactly 10 featured results', js: true, driver: :poltergeist do
 
           before do
             # First page of 10

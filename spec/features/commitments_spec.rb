@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe '/commitments', js: true, driver: :webkit do
+describe '/commitments', js: true, driver: :poltergeist do
   before do
     11.times do
       FactoryGirl.create(:employer_with_commitments, approved: true)
