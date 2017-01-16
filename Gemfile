@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.2'
+gem 'rails', '~> 4.2.7'
 gem 'pg', '0.15.1'
 
 # Use SCSS for stylesheets
@@ -12,6 +12,8 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
+
+gem 'rake', '>11.0.1', '<12'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -41,7 +43,7 @@ gem 'omniauth-saml', '~> 1.4.0'
 gem 'ruby-saml', git: "https://github.com/greggersh/ruby-saml", branch: "vaafi-1.0.0"
 gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
 gem 'schema_plus_pg_indexes'
-gem 'schema_plus_core', git: 'https://github.com/mikeauclair/schema_plus_core', branch: "handle_quoted_newline"
+gem 'schema_plus_core'
 gem 'puma', '3.2.0'
 
 # Generates fake data. Used to create data for staging environment's fictitious veterans, awards, affiliations, employers, etc.
@@ -55,7 +57,8 @@ gem 'rubysl-securerandom'
 
 group :development, :test do
   gem 'brakeman'
-  gem 'rspec-rails', '~> 3.1.0'
+  gem 'rspec', '~> 3.5'
+  gem 'rspec-rails', '~> 3.5'
   gem 'capybara', '~> 2.3.0'
   gem 'poltergeist'
   gem 'factory_girl_rails', '4.2.1'

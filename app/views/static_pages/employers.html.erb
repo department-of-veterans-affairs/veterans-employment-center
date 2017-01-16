@@ -5,7 +5,7 @@
 <% unless user_signed_in? && current_user.is_employer? %>
   <div class="header-bar">
     <div class="row">
-      <span class="explanation">Log in to create and manage your account with</span><%= link_to "LinkedIn", user_omniauth_authorize_path(:linkedin), class: "employer-login" %> <%= link_to "Google", user_omniauth_authorize_path(:google_oauth2), class: "employer-login" %></span>
+      <span class="explanation">Log in to create and manage your account with</span><%= link_to "LinkedIn", user_linkedin_omniauth_authorize_path, class: "employer-login" %> <%= link_to "Google", user_google_oauth2_omniauth_authorize_path, class: "employer-login" %></span>
     </div>
   </div>
 <% end %>

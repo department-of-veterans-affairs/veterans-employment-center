@@ -74,7 +74,6 @@ Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension
     /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/bin/ruby extconf.rb
 Command 'qmake -spec macx-g++ ' not available
 
-
 Gem files will remain installed in /var/folders/v4/qnj11mtx601glqpd1wymfd6h0000gn/T/bundler20150811-9857-iq0snu/capybara-webkit-1.3.1/gems/capybara-webkit-1.3.1 for inspection.
 Results logged to /var/folders/v4/qnj11mtx601glqpd1wymfd6h0000gn/T/bundler20150811-9857-iq0snu/capybara-webkit-1.3.1/gems/capybara-webkit-1.3.1/./gem_make.out
 An error occurred while installing capybara-webkit (1.3.1), and Bundler cannot
