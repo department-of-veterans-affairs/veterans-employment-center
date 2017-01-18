@@ -106,35 +106,10 @@ class VeteransController < ApplicationController
     )
   end
 
-  def ensure_employer
-    unless !current_user.nil? && current_user.is_employer?
-      flash[:error] = "Only signed in employers can view this page"
-      redirect_to new_user_session_path
-    end
-  end
-
   def ensure_admin
-    unless current_user.va_admin?
+    unless !current_user.nil? && current_user.va_admin?
       flash[:error] = "unauthorized access"
       redirect_to root_path
-    end
-  end
-
-  def ensure_employer_or_admin
-    unless !current_user.nil? && (current_user.is_employer? || current_user.va_admin?)
-      flash[:error] = "Only signed in employers or administrators can view this page"
-      redirect_to new_user_session_path
-    end
-  end
-
-
-  def validate_veteran_or_employer
-    if current_user && current_user.is_employer?
-      return
-    elsif user_owns_veteran?
-      return
-    else
-      redirect_to_home_page
     end
   end
 

@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
       end
       edit_employer_path(current_user.employer)
     elsif current_user.va_admin
-      employers_path
+      employer_list_path
     else
       root_path
     end

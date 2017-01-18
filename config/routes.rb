@@ -1,7 +1,7 @@
 EmploymentPortal::Application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :veterans, except: [:index] do
+  resources :veterans do
     member do
       get :word
     end
@@ -11,9 +11,10 @@ EmploymentPortal::Application.routes.draw do
   get '/download_employers' => 'employers#download_employers'
   get "job-seekers/create-resume" => 'veterans#new', as: :resume_builder
   post 'veterans/new' => 'veterans#new'
-  get '/employers' => 'static_pages#employers', as: :employer_home
   get 'employer-list' => 'employers#index', as: :employer_list
   root 'static_pages#home'
+  get '/employers' => redirect { |params, request| Rails.application.config.action_controller.relative_url_root }
+  get '/veterans' => redirect { |params, request| Rails.application.config.action_controller.relative_url_root }
   get '/job-seekers/skills-translator' => redirect { |params, request| Rails.application.config.action_controller.relative_url_root }
   get '/job-seekers/search-jobs' => redirect { |params, request| Rails.application.config.action_controller.relative_url_root }
   get '/job-seekers' => redirect { |params, request| Rails.application.config.action_controller.relative_url_root }, as: :job_seekers
