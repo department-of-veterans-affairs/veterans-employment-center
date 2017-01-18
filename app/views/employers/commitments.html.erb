@@ -1,12 +1,12 @@
 <% provide(:title, "Commitments") %>
 <div id="content" class="interior">
   <a href="#content" class="sr-only">Content starts here.</a>
+  <%= render 'layouts/navigation' %>
 
   <nav class="va-nav-breadcrumbs">
     <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
       <li><a href="/">Home</a></li>
-      <li><%= link_to "Careers and Employment", root_path %></li>
-      <li class="parent"><%= link_to "Employers", employer_home_path %></li>
+      <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
       <li class="active">Commitments</li>
     </ul>
   </nav>

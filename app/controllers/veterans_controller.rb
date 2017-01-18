@@ -1,10 +1,8 @@
 class VeteransController < ApplicationController
   before_action :set_veteran, only: [:show, :edit, :update, :destroy, :favorite, :word]
-  before_filter :ensure_employer, only: [:favorites, :favorite]
-  before_filter :ensure_employer_or_admin, only: [:index]
   before_filter :validate_veteran, only: [:edit, :destroy, :update, :show, :word]
   before_filter :clean_params, only: [:create, :update]
-  before_filter :ensure_admin, only: [:download_all_veterans]
+  before_filter :ensure_admin, only: [:index, :download_all_veterans]
 
   MULTIPLE_TERM_PATTERN = /\s*,\s*/i
   KEYWORD_FIELD_NAME = 'searchable_summary_cont'
@@ -25,31 +23,12 @@ class VeteransController < ApplicationController
       end
     end
 
-  def favorite
-    type = params[:type]
-    if type == "favorite"
-      current_user.employer.favorites << @veteran
-      redirect_to :back
-    elsif type == "unfavorite"
-      current_user.employer.favorites.delete(@veteran)
-      redirect_to :back
-    else
-      redirect_to :back, notice: 'Nothing.'
-    end
-  end
-
-  def favorites
-    @veterans = current_user.employer.favorites
-  end
-
-
-  # This route is to initialize a new veteran (from the skill-translator or linkedin)
+  # This route is to initialize a new veteran
   # and then display this veteran in the resume builder. A veteran object is only
   # create in memory but NOT SAVED to the database (not yet valid, name and email missing).
   # The create method finally creates a new veteran entry in the database.
   def new
     @veteran = session[:linkedin_profile] ? Veteran.new_from_linkedin_profile(session[:linkedin_profile]) : Veteran.new
-    @veteran.skills << Skill.find(params[:skills]) if params[:skills].present?
     return if params['moc'].blank? || params['branch'].blank?
     occupation = MilitaryOccupation.find_by_moc_branch_status_category(params[:moc], params['branch'], params['status'], params['category']).first()
     if occupation
@@ -76,14 +55,6 @@ class VeteransController < ApplicationController
       @veteran.update_attributes(session_id: request.session_options[:id])
     end
     if @veteran.save
-      last_event = SkillsTranslatorEvent.where(query_uuid: cookies[:query_uuid])
-                                        .order('event_number').last
-      SkillsTranslatorEvent.create(
-        query_uuid: cookies[:query_uuid],
-        event_type: 'VETERAN_CREATED',
-        event_number: last_event.event_number + 1,
-        payload: {veteran_id: @veteran.id}.to_json) if not last_event.nil?
-
       cookies[:veteran_id] = @veteran.id
       redirect_to @veteran
     else

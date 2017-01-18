@@ -7,17 +7,8 @@ class ApplicationController < ActionController::Base
     if current_user.is_employer?
       if current_user.employer != nil && current_user.employer.company_name.blank?
         flash[:notice] = "Welcome!"
-        edit_employer_path(current_user.employer)
-      else
-        veterans_path
       end
-    elsif current_user.is_veteran?
-      if !current_user.veteran.nil?
-        edit_veteran_path(current_user.veteran)
-      else
-        flash[:notice] = "Welcome!"
-        root_path
-      end
+      edit_employer_path(current_user.employer)
     elsif current_user.va_admin
       employers_path
     else
@@ -27,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource)
     # right now we don't allow veterans to sign out...if we do, this would need to be updated
-    employer_home_path
+    commitments_path
   end
 
   protected
