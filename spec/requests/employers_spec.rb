@@ -68,7 +68,7 @@ describe "Employers" do
       employer = employer_user
       sign_in_as employer
       visit commitments_path
-      click_link 'Update Your Commitment'
+      click_link 'Update Your Employer Profile and Commitment'
       expect(page).to have_content 'Edit your profile'
       expect(page).to have_content 'Sign Out'
     end

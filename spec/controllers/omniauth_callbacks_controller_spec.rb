@@ -16,7 +16,7 @@ describe Users::OmniauthCallbacksController do
         post :google_oauth2
         user = User.find_by_email('test@gmail.com')
         expect(user).not_to be_nil
-        expect(response).to redirect_to edit_employer_path(user.employer)
+        expect(response).to redirect_to commitments_path
       end
 
       context "when the user already exists" do
@@ -33,7 +33,7 @@ describe Users::OmniauthCallbacksController do
         it "should log the user in and redirect them to the employer profile" do
           post :google_oauth2
           user = User.find_by_email('test@some-domain.com')
-          expect(response).to redirect_to edit_employer_path(user.employer)
+          expect(response).to redirect_to commitments_path
         end
       end
     end
@@ -50,7 +50,7 @@ describe Users::OmniauthCallbacksController do
         post :linkedin
         user = User.find_by_email('test@linkedin.com')
         expect(user).not_to be_nil
-        expect(response).to redirect_to edit_employer_path(user.employer)
+        expect(response).to redirect_to commitments_path
       end
 
       context "when the user already exists" do
@@ -67,7 +67,7 @@ describe Users::OmniauthCallbacksController do
         it "should log the user in and redirect them to the employer_profile" do
           post :linkedin
           user = User.find_by_email('test@linkedin.org')
-          expect(response).to redirect_to edit_employer_path(user.employer)
+          expect(response).to redirect_to commitments_path
         end
       end
     end

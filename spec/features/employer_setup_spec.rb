@@ -8,7 +8,7 @@ feature 'employers edit their accounts' do
   
   scenario 'after logging in with google, they can access the edit profile page', :js => true do
     visit commitments_path
-    click_link "Update Your Commitment"
+    click_link "Update Your Employer Profile and Commitment"
     expect(page).to have_selector 'h2', text: "Edit your profile"
     fill_in "employer_company_name", with: 'The Editing Company'
     find('#click-button').click

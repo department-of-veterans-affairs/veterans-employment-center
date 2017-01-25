@@ -4,7 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.persisted?
       sign_in @user, event: :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, kind: "Google") if is_navigational_format?
-      redirect_to edit_employer_path(current_user.employer)
+      redirect_to commitments_path
     else
       session["devise.google_data"] = request.env["omniauth.auth"]
       flash[:warn] = "OAuth failed with Google"
@@ -22,7 +22,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user && @user.persisted?
       sign_in @user, event: :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, kind: "LinkedIn") if is_navigational_format?
-      redirect_to edit_employer_path(current_user.employer)
+      redirect_to commitments_path
     else
       session["devise.linkedin_data"] = request.env["omniauth.auth"]
       flash[:warn] = "OAuth failed with LinkedIn"
