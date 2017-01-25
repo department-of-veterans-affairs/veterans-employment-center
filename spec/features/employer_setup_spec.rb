@@ -7,8 +7,8 @@ feature 'employers edit their accounts' do
   end    
   
   scenario 'after logging in with google, they can access the edit profile page', :js => true do
-    visit employers_path
-    click_link "Manage Your Profile and Hiring Commitment"
+    visit commitments_path
+    click_link "Update Your Employer Profile and Commitment"
     expect(page).to have_selector 'h2', text: "Edit your profile"
     fill_in "employer_company_name", with: 'The Editing Company'
     find('#click-button').click
@@ -249,8 +249,8 @@ end
 feature 'logging out' do
   scenario 'when logged in, an employer can log out' do
     sign_in_as(employer_user)
-    visit employers_path
+    visit commitments_path
     click_link 'Sign Out'
-    expect(page).to have_content 'Log in to create and manage your account'
+    expect(page).to have_content 'Log in to create/manage your hiring commitment.'
   end
 end

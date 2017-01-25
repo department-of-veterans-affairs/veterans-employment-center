@@ -7,8 +7,6 @@ class Veteran < ActiveRecord::Base
   has_many :experiences, dependent: :destroy, inverse_of: :veteran
   has_many :locations, dependent: :destroy
   has_many :references, dependent: :destroy
-  has_many :favorite_veterans, dependent: :destroy
-  has_many :favorited_by, through: :favorite_veterans, source: :employer
   has_and_belongs_to_many :skills, join_table: :veteran_skills
 
   validates_presence_of :name, message: "cannot be blank or employers cannot contact you"

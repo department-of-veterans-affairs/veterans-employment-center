@@ -1,12 +1,12 @@
 <% provide(:title, "Commitments") %>
 <div id="content" class="interior">
   <a href="#content" class="sr-only">Content starts here.</a>
+  <%= render 'layouts/navigation' %>
 
   <nav class="va-nav-breadcrumbs">
     <ul class="row va-nav-breadcrumbs-list" role="menubar" aria-label="Primary">
       <li><a href="/">Home</a></li>
-      <li><%= link_to "Careers and Employment", root_path %></li>
-      <li class="parent"><%= link_to "Employers", employer_home_path %></li>
+      <li class="parent"><%= link_to "Careers and Employment", root_path %></li>
       <li class="active">Commitments</li>
     </ul>
   </nav>
@@ -49,13 +49,13 @@
             <h5>You've publicly committed to hire <%= number_with_delimiter(current_user.employer.commit_to_hire, :delimiter => ',') %> Veterans<% if current_user.employer.commit_date.present? %> by <%= current_user.employer.commit_date.strftime("%b %d, %Y") %><% end %>.<% if current_user.employer.commit_hired.present? %> So far, you've hired <%= number_with_delimiter(current_user.employer.commit_hired, :delimiter => ',') %>.<% end %>
             </h5>
             <div class="actions">
-              <%= link_to "Update Your Commitment", edit_employer_path(current_user.employer, anchor: 'hiring-commitments' ), class: 'usa-button expand' %>
+              <%= link_to "Update Your Employer Profile and Commitment", edit_employer_path(current_user.employer), class: 'usa-button expand' %>
             </div>
           <% else %>
             <h5>You haven't yet made a public commitment to hire Veterans.</h5>
             <br/><br/>
             <div class="actions">
-              <%= link_to "Make/Update Your Commitment", edit_employer_path(current_user.employer, anchor: 'hiring-commitments' ), class: 'usa-button expand' %>
+              <%= link_to "Update Your Employer Profile and Commitment", edit_employer_path(current_user.employer), class: 'usa-button expand' %>
             </div>
           <% end %>
         </div>

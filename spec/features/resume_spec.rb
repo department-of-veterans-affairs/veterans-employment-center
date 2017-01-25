@@ -304,7 +304,7 @@ feature "profile creation shouldn't redirect to employer login", js: true do
   end
 
   scenario "sign in and out as employer before creating a resume as a vet" do
-    visit employers_path
+    visit commitments_path
     click_link 'Sign Out'
 
     visit new_veteran_path

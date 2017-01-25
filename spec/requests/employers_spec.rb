@@ -13,46 +13,6 @@ describe "Employers" do
     pending "should load for an admin user"
   end
 
-  describe "GET /employers" do
-    it "should NOT show Your Employer Account breadcrumb if the user is not signed in" do
-      visit employer_home_path
-      expect(page).to have_content 'Log in to create and manage your account'
-      expect(page).to have_content 'LinkedIn'
-      expect(page).to have_selector 'li', text: 'Employers'
-    end
-
-    it "should NOT show Your Employer Account breadcrumb if logged-in Veteran" do
-      veteran = create :user, email: 'test@example.com', password: '12345678'
-      sign_in_as veteran
-      visit employer_home_path
-      expect(page).to have_selector 'li', text: 'Employers'
-      expect(page).not_to have_selector 'li', text: 'Your Employer Account'
-    end
-
-    it "should show Your Employer Account breadcrumb if logged-in employer" do
-      employer = employer_user
-      sign_in_as employer
-      visit employer_home_path
-      expect(page).to have_content 'Sign Out'
-      expect(page).to have_selector 'li', text: 'Your Employer Account'
-    end
-
-    it "should prompt user to log in if they aren't yet signed in" do
-      visit employer_home_path
-      click_link 'View All Hiring Commitments'
-      expect(page).to have_link 'Sign in with LinkedIn'
-    end
-
-    it "should redirect to edit profile page if logged-in employer clicks Make a Hiring Commitment in Employer sidebar" do
-      employer = employer_user
-      sign_in_as employer
-      visit employer_home_path
-      click_link 'Manage Your Profile and Hiring Commitment'
-      expect(page).to have_content 'Edit your profile'
-      expect(page).to have_content 'Sign Out'
-    end
-  end
-
   describe "GET /commitments" do
     before do
       create(:employer, location: 'Cupertino, CA', website: 'http://www.apple.com', commit_to_hire: 100)
@@ -104,5 +64,13 @@ describe "Employers" do
       expect(page).to have_content 'Special commitments to: Homeless'
     end
 
+    it "should redirect to edit profile page if logged-in employer clicks Make a Hiring Commitment in Employer sidebar" do
+      employer = employer_user
+      sign_in_as employer
+      visit commitments_path
+      click_link 'Update Your Employer Profile and Commitment'
+      expect(page).to have_content 'Edit your profile'
+      expect(page).to have_content 'Sign Out'
+    end
   end
 end

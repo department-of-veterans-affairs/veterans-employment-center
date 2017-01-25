@@ -2,8 +2,6 @@ class Employer < ActiveRecord::Base
   MAX_COMMIT = ('9'*7).to_i
 
   belongs_to :user
-  has_many :favorite_veterans, dependent: :destroy
-  has_many :favorites, through: :favorite_veterans, source: :veteran
 
   validates :user, presence: true
   validates_length_of :location, maximum: 255, allow_blank: true, message: "cannot exceed 255 characters"
@@ -19,7 +17,4 @@ class Employer < ActiveRecord::Base
   
   COMMITMENT_CATEGORIES = ["Veteran","Homeless","Spouse"]
 
-  def favorited?(veteran)
-    favorite_veterans.pluck(:veteran_id).include?(veteran.id)
-  end
 end
