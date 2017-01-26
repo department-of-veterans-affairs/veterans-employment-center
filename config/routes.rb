@@ -12,6 +12,8 @@ EmploymentPortal::Application.routes.draw do
   get "job-seekers/create-resume" => 'veterans#new', as: :resume_builder
   post 'veterans/new' => 'veterans#new'
   get 'employer-list' => 'employers#index', as: :employer_list
+  get  'skills-translator/get_skills/:prefix' => 'skills#get_skills', as: :skills_translator_get_skills
+  post 'skills-translator/add_skill' => 'skills#add_skill'
   root 'static_pages#home'
   get '/employers' => redirect('https://www.dol.gov/veterans/hireaveteran/') 
   get '/job-seekers' => redirect('https://www.dol.gov/veterans/findajob/')
