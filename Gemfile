@@ -43,6 +43,7 @@ gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-se
 gem 'schema_plus_pg_indexes'
 gem 'schema_plus_core'
 gem 'puma', '3.2.0'
+gem 'sentry-raven'
 
 # Generates fake data. Used to create data for staging environment's fictitious veterans, awards, affiliations, employers, etc.
 gem 'ffaker'
