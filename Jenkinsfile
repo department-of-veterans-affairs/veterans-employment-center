@@ -21,6 +21,12 @@ pipeline {
       }
     }
 
+    stage('Update bundle-audit database') {
+      steps {
+        sh 'bash --login -c "bundle exec bundle-audit update"'
+      }
+    }
+
     stage('Run tests') {
       steps {
         sh 'bash --login -c "bundle exec rake"'

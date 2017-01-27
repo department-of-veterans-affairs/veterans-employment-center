@@ -99,7 +99,6 @@ connections on Unix domain socket "/tmp/.s.PGSQL.5432"
 #### Fix:
 
 Try running these commands:
-
 ```
 rm -fr /usr/local/var/postgres
 initdb /usr/local/var/postgres -E utf8
