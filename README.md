@@ -66,6 +66,7 @@
 ## Troubleshooting
 
 ### Problem 1:
+
 ```
 > bundle install
 [...]
