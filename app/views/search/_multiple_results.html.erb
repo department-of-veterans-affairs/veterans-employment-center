@@ -1,0 +1,12 @@
+<div id="confirm_moc">
+	<h4>Select a Military Job Title</h4>
+	<!-- <h3>Results for <%= @keyword %></h3> -->
+		<ul>
+		<% @military_occupations.each do |military_occupation| %>
+			<li id="<%= military_occupation.code %>" class="confirm_this_moc <%= military_occupation.service %>">
+				<a href="#"><strong><%= military_occupation.code %></strong>: <%= military_occupation.title %></a>
+			</li>
+		<% end %>
+		</ul>
+	</form>
+</div>

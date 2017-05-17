@@ -1,0 +1,17 @@
+<div class="row pagination main-results">
+  <div class="small-6 columns">
+    <% if @record_count > 0 %>
+      Displaying results <%= @rs %> - <%= (@rs.to_i + @per_page - 1) < @record_count ? (@rs.to_i + @per_page - 1) : @record_count %> of <%= @record_count %> (page <%= @page %> of <%= @page_count %>)
+    <% end %>
+  </div>
+  <% if @page <= @page_count %>
+    <div class="small-6 columns align-right">
+      <% if @page > 1 %>
+        <%= link_to "< Prev Page",  previous_page_path(params, @page, @per_page),  class: "prev_page_link" %>
+      <%end%>
+      <% if @page < @page_count%>
+        <%= link_to "Next Page >",  next_page_path(params, @page, @per_page),  class: "next_page_link" %>
+      <%end%>
+    </div>
+  <% end %>
+</div>
