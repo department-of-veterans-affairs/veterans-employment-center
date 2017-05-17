@@ -198,7 +198,6 @@ GEM
       bourbon (>= 4.0)
       sass (>= 3.3)
     nenv (0.3.0)
-    newrelic_rpm (3.17.2.327)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     normalize-rails (3.0.3)
@@ -443,8 +442,12 @@ DEPENDENCIES
   launchy
   libv8 (= 3.16.14.11)
   linkedin
+<<<<<<< HEAD
   newrelic_rpm
   nokogiri (~> 1.7.1)
+=======
+  nokogiri (~> 1.6)
+>>>>>>> Remove New Relic
   omniauth-google-oauth2
   omniauth-linkedin
   omniauth-oauth2
