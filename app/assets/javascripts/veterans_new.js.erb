@@ -71,7 +71,7 @@ function fixListeners() {
 // add skill to DOM helper function
 function addSkill(skill) {
   var str = '<li> \
-              <input value="' + skill.id + '" type="hidden" name="veteran[skill_ids][]"> \
+              <input value="' + skill.id + '" type="hidden" name="veteran[skills][]"> \
               <span>' + skill.name + '</span> \
               <span class="skill-deleter delete-link">remove</span> \
             </li>'
@@ -105,47 +105,6 @@ $(document).ready(function(){
       }
   });
 
-  // init new skill typeahead
-  var skillSearcher = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    remote: {
-      url: '<%= url_helper.skills_translator_get_skills_path("%QUERY", script_name: ENV['RAILS_RELATIVE_URL_ROOT']).sub("25", "") %>',
-      wildcard: '%QUERY'
-    }
-  });
-  $('#add-skill-field').typeahead({
-    hint: false,
-    highlight: true
-  }, {
-    name: 'new-skills',
-    display: 'name',
-    source: skillSearcher
-  });
-
-  // avoid double adding a skill when skill is selected with enter in typeahead
-  var justSelected = false
-
-  // add existing skill via typeahead selection
-  $('#add-skill-field').bind('typeahead:select', function(ev, suggestion) {
-    justSelected = true;
-    setTimeout(function () {
-      justSelected = false;
-    }, 200)
-    addSkill(suggestion);
-  });
-
-  // a new skill (did not exist in typeahead)
-  $('#add-skill-field').keyup(function(e){
-    if(e.keyCode == 13){
-      if (justSelected) return;
-      var skill = escapeHtml(e.target.value);
-      if(skill == "") return;
-      var data = {name: skill}
-      $.post('<%= url_helper.skills_translator_add_skill_path(script_name: ENV['RAILS_RELATIVE_URL_ROOT']) %>', data, addSkill);
-    }
-  });
-
   fixListeners();
 });
 
@@ -162,9 +121,4 @@ function repeatDesiredPos() {
   $("#desiredPosition").append("<input name='veteran[desiredPosition][]' type='text' /><br />");
 }
 
-function addSkillOnClick() {
-   var skill =  document.getElementById('add-skill-field').value
-   if(skill == "") return;
-   var data = { name: skill }
-   $.post('<%= url_helper.skills_translator_add_skill_path(script_name: ENV['RAILS_RELATIVE_URL_ROOT']) %>', data, addSkill)
-}
+

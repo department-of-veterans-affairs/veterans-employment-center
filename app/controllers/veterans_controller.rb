@@ -29,7 +29,6 @@ class VeteransController < ApplicationController
   # The create method finally creates a new veteran entry in the database.
   def new
     @veteran = session[:linkedin_profile] ? Veteran.new_from_linkedin_profile(session[:linkedin_profile]) : Veteran.new
-    @veteran.skills << Skill.find(params[:skills]) if params[:skills].present?
     return if params['moc'].blank? || params['branch'].blank?
     occupation = MilitaryOccupation.find_by_moc_branch_status_category(params[:moc], params['branch'], params['status'], params['category']).first()
     if occupation
