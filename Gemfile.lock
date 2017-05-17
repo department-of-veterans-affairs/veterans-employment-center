@@ -199,7 +199,7 @@ GEM
       sass (>= 3.3)
     nenv (0.3.0)
     newrelic_rpm (3.17.2.327)
-    nokogiri (1.7.0.1)
+    nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     normalize-rails (3.0.3)
     notiffany (0.1.1)
@@ -321,7 +321,7 @@ GEM
     rspec-support (3.5.0)
     ruby_dep (1.5.0)
     rubysl-securerandom (2.0.0)
-    rubyzip (1.2.0)
+    rubyzip (1.2.1)
     safe_yaml (1.0.4)
     sass (3.4.23)
     sass-rails (5.0.6)
@@ -444,7 +444,7 @@ DEPENDENCIES
   libv8 (= 3.16.14.11)
   linkedin
   newrelic_rpm
-  nokogiri (~> 1.6)
+  nokogiri (~> 1.7.1)
   omniauth-google-oauth2
   omniauth-linkedin
   omniauth-oauth2
@@ -462,6 +462,7 @@ DEPENDENCIES
   rspec (~> 3.5)
   rspec-rails (~> 3.5)
   rubysl-securerandom
+  rubyzip (~> 1.2, >= 1.2.1)
   sass-rails (~> 5.0.0)
   schema_plus_core
   schema_plus_pg_indexes
@@ -475,4 +476,4 @@ DEPENDENCIES
   will_paginate (~> 3.0)
 
 BUNDLED WITH
-   1.13.7
+   1.14.5
