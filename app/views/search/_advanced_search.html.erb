@@ -1,0 +1,113 @@
+<div id="adv-srch-flds" class="advancedSearch" style="display: <%= params[:searchType] != 'advanced' ? 'none' : 'block' %>;">
+  <div class="row">
+    <div class="small-12 medium-8 columns left">
+      <label class="main" for="onet">Occupation Group
+        <span class="field-details"><span class="example">(type of job)</span></span>
+      </label>
+      <select name="onet" id="onet" class="select" onchange="">
+        <option value="">Choose Occupation group</option>
+        <option value="17-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "17-0000.00" %>>Architecture &amp; Engineering</option>
+        <option value="27-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "27-0000.00" %>>Arts, Design, Entertainment, Media</option>
+        <option value="37-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "37-0000.00" %>>Bldg/Grounds Maintenance &amp; Cleaning</option>
+        <option value="13-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "13-0000.00" %>>Business &amp; Financial Operations</option>
+        <option value="21-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "21-0000.00" %>>Community &amp; Social Services</option>
+        <option value="15-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "15-0000.00" %>>Computer &amp; Mathematical</option>
+        <option value="47-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "47-0000.00" %>>Construction &amp; Extraction</option>
+        <option value="25-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "25-0000.00" %>>Education, Training &amp; Library</option>
+        <option value="45-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "45-0000.00" %>>Farming, Fishing &amp; Forestry</option>
+        <option value="35-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "35-0000.00" %>>Food &amp; Lodging</option>
+        <option value="29-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "29-0000.00" %>>Healthcare</option>
+        <option value="49-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "49-0000.00" %>>Installation, Maintenance &amp; Repair</option>
+        <option value="23-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "23-0000.00" %>>Legal</option>
+        <option value="19-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "19-0000.00" %>>Life, Physical &amp; Social Science</option>
+        <option value="11-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "11-0000.00" %>>Management</option>
+        <option value="43-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "43-0000.00" %>>Office &amp; Administrative Support</option>
+        <option value="39-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "39-0000.00" %>>Personal Care/ Service &amp; Gaming</option>
+        <option value="51-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "51-0000.00" %>>Production</option>
+        <option value="33-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "33-0000.00" %>>Protective Services</option>
+        <option value="41-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "41-0000.00" %>>Sales &amp; Related</option>
+        <option value="53-0000.00" <%= "selected" if us_jobs_search_params['onet'] == "53-0000.00" %>>Transportation &amp; Material Moving</option>
+      </select>
+    </div>
+    <div class="small-12 medium-8 columns left">
+      <label class="main" for="ind">Industry
+        <span class="field-details"><span class="example">(job industry)</span></span>
+      </label>
+      <select name="ind" id="ind" class="select" onchange="">
+        <option value="" <%= "selected" if us_jobs_search_params['ind'] == "" %>>All Industry Groups</option>
+        <option value="1" <%= "selected" if us_jobs_search_params['ind'] == "1" %>>Aerospace / Defense</option>
+        <option value="31" <%= "selected" if us_jobs_search_params['ind'] == "31" %>>Agriculture</option>
+        <option value="2" <%= "selected" if us_jobs_search_params['ind'] == "2" %>>Automotive / Transport</option>
+        <option value="3" <%= "selected" if us_jobs_search_params['ind'] == "3" %>>Banking</option>
+        <option value="32" <%= "selected" if us_jobs_search_params['ind'] == "32" %>>Business Services</option>
+        <option value="33" <%= "selected" if us_jobs_search_params['ind'] == "33" %>>Charitable Organizations</option>
+        <option value="4" <%= "selected" if us_jobs_search_params['ind'] == "4" %>>Chemicals</option>
+        <option value="5" <%= "selected" if us_jobs_search_params['ind'] == "5" %>>Computer Hardware</option>
+        <option value="34" <%= "selected" if us_jobs_search_params['ind'] == "34" %>>Computer Services</option>
+        <option value="6" <%= "selected" if us_jobs_search_params['ind'] == "6" %>>Computer Software</option>
+        <option value="7" <%= "selected" if us_jobs_search_params['ind'] == "7" %>>Conglomerates</option>
+        <option value="8" <%= "selected" if us_jobs_search_params['ind'] == "8" %>>Consumer Products</option>
+        <option value="35" <%= "selected" if us_jobs_search_params['ind'] == "35" %>>Consumer Services</option>
+        <option value="36" <%= "selected" if us_jobs_search_params['ind'] == "36" %>>Cultural Institutions</option>
+        <option value="10" <%= "selected" if us_jobs_search_params['ind'] == "10" %>>Diversified Services</option>
+        <option value="11" <%= "selected" if us_jobs_search_params['ind'] == "11" %>>Drugs / Pharmaceuticals</option>
+        <option value="30" <%= "selected" if us_jobs_search_params['ind'] == "30" %>>Education/Higher Education</option>
+        <option value="12" <%= "selected" if us_jobs_search_params['ind'] == "12" %>>Electronics &amp; Misc. Tech.</option>
+        <option value="13" <%= "selected" if us_jobs_search_params['ind'] == "13" %>>Energy</option>
+        <option value="37" <%= "selected" if us_jobs_search_params['ind'] == "37" %>>Environmental Services &amp; Equipment</option>
+        <option value="14" <%= "selected" if us_jobs_search_params['ind'] == "14" %>>Financial Services</option>
+        <option value="15" <%= "selected" if us_jobs_search_params['ind'] == "15" %>>Food, Beverage &amp; Tobacco</option>
+        <option value="38" <%= "selected" if us_jobs_search_params['ind'] == "38" %>>Foundations</option>
+        <option value="39" <%= "selected" if us_jobs_search_params['ind'] == "39" %>>Government</option>
+        <option value="17" <%= "selected" if us_jobs_search_params['ind'] == "17" %>>Health Products &amp; Services</option>
+        <option value="16" <%= "selected" if us_jobs_search_params['ind'] == "16" %>>Hospital / Healthcare</option>
+        <option value="18" <%= "selected" if us_jobs_search_params['ind'] == "18" %>>Insurance</option>
+        <option value="19" <%= "selected" if us_jobs_search_params['ind'] == "19" %>>Leisure</option>
+        <option value="20" <%= "selected" if us_jobs_search_params['ind'] == "20" %>>Manufacturing</option>
+        <option value="21" <%= "selected" if us_jobs_search_params['ind'] == "21" %>>Materials &amp; Construction</option>
+        <option value="22" <%= "selected" if us_jobs_search_params['ind'] == "22" %>>Media / Publishing</option>
+        <option value="23" <%= "selected" if us_jobs_search_params['ind'] == "23" %>>Metals &amp; Mining</option>
+        <option value="24" <%= "selected" if us_jobs_search_params['ind'] == "24" %>>Real Estate</option>
+        <option value="25" <%= "selected" if us_jobs_search_params['ind'] == "25" %>>Retail</option>
+        <option value="40" <%= "selected" if us_jobs_search_params['ind'] == "40" %>>Security Products &amp; Services</option>
+        <option value="27" <%= "selected" if us_jobs_search_params['ind'] == "27" %>>Telecommunications</option>
+        <option value="28" <%= "selected" if us_jobs_search_params['ind'] == "28" %>>Transportation</option>
+        <option value="29" <%= "selected" if us_jobs_search_params['ind'] == "29" %>>Utilities</option>
+        </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-8 columns">
+      <label class="main" for="cname">Employer
+        <span class="field-details"><span class="example">(you can use part of the name)</span></span>
+      </label>
+      <input id="cname" name="cname" class="clearable address" type="text" value="<%= us_jobs_search_params['cname'] %>" maxlength="95">
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-4 columns left">
+      <label for="fed">Federal Jobs Filter
+        <span class="field-details"><span class="example"></span>&nbsp;</span>
+      </label>
+      <select name="fed" id="fed" class="select" onchange="">
+        <option value="">All Jobs</option>
+        <option value="1" <%= "selected" if params["fed"] == "1" %>>Federal Jobs Only</option>
+        <option value="2" <%= "selected" if params["fed"] == "2" %>>Non-Federal Jobs Only</option>
+      </select>
+    </div> 
+
+    <div class="small-12 medium-4 columns left">
+      <label class="main" for="tm">Job Added/Updated
+        <span class="field-details"><span class="example">&nbsp;</span></span>
+      </label>
+        <select name="tm" class="select" id="tm">
+          <option value="" <%= "selected" if us_jobs_search_params['tm'] == "" %>>At any time</option>
+          <option value="1" <%= "selected" if us_jobs_search_params['tm'] == "1" %>>Today</option>
+          <option value="2" <%= "selected" if us_jobs_search_params['tm'] == "2" %>>Within the past 2 days</option>
+          <option value="3" <%= "selected" if us_jobs_search_params['tm'] == "3" %>>Within the past 3 days</option>
+          <option value="7" <%= "selected" if us_jobs_search_params['tm'] == "7" %>>Within the past week</option>
+          <option value="14" <%= "selected" if us_jobs_search_params['tm'] == "14" %>>Within the past 2 weeks</option>
+        </select>
+    </div>
+  </div>
+</div>

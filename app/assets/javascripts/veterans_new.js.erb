@@ -71,7 +71,7 @@ function fixListeners() {
 // add skill to DOM helper function
 function addSkill(skill) {
   var str = '<li> \
-              <input value="' + skill.id + '" type="hidden" name="veteran[skill_ids][]"> \
+              <input value="' + skill.id + '" type="hidden" name="veteran[skills][]"> \
               <span>' + skill.name + '</span> \
               <span class="skill-deleter delete-link">remove</span> \
             </li>'
@@ -109,6 +109,7 @@ $(document).ready(function(){
   var skillSearcher = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: '<%= url_helper.skills_translator_get_common_skills_path(script_name: ENV['RAILS_RELATIVE_URL_ROOT']) %>',
     remote: {
       url: '<%= url_helper.skills_translator_get_skills_path("%QUERY", script_name: ENV['RAILS_RELATIVE_URL_ROOT']).sub("25", "") %>',
       wildcard: '%QUERY'

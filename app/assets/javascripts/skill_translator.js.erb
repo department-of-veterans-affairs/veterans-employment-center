@@ -1,0 +1,220 @@
+<%
+  url_helper = Rails.application.routes.url_helpers
+%>
+
+var app = angular.module('skill-translator', ['siyfion.sfTypeahead', 'ngCookies'])
+
+SKILLS_PER_PAGE = 10;
+
+app.controller('SkillCtrl', ['$scope', '$http', '$timeout', '$cookies', function ($scope, $http, $timeout, $cookies) {
+
+  $scope.addSkill = function () {
+
+    if (_.isObject($scope.state.newSkill)) {
+      _addSkill($scope.state.newSkill)
+    }
+    if (_.isString($scope.state.newSkill)) {
+      $http.post('<%= url_helper.skills_translator_add_skill_path(script_name: ENV['RAILS_RELATIVE_URL_ROOT']) %>', {
+        name: $scope.state.newSkill
+      }).then(function (res) {
+        _addSkill(res.data)
+      })
+    }
+
+  }
+
+  function _addSkill(skill) {
+    var a = _.extend({selected: true, added_manually: true}, skill)
+    var old = _.findWhere($scope.data.shownSkills, {id: a.id})
+    if (old) {
+      old['selected'] = true
+    } else {
+      $scope.data.shownSkills.push(a)
+    }
+    $scope.state.newSkill = null;
+    scrollToPillBoxEnd();
+    sendEvent('SKILL_ADDED', a.id)
+  }
+
+  // Instantiate the bloodhound suggestion engine
+  var skillSearcher = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: '<%= url_helper.skills_translator_get_common_skills_path(script_name: ENV['RAILS_RELATIVE_URL_ROOT']) %>',
+    remote: {
+      url: '<%= url_helper.skills_translator_get_skills_path("%QUERY", script_name: ENV['RAILS_RELATIVE_URL_ROOT']).sub("25", "") %>',
+      wildcard: '%QUERY'
+    }
+  });
+  skillSearcher.initialize();
+
+  $scope.typeaheadData = {
+    displayKey: 'name',
+    source: skillSearcher.ttAdapter()
+  };
+
+  // Typeahead options object
+  $scope.exampleOptions = {
+    highlight: true
+  };
+
+
+  $scope.formData = {
+    branch: null,
+    moc: null,
+    status: "true",
+    category: "Enlisted"
+  }
+
+  $scope.data = {
+    allSkills: [],
+    shownSkills: [],
+    selectedSkills: []
+  }
+
+  $scope.branches = {
+    "Army": "army",
+    "Air Force": "air force",
+    "Coast Guard": "coast guard",
+    "Navy": "navy",
+    "Marine Corps": "marine corps"
+  }
+
+  $scope.categories = {
+    "Officer": "Officer",
+    "Warrant Officer": "Warrant Officer",
+    "Enlisted": "Enlisted"
+  }
+
+  $scope.state = {
+    page: null,
+    eventCounter: null,
+    error: null
+  }
+
+  // We want to create some nice button color animations when you click.
+  // Because IE9 hates us, we have to do some these in javascript
+  // instead of nice css transitions. We save the color
+  // constants here for reference later.
+  $scope.skill_pill_selected_bg_color = '#0070CA';
+  $scope.skill_pill_selected_color = 'white';
+  $scope.skill_pill_unselected_bg_color = 'white';
+  $scope.skill_pill_unselected_color = '#032B55';
+
+  $scope.submitForm = function () {
+    $http.post('<%= url_helper.skills_translator_suggest_skills_path(script_name: ENV['RAILS_RELATIVE_URL_ROOT']) %>', $scope.formData).then(function (res) {
+      $scope.state.error = null;
+      $scope.data.shownSkills = [];
+      $scope.data.mo = res.data.military_occupation;
+      $scope.data.queryUuid = res.data.query_uuid;
+      // Remember the UUID in a cookie, so we can use it when the veteran is created
+      $cookies.remove('query_uuid')
+      $cookies.put('query_uuid', res.data.query_uuid)
+
+      // Event 0 is the query event, created by the backend
+      $scope.state.eventCounter = 1;
+      $scope.state.page = -1;  // Will increment to 0 in showMoreSkills
+
+      $scope.data.allSkills = addProperties(res.data.skills, {selected: false});
+
+      $scope.showMoreSkills()
+    }, function (err) {
+      $scope.state.error = err.data.error;
+      $scope.data.allSkills = [];
+      $scope.data.mo = null;
+    })
+  }
+
+  $scope.showMoreSkills = function () {
+    $scope.state.page += 1;
+    var newSkills = $scope.data.allSkills.splice(0, SKILLS_PER_PAGE);
+    var newSkillsWithPage = addProperties(newSkills, {
+      page: $scope.state.page
+    })
+    $scope.data.shownSkills = $scope.data.shownSkills.concat(newSkillsWithPage)
+    scrollToPillBoxEnd();
+    sendEvent('SHOWED_SKILLS', null, _.pluck(newSkills, 'id'));
+
+    $timeout(function () {
+      _.each(newSkills, function (skill) {
+        // Flash the new pills briefly, then fade out.
+        var elt = document.getElementById('skill_pill_' + skill.id);
+        $(elt).css('background-color', $scope.skill_pill_selected_bg_color);
+        $(elt).css('color', $scope.skill_pill_unselected_color);
+        $(elt).animate({
+          'background-color': $scope.skill_pill_unselected_bg_color,
+        }, 500);
+      });
+    }, 20)
+  }
+
+  $scope.toggleSkill = function (e) {
+    if (this.skill.selected) {
+      this.skill.selected = false;
+      sendEvent('SKILL_REMOVED', this.skill.id);
+      newBgColor = $scope.skill_pill_unselected_bg_color;
+      newColor = $scope.skill_pill_unselected_color;
+    } else {
+      this.skill.selected = true;
+      sendEvent('SKILL_SELECTED', this.skill.id)
+      newBgColor = $scope.skill_pill_selected_bg_color;
+      newColor = $scope.skill_pill_selected_color;
+    }
+    $(e.currentTarget).animate({
+      'background-color': newBgColor,
+      'color': newColor
+    }, 250);
+  }
+
+  $scope.newResume = function () {
+    sendEvent('BUILD_RESUME')
+    // use timeout to make sure the event has enough time to be sent
+    $timeout(function () {
+      $('#new_resume').submit()
+    }, 500)
+  }
+
+  $scope.$watch('data.shownSkills', function () {
+    $scope.data.selectedSkills = _.where($scope.data.shownSkills, {selected: true})
+
+    // when all skills got selected, load a new page
+    var unselectedSkills = _.where($scope.data.shownSkills, {selected: false})
+    if ($scope.data.mo && _.isEmpty(unselectedSkills)) {
+      $scope.showMoreSkills();
+    }
+  }, true)
+
+  function addProperties(array, properties) {
+    return _.map(array, function(e) {return _.extend(e, properties);})
+  }
+
+  function sendEvent(eventType, skillId, payload) {
+
+    var reducedShownSkills = _.map($scope.data.shownSkills, function (skill) {
+      return _.pick(skill, 'id', 'page', 'selected', 'added_manually')
+    })
+
+    var data = {
+      timestamp: new Date(),
+      query_uuid: $scope.data.queryUuid,
+      event_type: eventType,
+      skill_id: skillId,
+      payload: payload,
+      page: $scope.state.page,
+      shown_skills: reducedShownSkills,
+      event_number: $scope.state.eventCounter++
+    }
+    $http.post('<%= url_helper.skills_translator_save_event_path(script_name: ENV['RAILS_RELATIVE_URL_ROOT']) %>', data);
+  }
+
+
+  function scrollToPillBoxEnd () {
+    // Automatically scroll to see the new skills
+    var objDiv = document.getElementById('pill-box');
+    $('#pill-box').animate({
+      scrollTop: objDiv.scrollHeight
+    }, 500);
+  }
+
+}])
+

@@ -1,0 +1,14 @@
+<div class="row job-row">
+  <div class="small-12 columns">
+    <div class="result">
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="job-title"><%= link_to featured_job['position_title'], featured_job['url'], target: "_blank", class: "featured_job_posting" %></div>
+          <div class="job-company"><%= featured_job['organization_name']%></div>
+          <div class="job-locations"><%= featured_job["locations"].join(", ") %> - Job posted on <%= featured_job["start_date"] %></div>
+          <div class="feature-badge"><%= featured_job_badge(featured_job) %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

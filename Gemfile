@@ -29,7 +29,7 @@ gem "font-awesome-rails"
 gem 'enumerize'
 gem 'newrelic_rpm'
 gem 'httparty', '0.13.1'
-gem 'nokogiri', '~> 1.6'
+gem 'nokogiri', '~> 1.7.1'
 gem 'will_paginate', '~> 3.0'
 gem "ransack", '1.6.6'
 gem "pg_search"
@@ -44,6 +44,7 @@ gem 'schema_plus_pg_indexes'
 gem 'schema_plus_core'
 gem 'puma', '3.2.0'
 gem 'sentry-raven'
+gem 'rubyzip', '~> 1.2', '>= 1.2.1'
 
 # Generates fake data. Used to create data for staging environment's fictitious veterans, awards, affiliations, employers, etc.
 gem 'ffaker'

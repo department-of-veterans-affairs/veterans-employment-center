@@ -1,0 +1,51 @@
+<%= render partial: 'search_header' unless request.xhr? %>
+<div class="search-results">
+  <div class="section one">
+    <div class="row">
+      <hr>
+      <div class="small-12 columns">
+        <div class="search-results">
+          <%# If we have a federal job search, we can't know how many results there are. %>
+          <%= render partial: 'featured_jobs' if @page == 1 %>
+          <% if @record_count.nil? %>
+          <%= render partial: 'federal_pagination', locals: {searcher: @searcher} %>
+        <% end %>
+
+        <%= render partial: 'jobs' %>
+        <%= render partial: 'federal_jobs' %>
+        <% if @record_count.nil? %>
+          <%= render partial: 'federal_pagination', locals: {searcher: @searcher} %>
+        <% else %>
+          <%= render partial: 'pagination', locals: {searcher: @searcher} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation // We need to revisit these links and see if they are helpful and correctly placed. -->
+<!--
+<div class="navigation">
+  <div class="row">
+    <div class="small-12 columns">
+      <ul class="small-block-grid-1 medium-block-grid-3 cards small">
+        <li>
+          <a href="https://veterans.linkedin.com/">
+            <h5>LinkedIn</h5>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.surveymonkey.com/r/QSGQRFN">
+            <h5>Coursera</h5>
+          </a>
+        </li>
+        <li>
+          <a href="/employment/job-seekers/create-resume">
+            <h5>Résumé Builder</h5>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+-->
