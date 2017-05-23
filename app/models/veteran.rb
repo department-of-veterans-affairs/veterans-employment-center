@@ -192,7 +192,6 @@ class Veteran < ActiveRecord::Base
     # Don't mess with the existing instance
     Veteran.find(self.id).update_searchable_summary
   end
-  add_method_tracer :fill_search_summary, 'Custom/fill_search_summary'
 
   def experiences_of_type(type)
     experiences.select { |experience| experience.experience_type == type }

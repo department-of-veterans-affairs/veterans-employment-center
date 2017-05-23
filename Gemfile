@@ -27,7 +27,6 @@ gem 'caracal', '1.0.2'
 gem 'va_common', '~> 0.4.4'
 gem "font-awesome-rails"
 gem 'enumerize'
-gem 'newrelic_rpm'
 gem 'httparty', '0.13.1'
 gem 'nokogiri', '~> 1.7.1'
 gem 'will_paginate', '~> 3.0'
