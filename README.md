@@ -1,4 +1,4 @@
-# Veterans Employment Center [![Build Status](https://api.travis-ci.org/department-of-veterans-affairs/veterans-employment-center.svg?branch=master)](https://travis-ci.org/department-of-veterans-affairs/veterans-employment-center)
+# Veterans Employment Center [![Build Status](https://dev.vets.gov/jenkins/buildStatus/icon?job=department-of-veterans-affairs/veterans-employment-center/master)](http://jenkins.vetsgov-internal/job/department-of-veterans-affairs/job/veterans-employment-center/job/master/)
 
 # Installation
  * Ensure you are running Ruby 2.3.0
@@ -74,7 +74,6 @@ Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension
     /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/bin/ruby extconf.rb
 Command 'qmake -spec macx-g++ ' not available
 
-
 Gem files will remain installed in /var/folders/v4/qnj11mtx601glqpd1wymfd6h0000gn/T/bundler20150811-9857-iq0snu/capybara-webkit-1.3.1/gems/capybara-webkit-1.3.1 for inspection.
 Results logged to /var/folders/v4/qnj11mtx601glqpd1wymfd6h0000gn/T/bundler20150811-9857-iq0snu/capybara-webkit-1.3.1/gems/capybara-webkit-1.3.1/./gem_make.out
 An error occurred while installing capybara-webkit (1.3.1), and Bundler cannot
@@ -100,7 +99,6 @@ connections on Unix domain socket "/tmp/.s.PGSQL.5432"
 #### Fix:
 
 Try running these commands:
-
 ```
 rm -fr /usr/local/var/postgres
 initdb /usr/local/var/postgres -E utf8
@@ -153,9 +151,6 @@ Here's a list of the environment variables used by the application:
   - LINKEDIN\_OAUTH\_CLIENT\_ID - OAuth Client ID for LinkedIn Auth
   - LINKEDIN\_OAUTH\_CLIENT\_SECRET - OAuth Client Secret for LinkedIn Auth
   - NEW\_RELIC\_LICENSE\_KEY - License key for New Relic
-  - SAML\_CERT\_FINGERPRINT - Fingerprint for the SAML cert for AccessVA/DS Logon
-  - SAML\_SERVICE\_URL - Callback URL for SAML/DS Logon authentication
-  - SAML\_SSO\_TARGET\_URL - Target remote URL for AccessVA/DS Logon authentication
   - US\_JOBS\_API\_KEY - Key for accessing the US.jobs API
   - SKILLS\_TRANSLATOR\_MODEL\_ID - The skill translator model to use. This variable has to be increased every time the model gets retrained from new userdata.
   - SKILLS\_TRANSLATOR\_PERCENT\_SKILLS\_RANDOM - To ensure that we occasionally test all skills, no matter how irrelevant we thought they were, we randomly replace a few of our "relevant" skills with totally random skills.
@@ -205,3 +200,4 @@ https://github.com/department-of-veterans-affairs/jobs_api/tree/va-jobs
 
 - Gerassimides, Pam <pgerassimides@naswa.org>
 - Terrell, Charlie <cterrell@naswa.org>
+

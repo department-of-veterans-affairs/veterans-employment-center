@@ -50,7 +50,7 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include FactoryGirl::Syntax::Methods
   config.include Warden::Test::Helpers
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
   config.before(:suite) do
     Warden.test_mode!
@@ -95,18 +95,6 @@ PROVIDERS[:linkedin] = {
 }
 PROVIDERS[:google_oauth2] = {
   provider: 'google_oauth2',
-  uid: '12345',
-  info: {
-    name: 'Test Google User',
-    email: 'test@gmail.com'
-  }
-}
-PROVIDERS[:saml] = {
-  extra: {
-    raw_info: {
-      dodEdiPnId: '1234567890'
-    }
-  },
   uid: '12345',
   info: {
     name: 'Test Google User',

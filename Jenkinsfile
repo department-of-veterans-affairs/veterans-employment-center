@@ -11,13 +11,19 @@ pipeline {
 
     stage('Install bundle') {
       steps {
-        sh 'bash --login -c "bundle install --path vendor/bundle --without development"'
+        sh 'bash --login -c "bundle install -j 4 --without development"'
       }
     }
 
     stage('Ensure database exists') {
       steps {
         sh 'bash --login -c "bundle exec rake db:create db:schema:load db:migrate"'
+      }
+    }
+
+    stage('Update bundle-audit database') {
+      steps {
+        sh 'bash --login -c "bundle exec bundle-audit update"'
       }
     }
 
