@@ -12,5 +12,5 @@
 <% end %>
 <% if employer.commitment_categories.size > 0 %>
   <br />
-  <b>Special commitments to:</b> <% employer.commitment_categories.each do |comm| %><%= comm %> <% end %>
+  <b>Special commitments to:</b> <% employer.commitment_categories.join(", ") %>
 <% end %>
