@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent { label 'vetsgov-general-purpose' }
 
   stages {
     stage('Checkout Code') {
