@@ -37,12 +37,6 @@ describe "Employers" do
       expect(page).to have_selector 'li', text: 'Your Employer Account'
     end
 
-    it "should prompt user to log in if they aren't yet signed in" do
-      visit employer_home_path
-      click_link 'View All Hiring Commitments'
-      expect(page).to have_link 'Sign in with LinkedIn'
-    end
-
     it "should redirect to edit profile page if logged-in employer clicks Make a Hiring Commitment in Employer sidebar" do
       employer = employer_user
       sign_in_as employer

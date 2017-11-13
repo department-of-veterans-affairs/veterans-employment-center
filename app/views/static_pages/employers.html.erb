@@ -42,13 +42,6 @@
               <span>Your listing will be searchable by our Veteran workforce and their families.</span>
             </a>
           </li>
-           <li class="va-card">
-              <%= link_to commitments_path, class: "va-card-body" do %>
-              <h4 class="va-card-title">View All Hiring Commitments</h4>
-              <span>See who has made a public commitment to hire Veterans.</span>
-              <% end %>
-           </li>
-        
            <% if user_signed_in? && current_user.is_employer? %>
             <li class="va-card">
   	            <%= link_to edit_employer_path(current_user.employer ), class: 'va-card-body' do %>
