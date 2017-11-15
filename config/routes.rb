@@ -16,7 +16,7 @@ EmploymentPortal::Application.routes.draw do
   get "/commitments" => 'employers#commitments'
   get '/download_employers' => 'employers#download_employers'
   get "job-seekers/create-resume" => 'veterans#new', as: :resume_builder
-  get 'job-seekers/search-jobs' => 'search#search_jobs', as: :search_jobs
+  # get 'job-seekers/search-jobs' => 'search#search_jobs', as: :search_jobs
   post 'veterans/new' => 'veterans#new'
   get '/employers' => 'static_pages#employers', as: :employer_home
   get 'employer-list' => 'employers#index', as: :employer_list

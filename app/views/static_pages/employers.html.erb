@@ -28,7 +28,7 @@
     <% else %>
         <h1>Employers</h1>
     <% end %>
-      <p>Welcome to the Veterans Employment Center. You can post a job, make a hiring commitment, and discover resources to support employees who are Veterans and military family members.</p>
+      <p>Welcome to the Veterans Employment Center. You can post a job and discover resources to support employees who are Veterans and military family members.</p>
     </div>
   </div>
 
@@ -42,13 +42,6 @@
               <span>Your listing will be searchable by our Veteran workforce and their families.</span>
             </a>
           </li>
-           <li class="va-card">
-              <%= link_to commitments_path, class: "va-card-body" do %>
-              <h4 class="va-card-title">View All Hiring Commitments</h4>
-              <span>See who has made a public commitment to hire Veterans.</span>
-              <% end %>
-           </li>
-        
            <% if user_signed_in? && current_user.is_employer? %>
             <li class="va-card">
   	            <%= link_to edit_employer_path(current_user.employer ), class: 'va-card-body' do %>
