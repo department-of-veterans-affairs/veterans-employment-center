@@ -14,7 +14,8 @@ useradd -r -g vec vec && \
 apt-get update -qq && \
 apt-get install -y build-essential \
 git \
-libpq-dev
+libpq-dev \
+phantomjs
 
 WORKDIR $APP_PATH
 
