@@ -1,5 +1,6 @@
 FROM ruby:2.3-slim-jessie
 
+# required by rails for the production DB
 ARG database_password
 ENV EMPLOYMENTPORTAL_DATABASE_PASSWORD=$database_password
 ENV APP_PATH /srv/vec

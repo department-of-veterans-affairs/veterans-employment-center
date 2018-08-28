@@ -9,7 +9,7 @@ services:
     build:
       context: .
       args:
-        database_password: "password"  # TODO: ${EMPLOYMENTPORTAL_DATABASE_PASSWORD}
+        database_password: "password"
     image: "veteran-employment-center:${DOCKER_IMAGE:-latest}"
     volumes:
       - .:/src/vec
@@ -19,7 +19,9 @@ services:
       POSTGRES_HOST: "${POSTGRES_HOST:-postgres}"
       POSTGRES_PORT: "${POSTGRES_PORT:-5432}"
       POSTGRES_USER: "${POSTGRES_USER:-postgres}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-password}"
     depends_on:
       - postgres
     links:
       - postgres
+    tty: true
