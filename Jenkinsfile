@@ -44,7 +44,7 @@ pipeline {
           brakeman: {
             sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec up -d && docker-compose -p vec run --rm bundle exec brakeman"
           },
-          bundle-audit: {
+          bundleaudit: {
             sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec up -d && docker-compose -p vec run --rm bundle exec bundle-audit"
           }
         )
