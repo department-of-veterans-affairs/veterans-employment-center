@@ -10,14 +10,14 @@ def notify = { ->
 
 node('vetsgov-general-purpose') {
   properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', daysToKeepStr: '60']]]);
-  def imageTag
 
   stage('Setup') {
-    imageTag = java.net.URLDecoder.decode(env.BUILD_TAG).replaceAll("[^A-Za-z0-9\\-\\_]", "-")
     checkout scm
+    sh "docker-compose build"
   }
   stage('Ensure database exists') {
-    sh "docker-compose -p vec up -d && docker-compose -p vec run veteran-employment-center bundle exec rake db:create db:schema:load db:migrate"
+    sh "docker-compose -p vec up -d"
+    sh "docker-compose -p vec run veteran-employment-center bundle exec rake db:create db:schema:load db:migrate"
   }
   stage('Update bundle-audit database') {
     sh "docker-compose -p vec run veteran-employment-center bundle exec bundle-audit update"
