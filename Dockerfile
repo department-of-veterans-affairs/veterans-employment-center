@@ -18,4 +18,4 @@ libpq-dev
 
 WORKDIR $APP_PATH
 
-RUN bundle install
+RUN bundle install -j 4 --without development
