@@ -17,26 +17,18 @@ node('vetsgov-general-purpose') {
     checkout scm
   }
   stage('Ensure database exists') {
-    sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec up -d && docker-compose -p vec run --rm bundle exec rake db:create db:schema:load db:migrate"
+    sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec up -d && docker-compose -p vec run veteran-employment-center bundle exec rake db:create db:schema:load db:migrate"
   }
   stage('Update bundle-audit database') {
-    sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec up -d && docker-compose -p vec run --rm bundle exec bundle-audit update"
+    sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec run veteran-employment-center bundle exec bundle-audit update"
   }
   stage('Run tests') {
     try {
-      parallel (
-        rake: {
-          sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec up -d && docker-compose -p vec run --rm bundle exec rake"
-        },
-        brakeman: {
-          sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec up -d && docker-compose -p vec run --rm bundle exec brakeman"
-        },
-        bundleaudit: {
-          sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec up -d && docker-compose -p vec run --rm bundle exec bundle-audit"
-        }
-      )
+      sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec run veteran-employment-center bundle exec rake"
+      sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec run veteran-employment-center bundle exec brakeman"
+      sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec run veteran-employment-center bundle exec bundle-audit"
     } catch (err) {
-        notify()
+      notify()
       throw err
     } finally {
       sh "docker-compose -p vec down --remove-orphans"
