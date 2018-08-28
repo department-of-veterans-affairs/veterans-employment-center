@@ -40,10 +40,10 @@ pipeline {
         parallel (
           rake: {
             sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec up -d && docker-compose -p vec run --rm bundle exec rake"
-          }
+          },
           brakeman: {
             sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec up -d && docker-compose -p vec run --rm bundle exec brakeman"
-          }
+          },
           bundle-audit: {
             sh "export IMAGE_TAG=${imageTag} && docker-compose -p vec up -d && docker-compose -p vec run --rm bundle exec bundle-audit"
           }
