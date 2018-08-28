@@ -1,6 +1,6 @@
 def notify = { ->
-  if (env.BRANCH_NAME == production ||
-      env.BRANCH_NAME == master) {
+  if (env.BRANCH_NAME == 'production' ||
+      env.BRANCH_NAME == 'master') {
     message = "veterans-employment-center ${env.BRANCH_NAME} branch CI failed. |${env.RUN_DISPLAY_URL}".stripMargin()
     slackSend message: message,
     color: 'danger',
