@@ -5,6 +5,7 @@ ARG database_password
 ENV EMPLOYMENTPORTAL_DATABASE_PASSWORD=$database_password
 ENV APP_PATH /srv/vec
 ENV PHANTOM phantomjs-2.1.1
+ENV LANG C.UTF-8
 
 RUN mkdir -p $APP_PATH
 
