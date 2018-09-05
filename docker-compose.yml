@@ -1,4 +1,4 @@
-version: '3'
+version: '3.2'
 services:
   postgres:
     image: postgres:9.6-alpine
@@ -12,7 +12,9 @@ services:
         database_password: "password"
     image: "veteran-employment-center:${DOCKER_IMAGE:-latest}"
     volumes:
-      - ./coverage:/src/vec/coverage
+      - type: bind
+        source: ./coverage
+        target: /srv/vec/coverage
     ports:
       - "3000:3000"
     environment:
@@ -25,3 +27,4 @@ services:
     links:
       - postgres
     tty: true
+
