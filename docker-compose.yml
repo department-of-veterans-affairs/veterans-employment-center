@@ -12,7 +12,7 @@ services:
         database_password: "password"
     image: "veteran-employment-center:${DOCKER_IMAGE:-latest}"
     volumes:
-      - .:/src/vec
+      - ./coverage:/src/vec/coverage
     ports:
       - "3000:3000"
     environment:

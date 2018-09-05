@@ -13,7 +13,7 @@ node('vetsgov-general-purpose') {
 
   stage('Setup') {
     checkout scm
-    sh "docker-compose build"
+    sh "docker-compose build --no-cache --force-rm"
   }
   stage('Ensure database exists') {
     sh "docker-compose -p vec up -d"
@@ -32,7 +32,7 @@ node('vetsgov-general-purpose') {
       throw err
     } finally {
       sh "docker-compose -p vec down --remove-orphans"
-      step([$class: 'JUnitResultArchiver', testResults: 'coverage'])
+      step([$class: 'JUnitResultArchiver', testResults: '/srv/vec/coverage/*/**'])
     }
   }
 }
