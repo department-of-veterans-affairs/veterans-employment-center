@@ -32,7 +32,7 @@ node('vetsgov-general-purpose') {
       throw err
     } finally {
       sh "docker-compose -p vec down --remove-orphans"
-      step([$class: 'JUnitResultArchiver', testResults: '/srv/vec/coverage/*/**'])
+      step([$class: 'JUnitResultArchiver', testResults: 'coverage/*/**'])
     }
   }
 }
