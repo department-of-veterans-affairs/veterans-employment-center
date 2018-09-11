@@ -21,7 +21,7 @@ RUN tar xvjf /tmp/$PHANTOM-linux-x86_64.tar.bz2 && \
 RUN groupadd -r vec && \
 useradd -r -g vec vec && \
 apt-get update -qq && \
-apt-get install -y build-essential \
+apt-get install -y --no-install-recommends build-essential \
 git \
 libpq-dev \
 libfontconfig \
