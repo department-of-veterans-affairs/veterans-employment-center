@@ -19,14 +19,14 @@ node('vetsgov-general-purpose') {
     sh "docker-compose -p vec up -d"
     sh "docker-compose -p vec run veteran-employment-center bundle exec rake db:create db:schema:load db:migrate"
   }
-  stage('Update bundle-audit database') {
-    sh "docker-compose -p vec run veteran-employment-center bundle exec bundle-audit update"
-  }
+  // stage('Update bundle-audit database') {
+  //   sh "docker-compose -p vec run veteran-employment-center bundle exec bundle-audit update"
+  // }
   stage('Run tests') {
     try {
       sh "docker-compose -p vec run veteran-employment-center bundle exec rake"
       sh "docker-compose -p vec run veteran-employment-center bundle exec brakeman"
-      sh "docker-compose -p vec run veteran-employment-center bundle exec bundle-audit"
+      // sh "docker-compose -p vec run veteran-employment-center bundle exec bundle-audit"
     } catch (err) {
       notify()
       throw err
