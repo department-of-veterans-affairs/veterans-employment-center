@@ -8,30 +8,50 @@ def notify = { ->
   }
 }
 
-node('vetsgov-general-purpose') {
-  properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', daysToKeepStr: '60']]]);
+pipeline {
+  agent {
+    label 'vetsgov-general-purpose'
+  }
 
-  stage('Setup') {
-    checkout scm
-    sh "docker-compose build --no-cache --force-rm"
+  stages {
+    stage('Setup') {
+      steps {
+        checkout scm
+        sh "docker-compose build --no-cache --force-rm"
+      }
+    }
+    stage('Ensure database exists') {
+      steps {
+        sh "docker-compose -p vec up -d"
+        sh "docker-compose -p vec run veteran-employment-center bundle exec rake db:create db:schema:load db:migrate"
+      }
+    }
+    stage('Update bundle-audit database') {
+      steps {
+        sh "docker-compose -p vec run veteran-employment-center bundle exec bundle-audit update"
+      }
+    }
+    stage('Run tests') {
+      steps {
+        script {
+          try {
+            sh "docker-compose -p vec run veteran-employment-center bundle exec rake"
+            sh "docker-compose -p vec run veteran-employment-center bundle exec brakeman"
+            sh "docker-compose -p vec run veteran-employment-center bundle exec bundle-audit"
+          } catch (err) {
+            notify()
+            println "Error caught:"
+            println err
+          }
+        }
+      }
+    }
   }
-  stage('Ensure database exists') {
-    sh "docker-compose -p vec up -d"
-    sh "docker-compose -p vec run veteran-employment-center bundle exec rake db:create db:schema:load db:migrate"
-  }
-  // stage('Update bundle-audit database') {
-  //   sh "docker-compose -p vec run veteran-employment-center bundle exec bundle-audit update"
-  // }
-  stage('Run tests') {
-    try {
-      sh "docker-compose -p vec run veteran-employment-center bundle exec rake"
-      sh "docker-compose -p vec run veteran-employment-center bundle exec brakeman"
-      // sh "docker-compose -p vec run veteran-employment-center bundle exec bundle-audit"
-    } catch (err) {
-      notify()
-      throw err
-    } finally {
+  post {
+    always {
+      println "Cleaning up Docker images"
       sh "docker-compose -p vec down --remove-orphans"
     }
   }
 }
+
