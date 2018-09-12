@@ -37,10 +37,19 @@ pipeline {
           try {
             sh "docker-compose -p vec run veteran-employment-center bundle exec rake"
             sh "docker-compose -p vec run veteran-employment-center bundle exec brakeman"
-            sh "docker-compose -p vec run veteran-employment-center bundle exec bundle-audit"
           } catch (err) {
             notify()
-            println "Error caught:"
+            println err
+          }
+        }
+      }
+    }
+    stage('Run bundle-audit') {
+      steps {
+        script {
+          try {
+            sh "docker-compose -p vec run veteran-employment-center bundle exec bundle-audit"
+          } catch (err) {
             println err
           }
         }
