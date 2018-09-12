@@ -1,39 +1,66 @@
+def notify = { ->
+  if (env.BRANCH_NAME == 'production' ||
+      env.BRANCH_NAME == 'master') {
+    message = "veterans-employment-center ${env.BRANCH_NAME} branch CI failed. |${env.RUN_DISPLAY_URL}".stripMargin()
+    slackSend message: message,
+    color: 'danger',
+    failOnError: true
+  }
+}
+
 pipeline {
   agent {
     label 'vetsgov-general-purpose'
   }
 
   stages {
-    stage('Checkout Code') {
+    stage('Setup') {
       steps {
         checkout scm
+        sh "docker-compose build --no-cache --force-rm"
       }
     }
-
-    stage('Install bundle') {
-      steps {
-        sh 'bash --login -c "bundle install -j 4 --without development"'
-      }
-    }
-
     stage('Ensure database exists') {
       steps {
-        sh 'bash --login -c "bundle exec rake db:create db:schema:load db:migrate"'
+        sh "docker-compose -p vec up -d"
+        sh "docker-compose -p vec run veteran-employment-center bundle exec rake db:create db:schema:load db:migrate"
       }
     }
-
     stage('Update bundle-audit database') {
       steps {
-        sh 'bash --login -c "bundle exec bundle-audit update"'
+        sh "docker-compose -p vec run veteran-employment-center bundle exec bundle-audit update"
       }
     }
-
     stage('Run tests') {
       steps {
-        sh 'bash --login -c "bundle exec rake"'
-        sh 'bash --login -c "bundle exec brakeman"'
-        sh 'bash --login -c "bundle exec bundle-audit"'
+        script {
+          try {
+            sh "docker-compose -p vec run veteran-employment-center bundle exec rake"
+            sh "docker-compose -p vec run veteran-employment-center bundle exec brakeman"
+          } catch (err) {
+            notify()
+            throw err
+          }
+        }
+      }
+    }
+    stage('Run bundle-audit') {
+      steps {
+        script {
+          try {
+            sh "docker-compose -p vec run veteran-employment-center bundle exec bundle-audit"
+          } catch (err) {
+            println err
+          }
+        }
       }
     }
   }
+  post {
+    always {
+      println "Cleaning up Docker images"
+      sh "docker-compose -p vec down --remove-orphans"
+    }
+  }
 }
+
