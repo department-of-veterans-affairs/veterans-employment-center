@@ -39,7 +39,7 @@ pipeline {
             sh "docker-compose -p vec run veteran-employment-center bundle exec brakeman"
           } catch (err) {
             notify()
-            println err
+            throw err
           }
         }
       }
