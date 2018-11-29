@@ -346,7 +346,7 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     selectivizr-rails (1.1.2)
-    sentry-raven (2.3.0)
+    sentry-raven (2.7.4)
       faraday (>= 0.7.6, < 1.0)
     shellany (0.0.1)
     simplecov (0.12.0)
@@ -470,4 +470,4 @@ DEPENDENCIES
   will_paginate (~> 3.0)
 
 BUNDLED WITH
-   1.16.1
+   1.16.5
