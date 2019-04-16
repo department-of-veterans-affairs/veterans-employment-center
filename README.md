@@ -1,3 +1,5 @@
+## :exclamation: This repository is no longer publicly accessible
+
 # Veterans Employment Center [![Build Status](https://dev.vets.gov/jenkins/buildStatus/icon?job=department-of-veterans-affairs/veterans-employment-center/master)](http://jenkins.vetsgov-internal/job/department-of-veterans-affairs/job/veterans-employment-center/job/master/)
 
 # Installation
