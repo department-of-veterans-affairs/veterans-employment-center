@@ -43,7 +43,7 @@ gem 'schema_plus_pg_indexes'
 gem 'schema_plus_core'
 gem 'puma', '3.2.0'
 gem 'sentry-raven'
-gem 'rubyzip', '~> 1.2', '>= 1.2.1'
+gem 'rubyzip', '~> 1.3'
 
 # Generates fake data. Used to create data for staging environment's fictitious veterans, awards, affiliations, employers, etc.
 gem 'ffaker'
