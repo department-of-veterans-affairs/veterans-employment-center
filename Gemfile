@@ -28,7 +28,7 @@ gem 'va_common', '~> 0.4.4'
 gem "font-awesome-rails"
 gem 'enumerize'
 gem 'httparty', '0.13.1'
-gem 'nokogiri', '~> 1.8.1'
+gem 'nokogiri', '~> 1.10.8'
 gem 'will_paginate', '~> 3.0'
 gem "ransack", '1.6.6'
 gem "pg_search"
