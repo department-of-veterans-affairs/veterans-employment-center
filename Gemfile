@@ -41,7 +41,7 @@ gem 'linkedin'
 gem 'activerecord-session_store', git: 'https://github.com/rails/activerecord-session_store'
 gem 'schema_plus_pg_indexes'
 gem 'schema_plus_core'
-gem 'puma', '3.2.0'
+gem 'puma', '3.12.4'
 gem 'sentry-raven'
 gem 'rubyzip', '~> 1.2', '>= 1.2.1'
 
